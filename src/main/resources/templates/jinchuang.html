@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--<div th:fragment="tittle">-->
+    <!--<title>锐成教育</title>-->
+<!--</div>-->
+<title th:fragment="tittle">金创教育</title>
+
+
+<div th:fragment="indexpage">
+    <!--modal login-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="loginModalDiv" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content_login">
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"  style="padding-top: 36px;padding-bottom: 30px">
+                                <p class="text-center text-white noselect" style="font-size: 30px">Welcome</p>
+                            </div>
+                            <div class="col-md-4">
+                                <!--<img src="img/show/closed_normal_04.png"  class="float-md-right"/>-->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span id="times_close" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-left: 36px;padding-right: 36px">
+                            <!--<label for="recipient-name" class="col-form-label">Recipient:</label>-->
+                            <input type="text" class="form-control login_input" id="loginuser" placeholder="手机" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="手机号错误"/>
+                        </div>
+                        <div class="form-group" style="padding-left: 36px;padding-right: 36px;margin-bottom: 7px">
+                            <!--<label for="message-text" class="col-form-label">Message:</label>-->
+                            <!--<textarea class="form-control" id="message-text"></textarea>-->
+                            <input type="password" class="form-control login_input" id="loginpassword" aria-describedby="password_help" placeholder="密码" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="密码错误"/>
+                            <small id="password_help" class="form-text noselect" style="color: #bababa">默认的账号和密码是您的手机号,忘记请联我们&nbsp;&nbsp;<a id="mod_pwd_before_login" style="color: white;cursor: pointer;text-decoration: underline">修改密码？</a></small>
+                        </div>
+                        <!--<div class="row" style="margin: 0;padding: 0 32px 0 32px">-->
+                        <!--<div class="col-xl-6">-->
+                        <!--<img id="remember_password" src="img/show/icon_unchecked.png" /><span class="login_modal_opt">记住密码</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xl-6">-->
+                        <!--<a href="#" id="forget_pwd" class="float-md-right login_modal_opt" style="margin-top: 1px"><u>忘记密码</u></a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                    </form>
+                    <div class="row" style="margin-top: 30px;margin-bottom: 30px;padding: 0 36px 0 36px">
+                        <div class="col-md-12">
+                            <button type="button" class="btn" id="login-btn" style="width: 100%">登录</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--nav bar-->
+    <nav id="need_color" class="navbar navbar-scroll navbar-expand-sm fixed-top bg-fade navbar-dark py-0">
+        <a class="navbar-brand text-white pl-5">
+            金创教育
+        </a>
+        <button id="collapse_btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+            <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+                <a id="a-index">
+                    <li id="index" class="nav-item active">
+                        <span id="nav-a-1" class="nav-link noselect">首页</span>
+                    </li>
+                </a>
+                <a id="a-user-info">
+                    <li id="user-info-btn" class="nav-item active" style="cursor: pointer">
+                        <span class="nav-link noselect">个人信息</span>
+                    </li>
+                </a>
+                <a id="a-start-test">
+                    <li id="personel-test-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="start-personel-test-btn" class="nav-link noselect">规划测评</span>
+                    </li>
+                </a>
+                <a id="a-start-test-more">
+                    <li id="personel-test-btn-more" class="nav-item active" style="cursor: pointer">
+                        <span id="start-personel-test-btn-more" class="nav-link noselect">心理测评</span>
+                    </li>
+                </a>
+                <a id="threein6">
+                    <li id="a-my-threeinsix-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="a-my-threeinsix-btn-span" class="nav-link noselect">6选3</span>
+                    </li>
+                </a>
+                <a id="a-my-intense"  data-toggle="dropdown">
+                    <li id="my-intene-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="start-my-intene-btn" class="nav-link noselect">我的报考</span>
+                    </li>
+                </a>
+                <div class="dropdown-menu" style="background-color: rgba(0,0,0,0.5)">
+                    <a id="my_sch_btn" class="dropdown-item text-white noselect">我的学校</a>
+                    <a id="my_mjr_btn" class="dropdown-item text-white noselect">我的专业</a>
+                </div>
+                <a>
+                    <li id="session_status" class="nav-item active" style="cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                        <span class="nav-link noselect session_status_panel">登录</span>
+                    </li>
+                </a>
+                <a>
+                    <li id="logout-btn" class="nav-item active" style="cursor: pointer;display: none">
+                        <span class="nav-link noselect session_status_panel">注销</span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+    <!--End of nav bar-->
+
+    <!--parallax-->
+    <section id="parallax-banner-section" class="module parallax parallax-1" data-type="background" data-speed="3">
+        <div class="parallax-container" id="parallax-banner-container">
+            <div class="container" style="padding: 0 10% 0 10%">
+                <div class="row align-items-center">
+
+                    <div id="big-icon-1" class="big_icon col align-self-start">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_10.png" />
+                        </div>
+                    </div>
+
+                    <div id="big-icon-2" class="big_icon col align-self-center">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_12.png" />
+                        </div>
+                    </div>
+
+                    <div id="big-icon-3" class="big_icon col align-self-end">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_08.png"  />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center" style="margin-top: 20%">
+                    <div class="col align-self-start">
+                        <img class="mx-auto noselect d-block" src="/img/show/icon_15.png" style="height: 64%;width: 64%" />
+                    </div>
+                </div>
+
+                <div class="row align-items-center" style="margin-top: 7%">
+                    <div class="col align-self-start">
+                        <img class="mx-auto noselect d-block" id="next-pointer" src="/img/show/icon_19.png" style="height: 4%;width: 4%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End of parallax-->
+
+    <div id="img1">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col text-center">
+                    <!--<h1 class="noselect"  style="color: #595959">金创教育</h1>-->
+                    <img src="img/institution/jinchuang/logo2.jpg" alt="金创教育" class="img-fluid" />
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+        <div class="container" style="background-image: url('img/institution/jinchuang/classes.png');background-repeat: no-repeat;background-size: contain;min-height: 150px">
+
+        </div>
+        <div class="container" style="padding-top: 0;padding-bottom: 40px;background-image: url('img/institution/jinchuang/decorate.png');background-size: cover;background-repeat: no-repeat;">
+            <div class="row">
+
+                <div class="col" style="padding-left: 0!important;;padding-right: 0!important;">
+                    <p class="noselect" style="text-indent: 3rem;font-size: 19px;line-height: 50px;letter-spacing: 1px;color: #000">
+                        金创教育（KING CHOICE EDUCATION）,成立于2014年，是由教育主管部门批准的正规办学机构。学校占地600余平，拥有专职教师30余人，教师学历全部本科以上。
+                    </p>
+                    <p class="noselect" style="text-indent: 3rem;font-size: 19px;line-height: 50px;letter-spacing: 1px;color: #000">
+                        金创教育作为个性化教育的倡导者，通过发现学生的个性优势，培养学生的学习兴趣，学习习惯，树立学习信心，激发他们的学习潜能；同时匹配全职的专业辅导小组根据学生的需求进行个性化辅导，为学生量身定制个性化的辅导方案，六对一的专业服务，从而达到学生全方位的提高。
+                    </p>
+                    <p class="noselect" style="text-indent: 3rem;font-size: 19px;line-height: 50px;letter-spacing: 1px;color: #000">
+                        金创教育经过几年的发展已经成长为营口地区规模最大的文化课辅导机构之一。
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div id="institution_info" style="margin-left: 11.8%;margin-right: 11.8%">-->
+
+    <!--<div class="row">-->
+    <!--<div class="col">-->
+    <!--锐成教育-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row"></div>-->
+
+    <!--</div>-->
+
+    <div id="img2">
+        <!--<img src="/img/ruicheng/teacher.png" class="img-fluid" />-->
+        <div class="jinchuangteacher" style="padding: 50px;">
+            <h1 style="padding-left: 5rem;padding-right: 5rem;background-image: url('img/institution/jinchuang/titlebg.png');background-repeat: no-repeat;background-size: cover">教师团队</h1>
+        </div>
+        <div class="jinchuangteacher">
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 14.8rem;min-height: 26rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/jinchuang/teacher1.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">黄艳红老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">资深课程顾问</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                            毕业于辽宁科技大学，从教5年。具有非常好的亲和力、沟通能力，能够设计有针对性的辅导课程方案；同时能够针对孩子的不同特点进行心理辅导，有效解决学生因为压力大、厌学、叛逆等问题。</p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 26rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/jinchuang/teacher4.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">李婉茹老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">资深学习管理师</h6>
+                        <p class="card-text" style="font-size: 0.8rem">  
+                            毕业于大连外国语大学，能够迅速与学生成为朋友，保证学生按照既定的辅导方案完成学习；能察觉学生的学习活心理困惑，同时与家长与孩子两方面沟通、跟踪和回访，开辟顺畅的学习之路。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 26rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/jinchuang/teacher3.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">刘玉卓老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">初高中数学</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                              
+                            毕业于沈阳师范大学，具有丰富教学经验，课上严谨不失幽默，能够带领学生认识问题本质。根据不同学生做出适合学生本身的学习方法，以此达到提高成绩的目的。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 26rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/jinchuang/teacher2.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">林乐洋老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">初高中数理化老师</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                             
+                            毕业于辽宁师范大学理学院，授课幽默风趣，注重培养学生学习兴趣。善于举例类比教学，能把理科类知识和生活现象相互结合，使学生充分，深刻的理解和掌握物理知识。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 26rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/jinchuang/teacher5.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">曲晓妍老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">初高中英语</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                              
+                            毕业于辽宁师范大学英语师范专业。对中学英语教学有独到的见解，教学过程思路清晰，逻辑严谨，教学内容重点突出，善于总结规律，让学生快速理解其本质。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="img3">
+        <div class="jinchuangteacher" style="padding: 50px">
+            <h1 style="padding-left: 5rem;padding-right: 5rem;background-image: url('img/institution/jinchuang/titlebg.png');background-repeat: no-repeat;background-size: cover">校区展示</h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col" style="background-image: url('img/institution/jinchuang/ins_into1.jpg');background-repeat: no-repeat;background-size: cover;height: 295px;padding-left: 0!important;;padding-right: 0!important;">
+                            <div class="jinchuangschoolwell" style="height: inherit"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="background-image: url('img/institution/jinchuang/ins_into2.jpg');background-repeat: no-repeat;background-size: cover;height: 295px;padding-left: 0!important;;padding-right: 0!important;">
+                            <div class="jinchuangschoolwell" style="height: inherit"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col" style="background-image: url('img/institution/jinchuang/ins_into3.jpg');background-repeat: no-repeat;background-size: cover;height: 590px;padding-left: 0!important;;padding-right: 0!important;">
+                    <div class="jinchuangschoolwell" style="height: inherit"></div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col" style="background-image: url('img/institution/jinchuang/ins_into4.jpg');background-repeat: no-repeat;background-size: cover;height: 295px;padding-left: 0!important;;padding-right: 0!important;">
+                            <div class="jinchuangschoolwell" style="height: inherit"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="background-image: url('img/institution/jinchuang/ins_into5.jpg');background-repeat: no-repeat;background-size: cover;height: 295px;padding-left: 0!important;;padding-right: 0!important;">
+                            <div class="jinchuangschoolwell" style="height: inherit"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of current pic-->
+</div>
+<div th:fragment="card_adv">
+    <!--<img class="card-img-top" src="../img/three_in_six/timg.jpg" alt="Card image cap"/>-->
+    <div class="card-body" style="text-align: center">
+        <h3 class="card-title text-white">金创教育大数据引擎</h3>
+        <h3 class="card-title text-white">为您提供"6选3"工具</h3>
+    </div>
+    <div class="card-footer">
+        <!--<button id="three_in_six_enter_button3" type="button" class="btn btn-dark btn-lg btn-block">进入->功能名字3</button>-->
+    </div>
+
+</div>
+<div th:fragment="footer">
+    <section class="module parallax-footer parallax-2" style="padding-bottom: 0">
+        <div class="parallax-container" style="margin: 0 0 0 0">
+            <div id="footer-ad-1" class="container-fluid">
+                <div class="row" style="padding: 50px 0">
+                    <div class="col-12 text-center text-white">
+                        <p style="font-size: 28px" class="noselect">指 导 流 程 及 承 诺</p>
+                    </div>
+                </div>
+            </div>
+            <!--asd-->
+            <!--<div class="row" style="margin-left: 32.8%">-->
+            <div id="footer-ad-2" class="container-fluid">
+                <div class="row align-items-sm-center" style="margin: 0 10%">
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_56.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">学生指导<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_58.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">性格测试<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_61.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">专业选择<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_63.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">学业激励<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_66.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">大数据库<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_68.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">志愿填报<br/></p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-ad-3" class="container-fluid">
+                <div class="row" style="margin: 0 10%">
+                    <div class="col" style="padding: 40px 0">
+                        <div>
+                            <p class="text-white noselect" style="font-size: medium;line-height: 30px;margin: 0;letter-spacing:3px">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;金创教育成立之初是一家规模很小的课后托管机构，经过不断的发展，坚持自有的教育教学理念，以父母之心育人，得到了广大家长和学子的普遍认可，逐渐发展成一所初具规模的辅导学校。
+
+                            </p>
+                            <p class="text-white noselect" style="font-size: medium;line-height: 30px;margin: 12px 0 0 0;letter-spacing:3px">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        经过多年的摸索与探究，金创教育形成了自己独特的教研模式，成熟的市场运营手段，帮助很多中小学生实现了素质和成绩的突破，考上了理想的中学和大学。我们希望可以帮助更多的孩子实现好高中，好大学的梦想。
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer-ad-4" class="container-fluid" style="background-color: rgba(0,0,0,0.5);">
+                <div class="text-white" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="row" style="padding-left: 4.2%">
+                        <div class="col-md-12 noselect" style="font-size: 13px">
+                            <i>凡作事，将成功之时，其困难最甚。行百里者半九十，有志当世之务者，不可不戒，不可不勉。 —— 梁启超</i>
+                            
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px">
+                        <div class="col-md-6" style="color: rgba(255,255,255,0.7);padding-left: 5.2%">辽ICP备16007101号-1    Copyrigh©2015-2018  All Rights Reserved.</div>
+                        <div class="col-md-6 right" style="font-size: 14px">本软件已经申请国家专利并获得软件著作权，盗版必究</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .btn-toggle-radio {
+            border: 3px solid #1a1a1a;
+            display: inline-block;
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            -webkit-transition: background 600ms ease, color 600ms ease;
+            transition: background 600ms ease, color 600ms ease;
+        }
+
+
+        input[type="radio"].toggle {
+            display: none;
+        }
+        input[type="radio"].toggle + label {
+            cursor: pointer;
+            min-width: 60px;
+        }
+        input[type="radio"].toggle + label:hover {
+            background: none;
+            color: #1a1a1a;
+            /*color: #ff0000;*/
+        }
+        input[type="radio"].toggle + label:after {
+            background: #1a1a1a;
+            /*background: #0000ff;*/
+            content: "";
+            height: 100%;
+            position: absolute;
+            top: 0;
+            -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+            transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+            width: 100%;
+            z-index: -1;
+        }
+        input[type="radio"].toggle.toggle-left + label {
+            border-right: 0;
+        }
+        input[type="radio"].toggle.toggle-left + label:after {
+            left: 100%;
+        }
+        input[type="radio"].toggle.toggle-right + label {
+            margin-left: -5px;
+        }
+        input[type="radio"].toggle.toggle-right + label:after {
+            left: -100%;
+        }
+        input[type="radio"].toggle:checked + label {
+            cursor: default;
+            color: #fff;
+            -webkit-transition: color 200ms;
+            transition: color 200ms;
+        }
+        input[type="radio"].toggle:checked + label:after {
+            left: 0;
+        }
+
+    </style>
+
+
+
+
+    <!--<style>-->
+        <!--body, html {-->
+            <!--background: #efefef;-->
+            <!--display: -webkit-box;-->
+            <!--display: -ms-flexbox;-->
+            <!--display: flex;-->
+            <!-- -webkit-box-pack: center;-->
+            <!-- -ms-flex-pack: center;-->
+            <!--justify-content: center;-->
+            <!-- -webkit-box-align: center;-->
+            <!-- -ms-flex-align: center;-->
+            <!--align-items: center;-->
+            <!--min-height: 100%;-->
+            <!--z-index: -1;-->
+        <!--}-->
+
+        <!--.btn {-->
+            <!--border: 3px solid #00ff00;-->
+            <!--display: inline-block;-->
+            <!--padding: 10px;-->
+            <!--position: relative;-->
+            <!--text-align: center;-->
+            <!-- -webkit-transition: background 600ms ease, color 600ms ease;-->
+            <!--transition: background 600ms ease, color 600ms ease;-->
+        <!--}-->
+
+        <!--input[type="radio"].toggle {-->
+            <!--display: none;-->
+        <!--}-->
+        <!--input[type="radio"].toggle + label {-->
+            <!--cursor: pointer;-->
+            <!--min-width: 60px;-->
+        <!--}-->
+        <!--input[type="radio"].toggle + label:hover {-->
+            <!--background: none;-->
+                <!--/*color: #1a1a1a;*/-->
+                <!--color: #ff0000;-->
+        <!--}-->
+        <!--input[type="radio"].toggle + label:after {-->
+            <!--/*background: #1a1a1a;*/-->
+            <!--background: #0000ff;-->
+            <!--content: "";-->
+            <!--height: 100%;-->
+            <!--position: absolute;-->
+            <!--top: 0;-->
+            <!-- -webkit-transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);-->
+            <!--transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);-->
+            <!--width: 100%;-->
+            <!--z-index: -1;-->
+        <!--}-->
+        <!--input[type="radio"].toggle.toggle-left + label {-->
+            <!--border-right: 0;-->
+        <!--}-->
+        <!--input[type="radio"].toggle.toggle-left + label:after {-->
+            <!--left: 100%;-->
+        <!--}-->
+        <!--input[type="radio"].toggle.toggle-right + label {-->
+            <!--margin-left: -5px;-->
+        <!--}-->
+        <!--input[type="radio"].toggle.toggle-right + label:after {-->
+            <!--left: -100%;-->
+        <!--}-->
+        <!--input[type="radio"].toggle:checked + label {-->
+            <!--cursor: default;-->
+            <!--color: #fff;-->
+            <!-- -webkit-transition: color 200ms;-->
+            <!--transition: color 200ms;-->
+        <!--}-->
+        <!--input[type="radio"].toggle:checked + label:after {-->
+            <!--left: 0;-->
+        <!--}-->
+
+    <!--</style>-->
+</head>
+<body>
+<input id="toggle-on" class="toggle toggle-left" name="toggle" value="false" type="radio" checked /> <label for="toggle-on" class="btn-toggle-radio">Y  是</label>
+
+<input id="toggle-off" class="toggle toggle-right" name="toggle" value="true" type="radio" /> <label for="toggle-off" class="btn-toggle-radio">N  否</label>
+
+</body>
+</html>

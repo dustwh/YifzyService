@@ -1,0 +1,3184 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/bootstrap4.min.css" />
+    <link rel="stylesheet" href="css/start-test-page-style.css" />
+    <title>锐成教育</title>
+    <style>
+        body{
+            /*font-family:"Microsoft YaHei",微软雅黑;*/
+            font-family:sans-serif;
+        }
+
+        .navbar{
+            border-bottom-style: solid;
+            border-bottom-width:1px;
+            border-bottom-color:rgba(0, 0, 0, 0.1);
+            background-color:rgba(0,0,0,0.25);
+        }
+
+        .nav-item{
+            padding-left: 10px;
+            padding-right:10px;
+        }
+        .nav-item:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        a.nav-link{
+            margin-top: 9px;
+        }
+
+        #recipient-name{
+            background: transparent;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c4c4c4;
+        }
+        #message-text{
+            background: transparent;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c4c4c4;
+        }
+
+        .menu_drop{
+            background-color: rgba(0,0,0,0.5);
+        }
+        .dropdown-item-menu{
+            color: white;
+        }
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        .navbar-scroll {
+            transition: border-bottom-width 1s;
+            transition: border-bottom-color 1s;
+            transition: background-color 1s;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                background-color: rgba(0, 0, 0, 0.5);
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+                border-bottom-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+        /* ============================================================
+          PRIMARY STRUCTURE
+        ============================================================ */
+        .parallax-container {
+            /*max-width: 960px;*/
+            margin: 0 auto;
+        }
+        #parallax-banner-container{
+            max-width: 960px;
+        }
+        #P-Types-test-section{
+            min-height: 87.1vh;
+            padding: 78px 8.3%;
+        }
+
+        #Job-Interest-test-section{
+            /*old configure. Now adjust by designed PT*/
+            /*min-height: 100vh;*/
+            /*padding: 78px 8.3%;*/
+            min-height: 87.1vh;
+            padding: 78px 8.3%;
+        }
+
+        .test-section{
+            min-height: 100vh;
+            padding: 100px 8.3%;
+        }
+        #breadcrumbs-in-P-Types{
+            padding: 0 0 6% 0;
+        }
+        #breadcrumbs-in-Job-Interest{
+            padding: 0 0 6% 0;
+        }
+
+        /* ============================================================
+          SECTIONS
+        ============================================================ */
+        section.module:last-child {
+            margin-bottom: 0;
+        }
+
+        section.module h2 {
+            margin-bottom: 40px;
+            font-family: "Roboto Slab", serif;
+            font-size: 30px;
+        }
+
+        section.module p {
+            margin-bottom: 40px;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        section.module p:last-child {
+            margin-bottom: 0;
+        }
+
+        section.module.content {
+            padding: 40px 0;
+            background-color: rgba(207, 216, 220, 0.5);
+        }
+
+        section.module.content:last-child {
+            margin-bottom: 60px;
+        }
+
+        section.module.parallax {
+            padding: 240px 0;
+            background-position: 0 0;
+        }
+        section.module.parallax-footer {
+            padding: 240px 0;
+            background-position: 0 0;
+        }
+
+        section.module.parallax h1 {
+            color: #1e1e1e;
+            font-size: 48px;
+            line-height: 1;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px white;
+        }
+        /*parallax div部分的图片加颜色蒙版写法*/
+        /*section.module.parallax-1 {*/
+        /*background-image: url("img/maxresdefault.jpg");*/
+        /*background-position: 50% 0;*/
+        /*background-repeat: repeat;*/
+        /*background-attachment: fixed;*/
+        /*background-size: cover;*/
+        /*background-color: rgba(0, 123, 255, 0.4);*/
+        /*background-blend-mode: screen;*/
+        /*}*/
+        section.module.parallax-1 {
+            background-image: url("img/show/bg00_02.jpg");
+            background-position: 50% 0;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            /*background-color: rgba(0, 0, 0, 0.9);*/
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+
+        section.module.parallax-2 {
+            background-image: url("img/show/bg02_02.jpg");
+            /*background-position: 50% 0;*/
+            /*background-repeat: repeat;*/
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+
+        /*section.module.parallax-3 {*/
+        /*background-image: url("img/raindrops-window-background.jpg");*/
+        /*background-position: 50% 0;*/
+        /*background-repeat: repeat;*/
+        /*background-attachment: fixed;*/
+        /*background-size: cover;*/
+        /*background-color: rgba(0, 123, 255, 0.4);*/
+        /*background-blend-mode: screen;*/
+        /*}*/
+
+        @media all and (min-width: 600px) {
+            section.module h2 {
+                font-size: 42px;
+            }
+            section.module p {
+                font-size: 20px;
+            }
+            section.module.parallax {
+                padding: 15% 0 4.5% 0;
+            }
+            section.module.parallax-footer {
+                padding: 0;
+            }
+            section.module.parallax h1 {
+                font-size: 96px;
+            }
+        }
+        @media all and (min-width: 960px) {
+            section.module.parallax h1 {
+                font-size: 160px;
+            }
+        }
+        /*footer*/
+        /*.footer .container-fluid {*/
+        /*height: auto;*/
+        /*}*/
+
+        /*.footer {*/
+        /*position: absolute;*/
+        /*bottom: 0;*/
+        /*width: 100%;*/
+        /*!* Set the fixed height of the footer here *!*/
+        /*height: 60px;*/
+        /*line-height: 60px;*/
+        /*}*/
+
+        /*footer .container-fluid a {*/
+        /*display: inline-block;*/
+        /*color: #ddd;*/
+        /*padding-left: 1em;*/
+        /*}*/
+
+        /*footer .container-fluid p {*/
+        /*display: inline-block;*/
+        /*color: #ddd;*/
+        /*padding-left: 1em;*/
+        /*padding-right: 2em;*/
+        /*}*/
+
+        @media (max-width: 768px) {
+            .col-md-4 {
+                text-align: center;
+                line-height: 30px;
+            }
+        }
+        .right {
+            text-align: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+        /*first screen banner*/
+        .banner-img{
+            /*cursor: pointer;*/
+            height: 50%;
+            width: 50%;
+        }
+        /*next pointer img*/
+        #next-pointer{
+            cursor: pointer;
+        }
+
+        .test-intro-div{
+            height: 57px;
+            background-color: rgba(0,0,0,0.3);
+        }
+
+        .intro-tittle-container{
+            border-right: 1px solid white;
+            margin-top: 4.8%;
+        }
+
+        .intro-text-container{
+            color: white;
+            margin-top: 1%;
+            font-size: 14px;
+            font-weight: 200;
+        }
+
+        .test-area-div{
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .test-area-row{
+            margin-top: 4%;
+        }
+
+        .test-area{
+            padding: 0;
+        }
+
+        .progress_num_display{
+            display: inline-block;
+        }
+
+        #JI_progress_container {
+            /*width: 400px;*/
+            display: inline-block;
+            width: 90%;
+            height: 8px;
+        }
+        #PT_progress_container {
+            /*width: 400px;*/
+            display: inline-block;
+            width: 90%;
+            height: 8px;
+        }
+
+        .progress-div{
+            padding-top: 6%;
+            padding-bottom: 1%;
+        }
+        /*test body*/
+
+        .test-area-item-num{
+            padding-top: 24px;
+        }
+
+        #Job-Interest-test-item{
+            padding-top: 5%;
+        }
+        #breadcrumbs-JI-to-start-test{
+            cursor: pointer;
+        }
+
+        #breadcrumbs-PT-to-start-test{
+            cursor: pointer;
+        }
+        #breadcrumbs-JI-to-start-test:hover{
+            text-decoration: underline;
+            text-underline: white;
+        }
+        #breadcrumbs-PT-to-start-test:hover{
+            text-decoration: underline;
+            text-underline: white;
+        }
+
+        .divul {
+            padding-bottom: 8px;
+            list-style: none;
+            margin-top: 1.5%;
+            padding-right: 1%;
+            margin-bottom: 1.5%;
+        }
+        .divli {
+            /*display: inline-block;*/
+            padding-top: 8px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .divli:hover{
+            background: rgba(234,117,95,0.2);
+        }
+        .divlibool {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .hid-cir{
+            cursor: pointer;
+        }
+        .questionselect {
+            visibility:hidden;
+            /*display: none;*/
+        }
+
+        .yes_no_select_div{
+            /*margin: 15px 5px 0 5px;*/
+            margin: 15px 0 0 0;
+            padding-top: 5px;
+            padding-right: 20px;
+            border-style: solid;
+            border-width: 1px;
+            cursor: pointer;
+        }
+        .yes_no_select_div:hover{
+            background: rgba(4, 154, 135, 0.4);
+            text-align: center;
+        }
+        /*.Jtest-area-row{*/
+            /*margin-top: 1%;*/
+        /*}*/
+
+        /*label {*/
+            /*cursor: pointer;*/
+        /*}*/
+        .yesl {
+            color: white;
+            cursor: pointer;
+        }
+        .nol {
+            color: white;
+            cursor: pointer;
+        }
+
+
+        .Janswer_label {
+            font-size: 18px;
+            color: white;
+            /*cursor: pointer;*/
+        }
+
+        .answer_label {
+            color: white;
+            cursor: pointer;
+        }
+        input:checked + label {
+            color: #ea755f;
+        }
+
+        .sort_num{
+            width: 95%;
+            background-color: transparent;
+            border-style: solid;
+            border-width: 1px;
+            border-color: white;
+            text-align: center;
+            color: white;
+        }
+
+        .sort_num_col{
+            padding: 15px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        #JSubmit{
+            border-radius: 0;
+        }
+        #JSubmit:hover{
+            background: rgba(4, 154, 135, 0.4) !important;
+            /*background-color: rgba(4, 154, 135, 0.4);*/
+        }
+    </style>
+</head>
+<body>
+<!--modal login-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"  style="padding-top: 36px;padding-bottom: 30px">
+                            <p class="text-center">登录</p>
+                        </div>
+                        <div class="col-md-4">
+                            <!--<img src="img/show/closed_normal_04.png"  class="float-md-right"/>-->
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left: 36px;padding-right: 36px">
+                        <!--<label for="recipient-name" class="col-form-label">Recipient:</label>-->
+                        <input type="text" class="form-control login_input" id="loginuser" placeholder="手机"/>
+                    </div>
+                    <div class="form-group" style="padding-left: 36px;padding-right: 36px;margin-bottom: 7px">
+                        <!--<label for="message-text" class="col-form-label">Message:</label>-->
+                        <!--<textarea class="form-control" id="message-text"></textarea>-->
+                        <input type="password" class="form-control login_input" id="loginpassword" placeholder="密码" />
+                    </div>
+                    <div class="row" style="margin: 0;padding: 0 32px 0 32px">
+                        <div class="col-xl-6">
+                            <img src="img/show/icon_unchecked.png" /><span class="login_modal_opt">记住密码</span>
+                        </div>
+                        <div class="col-xl-6">
+                            <a href="#" id="forget_pwd" class="float-md-right login_modal_opt" style="margin-top: 1px"><u>忘记密码</u></a>
+                        </div>
+                    </div>
+                </form>
+                <div class="row" style="margin-top: 30px;margin-bottom: 30px;padding: 0 36px 0 36px">
+                    <div class="col-md-12">
+                        <button type="button" class="btn" id="login-btn" style="width: 100%">登录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--nav bar-->
+<nav id="need_color" class="navbar navbar-scroll navbar-expand-sm fixed-top bg-fade navbar-dark" style="height: 58px;padding: 0 90px 0 110px;">
+    <a class="navbar-brand" href="#">
+        <img src="img/show/logo_04.png" alt="锐成教育" style="height: 90%;width: 90%;" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+
+        <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+            <li id="index" class="nav-item text-center active" style="width: 100px">
+                <a id="nav-a-1" class="nav-link">首页</a>
+            </li>
+            <li id="user-info-btn" class="nav-item active" style="margin-left: 5px;cursor: pointer">
+                <a class="nav-link">个人信息</a>
+            </li>
+            <li id="personel-test-btn" class="nav-item active" style="margin-left: 15px;margin-right: 10px;cursor: pointer">
+                <a class="nav-link">性格测试</a>
+            </li>
+
+            <li class="nav-item active" id="session_status" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px">登录</a>
+            </li>
+
+            <li class="nav-item active" id="logout-btn" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: none">
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px">注销</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--End of nav bar-->
+
+<!--parallax-->
+<section id="parallax-banner-section" class="module parallax parallax-1" data-type="background" data-speed="3">
+    <div class="parallax-container" id="parallax-banner-container">
+        <div class="container" style="padding: 0 10% 0 10%">
+            <div class="row align-items-center">
+
+                <div id="big-icon-1" class="big_icon col align-self-start">
+                    <div>
+                        <img class="mx-auto d-block banner-img" src="img/show/icon_04.png" />
+                    </div>
+                </div>
+
+                <div id="big-icon-2" class="big_icon col align-self-center">
+                    <div>
+                        <img class="mx-auto d-block banner-img" src="img/show/icon_06.png" />
+                    </div>
+                </div>
+
+                <div id="big-icon-3" class="big_icon col align-self-end">
+                    <div>
+                        <img class="mx-auto d-block banner-img" src="img/show/icon_08.png"  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-top: 20%">
+                <div class="col align-self-start">
+                    <img class="mx-auto d-block" src="img/show/icon_15.png" style="height: 64%;width: 64%" />
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-top: 7%">
+                <div class="col align-self-start">
+                    <img class="mx-auto d-block" id="next-pointer" src="img/show/icon_19.png" style="height: 4%;width: 4%" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End of parallax-->
+
+<!--current pic-->
+<div id="img1">
+    <img src="img/show/ruicheng.png" class="img-fluid" />
+</div>
+
+<div id="img2">
+    <img src="img/show/teacher.png" class="img-fluid" />
+</div>
+
+<div id="img3">
+    <img src="img/show/course.png" class="img-fluid" />
+</div>
+<!--End of current pic-->
+
+<!--user info section-->
+<!--End of user info section-->
+
+
+<!--start personel test section-->
+<div id="start-test-div">
+    <div class="container" style="margin-top: 70px">
+        <div class="row">
+            <div class="col s50">
+                <div id="back">
+                    <a id="report-btn" class="btn btn-flat btn-large repbtn waves-effect waves-black" style="width: 100%;height: 100px;color: white;border-style: solid;border-color: #acaad1;border-radius: 12px;font-size: 2em;padding-top: 2%">
+                        查 看 个 人 报 告
+                    </a>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div class="container py-3">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="img/pic001_38.jpg" class="img-fluid"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="card-title">职业规划测试</h4>
+                            <p class="card-text start-test-card-intro-text">职业规划（career planning）是对职业生涯乃至人生进行持续的系统的计划的过程，职业生涯规划的好坏必将影响整个生命历程。本测评结合脑科学、组织行为学、心理学等理论，参考MBTI职业性格分析理论、多元智能理论、SDS职业规划理论的基础上，形成的一套适合国情的具有独立知识产权的职业规划测试方法。</p>
+                            <a id="Job-Interest-btn" href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="img/pic003_14.jpg" class="img-fluid"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container py-3">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="img/pic002_38.jpg" class="img-fluid"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="card-title">性格分析测试</h4>
+                            <p class="card-text start-test-card-intro-text">职业规划（career planning）是对职业生涯乃至人生进行持续的系统的计划的过程，职业生涯规划的好坏必将影响整个生命历程。本测评结合脑科学、组织行为学、心理学等理论，参考MBTI职业性格分析理论、多元智能理论、SDS职业规划理论的基础上，形成的一套适合国情的具有独立知识产权的职业规划测试方法。</p>
+                            <a id="P-Types-test-btn" href="#P-Types-test" class="btn btn-primary">Read More</a>
+                        </div>
+                        <div class="col-md-3">
+                            <img src="img/pic003_40.jpg" class="img-fluid"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<!--End of start personel test section-->
+
+<!--Job Inteest test-->
+<section id="Job-Interest-test-section" class="module parallax parallax-1" data-type="background" data-speed="3">
+    <div class="parallax-container" id="Job-Interest-test-container">
+
+        <div id="breadcrumbs-in-Job-Interest" class="row">
+            <div class="col">
+                <a id="breadcrumbs-PT-to-start-test" class="text-white">性格测试</a> <span class="text-white">/</span> <a class="text-white" href="">职业规划测试</a>
+            </div>
+        </div>
+
+        <div class="row test-intro-div">
+            <div class="col-sm-3">
+                <div class="intro-tittle-container">
+                    <h3 class="text-white text-center">职业规划测试</h3>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="intro-text-container">
+                    共60道题，请根据对每一题目的第一印象作答，不必仔细推敲，答案没有好坏之分。具体填写方法是，根据自己的情况回答“是”或“否”。
+                </div>
+            </div>
+        </div>
+
+        <div class="row progress-div">
+            <div class="col-sm-1 right" style="padding-left: 0;padding-right: 0">
+            </div>
+            <div class="col-sm-10">
+                <!--<a id="jindutiao2" class="text-white" href="">进度条</a>-->
+                <div class="row">
+                    <div class="col">
+                        <h5 class="progress_num_display text-white right">1<span>/60</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                        <div id="JI_progress_container"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row test-area-row Jtest-area-row">
+            <div class="col test-area-div">
+                <!--<a id="P-Types-test-item" class="text-white" href="">题</a>-->
+                <div class="row">
+                    <!--<div class="col-sm-1"></div>-->
+
+                    <div class="col-sm-1">
+
+                    </div>
+
+                    <div class="col-sm-10 test-area" style="text-align: center">
+<!--holland test area-->
+                        <div class="divul">
+                            <div id="jdiv1">
+
+                                <div class="Janswer_label">
+                                    1.	我喜欢把一件事情做完后，再做另一件事
+
+                                </div>
+
+                                <!--<div class="divli col s4">-->
+                                <!--<input hjtype='radio' value='6' name='hj2' id='h21'/>-->
+                                <!--<label for='h21' >是</label>-->
+                                <!--</div>-->
+                                <!--<div class="divli col s4">-->
+                                <!--<input hjtype='radio' value='4' name='hj2'  id='h22'/>-->
+                                <!--<label for='h22' >否</label>-->
+                                <!--</div>-->
+
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj1" value="6" id="h11"/>
+                                        <label class="yesl yes_no_label" for="h11">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj1" value="4" id="h12"/>
+                                        <label class="nol yes_no_label" for="h12">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                            <div id="jdiv2" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    2.	在工作中，我不愿受他人干涉，更喜欢独自思考和筹划。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj2" value="1" id="h21"/>
+                                        <label class="yesl yes_no_label" for="h21">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj2" value="6" id="h22"/>
+                                        <label class="nol yes_no_label" for="h22">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv3" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    3.	在集体讨论中，我往往保持沉默。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj3" value="6" id="h31"/>
+                                        <label class="yesl yes_no_label" for="h31">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj3" value="3" id="h32"/>
+                                        <label class="nol yes_no_label" for="h32">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv4" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    4.	我喜欢做戏剧、音乐、歌舞、新闻采访等方面的工作。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj4" value="5" id="h41"/>
+                                        <label class="yesl yes_no_label" for="h41">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj4" value="6" id="h42"/>
+                                        <label class="nol yes_no_label" for="h42">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv5" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    5.	每次写信我都一挥而就，不再重复。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj5" value="6" id="h51"/>
+                                        <label class="yesl yes_no_label" for="h51">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj5" value="0" id="h52"/>
+                                        <label class="nol yes_no_label" for="h52">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv6" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    6.	我经常不停地思考某一问题，直到想出正确的答案。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj6" value="2" id="h61"/>
+                                        <label class="yesl yes_no_label" for="h61">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj6" value="6" id="h62"/>
+                                        <label class="nol yes_no_label" for="h62">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+                            <div id="jdiv7" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    7.	对别人借我的和我借别人的东西，我都能记得很清楚。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj7" value="0" id="h71"/>
+                                        <label class="yesl yes_no_label" for="h71">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj7" value="6" id="h72"/>
+                                        <label class="nol yes_no_label" for="h72">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv8" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    8.	我喜欢抽象思维的工作，不喜欢动手的工作。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj8" value="2" id="h81"/>
+                                        <label class="yesl yes_no_label" for="h81">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj8" value="6" id="h82"/>
+                                        <label class="nol yes_no_label" for="h82">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv9" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    9.	我喜欢成为人们注意的焦点。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj9" value="5" id="h91"/>
+                                        <label class="yesl yes_no_label" for="h91">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj9" value="6" id="h92"/>
+                                        <label class="nol yes_no_label" for="h92">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv10" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    10.	我比较爱秀，如好看的自拍照或事自己取得的好成就。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj10" value="5" id="h101"/>
+                                        <label class="yesl yes_no_label" for="h101">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj10" value="6" id="h102"/>
+                                        <label class="nol yes_no_label" for="h102">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv11" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    11.	有机会的话，我愿意尝试探险行的活动。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj11" value="3" id="h111"/>
+                                        <label class="yesl yes_no_label" for="h111">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj11" value="6" id="h112"/>
+                                        <label class="nol yes_no_label" for="h112">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv12" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    12.	当我一个人时，能够自得其乐。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj12" value="6" id="h121"/>
+                                        <label class="yesl yes_no_label" for="h121">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj12" value="4" id="h122"/>
+                                        <label class="nol yes_no_label" for="h122">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-green hoverable" id="next1" value="1" style="background-color: #ea775f;font-weight:900;">下一页</button></div>-->
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-red hoverable jsubmit" style="background-color: #ea775f;font-weight:900;">提交<i class="material-icons right">send</i></button></div>-->
+
+
+
+                            <div id="jdiv13" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    13.	我喜欢在做事情前，对此事情做出细致的安排。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj13" value="1" id="h131"/>
+                                        <label class="yesl yes_no_label" for="h131">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj13" value="6" id="h132"/>
+                                        <label class="nol yes_no_label" for="h132">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv14" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    14.	我不喜欢装配或修理玩具、家电等。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj14" value="6" id="h141"/>
+                                        <label class="yesl yes_no_label" for="h141">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj14" value="1" id="h142"/>
+                                        <label class="nol yes_no_label" for="h142">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv15" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    15.	我喜欢参加各种各样的聚会。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj15" value="6" id="h151"/>
+                                        <label class="yesl yes_no_label" for="h151">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj15" value="4" id="h152"/>
+                                        <label class="nol yes_no_label" for="h152">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv16" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    16.	我愿意从事虽然工资少、但是比较稳定的职业。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj16" value="6" id="h161"/>
+                                        <label class="yesl yes_no_label" for="h161">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj16" value="3" id="h162"/>
+                                        <label class="nol yes_no_label" for="h162">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv17" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    17.	音乐能使我陶醉。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj17" value="5" id="h171"/>
+                                        <label class="yesl yes_no_label" for="h171">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj17" value="6" id="h172"/>
+                                        <label class="nol yes_no_label" for="h172">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv18" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    18.	我通常说做就做，很少思前想后。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj18" value="6" id="h181"/>
+                                        <label class="yesl yes_no_label" for="h181">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj18" value="0" id="h182"/>
+                                        <label class="nol yes_no_label" for="h182">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv19" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    19.	在生活或学习中，我经常询问家长、老师或朋友的意见。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj19" value="0" id="h191"/>
+                                        <label class="yesl yes_no_label" for="h191">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj19" value="6" id="h192"/>
+                                        <label class="nol yes_no_label" for="h192">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div id="jdiv20" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    20.	我喜欢智力类的游戏。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj20" value="2" id="h201"/>
+                                        <label class="yesl yes_no_label" for="h201">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj20" value="6" id="h202"/>
+                                        <label class="nol yes_no_label" for="h202">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv21" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    21.	我很难做那种需要持续集中注意力的工作。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj21" value="6" id="h211"/>
+                                        <label class="yesl yes_no_label" for="h211">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj21" value="2" id="h212"/>
+                                        <label class="nol yes_no_label" for="h212">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv22" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    22.	亲自动手制作一些东西，让我感觉很有乐趣。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj22" value="1" id="h221"/>
+                                        <label class="yesl yes_no_label" for="h221">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj22" value="6" id="h222"/>
+                                        <label class="nol yes_no_label" for="h222">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv23" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    23.	我的动手能力很差。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj23" value="6" id="h231"/>
+                                        <label class="yesl yes_no_label" for="h231">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj23" value="1" id="h232"/>
+                                        <label class="nol yes_no_label" for="h232">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv24" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    24.	和不熟悉的人交谈，我也能很快打开局面，找到适宜的话题。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj24" value="3" id="h241"/>
+                                        <label class="yesl yes_no_label" for="h241">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj24" value="6" id="h242"/>
+                                        <label class="nol yes_no_label" for="h242">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-green hoverable" id="next2" value="2" style="background-color: #ea775f;font-weight:900;">下一页</button></div>-->
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-red hoverable jsubmit" style="background-color: #ea775f;font-weight:900;">提交<i class="material-icons right">send</i></button></div>-->
+
+
+                            <div id="jdiv25" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    25.	和别人意见不同时，我比较容易被别人说服。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj25" value="6" id="h251"/>
+                                        <label class="yesl yes_no_label" for="h251">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj25" value="3" id="h252"/>
+                                        <label class="nol yes_no_label" for="h252">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div id="jdiv26" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    26.	我很容易结识新朋友。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj26" value="4" id="h261"/>
+                                        <label class="yesl yes_no_label" for="h261">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj26" value="6" id="h262"/>
+                                        <label class="nol yes_no_label" for="h262">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv27" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    27.	对于引起网络骂战的各种热门问题，我通常持中庸的态度。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj27" value="6" id="h271"/>
+                                        <label class="yesl yes_no_label" for="h271">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj27" value="4" id="h272"/>
+                                        <label class="nol yes_no_label" for="h272">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv28" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    28.	当我开始做一件事情后，即使碰到再多的困难，我也要执著地干下去。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj28" value="3" id="h281"/>
+                                        <label class="yesl yes_no_label" for="h281">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj28" value="6" id="h282"/>
+                                        <label class="nol yes_no_label" for="h282">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv29" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    29.	我是一个沉静而不易动感情的人。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj29" value="0" id="h291"/>
+                                        <label class="yesl yes_no_label" for="h291">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj29" value="6" id="h292"/>
+                                        <label class="nol yes_no_label" for="h292">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv30" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    30.	当我学习时，我喜欢环境清静避免干扰。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj30" value="2" id="h301"/>
+                                        <label class="yesl yes_no_label" for="h301">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj30" value="6" id="h302"/>
+                                        <label class="nol yes_no_label" for="h302">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv31" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    31.	我的理想是当一名科学家。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj31" value="2" id="h311"/>
+                                        <label class="yesl yes_no_label" for="h311">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj31" value="6" id="h312"/>
+                                        <label class="nol yes_no_label" for="h312">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="jdiv32" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    32.	与言情小说相比，我更喜欢推理小说。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj32" value="6" id="h321"/>
+                                        <label class="yesl yes_no_label" for="h321">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj32" value="5" id="h322"/>
+                                        <label class="nol yes_no_label" for="h322">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv33" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    33.	有些人太霸道，有时明明知道他们是对的，也要和他们对着干。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj33" value="1" id="h331"/>
+                                        <label class="yesl yes_no_label" for="h331">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj33" value="6" id="h332"/>
+                                        <label class="nol yes_no_label" for="h332">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv34" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    34.	我常常幻想自己未来的生活或其他人物与场景。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj34" value="5" id="h341"/>
+                                        <label class="yesl yes_no_label" for="h341">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj34" value="6" id="h342"/>
+                                        <label class="nol yes_no_label" for="h342">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv35" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    35.	我很乐意主动地向别人提出自己的建议。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj35" value="3" id="h351"/>
+                                        <label class="yesl yes_no_label" for="h351">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj35" value="6" id="h352"/>
+                                        <label class="nol yes_no_label" for="h352">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv36" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    36.	我喜欢使用使用家里的工具箱，如扳手之类的。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj36" value="1" id="h361"/>
+                                        <label class="yesl yes_no_label" for="h361">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj36" value="6" id="h362"/>
+                                        <label class="nol yes_no_label" for="h362">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-green hoverable" id="next3" value="3" style="background-color: #ea775f;font-weight:900;">下一页</button></div>-->
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-red hoverable jsubmit" style="background-color: #ea775f;font-weight:900;">提交<i class="material-icons right">send</i></button></div>-->
+
+
+
+
+
+
+
+                            <div id="jdiv37" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    37.	当看到别人处于痛苦中时，我很希望自己能解除他的痛苦。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj37" value="4" id="h371"/>
+                                        <label class="yesl yes_no_label" for="h371">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj37" value="6" id="h372"/>
+                                        <label class="nol yes_no_label" for="h372">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv38" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    38.	我通常更喜欢参加有赌注的比赛或游戏。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj38" value="3" id="h381"/>
+                                        <label class="yesl yes_no_label" for="h381">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj38" value="6" id="h382"/>
+                                        <label class="nol yes_no_label" for="h382">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv39" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    39.	在生活和学习中，我喜欢按部就班地完成要做的工作。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj39" value="0" id="h391"/>
+                                        <label class="yesl yes_no_label" for="h391">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj39" value="6" id="h392"/>
+                                        <label class="nol yes_no_label" for="h392">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv40" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    40.	我希望能经常换不同的工作来做。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj40" value="6" id="h401"/>
+                                        <label class="yesl yes_no_label" for="h401">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj40" value="0" id="h402"/>
+                                        <label class="nol yes_no_label" for="h402">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv41" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    41.	与人有约时，我总是提前做好准备，预留充分的时间。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj41" value="0" id="h411"/>
+                                        <label class="yesl yes_no_label" for="h411">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj41" value="6" id="h412"/>
+                                        <label class="nol yes_no_label" for="h412">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv42" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    42.	我喜欢阅读自然科学方面的书籍和杂志。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj42" value="2" id="h421"/>
+                                        <label class="yesl yes_no_label" for="h421">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj42" value="6" id="h422"/>
+                                        <label class="nol yes_no_label" for="h422">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv43" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    43.	如果掌握一门技术并能以此为生，我会感到非常满意。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj43" value="1" id="h431"/>
+                                        <label class="yesl yes_no_label" for="h431">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj43" value="6" id="h432"/>
+                                        <label class="nol yes_no_label" for="h432">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv44" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    44.	我渴望有一天能驾驶汽车或飞机。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj44" value="1" id="h441"/>
+                                        <label class="yesl yes_no_label" for="h441">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj44" value="6" id="h442"/>
+                                        <label class="nol yes_no_label" for="h442">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv45" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    45.	听别人谈“钱包、手机被盗”一类的事，很难引起我的同情。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj45" value="6" id="h451"/>
+                                        <label class="yesl yes_no_label" for="h451">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj45" value="4" id="h452"/>
+                                        <label class="nol yes_no_label" for="h452">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv46" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    46.	如果待遇相同，我宁愿当商品推销员，而不愿当图书管理员。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj46" value="1" id="h461"/>
+                                        <label class="yesl yes_no_label" for="h461">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj46" value="6" id="h462"/>
+                                        <label class="nol yes_no_label" for="h462">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv47" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    47.	我讨厌跟各类机械打交道。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj47" value="6" id="h471"/>
+                                        <label class="yesl yes_no_label" for="h471">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj47" value="1" id="h472"/>
+                                        <label class="nol yes_no_label" for="h472">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv48" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    48.	我小时候经常把玩具拆开，把里面看个究竟。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj48" value="6" id="h481"/>
+                                        <label class="yesl yes_no_label" for="h481">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj48" value="1" id="h482"/>
+                                        <label class="nol yes_no_label" for="h482">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-green hoverable" id="next4" value="4" style="background-color: #ea775f;font-weight:900;">下一页</button></div>-->
+                            <!--<div class="col l2 s50"><button class="btn waves-effect waves-red hoverable jsubmit" style="background-color: #ea775f;font-weight:900;">提交<i class="material-icons right">send</i></button></div>-->
+
+
+                            <div id="jdiv49" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    49.	当接受新任务后，我喜欢以自己的独特方法去完成它。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj49" value="5" id="h491"/>
+                                        <label class="yesl yes_no_label" for="h491">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj49" value="6" id="h492"/>
+                                        <label class="nol yes_no_label" for="h492">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv50" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    50.	我常常参加文艺方面的活动，并会受到好评。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj50" value="5" id="h501"/>
+                                        <label class="yesl yes_no_label" for="h501">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj50" value="6" id="h502"/>
+                                        <label class="nol yes_no_label" for="h502">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv51" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    51.	我把生活和学习，安排得整整齐齐、井井有条。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj51" value="0" id="h511"/>
+                                        <label class="yesl yes_no_label" for="h511">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj51" value="6" id="h512"/>
+                                        <label class="nol yes_no_label" for="h512">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv52" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    52.	我喜欢当培训师。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj52" value="4" id="h521"/>
+                                        <label class="yesl yes_no_label" for="h521">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj52" value="6" id="h522"/>
+                                        <label class="nol yes_no_label" for="h522">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv53" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    53.	和一群人在一起的时候，我时常不知道说什么好，感到不太自在。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj53" value="6" id="h531"/>
+                                        <label class="yesl yes_no_label" for="h531">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj53" value="4" id="h532"/>
+                                        <label class="nol yes_no_label" for="h532">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv54" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    54.	看情感影片时，我常禁不住眼圈红润。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj54" value="1" id="h541"/>
+                                        <label class="yesl yes_no_label" for="h541">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj54" value="6" id="h542"/>
+                                        <label class="nol yes_no_label" for="h542">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv55" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    55.	跟其它学科比，我不喜欢学数学。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj55" value="6" id="h551"/>
+                                        <label class="yesl yes_no_label" for="h551">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj55" value="2" id="h552"/>
+                                        <label class="nol yes_no_label" for="h552">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv56" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    56.	在实验室里独自做实验会令我寂寞难耐。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj56" value="1" id="h561"/>
+                                        <label class="yesl yes_no_label" for="h561">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj56" value="6" id="h562"/>
+                                        <label class="nol yes_no_label" for="h562">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv57" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    57.	对于急躁、爱发脾气的人，我仍能以礼相待。
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj57" value="0" id="h571"/>
+                                        <label class="yesl yes_no_label" for="h571">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj57" value="6" id="h572"/>
+                                        <label class="nol yes_no_label" for="h572">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv58" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    58.	在学习中遇到难题时，我常常放弃,等待老师讲解或直接看答案。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj58" value="6" id="h581"/>
+                                        <label class="yesl yes_no_label" for="h581">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj58" value="2" id="h582"/>
+                                        <label class="nol yes_no_label" for="h582">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div id="jdiv59" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    59.	身边的老师、同学，都评价我很踏实、乐于助人。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj59" value="4" id="h591"/>
+                                        <label class="yesl yes_no_label" for="h591">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj59" value="6" id="h592"/>
+                                        <label class="nol yes_no_label" for="h592">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div id="jdiv60" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    60.	我喜欢在学生会或班级里，处理一些人员沟通或协调方面的事情。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="3" id="h601"/>
+                                        <label class="yesl yes_no_label" for="h601">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="6" id="h602"/>
+                                        <label class="nol yes_no_label" for="h602">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+
+
+                            <div id="jdiv61" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    61.	当听到熟悉的音乐时，整个人几乎手舞足蹈起来，平时乐于体会旋律的意境并沉醉其中。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="3" id="h611"/>
+                                        <label class="yesl yes_no_label" for="h611">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="6" id="h612"/>
+                                        <label class="nol yes_no_label" for="h612">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+                            <div id="jdiv62" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    62.	有天生的柔韧性和运动技巧良好的平衡感，四肢灵巧，善肢体模仿。
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="3" id="h621"/>
+                                        <label class="yesl yes_no_label" for="h621">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="6" id="h622"/>
+                                        <label class="nol yes_no_label" for="h622">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+                            <div id="jdiv63" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    63.	喜欢与植物花草等自然元素接触，并在辨识石头、叶子、动物标本等自然物品中获得乐趣
+
+                                </div>
+                                <div class="switch-field row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="3" id="h631"/>
+                                        <label class="yesl yes_no_label" for="h631">是&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3 yes_no_select_div">
+                                        <input class="questionselect" type="radio" name="hj60" value="6" id="h632"/>
+                                        <label class="nol yes_no_label" for="h632">否&nbsp;&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                            </div>
+                            <div id="jdiv64" class="need_hide">
+
+                                <div class="Janswer_label">
+                                    64. 将以下六种职业，根据自己的特点，按照喜欢到不喜欢的顺序，讲排列号填写。<br/>
+                                    1.工程师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.科研人员&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.艺术家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.教师&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.企业家&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.财务人员
+                                </div>
+                                <div class="row">
+                                    <div class="col sort_num_col">
+                                        <input type="text" class="sort_num" id="sort_num1" style="text-align: center" maxlength="1" />
+                                    </div>
+                                    <div class="col sort_num_col">
+                                        <input type="text" class="sort_num" id="sort_num2" style="text-align: center" maxlength="1" />
+                                    </div>
+                                    <div class="col sort_num_col">
+                                        <input type="text" class="sort_num" id="sort_num3" style="text-align: center" maxlength="1" />
+                                    </div>
+                                    <div class="col sort_num_col">
+                                        <input type="text" class="sort_num" id="sort_num4" style="text-align: center" maxlength="1" />
+                                    </div>
+                                    <div class="col sort_num_col">
+                                        <input type="text" class="sort_num" id="sort_num5" style="text-align: center" maxlength="1" />
+                                    </div>
+                                    <div class="col sort_num_col">
+                                        <input type="text" class="sort_num" id="sort_num6" style="text-align: center" maxlength="1" />
+                                    </div>
+                                    <div class="col sort_num_col" style="padding-top: 16px;">
+                                        <a id="JSubmit" href="#" class="btn btn-primary" style="width: 95%;background-color: transparent;border-style: solid;border-width: 1px;border-color: white;padding-top: 0;padding-bottom: 0">提  交</a>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div class="col"></div>
+                                    <div class="col"></div>
+                                </div>
+                            </div>
+
+
+                        </div>
+<!--End of holland test area-->
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--End of Job Inteest test-->
+
+<!--types section-->
+<section id="P-Types-test-section" class="module parallax parallax-1" data-type="background" data-speed="3">
+    <div class="parallax-container" id="P-Types-test-inner-container">
+
+        <div id="breadcrumbs-in-P-Types" class="row">
+            <div class="col">
+                <a id="breadcrumbs-JI-to-start-test" class="text-white">性格测试</a> <span class="text-white">/</span> <a class="text-white" href="">性格分析测试</a>
+            </div>
+        </div>
+
+        <div class="row test-intro-div">
+            <div class="col-sm-3">
+                <div class="intro-tittle-container">
+                    <h3 class="text-white text-center">性格分析测试</h3>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="intro-text-container">
+                    共36道题，在每道题选择你认为最恰当或最接近描述自己的性格的句子A或B，请全部作答，最后得分最高的三项可能成为你的基本性格形态。
+                </div>
+            </div>
+        </div>
+        <div class="row progress-div">
+            <div class="col-sm-1 right" style="padding-left: 0;padding-right: 0">
+            </div>
+            <div class="col-sm-10">
+                <!--<a id="jindutiao2" class="text-white" href="">进度条</a>-->
+                <div class="row">
+                    <div class="col">
+                        <h5 class="progress_num_display text-white right">1<span>/36</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+                        <div id="PT_progress_container"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row test-area-row">
+            <div class="col test-area-div">
+                <div class="row">
+                    <!--<div class="col-sm-1"></div>-->
+
+                    <div class="col-sm-1">
+
+                    </div>
+
+                    <div class="col-sm-10 test-area" style="text-align: center">
+                        <div class="divul">
+                            <div id="div1">
+                                <div id="divli11" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio1' id='radio11'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio11' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp;服务他人、因应他人的需求，对我而言是重要的</label>
+                                </div>
+                                <div id="divli12" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio1' id='radio12'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio12' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;寻求看待事物和做事的各种方法，对我而言是重要的</label>
+                                </div>
+                            </div>
+
+                            <div id="div2" class="need_hide">
+                                <div id="divli21" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio2' id='radio21'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio21' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp;面对困扰时，我会陷在里面</label>
+                                </div>
+                                <div id="divli22" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio2' id='radio22'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio22' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;面对困扰时，我会想办法放轻松</label>
+                                </div>
+                            </div>
+
+                            <div id="div3" class="need_hide">
+
+                                <div id="divli31" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio3' id='radio31'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio31' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我向来认为自己是个平静的、随和的人</label>
+                                </div>
+                                <div id="divli32" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio3' id='radio32'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio32' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我向来认为自己是个严肃的、自律的人</label>
+                                </div>
+                            </div>
+
+                            <div id="div4" class="need_hide">
+
+                                <div id="divli41" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio4' id='radio41'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio41' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我喜欢社交生活且喜欢结识各样的朋友</label>
+                                </div>
+                                <div id="divli42" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio4' id='radio42'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio42' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我对社交生活不感兴趣，而且怕与人交往</label>
+                                </div>
+                            </div>
+
+                            <div id="div5" class="need_hide">
+
+                                <div id="divli51" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio5' id='radio51'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio51' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 做决定对我而言通常很困难</label>
+                                </div>
+                                <div id="divli52" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio5' id='radio52'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio52' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;做决定对我而言很少有困难</label>
+                                </div>
+                            </div>
+
+                            <div id="div6" class="need_hide">
+
+                                <div id="divli61" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio6' id='radio61'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio61' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我向来是愿意支持他人，为他人付出，喜欢有人为伴的</label>
+                                </div>
+                                <div id="divli62" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio6' id='radio62'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio62' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我向来是严肃的、克制的、喜欢讨论问题</label>
+                                </div>
+                            </div>
+
+                            <div id="div7" class="need_hide">
+
+                                <div id="divli71" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio7' id='radio71'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio71' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 面对全新的经验时，我通常会自问这是否精彩、有用</label>
+                                </div>
+                                <div id="divli72" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio7' id='radio72'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio72' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;面对全新的经验时，我通常会自问这是否好玩、有趣</label>
+                                </div>
+                            </div>
+                            <div id="div8" class="need_hide">
+
+                                <div id="divli81" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio8' id='radio81'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio81' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我主要的长处之一是主导各种情况的能力</label>
+                                </div>
+                                <div id="divli82" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio8' id='radio82'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio82' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我主要的长处之一是描述内在状态的能力</label>
+                                </div>
+                            </div>
+
+                            <div id="div9" class="need_hide">
+
+                                <div id="divli91" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio9' id='radio91'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio91' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 大体而言，我太开放、天真</label>
+                                </div>
+                                <div id="divli92" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio9' id='radio92'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio92' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;大体而言，我太机警、谨慎</label>
+                                </div>
+                            </div>
+
+                            <div id="div10" class="need_hide">
+
+                                <div id="divli101" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio10' id='radio101'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio101' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我认为做事的方法有很多种的</label>
+                                </div>
+                                <div id="divli102" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio10' id='radio102'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio102' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我认为做事的方法只有一种</label>
+                                </div>
+                            </div>
+
+                            <div id="div11" class="need_hide">
+
+                                <div id="divli111" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio11' id='radio111'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio111' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我的主要长处之一是利用资源及实现计划</label>
+                                </div>
+                                <div id="divli112" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio11' id='radio112'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio112' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我的主要长处之一是提出新点子，使人们为之兴奋</label>
+                                </div>
+                            </div>
+
+                            <div id="div12" class="need_hide">
+
+                                <div id="divli121" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio12' id='radio121'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio121' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我的健康及幸福因我强烈的助人欲而受害</label>
+                                </div>
+                                <div id="divli122" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio12' id='radio122'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio122' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我的人际关系因我强烈的自我而受害</label>
+                                </div>
+                            </div>
+
+                            <div id="div13" class="need_hide">
+
+                                <div id="divli131" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio13' id='radio131'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio131' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 向来有不易睡眠的困扰</label>
+                                </div>
+                                <div id="divli132" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio13' id='radio132'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio132' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我向来能轻易入睡</label>
+                                </div>
+                            </div>
+
+                            <div id="div14" class="need_hide">
+
+                                <div id="divli141" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio14' id='radio141'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio141' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我一向做事欠缺信心而犹豫不决</label>
+                                </div>
+                                <div id="divli142" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio14' id='radio142'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio142' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我一向做事充满信心当机立断</label>
+                                </div>
+                            </div>
+
+                            <div id="div15" class="need_hide">
+
+                                <div id="divli151" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio15' id='radio151'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio151' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 人们信赖我，因为我有自信且能够为他们着想</label>
+                                </div>
+                                <div id="divli152" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio15' id='radio152'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio152' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;人们信赖我，因为我很公正且会做正确的事</label>
+                                </div>
+                            </div>
+
+                            <div id="div16" class="need_hide">
+
+                                <div id="divli161" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio16' id='radio161'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio161' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我通常专注于自己的情感，且喜欢让它一直持续下去</label>
+                                </div>
+                                <div id="divli162" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio16' id='radio162'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio162' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我通常会淡化自己的情感，不会太注意它</label>
+                                </div>
+                            </div>
+
+                            <div id="div17" class="need_hide">
+
+                                <div id="divli171" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio17' id='radio171'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio171' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我或许一直都太被动、不够投入</label>
+                                </div>
+                                <div id="divli172" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio17' id='radio172'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio172' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我或许一直都有太强的支配欲和操作欲</label>
+                                </div>
+                            </div>
+
+                            <div id="div18" class="need_hide">
+
+                                <div id="divli181" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio18' id='radio181'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio181' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 大体而言，我是有条理且审慎的</label>
+                                </div>
+                                <div id="divli182" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio18' id='radio182'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio182' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;大体而言，我是好刺激且愿意冒险的</label>
+                                </div>
+                            </div>
+
+                            <div id="div19" class="need_hide">
+
+                                <div id="divli191" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio19' id='radio191'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio191' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我倾向帮助别人而发现他们正在犯错</label>
+                                </div>
+                                <div id="divli192" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio19' id='radio192'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio192' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我倾向和他人保持一定的距离</label>
+                                </div>
+                            </div>
+
+                            <div id="div20" class="need_hide">
+
+                                <div id="divli201" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio20' id='radio201'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio201' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我已提供许多人关怀与教养</label>
+                                </div>
+                                <div id="divli202" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio20' id='radio202'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio202' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我已提供许多人方向与诱因</label>
+                                </div>
+                            </div>
+
+                            <div id="div21" class="need_hide">
+
+                                <div id="divli211" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio21' id='radio211'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio211' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我很以自己的毅力及常识为傲</label>
+                                </div>
+                                <div id="divli212" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio21' id='radio212'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio212' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我很以自己的创新、创造力为傲</label>
+                                </div>
+                            </div>
+
+                            <div id="div22" class="need_hide">
+
+                                <div id="divli221" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio22' id='radio221'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio221' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 大体而言，我是个外向的、擅社交的人</label>
+                                </div>
+                                <div id="divli222" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio22' id='radio222'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio222' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;大体而言，我是个认真的、自律的人</label>
+                                </div>
+                            </div>
+
+                            <div id="div23" class="need_hide">
+
+                                <div id="divli231" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio23' id='radio231'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio231' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp;                                     虽然对方没有提出要求，只要我觉得他们有所需要，我便毫不犹豫及主动地帮助他们</label>
+                                </div>
+                                <div id="divli232" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio23' id='radio232'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio232' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;若对方没有提出要求，我不会主主动地帮助他们</label>
+                                </div>
+                            </div>
+
+                            <div id="div24" class="need_hide">
+
+                                <div id="divli241" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio24' id='radio241'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio241' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 通常能引起剧烈情绪震荡的情况都会吸引我</label>
+                                </div>
+                                <div id="divli242" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio24' id='radio242'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio242' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;通常令我觉得平静、舒适的情况都会吸引我</label>
+                                </div>
+                            </div>
+
+                            <div id="div25" class="need_hide">
+
+                                <div id="divli251" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio25' id='radio251'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio251' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 由于想象力及好奇心，我的想法一向很有冒险性</label>
+                                </div>
+                                <div id="divli252" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio25' id='radio252'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio252' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我的想法一向很实际，只尝试着推动事物</label>
+                                </div>
+                            </div>
+
+                            <div id="div26" class="need_hide">
+
+                                <div id="divli261" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio26' id='radio261'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio261' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 驾驭及支配别人对我而言是较重要的</label>
+                                </div>
+                                <div id="divli262" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio26' id='radio262'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio262' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;受到别人的重视及认同对我而言是较重要的</label>
+                                </div>
+                            </div>
+
+                            <div id="div27" class="need_hide">
+
+                                <div id="divli271" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio27' id='radio271'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio271' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 面临麻烦时，我有能力将之解决</label>
+                                </div>
+                                <div id="divli272" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio27' id='radio272'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio272' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;面临麻烦时，我会以自己喜欢的东西慰劳自己</label>
+                                </div>
+                            </div>
+
+                            <div id="div28" class="need_hide">
+
+                                <div id="divli281" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio28' id='radio281'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio281' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 整体而言，我一直是凭直觉的、个人主义的</label>
+                                </div>
+                                <div id="divli282" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio28' id='radio282'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio282' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;整体而言，我一直是非常有组织力的、负责任的</label>
+                                </div>
+                            </div>
+
+                            <div id="div29" class="need_hide">
+
+                                <div id="divli291" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio29' id='radio291'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio291' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我因过于侵扰及干扰别人而产生人际关系的困扰</label>
+                                </div>
+                                <div id="divli292" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio29' id='radio292'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio292' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我因过于逃避及沉默而产生人际关系的困扰</label>
+                                </div>
+                            </div>
+
+                            <div id="div30" class="need_hide">
+
+                                <div id="divli301" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio30' id='radio301'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio301' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我向来自信且喜欢与人比较</label>
+                                </div>
+                                <div id="divli302" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio30' id='radio302'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio302' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我向来谦卑且喜欢以较慢的步伐行事</label>
+                                </div>
+                            </div>
+
+                            <div id="div31" class="need_hide">
+
+                                <div id="divli311" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio31' id='radio311'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio311' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我喜欢生活在自己的小世界里</label>
+                                </div>
+                                <div id="divli312" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio31' id='radio312'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio312' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我喜欢让整个世界知道我的存在</label>
+                                </div>
+                            </div>
+
+                            <div id="div32" class="need_hide">
+
+                                <div id="divli321" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio32' id='radio321'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio321' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我常受紧张、不安全感及疑虑的困扰</label>
+                                </div>
+                                <div id="divli322" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio32' id='radio322'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio322' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我常受愤怒、理想主义及缺乏耐心的困扰</label>
+                                </div>
+                            </div>
+
+                            <div id="div33" class="need_hide">
+
+                                <div id="divli331" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio33' id='radio331'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio331' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我向来以自己在别人生活中所扮演的重要角色为傲</label>
+                                </div>
+                                <div id="divli332" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio33' id='radio332'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio332' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我向来以自己的风趣及对新事物的开放态度为傲</label>
+                                </div>
+                            </div>
+
+                            <div id="div34" class="need_hide">
+
+                                <div id="divli341" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio34' id='radio341'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio341' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我比较乐观且易于从挫折中恢复</label>
+                                </div>
+                                <div id="divli342" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio34' id='radio342'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio342' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我常处于情绪化且多愁善感</label>
+                                </div>
+                            </div>
+
+                            <div id="div35" class="need_hide">
+
+                                <div id="divli351" class="divli need_hide_li">
+                                    <input class="questionselect" type='radio' value='0' name='radio35' id='radio351'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio351' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 在许多状况下，我喜欢让自己就领导地位</label>
+                                </div>
+                                <div id="divli352" class="divli need_hide_li" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio35' id='radio352'/>
+                                    <label class="answer_label need_hide_answer_label" for='radio352' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;早许多状况下，我宁可让他人就领导地位</label>
+                                </div>
+                            </div>
+
+                            <div id="div36" class="need_hide">
+                                <div id="divli361" class="divli">
+                                    <input class="questionselect" type='radio' value='0' name='radio36' id='radio361'/>
+                                    <label class="answer_label" for='radio361' style="font-size: 20px;">A&nbsp;&nbsp;&nbsp;&nbsp; 我一向是专注且具有高度热衷</label>
+                                </div>
+                                <div id="divli362" class="divli" style="margin-top: 15px">
+                                    <input class="questionselect" type='radio' value='1' name='radio36' id='radio362'/>
+                                    <label class="answer_label" for='radio362' style="font-size: 20px;">B&nbsp;&nbsp;&nbsp;&nbsp;我一向是很自发的，喜好玩乐的</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-1"></div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--End of types section-->
+
+
+<!--footer section-->
+<section class="module parallax-footer parallax-2" data-type="background" data-speed="3" style="padding-bottom: 0">
+    <div class="parallax-container" style="margin: 0 0 0 0">
+        <div id="footer-ad-1" class="container-fluid">
+            <div class="row" style="padding: 50px 0">
+                <div class="col-12 text-center text-white">
+                    <p style="font-size: 28px">指 导 流 程 及 承 诺</p>
+                </div>
+            </div>
+        </div>
+        <!--asd-->
+        <!--<div class="row" style="margin-left: 32.8%">-->
+        <div id="footer-ad-2" class="container-fluid">
+            <div class="row align-items-sm-center" style="margin: 0 10%">
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_56.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">学生指导<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_58.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">性格测试<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_61.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">专业选择<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_63.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">学业激励<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_66.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">待选学校<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_68.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">志愿表<br/></p>
+                </div>
+            </div>
+        </div>
+        <div id="footer-ad-3" class="container-fluid">
+            <div class="row" style="margin: 0 10%">
+                <div class="col" style="padding: 40px 0">
+                    <div>
+                        <p class="text-white" style="font-size: medium;line-height: 30px;margin: 0;letter-spacing:3px">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秉承以人为本，以家为本，小班教学理念，集合众多专业教师，教法学法并重，重点为初、高中学生学业提供服务。同时为小学生提供专业托管、辅导，满足家长不同层次需要。
+                        </p>
+                        <p class="text-white" style="font-size: medium;line-height: 30px;margin: 12px 0 0 0;letter-spacing:3px">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;办学七年来，锐成专业教师队伍已过百人，会员已超过万人。得到广大家长认可，成绩斐然!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-ad-4" class="container-fluid" style="background-color: rgba(0,0,0,0.5);">
+            <div class="text-white" style="padding-top: 20px;padding-bottom: 20px">
+                <div class="row" style="padding-left: 4.2%">
+                    <div class="col-md-12" style="font-size: 13px">
+                        <i>人的一生终归逃不出这样的轨迹：出生，吃了睡，睡了吃，吃了睡，睡了吃，然后死掉——刘纤尘</i>
+                        <!--<i>据不可信研究表明，90%的毕业了都赚不过卖手抓饼的，别报志愿了，没有用的。——刘纤尘</i>-->
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 20px">
+                    <div class="col-md-6" style="color: rgba(255,255,255,0.7);padding-left: 5.2%">辽ICP备16007101号-1    Copyrigh©2015-2018  All Rights Reserved.</div>
+                    <div class="col-md-6 right" style="font-size: 14px">本软件已经申请国家专利并获得软件著作权，盗版必究</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End of footer section-->
+
+<!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"></script>-->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/progress.min.js"></script>
+<script>
+    //这里需要一个根据路由迭代的初始化方法
+    $("#start-test-div").hide();
+    $("#P-Types-test-section").hide();
+    $("#Job-Interest-test-section").hide();
+    var route={
+        "index":["#parallax-banner-section","#img1","#img2","#img3","#footer-ad-1","#footer-ad-2","#footer-ad-3"],
+        "user-info":[],
+        "start-test":["#start-test-div"],
+        "Job-Interest-test":["#Job-Interest-test-section"],
+        "P-Types-test":["#P-Types-test-section"],
+        "JI-first":[],
+        "PT-first":[],
+        "teacher_checking":[],
+        "alredy-done-JI":[],
+        "alredy-done-PT":[],
+        "test-report":[]
+    };
+    var current_page="index";
+    var needauth=["user-info","start-test"];
+
+    var JI_progress = 0.015625;
+    //step by 0.015625
+    var PT_progress = 0.0305;
+    //step by 0.0277
+    var PT_answer="";
+
+    //auth_and_to_page
+    //overwrite by mac
+    function auth_and_to_page(param) {
+
+        if (param==current_page){
+
+        }else {
+            for (i=0;i<route[current_page].length;i++){
+                $(route[current_page][i]).fadeOut("fast")
+            }
+            for (i=0;i<route[param].length;i++){
+                $(route[param][i]).fadeIn("fast")
+            }
+            current_page=param
+        }
+    }
+    // function auth_and_to_page(param) {
+    //     if (param==current_page){
+    //
+    //     }else {
+    //         if ([[${stuName}]]==null&&$.inArray(param, needauth)!=-1){
+    //             $("#session_status").trigger("click")
+    //         }else {
+    //             for (i=0;i<route[current_page].length;i++){
+    //                 $(route[current_page][i]).fadeOut("fast")
+    //             }
+    //             for (i=0;i<route[param].length;i++){
+    //                 $(route[param][i]).fadeIn("fast")
+    //             }
+    //             current_page=param
+    //         }
+    //     }
+    // }
+    //End of auth_and_to_page
+
+    //dynamic_adjust_banner_height
+    function dynamic_adjust_banner_height(){
+        var h=window.innerHeight;
+        var h_box = $('#parallax-banner-container').height();
+        if (h>700){
+            $('#parallax-banner-container').height(h_box+40);
+        }
+    }
+
+
+    //document on ready
+    $(document).ready(function(){
+        dynamic_adjust_banner_height();
+        //parallax
+        var $window = $(window);
+        $('section[data-type="background"]').each(function(){
+            var $bgobj = $(this); // assigning the object
+
+            $(window).scroll(function() {
+                if (current_page=="index"){
+                    var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+
+                    // Put together our final background position
+                    var coords = '100%'+ yPos + 'px';
+
+                    // Move the background
+                    $bgobj.css({ backgroundPosition: coords });
+                }
+            });
+        });
+        //dynamic navbar
+        $(window).scroll(function(){
+            if (current_page=="index"){
+                var scroll = $(window).scrollTop();
+                var need_color=document.getElementById('need_color');
+                if (scroll<800) {
+                    $(".navbar").css("background-color","rgba(0,0,0,0.25)")
+
+                }else if (scroll > 800||scroll==800) {
+                    $(".navbar").css("background-color","rgba(0,0,0,0.7)");
+                }
+            }
+        });
+
+        //index init
+        //if:not login;display login ;pop login modal else fetch all data
+        //overwrite by Mac
+        $('#session_status').children().html("登录");
+
+        // if ([[${stuName}]]==null){
+        //     $('#session_status').children().html("登录");
+        // }else {
+        //     //display logout
+        //     $('#session_status').children().html("注销");
+        //     $('#session_status').css("display","none");
+        //     $('#logout-btn').css("display","inherit");
+        // }
+
+        //single page turn page
+        $("#index").click(function () {
+            auth_and_to_page("index");
+            $(".navbar").css("background-color","rgba(0,0,0,0.25)")
+        });
+        $("#personel-test-btn").click(function () {
+            auth_and_to_page("start-test");
+            if (current_page!="index"){
+                $(".navbar").css("background-color","rgba(0,0,0,0.7)");
+            }
+        });
+        $("#Job-Interest-btn").click(function () {
+            auth_and_to_page("Job-Interest-test")
+        });
+        $("#P-Types-test-btn").click(function () {
+            auth_and_to_page("P-Types-test")
+        });
+
+        //click bread to return
+        $("#breadcrumbs-JI-to-start-test").click(function () {
+            $("#personel-test-btn").trigger("click")
+        });
+        $("#breadcrumbs-PT-to-start-test").click(function () {
+            $("#personel-test-btn").trigger("click")
+        });
+
+        $(".sort_num").keyup(function () {
+            if (isNaN($(this).val())&&$(this).val().length!=0){
+                alert("只能输入1-6的数字");
+                $(this).val("")
+            }else if(($(this).val()>6||$(this).val()<1)&&$(this).val().length!=0) {
+                alert("只能输入1-6的数字!!!");
+                $(this).val("")
+            }
+
+            for (i=1;i<7;i++){
+                sort_num_sele="#sort_num"+i;
+                if ($(this).attr("id")!="sort_num"+i){
+                    if ($(sort_num_sele).val()==$(this).val()){
+                        $(sort_num_sele).val("")
+                    }
+                }
+            }
+        });
+
+        var JI_progress_bar = new ProgressBar.Line(JI_progress_container, {
+            strokeWidth: 5,
+            easing: 'easeInOut',
+            duration: 1400,
+            color: '#049a87',
+            trailColor: '#eee',
+            trailWidth: 5,
+            svgStyle: {width: '100%', height: '100%'}
+        });
+        var PT_progress_bar = new ProgressBar.Line(PT_progress_container, {
+            strokeWidth: 5,
+            easing: 'easeInOut',
+            duration: 1400,
+            color: '#ff2158',
+            trailColor: '#eee',
+            trailWidth: 5,
+            svgStyle: {width: '100%', height: '100%'}
+        });
+
+
+        JI_progress_bar.animate(JI_progress);
+        PT_progress_bar.animate(PT_progress);
+
+
+        $(".yes_no_select_div").click(function () {
+            JI_progress=JI_progress+0.015625;
+            JI_progress_bar.animate(JI_progress);
+            $(this).find("input").prop("checked",true);
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().show()
+        });
+
+        $(".yes_no_label").click(function () {
+            JI_progress=JI_progress+0.015625;
+            JI_progress_bar.animate(JI_progress);
+            $(this).prev().prop("checked",true);
+            $(this).parent().parent().parent().hide();
+            $(this).parent().parent().parent().next().show()
+            return false;
+        });
+
+
+        $(".need_hide_li").click(function () {
+            PT_progress=PT_progress+0.0277;
+            PT_progress_bar.animate(PT_progress);
+            $(this).find("input").prop("checked",true);
+            $(this).parent().hide();
+            $(this).parent().next().show()
+        });
+
+        $(".need_hide_answer_label").click(function () {
+            PT_progress=PT_progress+0.0277;
+            PT_progress_bar.animate(PT_progress);
+            $(this).prev().prop("checked",true);
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().show();
+            return false;
+        });
+
+        // asd
+        $("#divli361").click(function () {
+            $(this).find("input").prop("checked",true);
+            for (i=0;i<36;i++){
+                var radioname='radio'+(i+1);
+                var e_next=$("input[name="+radioname+"]:checked").val();
+                PT_answer=PT_answer+e_next;
+            }
+            // console.log(PT_answer);
+            $.ajax({
+                url:"./calculatePTypes",
+                data:{"enneagram_answer":PT_answer},
+                type:"post",
+                dataType:"text",
+                success:function (ret) {
+                    if (ret=="ok"){
+                        window.location.href='./StartPersonelTest';
+                    }
+                    if (ret=='cannotChangeAnswer'){
+                        window.location.href='./AlreadyDonePT';
+                    }
+                }
+            });
+        });
+
+        $("#radio361").click(function () {
+            $(this).prev().prop("checked",true);
+            return false;
+        });
+
+        $("#divli362").click(function () {
+            $(this).find("input").prop("checked",true);
+            for (i=0;i<36;i++){
+                var radioname='radio'+(i+1);
+                var e_next=$("input[name="+radioname+"]:checked").val();
+                PT_answer=PT_answer+e_next;
+            }
+            // console.log(PT_answer)
+            $.ajax({
+                url:"./calculatePTypes",
+                data:{"enneagram_answer":PT_answer},
+                type:"post",
+                dataType:"text",
+                success:function (ret) {
+                    if (ret=="ok"){
+                        window.location.href='./StartPersonelTest';
+                    }
+                    if (ret=='cannotChangeAnswer'){
+                        window.location.href='./AlreadyDonePT';
+                    }
+                }
+            });
+        });
+
+
+
+        $("#radio362").click(function () {
+            $(this).prev().prop("checked",true);
+            return false;
+        });
+
+        $(".need_hide").hide();
+
+        $('#user-info-btn').click(function () {
+            $.ajax(
+                {
+                    url:"./User/user-info",
+                    type:"post",
+                    success:function (data) {
+                        if (data=='success'){
+                            window.location.href=   './UserInfo';
+                        }
+                    }
+                }
+            )
+        });
+
+
+        //login in and log out:
+        //logint
+        $('#login-btn').click(
+            function () {
+                var data={
+                    "login_username":$("#loginuser").val(),
+                    "login_password":$("#loginpassword").val()
+                };
+                $.ajax({
+                    url:"./User/findUser",
+                    data:data,
+                    type:"post",
+                    success:function (data) {
+                        if (data=='success'){
+                            window.location.href=   './';
+                        }else if (data=='user_err'){
+                            $('#usererr').html('<p style="color: red">用户名错误</p>')
+                        }else if (data=='pwd_err'){
+                            $('#pwderr').html('<p style="color: red">密码错误</p>')
+                        }
+                    }
+                })
+            }
+        );
+        //log out
+        $('#logout-btn').click(function () {
+            $.ajax(
+                {
+                    url:"User/logout",
+                    type:"post",
+                    success:function (data) {
+                        if (data=='success'){
+                            window.location.href=   './';
+                        }
+                    }
+                })
+        })
+        //End of document.read.function
+    })
+</script>
+
+</body>
+</html>

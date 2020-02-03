@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" href="bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <title>asdsd</title>
+    <style>
+        body{
+            /*font-family:"Microsoft YaHei",微软雅黑;*/
+            font-family:sans-serif;
+        }
+
+        .nav-item{
+            padding-left: 10px;
+            padding-right:10px;
+        }
+        .nav-item:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        a.nav-link{
+            margin-top: 9px;
+        }
+
+        #recipient-name{
+            background: transparent;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c4c4c4;
+        }
+        #message-text{
+            background: transparent;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c4c4c4;
+        }
+
+        .menu_drop{
+            background-color: rgba(0,0,0,0.5);
+        }
+        .dropdown-item-menu{
+            color: white;
+        }
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        .navbar-scroll {
+            transition: border-bottom-width 1s;
+            transition: border-bottom-color 1s;
+            transition: background-color 1s;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                background-color: rgba(0, 0, 0, 0.5);
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+                border-bottom-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+        /* ============================================================
+          PRIMARY STRUCTURE
+        ============================================================ */
+        .parallax-container {
+            /*max-width: 960px;*/
+            margin: 0 auto;
+        }
+        #parallax-container1{
+            max-width: 960px;
+        }
+        /* ============================================================
+          SECTIONS
+        ============================================================ */
+        section.module:last-child {
+            margin-bottom: 0;
+        }
+
+        section.module h2 {
+            margin-bottom: 40px;
+            font-family: "Roboto Slab", serif;
+            font-size: 30px;
+        }
+
+        section.module p {
+            margin-bottom: 40px;
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        section.module p:last-child {
+            margin-bottom: 0;
+        }
+
+        section.module.content {
+            padding: 40px 0;
+            background-color: rgba(207, 216, 220, 0.5);
+        }
+
+        section.module.content:last-child {
+            margin-bottom: 60px;
+        }
+
+        section.module.parallax {
+            padding: 240px 0;
+            background-position: 0 0;
+        }
+        section.module.parallax-footer {
+            padding: 240px 0;
+            background-position: 0 0;
+        }
+
+        section.module.parallax h1 {
+            color: #1e1e1e;
+            font-size: 48px;
+            line-height: 1;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px white;
+        }
+        /*parallax div部分的图片加颜色蒙版写法*/
+        /*section.module.parallax-1 {*/
+            /*background-image: url("img/maxresdefault.jpg");*/
+            /*background-position: 50% 0;*/
+            /*background-repeat: repeat;*/
+            /*background-attachment: fixed;*/
+            /*background-size: cover;*/
+            /*background-color: rgba(0, 123, 255, 0.4);*/
+            /*background-blend-mode: screen;*/
+        /*}*/
+        section.module.parallax-1 {
+            background-image: url("img/show/bg00_02.jpg");
+            background-position: 50% 0;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            /*background-color: rgba(0, 0, 0, 0.9);*/
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+
+        section.module.parallax-2 {
+            background-image: url("img/show/bg02_02.jpg");
+            /*background-position: 50% 0;*/
+            /*background-repeat: repeat;*/
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+
+        /*section.module.parallax-3 {*/
+            /*background-image: url("img/raindrops-window-background.jpg");*/
+            /*background-position: 50% 0;*/
+            /*background-repeat: repeat;*/
+            /*background-attachment: fixed;*/
+            /*background-size: cover;*/
+            /*background-color: rgba(0, 123, 255, 0.4);*/
+            /*background-blend-mode: screen;*/
+        /*}*/
+
+        @media all and (min-width: 600px) {
+            section.module h2 {
+                font-size: 42px;
+            }
+            section.module p {
+                font-size: 20px;
+            }
+            section.module.parallax {
+                padding: 15% 0 4.5% 0;
+            }
+            section.module.parallax-footer {
+                padding: 0;
+            }
+            section.module.parallax h1 {
+                font-size: 96px;
+            }
+        }
+        @media all and (min-width: 960px) {
+            section.module.parallax h1 {
+                font-size: 160px;
+            }
+        }
+        /*footer*/
+        /*.footer .container-fluid {*/
+            /*height: auto;*/
+        /*}*/
+
+        /*.footer {*/
+            /*position: absolute;*/
+            /*bottom: 0;*/
+            /*width: 100%;*/
+            /*!* Set the fixed height of the footer here *!*/
+            /*height: 60px;*/
+            /*line-height: 60px;*/
+        /*}*/
+
+        /*footer .container-fluid a {*/
+            /*display: inline-block;*/
+            /*color: #ddd;*/
+            /*padding-left: 1em;*/
+        /*}*/
+
+        /*footer .container-fluid p {*/
+            /*display: inline-block;*/
+            /*color: #ddd;*/
+            /*padding-left: 1em;*/
+            /*padding-right: 2em;*/
+        /*}*/
+
+        @media (max-width: 768px) {
+            .col-md-4 {
+                text-align: center;
+                line-height: 30px;
+            }
+        }
+        .right {
+            text-align: right;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+        /*first screen banner*/
+        .banner-img{
+            /*cursor: pointer;*/
+            height: 50%;
+            width: 50%;
+        }
+        /*next pointer img*/
+        #next-pointer{
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--modal login-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"  style="padding-top: 36px;padding-bottom: 30px">
+                            <p class="text-center">登录</p>
+                        </div>
+                        <div class="col-md-4">
+                            <!--<img src="img/show/closed_normal_04.png"  class="float-md-right"/>-->
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left: 36px;padding-right: 36px">
+                        <!--<label for="recipient-name" class="col-form-label">Recipient:</label>-->
+
+                        <input type="text" class="form-control login_input" id="loginuser" placeholder="手机"/>
+                    </div>
+                    <div class="form-group" style="padding-left: 36px;padding-right: 36px;margin-bottom: 7px">
+                        <!--<label for="message-text" class="col-form-label">Message:</label>-->
+                        <!--<textarea class="form-control" id="message-text"></textarea>-->
+                        <input type="password" class="form-control login_input" id="loginpassword" placeholder="密码" />
+                    </div>
+                    <div class="row" style="margin: 0px;padding: 0 32px 0 32px">
+                        <div class="col-xl-6">
+                            <img src="img/show/icon_unchecked.png" /><span class="login_modal_opt">记住密码</span>
+                        </div>
+                        <div class="col-xl-6">
+                            <a href="#" id="forget_pwd" class="float-md-right login_modal_opt" style="margin-top: 1px"><u>忘记密码</u></a>
+                        </div>
+                    </div>
+                </form>
+                <div class="row" style="margin-top: 30px;margin-bottom: 30px;padding: 0 36px 0 36px">
+                    <div class="col-md-12">
+                        <button type="button" class="btn" id="btn-submit" style="width: 100%">登录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav id="need_color" class="navbar navbar-scroll navbar-expand-sm fixed-top bg-fade navbar-dark" style="height: 58px;padding: 0 90px 0 110px;">
+
+    <a class="navbar-brand" href="#">
+        <img src="img/show/logo_04.png" alt="锐成教育" style="height: 90%;width: 90%;" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+
+        <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+            <li id="nav-li-1" class="nav-item active" style="padding-left: 15px;margin-right: 10px;width: 78px">
+                <a id="nav-a-1" class="nav-link">首页</a>
+            </li>
+            <li id="nav-li-4" class="nav-item active" style="cursor: pointer">
+                <a id="user-info-btn" class="nav-link">个人信息</a>
+            </li>
+            <li id="nav-li-2" class="nav-item active" style="margin-left: 25px;margin-right: 15px;cursor: pointer">
+                <a id="nav-a-2" class="nav-link" href="./eva/StartPersonelTest">性格测试</a>
+            </li>
+
+            <li class="nav-item active dropdown-toggle" id="session_status" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px">登录/注册</a>
+            </li>
+
+            <li class="nav-item active" id="session_status_alr" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px">登录/注册</a>
+                <div class="dropdown-menu menu_drop" aria-labelledby="session_status_alr" style="left: 86%;right: 4%">
+
+                    <button id="logout-btn" class="dropdown-item dropdown-item-menu" type="button">注销</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section class="module parallax parallax-1" data-type="background" data-speed="3">
+
+
+    <div class="parallax-container" id="parallax-container1">
+        <div class="container" style="padding: 0 10% 0 10%">
+            <div class="row align-items-center">
+
+                <div id="big-icon-1" class="big_icon col align-self-start">
+                    <div>
+                        <img class="mx-auto d-block banner-img" src="img/show/icon_04.png" />
+                    </div>
+                </div>
+
+                <div id="big-icon-2" class="big_icon col align-self-center">
+                    <div>
+                        <img class="mx-auto d-block banner-img" src="img/show/icon_06.png" />
+                    </div>
+                </div>
+
+                <div id="big-icon-3" class="big_icon col align-self-end">
+                    <div>
+                        <img class="mx-auto d-block banner-img" src="img/show/icon_08.png"  />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-top: 20%">
+                <div class="col align-self-start">
+                    <img class="mx-auto d-block" src="img/show/icon_15.png" style="height: 64%;width: 64%" />
+                </div>
+            </div>
+
+            <div class="row align-items-center" style="margin-top: 7%">
+                <div class="col align-self-start">
+                    <img class="mx-auto d-block" id="next-pointer" src="img/show/icon_19.png" style="height: 4%;width: 4%" />
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<div>
+    <img src="img/show/ruicheng.png" class="img-fluid" />
+</div>
+
+<div>
+    <img src="img/show/teacher.png" class="img-fluid" />
+</div>
+
+<div>
+    <img src="img/show/course.png" class="img-fluid" />
+</div>
+
+
+<section class="module parallax-footer parallax-2" data-type="background" data-speed="3" style="padding-bottom: 0">
+    <div class="parallax-container" style="margin: 0 0 0 0">
+        <div class="container-fluid">
+            <div class="row" style="padding: 50px 0">
+                <div class="col-12 text-center text-white">
+                    <p style="font-size: 28px">指 导 流 程 及 承 诺</p>
+                </div>
+            </div>
+        </div>
+<!--asd-->
+        <!--<div class="row" style="margin-left: 32.8%">-->
+        <div class="container-fluid">
+            <div class="row align-items-sm-center" style="margin: 0 10%">
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_56.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">学生指导<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_58.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">性格测试<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_61.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">专业选择<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_63.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">学业激励<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_66.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">待选学校<br/></p>
+                </div>
+                <div class="col-sm-2">
+                    <img class="mx-auto d-block" src="img/footer/icon_04_68.png"  /><p class="text-center text-white footer-icon-text" style="font-size: medium;margin: 5px 0">志愿表<br/></p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row" style="margin: 0 10%">
+                <div class="col" style="padding: 40px 0">
+                    <div>
+                        <p class="text-white" style="font-size: medium;line-height: 30px;margin: 0;letter-spacing:3px">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;秉承以人为本，以家为本，小班教学理念，集合众多专业教师，教法学法并重，重点为初、高中学生学业提供服务。同时为小学生提供专业托管、辅导，满足家长不同层次需要。
+                        </p>
+                        <p class="text-white" style="font-size: medium;line-height: 30px;margin: 12px 0 0 0;letter-spacing:3px">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;办学七年来，锐成专业教师队伍已过百人，会员已超过万人。得到广大家长认可，成绩斐然!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="background-color: rgba(0,0,0,0.5);">
+            <div class="text-white" style="padding-top: 20px;padding-bottom: 20px">
+                <div class="row" style="padding-left: 4.2%">
+                    <div class="col-md-12" style="font-size: 13px"><i>我今天想吃章鱼水煎肉明天还想吃章鱼水煎肉——刘纤尘</i></div>
+                </div>
+                <div class="row" style="padding-top: 20px">
+                    <div class="col-md-6" style="color: rgba(255,255,255,0.7);padding-left: 5.2%">辽ICP备16007101号-1    Copyrigh©2015-2018  All Rights Reserved.</div>
+                    <div class="col-md-6 right" style="font-size: 14px">本软件已经申请国家专利并获得软件著作权，盗版必究</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Hidden element-->
+<p id="test-alert" style="display: none">ghj</p>
+<!--Hidden element End-->
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+
+    var router={
+        "annomous":[],
+        "needauth":[]
+    }
+    //dynamic_adjust_banner_height
+    function dynamic_adjust_banner_height(){
+        var h=window.innerHeight;
+        var h_box = $('#parallax-container1').height()
+        if (h>700){
+            $('#parallax-container1').height(h_box+40)
+        }
+    }
+    //document on ready
+    $(document).ready(function(){
+        dynamic_adjust_banner_height()
+        //parallax
+        var $window = $(window);
+        $('section[data-type="background"]').each(function(){
+            var $bgobj = $(this); // assigning the object
+
+            $(window).scroll(function() {
+                var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+
+                // Put together our final background position
+                var coords = '100%'+ yPos + 'px';
+
+                // Move the background
+                $bgobj.css({ backgroundPosition: coords });
+            });
+        });
+        //dynamic navbar
+        $(window).scroll(function(){
+            var scroll = $(window).scrollTop();
+            var need_color=document.getElementById('need_color');
+            if (scroll > 0&&scroll<800) {
+                // $(".navbar").addClass("navbar-scroll");
+                $(".navbar").css("border-bottom-style","solid");
+                $(".navbar").css("border-bottom-width","1px");
+                $(".navbar").css("border-bottom-color","rgba(0, 0, 0, 0.2)");
+                $(".navbar").css("background-color","rgba(0,0,0,0.25)")
+
+            }else if (scroll > 800||scroll==800) {
+                // $(".navbar").addClass("well");
+                $(".navbar").css("border-bottom-width","2px");
+                $(".navbar").css("border-bottom-color","rgba(0, 0, 0, 0.4)");
+                $(".navbar").css("background-color","rgba(0,0,0,0.5)")
+
+            }else {
+                $(".navbar").css("border-bottom-width","");
+                $(".navbar").css("border-bottom-color","");
+                $(".navbar").css("background-color","")
+                $(".navbar").css("border-bottom-style","");
+            }
+        })
+        //SAP
+        alert("asd")
+        var a = $("#test-alert").html()
+        alert(a)
+    })
+</script>
+</body>
+</html>

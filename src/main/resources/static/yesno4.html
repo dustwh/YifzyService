@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            color: #333;
+            /*background-color: #eee;*/
+        }
+
+        h1, h2, h3, h4, h5, h6{
+            font-weight: 200;
+        }
+
+        h1{
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2fcc71;
+            max-width: 40%;
+            margin: 20px auto;
+        }
+
+        /* CONTAINERS */
+
+        .container {max-width: 850px; width: 100%; margin: 0 auto;}
+        .four { width: 32.26%; max-width: 32.26%;}
+
+
+        /* COLUMNS */
+
+        .col {
+            display: block;
+            float:left;
+            margin: 1% 0 1% 1.6%;
+        }
+
+        .col:first-of-type { margin-left: 0; }
+
+        /* CLEARFIX */
+
+        .cf:before,
+        .cf:after {
+            content: " ";
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+
+        .cf {
+            *zoom: 1;
+        }
+
+        /* FORM */
+
+        .form .plan input, .form .payment-plan input, .form .payment-type input{
+            display: none;
+        }
+
+        .form label{
+            position: relative;
+            color: #fff;
+            background-color: #aaa;
+            font-size: 26px;
+            text-align: center;
+            height: 150px;
+            line-height: 150px;
+            display: block;
+            cursor: pointer;
+            border: 3px solid transparent;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
+            border: 3px solid #333;
+            background-color: #2fcc71;
+        }
+
+        .form .plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{
+            content: "\2713";
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 100%;
+            border: 2px solid #333;
+            background-color: #2fcc71;
+            z-index: 999;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        .submit{
+            padding: 15px 60px;
+            display: inline-block;
+            border: none;
+            margin: 20px 0;
+            background-color: #2fcc71;
+            color: #fff;
+            border: 2px solid #333;
+            font-size: 18px;
+            -webkit-transition: transform 0.3s ease-in-out;
+            -o-transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .submit:hover{
+            cursor: pointer;
+            transform: rotateX(360deg);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--<h1>Checkout Form</h1>-->
+    <form class="form cf">
+        <section class="plan cf">
+            <!--<h2>Choose a plan:</h2>-->
+            <input type="radio" name="radio1" id="free" value="free"><label class="free-label four col" for="free">Free</label>
+            <input type="radio" name="radio1" id="basic" value="basic" checked><label class="basic-label four col" for="basic">Basic</label>
+            <input type="radio" name="radio1" id="premium" value="premium"><label class="premium-label four col" for="premium">Premium</label>
+        </section>
+        <section class="payment-plan cf">
+            <!--<h2>Select a payment plan:</h2>-->
+            <input type="radio" name="radio2" id="monthly" value="monthly" checked><label class="monthly-label four col" for="monthly">Monthly</label>
+            <input type="radio" name="radio2" id="yearly" value="yearly"><label class="yearly-label four col" for="yearly">Yearly</label>
+        </section>
+        <section class="payment-type cf">
+            <!--<h2>Select a payment type:</h2>-->
+            <input type="radio" name="radio3" id="credit" value="credit"><label class="credit-label four col" for="credit">Credit Card</label>
+            <input type="radio" name="radio3" id="debit" value="debit"><label class="debit-label four col" for="debit">Debit Card</label>
+            <input type="radio" name="radio3" id="paypal" value="paypal" checked><label class="paypal-label four col" for="paypal">Paypal</label>
+        </section>
+        <input class="submit" type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

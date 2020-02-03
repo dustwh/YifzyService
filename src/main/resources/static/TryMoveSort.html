@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Move And Sort</title>
+</head>
+
+<!--
+<script type="text/javascript" src="resource_demo.js"></script>
+<script type="text/javascript" src="jquery.alerts.js"></script>
+<script type="text/javascript" src="ztree/js/jquery.ztree.js"></script>
+<script type="text/javascript" src="ztree/css/zTreeStyle/zTreeStyle.css"></script>
+
+<script type="text/javascript"src="jBox/jBox/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"src="jBox/jBox/jquery.jBox-2.3.min.js"></script>
+<script type="text/javascript"src="jBox/jBox/i18n/jquery.jBox-zh-CN.js"></script>
+<script type="text/javascript"src="jquery.cookie.js"></script>
+
+<link href="jBox/jBox/Skins/Blue/jbox.css" rel="stylesheet" type="text/css" /> -->
+<body>
+<div id="checkAndInverCheck">
+    <table style="align:center">
+        <tr>
+            <td><input type="checkbox" value="蕙兰">蕙兰</td>
+            <td><input type="text" name="orderNum" size="3" value="1"/></td>
+            <td><input type="button" name="upMove" value="上移"/></td>
+            <td><input type="button" name="downMove" value="下移"/></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" value="建兰">建兰</td>
+            <td><input type="text" name="orderNum" size="3" value="2"/></td>
+            <td><input type="button" name="upMove" value="上移"/></td>
+            <td><input type="button" name="downMove" value="下移"/></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" value="寒兰">寒兰</td>
+            <td><input type="text" name="orderNum" size="3" value="3"/></td>
+            <td><input type="button" name="upMove" value="上移"/></td>
+            <td><input type="button" name="downMove" value="下移"/></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" value="墨兰">墨兰</td>
+            <td><input type="text" name="orderNum" size="3" value="4"/></td>
+            <td><input type="button" name="upMove" value="上移"/></td>
+            <td><input type="button" name="downMove" value="下移"/></td>
+        </tr>
+    </table>
+    <button id="get_sort_id">asd</button>
+</div>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    //上移
+    $("input[name='upMove']").bind("click",function(){
+        var $this  = $(this);
+        var curTr = $this.parents("tr");
+        var prevTr = $this.parents("tr").prev();
+        if(prevTr.length == 0){
+            alert("第一行,想移啥？");
+            return;
+        }else{
+            prevTr.before(curTr);
+            sortNumber();//重新排序
+        }
+    });
+    //下移
+    $("input[name='downMove']").bind("click",function(){
+
+        var $this  = $(this);
+        var curTr = $this.parents("tr");
+        var nextTr = $this.parents("tr").next();
+        if(nextTr.length == 0){
+            alert("最后一行,想移啥？");
+            return;
+        }else{
+            nextTr.after(curTr);
+            sortNumber();//重新排序
+        }
+    });
+    //排序
+    $("input[name='orderNum']").bind("change",function(){
+        var $this = $(this);
+        //获得当前行
+        var curTr = $this.parents("tr");
+        var curOrderNum = $this.val();
+        //当前行同级的所有行
+        var siblingsTrs = curTr.siblings();
+        if(siblingsTrs.length >0){
+            for(var i in siblingsTrs){
+                var otherOrderNum = $(siblingsTrs[i]).children().find("input[name='orderNum']").val();
+                if(parseInt(curOrderNum) <= parseInt(otherOrderNum)){
+                    $(siblingsTrs[i]).before(curTr);
+                    sortNumber();//重新排序
+                    break;
+                }
+            }
+        }
+    });
+
+    function sortNumber(){
+        var allInput = $("#checkAndInverCheck").find("input[name='orderNum']");
+        if(allInput.length != 0){
+            for(var i=0;i<allInput.length;i++){
+                var tempInput = allInput[i];
+                tempInput.value = i + 1;
+            }
+        }
+    }
+</script>
+</body>
+</html>

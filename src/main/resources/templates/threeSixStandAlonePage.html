@@ -1,0 +1,3542 @@
+<!DOCTYPE HTML>
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="../css/start-test-page-style.css" />
+    <link rel="stylesheet" href="../css/common/bootstrap.min.css" />
+    <link rel="Shortcut Icon" href="../img/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/solid.css" integrity="sha384-Rw5qeepMFvJVEZdSo1nDQD5B6wX0m7c5Z/pLNvjkB14W6Yki1hKbSEQaX9ffUbWe" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-GVa9GOgVQgOk+TNYXu7S/InPTfSDTtBalSgkgqQ7sCik56N9ztlkoTr2f/T44oKV" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../js/utils/bootstrap-select/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css'/>
+    <link rel="stylesheet" href="../css/self/style_spec.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
+    <link rel="stylesheet" href="../css/test_page_style.css"/>
+    <link rel="stylesheet" href="../css/pagination.css"/>
+    <title>一帆志愿新高考工具</title>
+    <style>
+        body{
+            /*font-family:"Microsoft YaHei",微软雅黑;*/
+            font-family:sans-serif;
+            /*font-family:'Verdana','Arial';*/
+        }
+        .mark_text{
+            font-size: 14px;
+            color: #999;
+        }
+        .simple_progress{
+            height:0.5rem;
+            background: #000000;
+        }
+        .preinvisable{
+            visibility: hidden;
+        }
+        .text-error{
+            color:red !important;
+        }
+        .c_u{
+            font-size: 1.25rem;
+            cursor:pointer;
+            padding:0.75rem 0 0.75rem 0 !important;
+            width: 2.5% !important;
+            text-decoration: none;
+        }
+        .c_u_c{
+            font-size: 1.25rem;
+            cursor:pointer;
+            padding:0.75rem 0 0.75rem 0 !important;
+            width: 2.5% !important;
+            text-decoration: underline #FFA500;
+        }
+        /*.test{*/
+        /*color: rgba(80, 68, 107, 0.5);*/
+        /*}*/
+
+        .ui-state-default {
+            margin: 0 0.8rem 0 0;
+            padding: 0.2rem 0 0.2rem 0;
+            float: left;
+            width: 4rem;
+            /*height: 1.4rem;*/
+            text-align: center;
+            list-style-type: none;
+            font-size: 1rem;
+            color: #007bff;
+            border-style: solid;
+            border-color: #007bff;
+            border-width: 1.4px;
+            border-radius: 3.2px;
+            cursor: e-resize;
+        }
+        /*ui-state-default {*/
+        /*margin: 0 0.8rem 0 0;*/
+        /*padding: 0.2rem 0 0.2rem 0;*/
+        /*float: left;*/
+        /*width: 4rem;*/
+        /*!*height: 1.4rem;*!*/
+        /*text-align: center;*/
+        /*list-style-type: none;*/
+        /*font-size: 1rem;*/
+        /*color: #3bd3b9;*/
+        /*border-style: solid;*/
+        /*border-color: #3bd3b9;*/
+        /*border-width: 1.4px;*/
+        /*border-radius: 3.2px;*/
+        /*cursor: e-resize;*/
+        /*}*/
+        .jinchuangteacherscard:hover{
+            box-shadow: 0 1px 5px 5px rgba(40, 137, 195, 0.45);
+            transition: box-shadow 0.5s;
+        }
+        .jinchuangschoolwell{
+            background-color: rgba(5, 5, 5, 0.8);
+        }
+        .jinchuangschoolwell:hover{
+            background-color: transparent;
+            transition: background-color 1s
+        }
+        .up_animate_card{
+            margin-top: 6px;
+            box-shadow: none;
+            transition: margin-top;
+            transition: box-shadow;
+            transition-duration: 150ms;
+        }
+        .up_animate_card:hover{
+            margin-top: 0;
+        }
+        #check_submit_div{
+            border-style: solid;
+            color: #222222;
+            border-color: #222222;
+            border-width: 2px;
+            cursor: pointer;
+            min-height: 40px;
+            background: transparent;
+            -webkit-transition: border-color 0.7s,color 0.7s;
+            -moz-transition: border-color 0.7s,color 0.7s;
+            -ms-transition: border-color 0.7s,color 0.7s;
+            -o-transition: border-color 0.7s,color 0.7s;
+            transition: border-color 0.7s,color 0.7s;
+        }
+
+        #check_submit_div:hover{
+            color: #ffffff;
+            border-color: #ffffff;
+            background: rgba(0,0,0,0.3);
+        }
+        .jinchuangteacher{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            -moz-justify-content: -moz-flex-center;
+            -webkit-justify-content: -webkit-flex-center;
+            -ms-justify-content: -ms-flex-center;
+            justify-content: center;
+        }
+        .jinchuangteacher-wrap{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            -moz-justify-content: -moz-flex-center;
+            -webkit-justify-content: -webkit-flex-center;
+            -ms-justify-content: -ms-flex-center;
+            justify-content: center;
+            -webkit-flex-wrap:wrap;
+            -webkit-box-lines:multiple;
+            -moz-flex-wrap:wrap;
+            flex-wrap:wrap;
+        }
+        .func_zone{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            　　-webkit-flex-wrap:wrap;
+            -webkit-box-lines:multiple;
+            -moz-flex-wrap:wrap;
+            flex-wrap:wrap;
+        }
+        .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Chrome/Safari/Opera */
+            -khtml-user-select: none; /* Konqueror */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently    not supported by any browser */
+        }
+        .navbar{
+            border-bottom-style: solid;
+            border-bottom-width:1px;
+            border-bottom-color:rgba(0, 0, 0, 0.1);
+            background-color:rgba(0,0,0,0.25);
+        }
+
+        .nav-item{
+            height: 57px;
+            padding-left: 10px;
+            padding-right:10px;
+        }
+        .nav-item:hover{
+            /*background-color: rgba(0, 0, 0, 0.3);*/
+            background-color: rgba(204, 204, 204, 0.3);
+        }
+        span.nav-link{
+            padding-top: 15px;
+            -webkit-transition: font-size 0.1s;
+            -moz-transition: font-size 0.1s;
+            -ms-transition: font-size 0.1s;
+            -o-transition: font-size 0.1s;
+            transition: font-size 0.1s;
+        }
+
+        a:hover{
+            text-decoration:none;
+        }
+        .menu_drop{
+            background-color: rgba(0,0,0,0.5);
+        }
+        .dropdown-menu{
+            left: calc(100% - 190px);
+            right: 100px;
+        }
+        .dropdown-item{
+            cursor: pointer;
+        }
+        .dropdown-item:hover{
+            background-color: rgba(4, 154, 135, 0.6);
+        }
+        .modal-content_login{
+            border-style: none;
+            background-color: transparent;
+            background-image: url("../img/show/login_bg02.png");
+            background-position: center;
+            /* 背景图不平铺 */
+            background-repeat: no-repeat;
+            /*background-size: cover;*/
+            /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+            /*background-attachment: fixed;*/
+            /* 让背景图基于容器大小伸缩 */
+            background-size: 107% 106%;
+        }
+        #start-test-div{
+            min-height: 80.1vh;
+        }
+        #threein6-section{
+            min-height: 89.1vh;
+            /*padding-top: 57px;*/
+        }
+
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        .navbar-brand{
+            cursor: pointer;
+        }
+        .navbar-scroll {
+            transition: border-bottom-width 1s;
+            transition: border-bottom-color 1s;
+            transition: background-color 1s;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                background-color: rgba(0, 0, 0, 0.5);
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+                border-bottom-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+        /* ============================================================
+          PRIMARY STRUCTURE
+        ============================================================ */
+        .parallax-container {
+            /*max-width: 960px;*/
+            margin: 0 auto;
+        }
+        #parallax-banner-container{
+            max-width: 960px;
+        }
+        #check_report{
+            cursor: pointer;
+        }
+
+        .bl_content {
+            /*width: 800px;*/
+            /*height: 85vh;*/
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*margin-top: 75px;*/
+            /*margin-left: -400px;*/
+            margin-left: 0px;
+            border-radius: 15px;
+            /*box-shadow: 0 10px 20px rgba(0,0,0,0.5);*/
+            overflow: hidden;
+            z-index: 2;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        .bl_content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            -webkit-filter: blur(8px);
+            -moz-filter: blur(8px);
+            -ms-filter: blur(8px);
+            -o-filter: blur(8px);
+            filter: blur(8px);
+            z-index: -3;
+            margin: -10px;
+            background-image: url(../img/start_test/showresult_bg_03.jpg);
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            /*background-attachment: fixed;*/
+        }
+        .bl_content:hover{
+            box-shadow: 0 1px 5px 5px rgba(40, 137, 195, 0.45);
+            transition: box-shadow 0.25s;
+        }
+        .col_no_padding{
+            padding-left: 15px!important;
+            padding-right: 0!important;
+        }
+        #P-Types-test-section{
+            min-height: 87.8vh;
+            padding: 78px 8.3% 68px 8.3%;
+        }
+        #Job-Interest-test-section{
+            min-height: 87.1vh;
+            padding: 78px 8.3%
+        }
+        #my-school-section{
+            min-height: 87.1vh;
+            padding: 78px 8.3%
+        }
+        #my-major-section{
+            min-height: 87.1vh;
+            padding: 78px 8.3%
+        }
+        .test-section{
+            min-height: 100vh;
+            padding: 100px 8.3%;
+        }
+        #breadcrumbs-in-P-Types{
+            padding: 0 0 6% 0;
+        }
+        #breadcrumbs-in-Job-Interest{
+            padding: 0 0 6% 0;
+        }
+        /* ============================================================
+          SECTIONS
+        ============================================================ */
+        section.module:last-child {
+            margin-bottom: 0;
+        }
+        section.module h2 {
+            margin-bottom: 40px;
+            font-family: "Roboto Slab", serif;
+            font-size: 30px;
+        }
+        section.module p {
+            margin-bottom: 40px;
+            font-size: 16px;
+            font-weight: 300;
+        }
+        section.module p:last-child {
+            margin-bottom: 0;
+        }
+        section.module.content {
+            padding: 40px 0;
+            background-color: rgba(207, 216, 220, 0.5);
+        }
+        section.module.content:last-child {
+            margin-bottom: 60px;
+        }
+        section.module.parallax {
+            padding: 240px 0;
+            background-position: 0 0;
+        }
+        section.module.parallax-footer {
+            padding: 240px 0;
+            background-position: 0 0;
+        }
+        section.module.parallax h1 {
+            color: #1e1e1e;
+            font-size: 48px;
+            line-height: 1;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px white;
+        }
+        /*parallax div部分的图片加颜色蒙版写法*/
+        /*section.module.parallax-1 {*/
+        /*background-image: url("img/maxresdefault.jpg");*/
+        /*background-position: 50% 0;*/
+        /*background-repeat: repeat;*/
+        /*background-attachment: fixed;*/
+        /*background-size: cover;*/
+        /*background-color: rgba(0, 123, 255, 0.4);*/
+        /*background-blend-mode: screen;*/
+        /*}*/
+        section.module.parallax-1 {
+            background-image: url("../img/show/bg00_02.jpg");
+            background-position: 50% 0;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            /*background-color: rgba(0, 0, 0, 0.9);*/
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+        section.module.parallax-yuanmeng {
+            background-image: url("../img/institution/yuanmeng/bg02.jpg");
+            background-position: 50% 0;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            /*background-color: rgba(0, 0, 0, 0.9);*/
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+        section.module.parallax-2 {
+            background-image: url("../img/show/bg02_02.jpg");
+            /*background-position: 50% 0;*/
+            /*background-repeat: repeat;*/
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #000000;
+            background-blend-mode: screen;
+        }
+        /*section.module.parallax-3 {*/
+        /*background-image: url("img/raindrops-window-background.jpg");*/
+        /*background-position: 50% 0;*/
+        /*background-repeat: repeat;*/
+        /*background-attachment: fixed;*/
+        /*background-size: cover;*/
+        /*background-color: rgba(0, 123, 255, 0.4);*/
+        /*background-blend-mode: screen;*/
+        /*}*/
+        @media all and (min-width: 600px) {
+            section.module h2 {
+                font-size: 42px;
+            }
+            section.module p {
+                font-size: 20px;
+            }
+            section.module.parallax {
+                padding: 15% 0 4.5% 0;
+            }
+            section.module.parallax-footer {
+                padding: 0;
+            }
+            section.module.parallax h1 {
+                font-size: 96px;
+            }
+        }
+        @media all and (min-width: 960px) {
+            section.module.parallax h1 {
+                font-size: 160px;
+            }
+        }
+        @media (max-width: 768px) {
+            .col-md-4 {
+                text-align: center;
+                line-height: 30px;
+            }
+        }
+        .right {
+            text-align: right;
+        }
+        .center {
+            text-align: center;
+        }
+        .left {
+            text-align: left;
+        }
+        .banner-img{
+            /*cursor: pointer;*/
+            height: 50%;
+            width: 50%;
+        }
+        #next-pointer{
+            cursor: pointer;
+        }
+        .info-card-min-height{
+            min-height: 80vh;
+        }
+        .list-group-item{
+            border-left-style:solid;
+            border-left-width: 15px;
+            border-left-color: #ffffff;
+        }
+        .list-group-item-action:hover{
+            border-left-style:solid;
+            border-left-width: 15px;
+            border-left-color: #f8f9fa;
+        }
+
+        .list-group-item-action:focus {
+            color: #495057;
+            text-decoration: none;
+            background-color: #f8f9fa;
+        }
+        .list-group-item.active {
+            z-index: 2;
+            color: #000000;
+            border-left-style:solid;
+            border-left-width: 15px;
+            border-left-color: #007bff;
+            background-color: rgba(0, 144, 255, 0.1);
+            border-top-color: rgba(0, 144, 255, 0.5);
+            border-bottom-color: rgba(0, 144, 255, 0.5);
+            border-right-color: rgba(0, 144, 255, 0.5);
+        }
+        /*.list-group-item.active {*/
+        /*z-index: 2;*/
+        /*color: #000000;*/
+        /*border-left-style:solid;*/
+        /*border-left-width: 15px;*/
+        /*border-left-color: #3bd3b9;*/
+        /*background-color: rgba(59,211,185,0.05);*/
+        /*border-top-color: rgba(59,211,185,0.5);*/
+        /*border-bottom-color: rgba(59,211,185,0.5);*/
+        /*border-right-color: rgba(59,211,185,0.5);*/
+        /*}*/
+        .overwrite_facepalm{
+            margin-left: 3px;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+        .overwrite_facehappy{
+            margin-left: 3px;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+        .overwrite_facebad{
+            margin-left: 3px;
+            margin-right: 3px;
+            cursor: pointer;
+        }
+        label.overwrite_facepalm input[type="radio"] + span{width:33px;height:33px;display:inline-block;background:url(../img/user_info/myicon_53.png)  no-repeat;background-position:0 0;}
+
+        label.overwrite_facepalm input[type="radio"]:checked + span
+        {background-position:0 -34px}
+        .overwrite_facepalm_input{
+            appearance: none; -webkit-appearance: none;outline: none;display:none
+        }
+        label.overwrite_facehappy input[type="radio"] + span{width:33px;height:33px;display:inline-block;background:url(../img/user_info/myicon_30.png)  no-repeat;background-position:0 0;}
+        label.overwrite_facehappy input[type="radio"]:checked + span
+        {background-position:0 -34px}
+
+        .overwrite_facehappy_input{
+            appearance: none; -webkit-appearance: none;outline: none;display:none
+        }
+        label.overwrite_facebad input[type="radio"] + span{width:33px;height:33px;display:inline-block;background:url(../img/user_info/myicon_50.png)  no-repeat;background-position:0 0;}
+
+        label.overwrite_facebad input[type="radio"]:checked + span
+        {background-position:0 -34px}
+
+        .overwrite_facebad_input{
+            appearance: none; -webkit-appearance: none;outline: none;display:none
+        }
+
+        .interest{
+            appearance: none; -webkit-appearance: none;outline: none;display:none
+        }
+
+        .interest_label{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .btn-outline-primary:hover{
+            background-color: rgba(0,123,255,0.5);
+        }
+        .btn-outline-success:hover{
+            background-color: rgba(40,167,69,0.5);
+        }
+        .btn-outline-dark:hover{
+            background-color: rgba(52, 58, 64, 0.5);
+        }
+        .threein6-sections{
+            min-height:90vh;
+        }
+        .cursor_pointer{
+            cursor: pointer;
+        }
+        .interest_div{
+            margin-left:10px ;
+            margin-right: 10px;
+        }
+        .test-intro-div{
+            background-color: rgba(0,0,0,0.3);
+        }
+        .intro-text-container{
+            color: white;
+            margin-top: 1%;
+            font-size: 14px;
+            font-weight: 200;
+        }
+        .test-area-div{
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        .test-area-row{
+            margin-top: 4%;
+        }
+        .test-area{
+            padding: 0;
+        }
+        #JI_progress_container {
+            height: 8px;
+        }
+        #PT_progress_container {
+            height: 8px;
+        }
+        .progress-div{
+            padding-top: 6%;
+            padding-bottom: 1%;
+        }
+        #breadcrumbs-JI-to-start-test{
+            cursor: pointer;
+        }
+        #breadcrumbs-PT-to-start-test{
+            cursor: pointer;
+        }
+        #breadcrumbs-JI-to-start-test:hover{
+            text-decoration: underline;
+            text-underline: white;
+        }
+        #breadcrumbs-PT-to-start-test:hover{
+            text-decoration: underline;
+            text-underline: white;
+        }
+        .divul {
+            padding-bottom: 8px;
+            list-style: none;
+            margin-top: 1.5%;
+            padding-right: 1%;
+            margin-bottom: 1.5%;
+        }
+        .divli {
+            padding-top: 8px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .divli:hover{
+            background: rgba(234,117,95,0.2);
+        }
+        .round_corner{
+            border-radius: 0.75rem;
+            border-radius: 0.75rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        .hover_material_grey:hover{
+            background: rgba(132, 127, 135, 0.2);
+        }
+        .divlibool {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .hid-cir{
+            cursor: pointer;
+        }
+        .questionselect {
+            display: none;
+        }
+        .yes_no_select_div{
+            margin: 15px 0 0 0;
+            padding-top: 5px;
+            padding-right: 20px;
+            border-style: solid;
+            border-width: 1px;
+            cursor: pointer;
+        }
+        .yes_no_select_div:hover{
+            background: rgba(4, 154, 135, 0.4);
+            text-align: center;
+        }
+        .yesl {
+            color: white;
+            cursor: pointer;
+        }
+        .nol {
+            color: white;
+            cursor: pointer;
+        }
+        .Janswer_label {
+            height: 63px;
+            font-size: 21px;
+            color: white;
+        }
+        .answer_label {
+            color: white;
+            cursor: pointer;
+        }
+        input:checked + label {
+            color: #ea755f;
+        }
+        .sort_num{
+            width: 95%;
+            background-color: transparent;
+            border-style: solid;
+            border-width: 1px;
+            border-color: white;
+            text-align: center;
+            color: white;
+        }
+        .sort_num2{
+            width: 4rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-style: solid;
+            border-color: #9F9F9F;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        .sort_num2:focus{
+            outline: none !important;
+            border-color: #31aa94;
+        }
+        .sort_num2text{
+            width: 4rem;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            border-style: solid;
+            border-color: #9F9F9F;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        .sort_num_col{
+            padding: 15px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        #JSubmit{
+            border-radius: 0;
+        }
+        #JSubmit:hover{
+            background: rgba(4, 154, 135, 0.4) !important;
+        }
+        .login_input{
+            background: transparent;
+            color: white;
+        }
+        .login_input:focus{
+            background: transparent;
+            color: white;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-animation: autofill 0s forwards;
+            animation: autofill 0s forwards;
+        }
+        @keyframes autofill {
+            100% {
+                background: transparent;
+                color: white;
+            }
+        }
+        @-webkit-keyframes autofill {
+            100% {
+                background: transparent;
+                color: white;
+            }
+        }
+        .login_input::-webkit-input-placeholder {
+            color: whitesmoke !important;
+        }
+        .login_input::-moz-placeholder {
+            color: whitesmoke !important;
+        }
+        .login_input:-ms-input-placeholder {
+            color: whitesmoke !important;
+        }
+        .login_input::placeholder {
+            color: whitesmoke !important;
+        }
+        .card　yuanmeng_teacher{
+            height: 26rem;
+        }
+        .search63_input{
+            background: transparent;
+            color: #fff;
+            border-color: white;
+        }
+        .search63_input:focus{
+            background: transparent;
+            color: white;
+        }
+        .search63_input::placeholder {
+            color: #aaaaaa !important;
+        }
+        .search63_input::-webkit-input-placeholder {
+            color: #aaaaaa !important;
+        }
+        .search63_input::-moz-placeholder {
+            color: #aaaaaa !important;
+        }
+        .search63_input:-ms-input-placeholder {
+            color: #aaaaaa !important;
+        }
+        #three_six_search1:active{
+            color: #ffffff !important;
+        }
+
+        .btn-hover-white:hover{
+            color: #FFFFFF !important;
+        }
+        .testbox{
+            background-color:rgba(0,0,0,0.65);
+            border-radius: 10px;
+        }
+
+        .sub1-badge-check{
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        .sub1-badge-uncheck{
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        .sub2-badge-uncheck{
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        .sub-badge{
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        .table-box{
+            box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+            -moz-box-shadow:0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+        }
+        .services {
+            margin-top: 10px;
+            padding-top: 0vh;
+            padding-bottom: 0vh;
+            text-align: center;
+            background-image: url(/img/institution/lixue/services-bg.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        .services .col-md-3 {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        .services .col-md-3 {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+        .flip-container {
+            perspective: 1000;
+        }
+        .flip-container:hover .flipper {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -webkit-transition-delay: 0s;
+            -moz-transition-delay: 0s;
+            -ms-transition-delay: 0s;
+            -o-transition-delay: 0s;
+            transition-delay: 0s;
+        }
+        .flip-container,
+        .front,
+        .back {
+            width: 100%;
+            height: 350px;
+            text-align: center;
+            font-size: 30px;
+        }
+        .front {
+            padding: 40px 30px;
+        }
+
+        .front .icon {
+            width: 140px;
+            height: 140px;
+            line-height: 140px;
+            text-align: center;
+            background-color: transparent;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            margin: 30px auto;
+        }
+
+        .front h4 {
+            margin-top: 0px;
+            font-size: 17px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .flipper {
+            -webkit-transition: 0.3s all;
+            -webkit-transition-delay: 0.3s;
+            -moz-transition: 0.3s all;
+            -moz-transition-delay: 5s;
+            -ms-transition: 0.3s all;
+            -ms-transition-delay: 5s;
+            -o-transition: 0.3s all;
+            -o-transition-delay: 5s;
+            transition: 0.3s all;
+            transition-delay: 0.3s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+        .front,
+        .back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .front {
+            z-index: 2;
+            color: white;
+            /* for firefox 31 */
+            transform: rotateY(0deg);
+        }
+        .back {
+            transform: rotateY(180deg);
+        }
+        .back p {
+            color: #fff;
+            padding: 90px 30px;
+        }
+        .first-service .front,
+        .first-service .back {
+            background-color: rgba(6, 80, 40, 0.3);
+        }
+        .second-service .front,
+        .second-service .back {
+            background-color: rgba(0, 33, 108, 0.2);
+        }
+        .third-service .front,
+        .third-service .back {
+            background-color: rgba(108, 56, 57, 0.2);
+        }
+        .fourth-service .front,
+        .fourth-service .back {
+            background-color: rgba(106, 106, 108, 0.2);
+        }
+        @media (max-width: 991px) {
+            .services {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+        .checklable:hover{
+            background-color: #f5f5f5; border-color: #f5f5f5;
+        }
+        .checkitem:hover{
+            background-color: #f5f5f5; border-color: #f5f5f5;
+        }
+        .uncheckable{
+            background-color: #dedede; border-color: #dedede;
+            color: white;
+        }
+        .uncheckable:hover{
+            background-color: #dedede; border-color: #dedede;
+            color: white;
+        }
+        .itemchecked{
+            background-color: #337ab7;
+            color: white;
+        }
+        .itemchecked:hover{
+            background-color: #337ab7;
+            color: white;
+        }
+        .not_match{
+            background: rgba(255, 183, 191, 0.31);
+        }
+        .new_choose_sub_effect{
+            border-radius:6px;
+            border-style:solid;
+            border-width:1px;
+            border-color: transparent;
+        }
+        .new_choose_sub_effect:hover{
+            border-color: #bedbf3;
+            -webkit-transition: 0.1s all;
+            -webkit-transition-delay: 0.1s;
+            -moz-transition: 0.1s all;
+            -moz-transition-delay: 0.1s;
+            -ms-transition: 0.1s all;
+            -ms-transition-delay: 0.1s;
+            -o-transition: 0.1s all;
+            -o-transition-delay: 0.1s;
+            transition: 0.1s all;
+            transition-delay: 0.1s;
+        }
+        /*End of lixue scroll*/
+    </style>
+</head>
+
+
+
+
+<!--<body id="bodyid" style="overflow: hidden" onload="winload();">-->
+<body id="bodyid">
+
+
+<div class="modal fade" id="three_six_modal_schoolpage" tabindex="-1" role="dialog" aria-labelledby="three_six_modal_schoolpage_tittle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none">
+                <h5 class="modal-title" id="three_six_modal_schoolpage_tittle">选择科目</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="border-style:solid;border-radius:5px;border-color:#d1d1d1;padding-left:25px;padding-top:15px;margin-top:17px;padding-bottom:15px;border-width: 1px">
+                    二选一:
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="0" type="radio" id="customRadioInline1" name="school631in2" class="custom-control-input"/>
+                        <label class="custom-control-label" for="customRadioInline1">物理</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="4" type="radio" id="customRadioInline2" name="school631in2" class="custom-control-input"/>
+                        <label class="custom-control-label" for="customRadioInline2">历史</label>
+                    </div>
+                </div>
+                <div style="padding-left:25px;padding-top:17.5px;padding-bottom:17.5px;margin-top:25px;border-style:solid;border-radius:5px;border-color:#d1d1d1;border-width: 1px">
+                    四选二:
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="1" type="checkbox" id="school_63_choose1" name="school632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="school_63_choose1">化学</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="2" type="checkbox" id="school_63_choose2" name="school632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="school_63_choose2">生物</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="3" type="checkbox" id="school_63_choose3" name="school632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="school_63_choose3">政治</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="5" type="checkbox" id="school_63_choose4" name="school632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="school_63_choose4">地理</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none;margin-top:18px">
+                <button id="schoolpage63confirm" type="button" class="btn btn-outline-primary" data-dismiss="modal">确认</button>
+                <button id="schoolpage63close" type="button" class="btn btn-outline-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="three_six_modal_majorpage" tabindex="-1" role="dialog" aria-labelledby="three_six_modal_majorpage_tittle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: none">
+                <h5 class="modal-title" id="three_six_modal_majorpage_tittle">选择科目</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="border-style:solid;border-radius:5px;border-color:#d1d1d1;padding-left:25px;padding-top:15px;margin-top:17px;padding-bottom:15px;border-width: 1px">
+                    二选一:
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="0" type="radio" id="majorpage_sub_select1" name="major631in2" class="custom-control-input"/>
+                        <label class="custom-control-label" for="majorpage_sub_select1">物理</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="4" type="radio" id="majorpage_sub_select2" name="major631in2" class="custom-control-input"/>
+                        <label class="custom-control-label" for="majorpage_sub_select2">历史</label>
+                    </div>
+                </div>
+                <div style="padding-left:25px;padding-top:17.5px;padding-bottom:17.5px;margin-top:25px;border-style:solid;border-radius:5px;border-color:#d1d1d1;border-width: 1px">
+                    四选二:
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="1" type="checkbox" id="major_63_choose1" name="major632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="major_63_choose1">化学</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="2" type="checkbox" id="major_63_choose2" name="major632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="major_63_choose2">生物</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="3" type="checkbox" id="major_63_choose3" name="major632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="major_63_choose3">政治</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline noselect new_choose_sub_effect">
+                        <input value="5" type="checkbox" id="major_63_choose4" name="major632in4" class="custom-control-input sub_choose632in4"/>
+                        <label class="custom-control-label" for="major_63_choose4">地理</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: none;margin-top:18px">
+                <button id="majorpage63confirm" type="button" class="btn btn-outline-primary" data-dismiss="modal">确认</button>
+                <button id="majorpage63close" type="button" class="btn btn-outline-secondary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--pwd modal verify-->
+
+
+<div id="threein6-section" style="display: none">
+    <div class="container" style="margin-top: 60px;margin-bottom: 15px;padding-top: 50px;padding-bottom: 45px;">
+
+        <div class="card-deck px-4">
+            <div class="card">
+                <img class="card-img-top" src="../img/three_in_six/three_in_six_1.png" alt="Card image cap"/>
+                <div class="card-body">
+                    <h6 class="card-title"><strong>想考XX大学,该校专业有没有科目要求？</strong></h6>
+                    <p class="card-text" style="font-size: 14px;color: #767676;font-weight: 200;margin-top: 10px">提供根据您输入的学校名字，为您查询该校专业的招生6选3科目要求</p>
+                    <button id="three_in_six_enter_button1" type="button" class="btn btn-primary">进入->查学校</button>
+                    <!--<button type="button" class="btn btn-secondary" style="cursor: not-allowed;">性能升级中,敬请期待</button>-->
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="../img/three_in_six/three_in_six_2.png" alt="Card image cap"/>
+                <div class="card-body">
+                    <h6 class="card-title"><strong>想考XX系，哪些学校有特殊要求？</strong></h6>
+                    <p class="card-text" style="font-size: 14px;color: #767676;font-weight: 200;margin-top: 10px">提供根据您感兴趣的专业，为您分析该专业最适合的6选3策略</p>
+                    <button id="three_in_six_enter_button2" type="button" class="btn btn-primary">进入->看专业</button>
+                    <!--<button type="button" class="btn btn-secondary" style="cursor: not-allowed;">性能升级中,敬请期待</button>-->
+                </div>
+            </div>
+
+            <div class="card" style="background-image: url('../img/three_in_six/ad-pic.jpg');background-repeat: no-repeat;background-size: cover">
+                <div th:fragment="card_adv">
+                    <!--<img class="card-img-top" src="../img/three_in_six/timg.jpg" alt="Card image cap"/>-->
+                    <div class="card-body" style="text-align: center">
+                        <h3 class="card-title text-white">一帆志愿大数据引擎</h3>
+                        <h3 class="card-title text-white">为您提供"6选3"工具</h3>
+                    </div>
+                    <div class="card-footer">
+                        <!--<button id="three_in_six_enter_button3" type="button" class="btn btn-dark btn-lg btn-block">进入->功能名字3</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="threein6-section-1" class="threein6-sections" style="display:none">
+
+
+
+    <div class="container-fluid func_zone" style="position: fixed;background-color: #ececec;min-height: 59px;width: 100%;padding-left:1%;padding-right:1%">
+        <div style="margin-top: 18px;width:21%">
+            <strong>当前</strong>
+            <a href="#threein61" class="button badge-pill badge-dark text-white" style="background: #616161"><strong>查学校</strong></a>
+            <strong style="margin-left: 1rem">转到</strong>
+            <a href="#threein62" class="button badge-pill badge-dark"><strong>看专业</strong></a>
+        </div>
+        <div style="margin-top: 10px;width:49%">
+            <div class="row">
+                <div class="input-group col-md-4">
+                    <div class="input-group-prepend">
+                        <span id="section1_p" class="input-group-text border-dark dark text-white" style="background: #343a40">分数</span>
+                    </div>
+                    <input id="min1" type="text" class="form-control search63_input text-dark border-dark btn-outline-dark" placeholder="最低分" aria-label="pointmini" maxlength="3"/>
+                    <input id="max1" type="text" class="form-control search63_input text-dark border-dark btn-outline-dark" placeholder="最高分" aria-label="pointmax" maxlength="3" style="border-top-right-radius: 0.25rem;border-bottom-right-radius: 0.25rem;"/>
+                </div>
+
+                <div class="input-group col-md-6">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text border-dark dark text-white" style="background: #343a40">搜索词</span>
+                    </div>
+                    <input id="section1_school_name" type="text" class="form-control search63_input text-dark border-dark btn-outline-dark" placeholder="输入校名" aria-label="Recipient's username" aria-describedby="school_page_search" style="border-top-right-radius: 0.25rem;border-bottom-right-radius: 0.25rem"/>
+                </div>
+
+                <div class="input-group col-md-2">
+                    <button class="btn btn-outline-secondary text-dark btn-hover-white" type="button" id="school_page_search">搜索</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="choose_sub_trigger" style="width:30%" data-toggle="modal" data-target="#three_six_modal_schoolpage">
+            <small id="subbadgeda'ta1_text" style="color: blue;">请点击配置您的选科方案</small>
+            <!--<div id="need_choose_sub" class="noselect">-->
+            <div id="school_page_badge" class="noselect">
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub1-badge-uncheck">物  理</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub1-badge-uncheck">化  学</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub1-badge-uncheck">生  物</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub1-badge-uncheck">政  治</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub1-badge-uncheck">历  史</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub1-badge-uncheck">地  理</span>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="padding-top: 59px;margin-left: 6%;margin-right: 6%;padding-bottom:51px">
+
+        <div style="height: 70px;width: 100%;position: fixed;border-style: none;background-color: white">
+        </div>
+
+        <div style="position: fixed;margin-top:20px">
+            <div class="row">
+
+                <div>
+                    <div id="section1-pagin" class="page-container noselect" style="display: inline-block;margin-top:3px">
+
+                    </div>
+                </div>
+                <div>
+                    <div class="ml-4" style="display:inline-block">
+                        <button class="btn btn-primary page-option-btn" id="btn_first_page" style="display:none">首页</button>
+                        <button class="btn btn-primary page-option-btn" id="btn_pre_page" style="display:none">上一页</button>
+                        <button class="btn btn-primary page-option-btn" id="btn_next_page" style="display:none">下一页</button>
+                        <button class="btn btn-primary page-option-btn" id="btn_last_page" style="display:none">末页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <table class="table" style="margin-top: 70px;width: 88%;background-color: whitesmoke;position: fixed">
+            <tr style="background-color: #616161;">
+                <th scope="col" style="color: #ffffff;width: 10rem">大学名字</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">地区</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">专本</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">专业类名</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">2选1</th>
+                <th scope="col" style="color: #ffffff;padding-left:-3rem;margin-left: -3rem ">4选2</th>
+                <th scope="col" style="color: #ffffff;">所含专业</th>
+                <th scope="col" style="color: #ffffff;width: 5rem">分数线</th>
+                <th scope="col" style="color:#ffffff;width:3.5rem">方向</th>
+            </tr>
+        </table>
+
+
+        <table class="table" style="background-color: whitesmoke;margin-top: 70px;margin-bottom: 0px;">
+            <thead style="border-bottom-color: transparent !important;background-color: #616161;visibility: hidden">
+            <tr style="background-color: #616161;">
+                <th scope="col" style="color: #ffffff;width: 10rem">大学名字</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">地区</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">专本</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">专业类名</th>
+                <th scope="col" style="color: #ffffff;width: 6rem">2选1</th>
+                <th scope="col" style="color: #ffffff;padding-left:-3rem;margin-left: -3rem ">4选2</th>
+                <th scope="col" style="color: #ffffff;">所含专业</th>
+                <th scope="col" style="color: #ffffff;width: 5rem">分数线</th>
+                <th scope="col" style="color:#ffffff;width:3.5rem">方向</th>
+            </tr>
+            </thead>
+            <tbody id="section1table" style="border-top-color: transparent !important;">
+            </tbody>
+        </table>
+        <img id="notr" src="../img/three_in_six/section1-ques.jpg" style="width: 100%"/>
+    </div>
+</section>
+
+<section id="threein6-section-2" class="threein6-sections" style="display: none;">
+
+    <div class="container-fluid need-testshadow func_zone" style="position: fixed;background-color: #ececec;width: 100%;padding-left:1%;padding-right:1%">
+        <div style="margin-top: 18px;width:21%">
+            <strong>当前</strong>
+            <a href="#threein62" class="button badge-pill badge-dark text-white" style="background: #616161"><strong>看专业</strong></a>
+            <strong style="margin-left: 1rem">转到</strong>
+            <a href="#threein61" class="button badge-pill badge-dark"><strong>查学校</strong></a>
+        </div>
+
+        <div style="margin-top: 10px;width: 49%">
+            <div class="row">
+                <div class="input-group col-md-4">
+                    <div class="input-group-prepend">
+                        <span id="section2_p" class="input-group-text border-dark dark text-white" style="background: #343a40">分数</span>
+                    </div>
+                    <input id="min2" type="text" class="form-control search63_input text-dark border-dark btn-outline-dark" placeholder="最低分" aria-label="pointmini" maxlength="3" />
+                    <input id="max2" type="text" class="form-control search63_input text-dark border-dark btn-outline-dark" placeholder="最高分" aria-label="pointmax" maxlength="3" />
+                </div>
+                <div class="input-group col-md-6">
+                    <div style="border-style: solid;border-width: 1px;border-radius: 0.25rem;width:100%">
+                        <select multiple="multiple" class="selectpicker form-control" id="inputState" data-container="body" data-live-search="false" title="请选择城市" data-hide-disabled="true" data-actions-box="false" data-virtual-scroll="false">
+                            <option value="北京">北京</option>
+                            <option value="天津">天津</option>
+                            <option value="河北">河北</option>
+                            <option value="山西">山西</option>
+                            <option value="内蒙古">内蒙古</option>
+                            <option value="辽宁">辽宁</option>
+                            <option value="吉林">吉林</option>
+                            <option value="黑龙江">黑龙江</option>
+                            <option value="上海">上海</option>
+                            <option value="江苏">江苏</option>
+                            <option value="浙江">浙江</option>
+                            <option value="安徽">安徽</option>
+                            <option value="福建">福建</option>
+                            <option value="江西">江西</option>
+                            <option value="山东">山东</option>
+                            <option value="河南">河南</option>
+                            <option value="湖北">湖北</option>
+                            <option value="湖南">湖南</option>
+                            <option value="广东">广东</option>
+                            <option value="广西">广西</option>
+                            <option value="海南">海南</option>
+                            <option value="重庆">重庆</option>
+                            <option value="四川">四川</option>
+                            <option value="贵州">贵州</option>
+                            <option value="云南">云南</option>
+                            <option value="西藏">西藏</option>
+                            <option value="陕西">陕西</option>
+                            <option value="甘肃">甘肃</option>
+                            <option value="青海">青海</option>
+                            <option value="宁夏">宁夏</option>
+                            <option value="新疆">新疆</option>
+                            <option value="台湾">台湾</option>
+                            <option value="香港">香港</option>
+                            <option value="澳门">澳门</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group col-md-2">
+                    <button class="btn btn-outline-secondary text-dark btn-hover-white" type="button" id="button-addon2">搜索</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="three_six_modal_trigger" style="width:30%" data-toggle="modal">
+            <!--<div id="need_badge2" style="padding: 18px 15px 17px 15px" class="noselect">-->
+            <div id="major_page_badge" style="padding: 18px 15px 17px 15px" class="noselect">
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub2-badge-uncheck">物  理</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub2-badge-uncheck">化  学</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub2-badge-uncheck">生  物</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub2-badge-uncheck">政  治</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub2-badge-uncheck">历  史</span>
+                <span style="color: #aaaaaa;" class="badge badge-pill badge-secondary sub2-badge-uncheck">地  理</span>
+                <br/>
+                <small>选择科目然后点击下面列表查看详细信息</small>
+            </div>
+        </div>
+
+        <div style="width: 100%">
+            <label>
+                <strong>选择专业</strong>
+            </label>
+            <div id="searchUniSubjectCheckedList"  style="margin-left: 15px;display:inline-block"></div>
+            <span id="searchUniSubjectModalBtn" data-toggle="modal" data-target="#searchUniSubjectModal" style="cursor: pointer;display: inline-block;color: blue;text-decoration: underline;font-size: 14px">
+                <span name="searchUniSubject_subjectbtn" id="searchUniSubject_subjectbtn">添加<img src="../images/add_icon1.png" style="width: 16px;height: 16px"/></span>
+            </span>
+        </div>
+    </div>
+
+    <div style="padding-top: 150px;margin-left: 6%;margin-right: 6%;margin-bottom:25px">
+
+        <table class="table table-hover table-box" style="background-color: whitesmoke;margin-bottom:0">
+            <thead style="background-color: #827f7b;">
+            <tr>
+                <th scope="col" style="color: #ffffff;">专业名</th>
+                <th scope="col" style="color: #ffffff;">符合</th>
+                <th scope="col" style="color: #ffffff;">不符合</th>
+            </tr>
+            </thead>
+            <tbody id="secondinfo">
+
+            </tbody>
+        </table>
+        <img id="notr2" src="../img/three_in_six/section2-ques.jpg" style="width: 100%"/>
+        <div class="row" style="margin-top:30px">
+
+            <div>
+                <div id="section1-pagin2" class="page-container noselect" style="display: inline-block;margin-top:3px">
+
+                </div>
+            </div>
+            <div>
+                <div class="ml-4" style="display:inline-block">
+                    <button class="btn btn-primary page-option-btn" id="btn_first_page" style="display:none">首页</button>
+                    <button class="btn btn-primary page-option-btn" id="btn_pre_page" style="display:none">上一页</button>
+                    <button class="btn btn-primary page-option-btn" id="btn_next_page" style="display:none">下一页</button>
+                    <button class="btn btn-primary page-option-btn" id="btn_last_page" style="display:none">末页</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="secondinfo-sec" class="threein6-sections" style="display: none">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1">
+                <a href="#threein62" class="btn btn-dark mt-2" role="button" aria-pressed="true" style="position: fixed">返回</a>
+            </div>
+            <div class="col-md-10">
+
+                <table class="table table-hover" style="margin-top: 0;width: 88%;background-color: whitesmoke;position: fixed">
+                    <thead>
+                    <tr style="background-color: #616161;">
+                        <th scope="col" style="color: #ffffff;width: 10rem">大学名字</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">地区</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">专本</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">专业类名</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">2选1</th>
+                        <th scope="col" style="color: #ffffff;padding-left:-3rem;margin-left: -3rem;width:96px ">4选2</th>
+                        <th scope="col" style="color: #ffffff;width:460px">所含专业</th>
+                        <th scope="col" style="color: #ffffff;width: 5rem">分数线</th>
+                        <th scope="col" style="color:#ffffff;width:3.5rem">方向</th>
+                    </tr>
+                    </thead>
+                </table>
+
+                <table class="table" style="margin-top: 0;margin-bottom: 0px;">
+                    <thead style="border-bottom-color: transparent !important;background-color: #616161;visibility: hidden">
+                    <tr style="background-color: #616161;">
+                        <th scope="col" style="color: #ffffff;width: 10rem">大学名字</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">地区</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">专本</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">专业类名</th>
+                        <th scope="col" style="color: #ffffff;width: 6rem">2选1</th>
+                        <th scope="col" style="color: #ffffff;padding-left:-3rem;margin-left: -3rem;width:96px ">4选2</th>
+                        <th scope="col" style="color: #ffffff;width:460px">所含专业</th>
+                        <th scope="col" style="color: #ffffff;width: 5rem">分数线</th>
+                        <th scope="col" style="color:#ffffff;width:3.5rem">方向</th>
+                    </tr>
+                    </thead>
+                    <tbody id="section3table" style="border-top-color: transparent !important;">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+<!--End of test threein6-section-->
+
+<!-- 标准体系专业选择模态框（Modal） -->
+<div class="modal fade bs-example-modal-lg" id="searchUniSubjectModal" tabindex="-1" role="dialog"
+     aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title"><span id="searchUniSubjectinitSearchUniSubjectSelectLabel">选择专业:</span></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" style="padding:10px 0 0 10px;margin:0;width: 100%;min-height:45px;background-color:#f5f5f5;border-bottom:solid #CFCFCF 1px;">
+                <div id="searchUniSubject_checkedlist" style="width: 100%;color:#5A5A55;">
+                    <p id="searchUniSubject_checkedlistStart" style="display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px">已选专业：</p>
+
+                    <p id="searchUniSubject_checkedlistEnd" style="display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px"></p>
+                </div>
+            </div>
+            <div class="modal-body" style="width: 100%;padding-top:0;margin-top:0;">
+                <div class="row" id="searchUniSubject_subjectList">
+                    <div>
+                        <ul class="nav nav-tabs" id="searchUniSubjectTabLinkArea"  role="tablist">
+                            <li><a class="nav-link active" href="#searchUniSubjectTab_01" id="searchUniSubjectTabLink_01" data-toggle="tab">哲学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_02" id="searchUniSubjectTabLink_02" data-toggle="tab">经济学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_03" id="searchUniSubjectTabLink_03" data-toggle="tab">法学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_04" id="searchUniSubjectTabLink_04" data-toggle="tab">教育学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_05" id="searchUniSubjectTabLink_05" data-toggle="tab">文学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_06" id="searchUniSubjectTabLink_06" data-toggle="tab">历史学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_07" id="searchUniSubjectTabLink_07" data-toggle="tab">理学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_08" id="searchUniSubjectTabLink_08" data-toggle="tab">工学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_09" id="searchUniSubjectTabLink_09" data-toggle="tab">农学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_10" id="searchUniSubjectTabLink_10" data-toggle="tab">医学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_12" id="searchUniSubjectTabLink_12" data-toggle="tab">管理学</a></li>
+                            <li><a class="nav-link" href="#searchUniSubjectTab_13" id="searchUniSubjectTabLink_13" data-toggle="tab">艺术学</a></li>
+
+                        </ul>
+                        <div class="tab-content" id="searchUniSubject_tab_content" style="padding-top: 20px;margin-left:15px;min-height:100px;">
+                            <div id="searchUniSubjectTab_01" class="container tab-pane active">
+                            </div>
+                            <div id="searchUniSubjectTab_02" class="container tab-pane fade">
+                            </div>
+                            <div id="searchUniSubjectTab_03" class="container tab-pane fade">
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tabs -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="searchUniSubject_unsave_sub">返回</button>
+                <button type="button" class="btn btn-primary" id="searchUniSubject_save_sub">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/pagination_ori.js"></script>
+<script src="../js/progress.min.js"></script>
+<script src="../js/common/popper.min.js"></script>
+<script src="../js/common/bootstrap.min.js"></script>
+<script src="../js/sammy.min.js"></script>
+<!--从 ο(=•ω＜=)ρ⌒☆ 美妍哪里移植来的js.-->
+<script src="../js/common/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/views/manageStudent.js" th:inline="javascript"></script>
+<script type="text/javascript" src="../js/utils/district.js"></script>
+<script type="text/javascript" src="../data/high.js"></script>
+<script type="text/javascript" src="../js/three_six_script.js"></script>
+<script type="text/javascript" src="../data/badge_filter_gen.js"></script>
+<script type="text/javascript" src="../data/badge_filter_ln.js"></script>
+<script type="text/javascript" src="../data/major3.js"></script>
+
+<script type="text/javascript" src="../js/utils/bootoast.js"></script>
+<script type="text/javascript" src="../js/subject.js"></script>
+<script type="text/javascript" src="../js/lexue/jquery.transform-0.9.3.min_.js"></script>
+<script type="text/javascript" src="../js/lexue/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="../js/lexue/jquery.RotateImageMenu.js"></script>
+<script type="text/javascript" src="../js/utils/bootstrap-select/js/bootstrap-select.js"></script>
+<script src="../js/init_test_card.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    function auto_hide(){
+        $("#badge-alter").fadeOut("slow");
+    }
+    function winload(){
+        var ld = document.getElementById("ld");
+        var bi = document.getElementById("bodyid");
+        ld.style.display="none";
+        bi.style.overflow="";
+        // f8=true;
+        //从网上找的代码，f8=true这一行意义不明，貌似也没有用实际用途，先删掉。
+    };
+    function easy_notify(message,timeout){
+        $("#for_new").empty();
+        $("#badge-alter").fadeOut("fast");
+        $("#for_new").html(message);
+        $("#badge-alter").fadeIn("fast");
+        setTimeout("auto_hide()",timeout);
+    }
+    //这里需要一个根据路由迭代的初始化方法,如果有时间我会继续完善这个前端小框架
+    //新增:由于即将离职恐怕无法完成这个小框架
+
+
+    var current_page="index";
+    var needauth=[];
+    //此处大量使用全局变量是不安全，不科学，不合理，也不优雅的写法。只是2018年前半年改版期间处于时间严重不足的情况下，为了最快赶完工作的妥协。建议以后改成传参调用，如果接手的人员看得懂且有时间的话。
+    var JI_progress = 0.015625;
+    //step by 0.015625   0.015625是JI测试页面下最合适的进度条步长
+    var PT_progress = 0.0305;
+    //step by 0.0277       0.0305是JI测试页面下最合适的进度条步长
+    var PT_answer="";
+    var minmax_status=0;
+    var section_school_search_status=0;
+    var section1_school_search_result=[];
+    var after_search=[];
+    var after_search_cache=[];
+
+    var section1_badge_count = 0;
+    var section2_badge_count = 0;
+    var section1_badge=[];
+    var section2_badge=[];
+    // var section2_mj_sel=[]
+
+    mid_asd = []
+    mid_asd_cache=[]
+    mid_json=[]
+
+    section1_badge[0]=0;
+    section1_badge[1]=0;
+    section1_badge[2]=0;
+    section1_badge[3]=0;
+    section1_badge[4]=0;
+    section1_badge[5]=0;
+    section2_badge[0]=0;
+    section2_badge[1]=0;
+    section2_badge[2]=0;
+    section2_badge[3]=0;
+    section2_badge[4]=0;
+    section2_badge[5]=0;
+    var current_badge="000000";
+
+    var has_search_2=0
+
+    section2_badge[0]=0;
+    section2_badge[1]=0;
+    section2_badge[2]=0;
+    section2_badge[3]=0;
+    section2_badge[4]=0;
+    section2_badge[5]=0;
+    var current_badge2="000000";
+
+    var second_info_major=""
+
+    var test_user=["NaX"]
+
+    var what_kind_of_stu={
+
+    }
+    var sub_content=["物理","化学","生物","思想政治","历史","地理"]
+
+    var dest_page="";
+
+    var route={
+        "home":"#threein6-section",
+        "threein61":"#threein6-section-1",
+        "threein62":"#threein6-section-2",
+        "secondinfo":"#secondinfo-sec"
+    };
+
+
+    var app = $.sammy(function () {
+        this.get('/threesixpage',function () {
+            window.location.href="#home";
+        });
+
+        this.get('#home',function () {
+            auth_and_to_page("home");
+        });
+        this.get('#threein61',function () {
+            auth_and_to_page("threein61")
+        });
+        this.get('#threein62',function () {
+            auth_and_to_page("threein62");
+
+        });
+
+        this.get('#secondinfo',function () {
+            auth_and_to_page("secondinfo")
+
+        });
+    });
+    $("#check_submit_div").hide();
+
+
+    function auth_and_to_page(param) {
+        $(route[current_page]).css('display','none');
+        $(route[param]).css('display','');
+        current_page=param;
+        //这里这个dest_page=""暂时是多余的
+        dest_page="";
+        window.scrollTo(0,0);
+    }
+    //End of auth_and_to_page
+
+    //dynamic_adjust_banner_height
+    function dynamic_adjust_banner_height(){
+        var h=window.innerHeight;
+        var h_box = $('#parallax-banner-container').height();
+        if (h>700){
+            $('#parallax-banner-container').height(h_box+40);
+        }
+    }
+
+    function convertMajorName(majors){
+        var resultStr = ""
+        for(var i in majors){
+            // alert(majors)
+            if(regularNameDictionary[majors[i]].length!=0){
+                // console.log(regularNameDictionary[majors[i]])
+                var allMajor = regularList[regularNameDictionary[majors[i]]]
+                for(var j in allMajor){
+                    var firstMajor = allMajor[j]
+                    if(allMajor[j].length>4){
+                        resultStr+=regularDictionary[firstMajor]+","
+                    }else if(allMajor[j].length>2){
+                        var secondMajors = regularList[firstMajor]
+                        for(var k in secondMajors){
+                            var thirdMajor = secondMajors[k]
+                            resultStr+=regularDictionary[thirdMajor]+","
+                        }
+                    }else {
+                        var secondMajors = regularList[firstMajor]
+                        for(var k in secondMajors){
+                            var thirdMajors = secondMajors[k]
+                            for(var l in thirdMajors){
+                                resultStr+=thirdMajors[l]+","
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        // alert(resultStr)
+        return resultStr.substr(0,resultStr.length-1)
+    }
+
+    function update_section1_by_badge() {
+        var now_filter="";
+        now_filter = now_filter+section1_badge[1]+section1_badge[2]+section1_badge[3]+section1_badge[5]
+        var which_2in1=""
+        if(section1_badge[0]==1){
+            which_2in1="物理"
+        }else{
+            which_2in1="历史"
+        }
+        for (i=0;i<after_search.length;i++){
+            if(after_search[i].split("</td><td>")[3].indexOf(which_2in1)==-1||$.inArray(after_search[i].split("</td><td>")[4],badge_filter_ln[now_filter])==-1){
+                if (now_filter!='0000'){
+                    after_search_cache.push(after_search[i].replace('class="append_search"','class="append_search not_match"'))
+                }else{
+                    after_search_cache.push(after_search[i]);
+                }
+            }else{
+                after_search_cache.push(after_search[i]);
+            }
+        }
+
+        $("#section1table").empty();
+        for (ini_i=0;ini_i<after_search_cache.length;ini_i++){
+            $("#section1table").append(after_search_cache[ini_i])
+        }
+
+        after_search_cache=[];
+    }
+    function update_section2_by_badge() {
+        var now_filter="";
+        now_filter = now_filter+section2_badge[1]+section2_badge[2]+section2_badge[3]+section2_badge[5]
+        var which_2in1=""
+        if(section2_badge[0]==1){
+            which_2in1="物理"
+        }else{
+            which_2in1="历史"
+        }
+
+        $("#section3table").empty()
+
+        var ok_percentage = [];
+        for(i=0;i<mid_json.length;i++){
+            var ok_count=0;
+            for(j=1;j<mid_json[i].length;j++){
+                // after_search[i].split("</td><td>")[3].indexOf(which_2in1)==-1||$.inArray(after_search[i].split("</td><td>")[4],badge_filter_ln[now_filter])==-1
+                if( mid_json[i][j].demand.indexOf(which_2in1)!=-1&&$.inArray(mid_json[i][j].opt_demand,badge_filter_ln[now_filter])!=-1 ){
+                    // alert(mid_json[i][j].demand.indexOf(which_2in1)!=-1)
+                    // alert($.inArray(mid_json[i][j].opt_demand,badge_filter_ln[now_filter])!=-1)
+                    ok_count=ok_count+1;
+                }
+            }
+            ok_percentage[i] =((ok_count/(j-1))*100).toFixed(2);
+            str_ok_score = "#ok"+i;
+            str_nok_score = "#nok"+i;
+            $(str_ok_score).html(ok_percentage[i]+"%")
+            $(str_nok_score).html((100-ok_percentage[i]).toFixed(2)+"%")
+        }
+    }
+
+    function initSearchUniSubjectSelect() {
+        $("#searchUniSubjectTabLinkArea").html("<li><a class=\"nav-link active\" href=\"#searchUniSubjectTab_01\" id=\"searchUniSubjectTabLink_01\" data-toggle=\"tab\">哲学</a></li>" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_02\" id=\"searchUniSubjectTabLink_02\" data-toggle=\"tab\">经济学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_03\" id=\"searchUniSubjectTabLink_03\" data-toggle=\"tab\">法学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_04\" id=\"searchUniSubjectTabLink_04\" data-toggle=\"tab\">教育学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_05\" id=\"searchUniSubjectTabLink_05\" data-toggle=\"tab\">文学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_06\" id=\"searchUniSubjectTabLink_06\" data-toggle=\"tab\">历史学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_07\" id=\"searchUniSubjectTabLink_07\" data-toggle=\"tab\">理学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_08\" id=\"searchUniSubjectTabLink_08\" data-toggle=\"tab\">工学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_09\" id=\"searchUniSubjectTabLink_09\" data-toggle=\"tab\">农学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_10\" id=\"searchUniSubjectTabLink_10\" data-toggle=\"tab\">医学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_12\" id=\"searchUniSubjectTabLink_12\" data-toggle=\"tab\">管理学</a></li>\n" +
+            "                                <li><a class=\"nav-link\" href=\"#searchUniSubjectTab_13\" id=\"searchUniSubjectTabLink_13\" data-toggle=\"tab\">艺术学</a></li>")
+        var html = "";
+        for (var i = 0; i < regularList.regular.length; i++) {
+            if (regularList.regular[i] == "01") {
+                html += "<div class='tab-pane active' id='searchUniSubjectTab_"
+            } else {
+                html += "<div class='tab-pane' id='searchUniSubjectTab_"
+            }
+            html += regularList.regular[i]
+            html += "'>"
+
+            html+="<div class='media'> " +
+                "<div class='media-left' style='font-weight: 700;padding: 0px'>"
+            html +=     "<div class='media-heading' style='width: 50px;height:20px;cursor: pointer;margin-right: 5px'>"
+            html +=         "<p class='checklable' id='searchUniSubject_"+regularList.regular[i]+"' style='padding:4px 4px 4px 4px;display:inline-block;'>" + subDictionary[regularList.regular[i]] + "</p>"
+            html +=     "</div> "
+                +"</div> "
+            var tmpAList = regularList[regularList.regular[i]]
+
+
+            html+= "<div class='media-body'> "
+            for (var j = 0; j < tmpAList.length; j++) {
+                html +=     "<div class='media-heading checkitem' id='searchUniSubject_"+tmpAList[j]+"' style='width: 160px;height:27px;cursor: pointer;display: inline-block;vertical-align: middle;text-align: center'>"
+                html +=         "<p  style='padding:4px 7px 4px 7px;display:inline-block'>" + subDictionary[tmpAList[j]] + "</p>"
+                html +=     "</div> "
+            }
+            html+=  "</div> "
+            html+="</div> "
+
+            html+= "</div>"
+        }
+
+        $("#searchUniSubject_tab_content").html(html)
+
+        var tlist = $('#sortable_subjectlist').children('div.list-group-item')
+        // alert(tlist)
+        var guideStudentList = ""
+        if(tlist.length==0){
+            guideStudentList=","
+        }else {
+            for(var i=0;i<tlist.length;i++){
+                var tid =  tlist[i].getAttribute('id').split("_")[1]
+                // guideStudentList+=tid+","
+                // alert("#searchUniSubject_"+tlist[i].getAttribute('id').split("_")[1].substr(0,2))
+                $("#searchUniSubjectTabLink_"+tlist[i].getAttribute('id').split("_")[1].substr(0,2)).css("color","#65dbf0")
+                $("#searchUniSubject_"+tlist[i].getAttribute('id').split("_")[1].substr(0,4)).css("color","#65dbf0")
+                $("#searchUniSubject_"+tlist[i].getAttribute('id').split("_")[1].substr(0,2)).css("color","#65dbf0")
+            }
+        }
+    }
+    function initSearchUniSubjectSelectAction() {
+        $("#searchUniSubject_subjectbtn").click(function () {
+            initSearchUniSubjectSelect();
+            $(".itemchecked").removeClass("itemchecked")
+            $(".uncheckable").attr("class","media-heading checkitem")
+            var tlist = $('#searchUniSubjectCheckedList').children('div')
+            var guideStudentList = ""
+            if(tlist.length==0){
+                guideStudentList=","
+            }else {
+                for(var i=0;i<tlist.length;i++){
+                    var tid =  tlist[i].getAttribute('id').split("_")[1]
+                    guideStudentList+=tid+","
+                }
+            }
+            guideStudentList = guideStudentList.substr(0,guideStudentList.length-1)
+            $("#searchUniSubject_checkedlist").html("<p id='searchUniSubject_checkedlistStart' style='display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px'>已选专业：</p> <p id='searchUniSubject_checkedlistEnd' style='display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px'></p>")
+
+            if(guideStudentList==null || guideStudentList==""){
+
+            }else {
+                var tlist = guideStudentList.split(",")
+                for (var i = 0; i < tlist.length; i++) {
+                    var type = tlist[i].length == 2 ? 'labelappend' : 'itemappend'
+                    var tid = tlist[i]
+
+                    if (type == 'itemappend') {
+                        $("#searchUniSubject_" + tid).attr("class", "media-heading checkitem itemchecked")
+
+                        $("#searchUniSubject_checkedlistEnd").before("<p class='appendelement itemappend itemchecked' id='itemappend_searchUniSubject_" + tid + "' style='cursor: pointer;display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px'>"
+                            + $("#searchUniSubject_" + tid).text() + "</p>")
+                    } else if (type == 'labelappend') {
+                        $("#searchUniSubject_" + tid).attr("class", "checklable itemchecked")
+                        for (var j = 0; j < regularList[tid].length; j++) {
+
+                        }
+                        $("#searchUniSubject_checkedlistEnd").before("<p class='appendelement labelappend itemchecked' id='labelappend_searchUniSubject_" + tid + "' style='cursor: pointer;display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px'>"
+                            + $("#searchUniSubject_" + tid).text() + "</p>")
+                    }
+                }
+            }
+        })
+        $("#searchUniSubject_tab_content").on("click",".checkitem",function(){
+            var tid = this.id;
+
+            if($("#"+tid).attr("class")=="media-heading checkitem"){
+                $("#"+tid).attr("class","media-heading checkitem itemchecked")
+                $("#searchUniSubject_checkedlistEnd").before("<p class='appendelement itemappend itemchecked' id='itemappend_"+tid+"' style='cursor: pointer;display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px'>"
+                    +$("#"+tid).text()+"</p>")
+            }else if($("#"+tid).attr("class")=="media-heading checkitem itemchecked"){
+                $("#"+tid).attr("class","media-heading checkitem")
+                $("#itemappend_"+tid).remove()
+            }
+        })
+        $("#searchUniSubject_tab_content").on("click",".checklable",function(){
+            var tid = this.id;
+            if($("#"+tid).attr("class")=="checklable"){
+                $("#"+tid).attr("class","checklable itemchecked")
+                var id = tid.split("_")[1]
+                for (var i = 0;i<regularList[id].length;i++){
+
+                }
+                $("#searchUniSubject_checkedlistEnd").before("<p class='appendelement labelappend itemchecked' id='labelappend_"+tid+"' style='cursor: pointer;display:inline-block;padding:4px 7px 4px 7px;display:inline-block;margin-right:5px'>"
+                    +$("#"+tid).text()+"</p>")
+            }else if($("#"+tid).attr("class")=="checklable itemchecked"){
+                $("#"+tid).attr("class","checklable")
+                var id = tid.split("_")[1]
+                for (var i = 0;i<regularList[id].length;i++){
+                    var tempid = regularList[id][i]
+                }
+                $("#labelappend_"+tid).remove()
+            }
+        })
+        $("#searchUniSubject_checkedlist").on("click",".itemappend",function(){
+            var tid = this.id.split("_")[1]+"_"+this.id.split("_")[2];
+            $("#"+tid).attr("class","media-heading checkitem")
+            $("#itemappend_"+tid).remove()
+        })
+        $("#searchUniSubject_checkedlist").on("click",".labelappend",function(){
+            var tid = this.id.split("_")[1]+"_"+this.id.split("_")[2];
+            var id = this.id.split("_")[2];
+            $("#"+tid).attr("class","checklable")
+            for (var i = 0;i<regularList[id].length;i++){
+                var tempid = regularList[id][i]
+            }
+            $("#labelappend_"+tid).remove()
+        })
+    }
+    $('#searchUniSubject_save_sub').click(function() {
+        var selectedlist = []
+        var tlist = $('#searchUniSubject_checkedlist').children('p.appendelement')
+        var html = ""
+        for(var i=0;i<tlist.length;i++){
+            var type = tlist[i].getAttribute('id').split("_")[0]
+            var tid = tlist[i].getAttribute('id').split("_")[2]
+            var name =subDictionary[tid][0]
+            var subname =(name.indexOf("（") == -1)?name:name.substr(0,name.indexOf("（"));
+            html+="<div id=\"searchUniSubjectCheckedList_"+tid+"\" style=\"display: inline-block;border-radius: 0.75rem;padding-left: 0.5rem;padding-right:0.5rem;color: whitesmoke;background-color: #343a40;margin-right: 5px;margin-bottom: 5px\">"+name+"</div>"
+        }
+        $("#searchUniSubjectCheckedList").html(html)
+
+        var modal = $('#searchUniSubjectModal')
+        modal.modal('hide')
+    })
+    //document on ready
+    $(document).ready(function(){
+
+        // $.ajaxajax
+        // hi_JI_status
+        // hi_PT_status
+        // hi_reason
+        auth_and_to_page("home")
+        $("#used4test").click(function(){
+            $.ajax(
+                {
+                    url:"/wxtst",
+                    data:{
+                        "tel":1303,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        alert(ret)
+                    },
+                    error: function () {
+                        alert("eeeeerrrr")
+                    }
+                }
+            )
+
+        })
+
+
+        initSearchUniSubjectSelect();
+        initSearchUniSubjectSelectAction();
+
+
+
+        setTimeout("auto_hide()",5000);
+
+
+        $("#cu_table").on("click",".c_u",function(){
+            $(this).attr("class","c_u_c")
+        })
+        $("#cu_table").on("click",".c_u_c",function(){
+            $(this).attr("class","c_u")
+        })
+
+        $("#is_new_ce_label").click(function () {
+            $(".hide_for_new_ce").hide()
+            $(".show_for_new_ce").show()
+            $('#subjectSortable').hide();
+            $('#subjectSortableShowForNewCe').show();
+            $('#stuPointDivShowForNewCe').show();
+            $('#stuPointDiv').hide();
+            is_new_ce=1
+
+        })
+        $("#not_new_ce_label").click(function () {
+            $(".hide_for_new_ce").show()
+            $(".show_for_new_ce").hide()
+            $('#subjectSortable').hide();
+            $('#subjectSortable').show();
+            $('#subjectSortableShowForNewCe').hide();
+            $('#stuPointDivShowForNewCe').hide();
+            $('#stuPointDiv').show();
+            is_new_ce=0
+        })
+
+
+
+        $("#verify_new_pwd").click(function () {
+
+            $("#pwd_message").fadeOut(500);
+            $("#phone_message").fadeOut(500);
+
+            $.ajax({
+                url:"/User/modPwd",
+                type:"post",
+                data:{
+                    "whichUser":$("#account_which").val(),
+                    "newPwd":$("#new_pwd").val()
+                },
+                success:function (ret) {
+                    if(ret=="success"){
+                        window.location.href=  '/'+"";
+                    }else if(ret=="not_find"){
+                        $("#phone_message").html("此手机号尚未注册，请检查输入是否正确");
+                        $("#phone_message").fadeIn(500);
+                    }else if(ret="short"){
+                        $("#pwd_message").html("密码长度至少六位");
+                        $("#pwd_message").fadeIn(500);
+                    }
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+
+        })
+        $("#verify_new_pwd_v").click(function () {
+
+            $("#phone_message_v").attr("class","form-text text-muted text-error mb-1 preinvisable");
+            $("#old_pwd_message_v").attr("class","form-text text-muted text-error mb-1 preinvisable");
+            $("#new_pwd_message_v").attr("class","form-text text-muted text-error mb-1 preinvisable");
+            $.ajax({
+                url:"/User/modPwd_v",
+                type:"post",
+                data:{
+                    "whichUser":$("#phone_v").val(),
+                    "oldPwd":$("#origin_pwd_v").val(),
+                    "newPwd":$("#new_pwd_v").val(),
+                },
+                success:function (ret) {
+                    if(ret=="success"){
+                        window.location.href=  '/'+"";
+                    }else if(ret=="not_find"){
+                        $("#phone_message_v").removeClass("preinvisable");
+                    }else if(ret=="pwd_err"){
+                        $("#old_pwd_message_v").removeClass("preinvisable");
+                    }else if(ret=="short"){
+                        $("#new_pwd_message_v").removeClass("preinvisable");
+                    }
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+
+        })
+        $("#info_page_mod_pwd").click(function(){
+            $("#mod_pwd_modal").modal('show');
+            $("#account_which").val($("#stuTel").val());
+            $("#account_which").attr("disabled","disabled");
+        })
+        $("#three_six_modal_trigger").click(function(){
+            if(has_search_2==0){
+                easy_notify("请先进行专业搜索",1000)
+            }else{
+                $("#three_six_modal_majorpage").modal("show");
+            }
+        })
+        $("#schoolpage63confirm").click(function(){
+
+            if($('input[name=school631in2]:checked').length==0||$('input[name=school632in4]:checked').length!=2){
+                alert("选科不符合要求，请确保勾选三科")
+            }else{
+                $("#school_page_badge").find("span").eq(0).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#school_page_badge").find("span").eq(1).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#school_page_badge").find("span").eq(2).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#school_page_badge").find("span").eq(3).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#school_page_badge").find("span").eq(4).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#school_page_badge").find("span").eq(5).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                var schoolPageChooseArray=[0,0,0,0,0,0]
+                var ph_or_his = $('input[name=school631in2]:checked').val()
+                schoolPageChooseArray[ph_or_his]=1
+                $('input[name=school632in4]:checked').each(function () {
+                    var ttmp=$(this).val()
+                    schoolPageChooseArray[ttmp]=1
+                    $("#school_page_badge").find("span").eq(ttmp).attr("class","badge badge-pill badge-dark sub-badge text-white sub1-badge-check");
+                })
+                for(i=0;i<schoolPageChooseArray.length;i++){
+                    section1_badge[i]=schoolPageChooseArray[i]
+                }
+                $("#school_page_badge").find("span").eq(ph_or_his).attr("class","badge badge-pill badge-dark sub-badge text-white sub1-badge-check");
+
+                update_section1_by_badge();
+            }
+        })
+        $("#majorpage63confirm").click(function(){
+            //check check check
+            if($('input[name=major631in2]:checked').length==0||$('input[name=major632in4]:checked').length!=2){
+                alert("选科不符合要求，请确保勾选三科")
+            }else{
+                $("#major_page_badge").find("span").eq(0).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#major_page_badge").find("span").eq(1).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#major_page_badge").find("span").eq(2).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#major_page_badge").find("span").eq(3).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#major_page_badge").find("span").eq(4).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                $("#major_page_badge").find("span").eq(5).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+                var majorPageChooseArray=[0,0,0,0,0,0]
+                var ph_or_his = $('input[name=major631in2]:checked').val()
+                majorPageChooseArray[ph_or_his]=1
+                $('input[name=major632in4]:checked').each(function () {
+                    var ttmp=$(this).val()
+                    majorPageChooseArray[ttmp]=1
+                    $("#major_page_badge").find("span").eq(ttmp).attr("class","badge badge-pill badge-dark sub-badge text-white sub1-badge-check");
+                })
+                for(i=0;i<majorPageChooseArray.length;i++){
+                    section2_badge[i]=majorPageChooseArray[i]
+                }
+                $("#major_page_badge").find("span").eq(ph_or_his).attr("class","badge badge-pill badge-dark sub-badge text-white sub1-badge-check");
+                section2_badge_count=3
+                update_section2_by_badge();
+            }
+        })
+        $("#mod_pwd_before_login").click(function(){
+            $("#exampleModal").modal('hide');
+            $("#mod_pwd_modal_v").modal('show');
+        })
+        //trigger
+        $("#alert-close").click(function(){
+            $("#badge-alter").fadeOut("slow");
+        })
+        $("#alert-to-msslm").click(function () {
+            $("#alert-close").trigger("click");
+        })
+        $(".MSSMHS_test_last").click(function(){
+            $("#MSSMHS_submit").slideDown("slow");
+        });
+        $(".MSSLM_test_last").click(function(){
+            $("#MSSLM_submit").slideDown("slow");
+        });
+        $(".MSEA_test_last").click(function(){
+            $("#MSEA_submit").slideDown("slow");
+        });
+        $(".TMS_last_test").click(function(){
+            $("#TMS_submit").slideDown("slow");
+        });
+        $(".fp_last_test").click(function(){
+            $("#16fp_submit").slideDown("slow");
+        });
+        $(".hs_last_test").click(function(){
+            $("#hs_submit").slideDown("slow");
+        });
+
+        $("#show_si_modal").click(function () {
+            $.ajax({
+                url:"/get_si_result",
+                type:"get",
+                success:function (ret) {
+                    var si_rslt=ret.split(',');
+                    $("#si_mark_sort_1").html(si_rslt[0]);
+                    $("#si_mark_sort_2").html(si_rslt[1]);
+                    $("#si_mark_sort_3").html(si_rslt[2]);
+                    $("#si_mark_sort_4").html(si_rslt[3]);
+                    $("#si_mark_sort_5").html(si_rslt[4]);
+                    $("#si_mark_sort_6").html(si_rslt[5]);
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+        });
+        $("#show_mssmhs_modal").click(function () {
+            $.ajax({
+                url:"/getMssmhs",
+                type:"get",
+                success:function (ret) {
+                    res = ret.split(",")
+                    for (i=0;i<11;i++){
+                        if(res[i]<2){
+                            res[i]=res[i]+"不存在心理问题";
+                        }else if(res[i]>=2&&res[i]<3){
+                            res[i]=res[i]+"轻度的心理健康问题";
+                        }else if(res[i]>=3&&res[i]<3.99){
+                            res[i]=res[i]+"中等程度心理健康问题";
+                        }else if(res[i]>3.99&&res[i]<5){
+                            res[i]=res[i]+"较严重心理健康问题";
+                        }else if(res[i]>=5){
+                            res[i]=res[i]+"非常严重的心理健康问题";
+                        }
+                    }
+                    $("#mssmhs-total").html(res[0])
+                    $("#qp").html(res[1])
+                    $("#pz").html(res[2])
+                    $("#dd").html(res[3])
+                    $("#rjgxmg").html(res[4])
+                    $("#yy").html(res[5])
+                    $("#jl").html(res[6])
+                    $("#xxyl").html(res[7])
+                    $("#sybl").html(res[8])
+                    $("#qxbw").html(res[9])
+                    $("#xlbph").html(res[10])
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+        });
+        $("#show_msea_modal").click(function () {
+            $.ajax({
+                url:"/getMsea",
+                type:"get",
+                success:function (ret) {
+                    $("#msea_class").html(ret);
+                    if(ret<=11){
+                        $("#msea_res_1").show()
+                    }else if(ret>=12&&ret<=20){
+                        $("#msea_res_2").show()
+                    }else if(ret>20){
+                        $("#msea_res_3").show()
+                    }
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+        });
+
+        $("#show_tms_modal").click(function () {
+            $.ajax({
+                url:"/getTms",
+                type:"get",
+                success:function (ret) {
+                    ret_arr = ret.split(",")
+                    $("#tms_1").html(ret_arr[0])
+                    $("#tms_2").html(ret_arr[1])
+                    $("#tms_3").html(ret_arr[2])
+                    $("#tms_4").html(ret_arr[3])
+                    $("#tms_5").html(ret_arr[4])
+                    wid1=ret_arr[0]*1.5
+                    wid2=ret_arr[1]*1.5
+                    wid3=ret_arr[2]*1.5
+                    wid4=ret_arr[3]*1.5
+                    wid5=ret_arr[4]*1.5
+                    $("#tmsg_1").css("width",wid1+"rem")
+                    $("#tmsg_2").css("width",wid2+"rem")
+                    $("#tmsg_3").css("width",wid3+"rem")
+                    $("#tmsg_4").css("width",wid4+"rem")
+                    $("#tmsg_5").css("width",wid5+"rem")
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+        });
+
+        $("#show_cct_modal").click(function () {
+            $.ajax({
+                url:"/getCct",
+                type:"get",
+                success:function (ret) {
+                    $("#cct_res").html(ret);
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+        });
+        $("#show_msslm_modal").click(function () {
+            $.ajax({
+                url:"/get_MSSLM_result",
+                type:"get",
+                success:function (ret) {
+                    $("#msslm_class").html(ret);
+                },
+                error: function () {
+                    alert("网络异常")
+                }
+            })
+        });
+
+        // flag-test
+        $("#school_page_search").click(function () {
+            $("#notr").hide();
+            // $(".page-option-btn").show();
+            min_score1 = $("#min1").val()
+            if(min_score1==""){
+                min_score1 = 0;
+            }
+            max_score1 = $("#max1").val()
+            if(max_score1==""){
+                max_score1 = 1000;
+            }
+            $.ajax({
+                url:"/get_query_num_before_search",
+                data:{
+                    "score_min":min_score1,
+                    "score_max":max_score1,
+                    "school_name":$("#section1_school_name").val()
+                },
+                type:"post",
+                dataType:"text",
+                success:function (nums) {
+                    const pageSize = 30
+                    const dataCount = nums
+                    const pager = new Pagination('#section1-pagin', {
+                        pageSize: pageSize,
+                        autoLoad: true,
+                        unit: '条',
+                        toPage: function (index, _pageSize) {
+                            // 设置记录总数，用于生成分页HTML内容
+                            if (index === 0 || _pageSize) this.updateCount(dataCount, _pageSize)
+                            // 根据页码以及分页大小生成html内容
+                            offset=index*30;
+                            min_score1 = $("#min1").val()
+                            if(min_score1==""){
+                                min_score1 = 0;
+                            }
+                            max_score1 = $("#max1").val()
+                            if(max_score1==""){
+                                max_score1 = 750;
+                            }
+                            $.ajax({
+                                url:"/search_school_1",
+                                data:{
+                                    "score_min":min_score1,
+                                    "score_max":max_score1,
+                                    "school_name":$("#section1_school_name").val(),
+                                    "offset":offset
+                                },
+                                type:"post",
+                                dataType:"text",
+                                success:function (ret) {
+                                    // alert(ret)
+                                    $("#section1table").empty();
+                                    section1str=""
+                                    ret_obj=JSON.parse(ret)
+                                    after_search=[];
+                                    for (ini_i=0;ini_i<ret_obj.length;ini_i++){
+                                        app_search_id=index*30+ini_i;
+                                        str_each="<tr id=\"app_search_"+app_search_id+"\" class=\"append_search\"><th scope=\"row\">"+ret_obj[ini_i].schoolname+"</th><td>"+ret_obj[ini_i].province+"</td><td>"+ret_obj[ini_i].level+"</td><td>"+ret_obj[ini_i].fatherMajor+"</td><td>"+ret_obj[ini_i].demand+"</td><td>"+ret_obj[ini_i].opt_demand+"</td><td>"+ret_obj[ini_i].includedMajor+"</td><td class=\"uni_point\">"+ret_obj[ini_i].score+"</td><td>"+ret_obj[ini_i].ext_info1+"</td></tr>"
+                                        after_search.push(str_each)
+                                        section1str=section1str+str_each
+                                    }
+                                    $("#section1table").html(section1str);
+                                    update_section1_by_badge();
+                                },
+                                error: function () {
+                                    easy_notify("查询无结果",5000);
+                                }
+                            })
+                        }
+                    })
+
+                },
+                error: function () {
+                    easy_notify("无网络,请检查您的网络连接",5000);
+                }
+            });
+
+        });
+
+
+
+
+
+
+        $("#button-addon2").click(function () {
+            var tlist = $('#searchUniSubjectCheckedList').children('div')
+            var section2_mj_sel = []
+            for(var i=0;i<tlist.length;i++){
+                section2_mj_sel.push($("#"+tlist[i].getAttribute('id')).text())
+            }
+            var mySelect=[]
+            mySelect = $('#inputState').val();
+            if(mySelect.length==0){
+                easy_notify("必须选择省份",3000)
+            }else if(section2_mj_sel.length==0){
+                easy_notify("必须选择专业",3000)
+            }else{
+                // alert(section2_mj_sel)
+                if( $("#min2").val()==""&&$("#max2").val()==""){
+                    easy_notify("未输入分数区间，将为您搜索全部分数",3000)
+                }
+
+                if($("#min2").val()==""){
+                    var min = 0;
+                }else{
+                    min = $("#min2").val()
+                }
+
+                if($("#max2").val()==""){
+                    var max = 750
+                }else{
+                    max = $("#max2").val()
+                }
+
+                $.ajax({
+                    url:"/search_major_2",
+                    data:{
+                        "score_min":min,
+                        "score_max":max,
+                        "province":mySelect,
+                        "majors":convertMajorName(section2_mj_sel),
+                        "offset":0
+                    },
+                    traditional: true,
+                    type:"post",
+                    dataType:"text",
+                    success:function (ret) {
+                        $("#secondinfo").empty()
+                        $("#notr2").hide();
+                        ret_obj=JSON.parse(ret)
+                        mid_json=[]
+                        mid_json[0]=new Array();
+                        mid_json[0].push(ret_obj[0].fatherMajor);
+                        mid_json[0].push(ret_obj[0]);
+                        for (ini_i=1;ini_i<ret_obj.length;ini_i++){
+                            var curr_key = ret_obj[ini_i].fatherMajor;
+                            for(j=0;j<mid_json.length;j++){
+                                if(mid_json[j][0]==curr_key){
+                                    mid_json[j].push(ret_obj[ini_i])
+                                    break;
+                                }else{
+                                    if (j==mid_json.length-1){
+                                        mid_json.push([curr_key,ret_obj[ini_i]])
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        for(i=0;i<mid_json.length;i++){
+                            mid_html = '<tr class="append_search"><th scope="row">'+mid_json[i][0]+'</th><td id="ok'+i+'"></td><td id="nok'+i+'"></td>'
+                            $("#secondinfo").append(mid_html);
+                        }
+                        has_search_2=1
+                        // console.log(mid_json)
+                        // update_section2_by_badge();
+                    },
+                    error: function () {
+                        easy_notify("查询无结果",5000);
+                    }
+                })
+
+            }
+        })
+
+
+        $("#need_choose_sub").on("click",".sub1-badge-uncheck",function(){
+            if (section1_badge_count>=3){
+                easy_notify("您最多只能选择三科呦",5000)
+            }
+            else {
+                section1_badge_count=section1_badge_count+1
+                $(this).attr("class","badge badge-pill badge-dark sub-badge text-white sub1-badge-check");
+                if ($(this).html()=="物  理"){
+                    section1_badge[0]="1";
+                }
+                if ($(this).html()=="化  学"){
+                    section1_badge[1]="1";
+                }
+                if ($(this).html()=="生  物"){
+                    section1_badge[2]="1";
+                }
+                if ($(this).html()=="政  治"){
+                    section1_badge[3]="1";
+                }
+                if ($(this).html()=="历  史"){
+                    section1_badge[4]="1";
+                }
+                if ($(this).html()=="地  理"){
+                    section1_badge[5]="1";
+                };
+                if(section1_badge_count==1){
+                    $("#subbadge1_text").html("还需要选择两科")
+                }
+                if(section1_badge_count==2){
+                    $("#subbadge1_text").html("还需要选择一科")
+                }
+                if(section1_badge_count==3){
+                    $("#subbadge1_text").html("完成选科！不符合要求的项目将被标为红色")
+                }
+                update_section1_by_badge();
+            }
+        });
+
+        $("#need_choose_sub").on("click",".sub1-badge-check",function(){
+            section1_badge_count = section1_badge_count-1;
+            $(this).attr("class","badge badge-pill badge-secondary sub1-badge-uncheck");
+            if ($(this).html()=="物  理"){
+                section1_badge[0]="0";
+            }
+            if ($(this).html()=="化  学"){
+                section1_badge[1]="0";
+            }
+            if ($(this).html()=="生  物"){
+                section1_badge[2]="0";
+            }
+            if ($(this).html()=="政  治"){
+                section1_badge[3]="0";
+            }
+            if ($(this).html()=="历  史"){
+                section1_badge[4]="0";
+            }
+            if ($(this).html()=="地  理"){
+                section1_badge[5]="0";
+            }
+            if(section1_badge_count==0){
+                $("#subbadge1_text").html("请点击配置您的选科方案")
+            }
+            if(section1_badge_count==1){
+                $("#subbadge1_text").html("还需要选择两科")
+            }
+            if(section1_badge_count==2){
+                $("#subbadge1_text").html("还需要选择一科")
+            }
+            update_section1_by_badge();
+        });
+
+        $("#loginuser").keydown(function(event){
+                var keynum = (event.keyCode ? event.keyCode : event.which);
+                if(keynum == '13'){
+                    $("#login-btn").trigger("click");
+                }
+            }
+        );
+        $("#loginpassword").keydown(
+            function(event){
+                var keynum = (event.keyCode ? event.keyCode : event.which);
+                if(keynum == '13'){
+                    $("#login-btn").trigger("click");
+                }
+            }
+        );
+
+        $(".navbar-brand").click(function () {
+            if (current_page!="index"){
+                window.location.href=""+'#index';
+            }
+        });
+
+        $("#secondinfo").on("click",".append_search",function(){
+            if(section2_badge_count<3){
+                easy_notify("请先选满3科",4000)
+            }
+            if(section2_badge_count==3){
+                $("#section3table").empty()
+                second_info_major = $(this).children("th").html()
+
+                var now_filter="";
+                now_filter = now_filter+section2_badge[1]+section2_badge[2]+section2_badge[3]+section2_badge[5]
+                var which_2in1=""
+                if(section2_badge[0]==1){
+                    which_2in1="物理"
+                }else{
+                    which_2in1="历史"
+                }
+
+                dest_page="secondinfo";
+                window.location.href='#secondinfo';
+                strres1=""
+                strres2=""
+
+                for(i = 0;i<mid_json.length;i++){
+                    if(mid_json[i][0] ==second_info_major ){
+                        for(j=1;j<mid_json[i].length;j++){
+                            //$$$
+                            // mid_json[i][j].demand.indexOf(which_2in1)!=-1&&$.inArray(mid_json[i][j].opt_demand,badge_filter_ln[now_filter])!=-1
+                            if(mid_json[i][j].demand.indexOf(which_2in1)!=-1&&$.inArray(mid_json[i][j].opt_demand,badge_filter_ln[now_filter])!=-1){
+                                // str_each="<tr id=\"app_search_"+app_search_id+"\" class=\"append_search\"><th scope=\"row\">"+ret_obj[ini_i].schoolname+"</th><td>"+ret_obj[ini_i].province+"</td><td>"+ret_obj[ini_i].level+"</td><td>"+ret_obj[ini_i].fatherMajor+"</td><td>"+ret_obj[ini_i].demand+"</td><td>"+ret_obj[ini_i].includedMajor+"</td><td class=\"uni_point\">"+ret_obj[ini_i].score+"</td></tr>"
+                                strres1="<tr class=\"append_search\"><th scope=\"row\">"+mid_json[i][j].schoolname+"</th><td>"+mid_json[i][j].province+"</td><td>"+mid_json[i][j].level+"</td><td>"+mid_json[i][j].fatherMajor+"</td><td>"+mid_json[i][j].demand+"</td><td>"+mid_json[i][j].opt_demand+"</td><td>"+mid_json[i][j].includedMajor+"</td><td class=\"uni_point\">"+mid_json[i][j].score+"</td><td>"+mid_json[i][j].ext_info1+"</td></tr>"
+                                $("#section3table").append(strres1)
+                            }else{
+                                strres2="<tr class=\"append_search not_match\"><th scope=\"row\">"+mid_json[i][j].schoolname+"</th><td>"+mid_json[i][j].province+"</td><td>"+mid_json[i][j].level+"</td><td>"+mid_json[i][j].fatherMajor+"</td><td>"+mid_json[i][j].demand+"</td><td>"+mid_json[i][j].opt_demand+"</td><td>"+mid_json[i][j].includedMajor+"</td><td class=\"uni_point\">"+mid_json[i][j].score+"</td><td>"+mid_json[i][j].ext_info1+"</td></tr>"
+                                $("#section3table").append(strres2)
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        });
+
+        $("#a-index").click(function () {
+            if (current_page!="index"){
+                window.location.href='#index';
+            }
+        });
+
+
+        $("#loginModalDiv").click(function () {
+            return false;
+        });
+
+        $("#exampleModal").click(function () {
+            dest_page="";
+            window.location.href=""+'#index';
+        });
+
+        $("#times_close").click(function () {
+            dest_page="";
+            window.location.href=""+'#index';
+            $('#exampleModal').modal('hide')
+        });
+        $("#a-user-info").click(function () {
+            dest_page="user-info";
+            window.location.href='#user-info';
+        });
+        $("#my_sch_btn").click(function () {
+            dest_page="my-sch";
+            window.location.href=""+'#my-sch';
+        });
+        $("#my_mjr_btn").click(function () {
+            dest_page="my-mjr";
+            window.location.href=""+'#my-mjr';
+        });
+        $("#a-start-test").click(function () {
+            dest_page="start-test";
+            window.location.href=""+'#start-test';
+        });
+        $("#a-start-test-more").click(function () {
+            dest_page="start-test-more";
+            window.location.href=""+'#start-test-more';
+        });
+        $("#threein6").click(function () {
+            dest_page="home";
+            window.location.href='#home';
+        });
+        $("#three_in_six_enter_button1").click(function () {
+            dest_page="threein61";
+            window.location.href='#threein61';
+        });
+        $("#three_in_six_enter_button2").click(function () {
+            dest_page="threein62";
+            window.location.href=""+'#threein62';
+        });
+
+        $("#next-pointer").click(function(){
+            var t = $(window).scrollTop();
+            $('body,html').animate({'scrollTop':t+710},600)
+        });
+
+        dynamic_adjust_banner_height();
+        console.log("用户名:"+[[${stuName}]]);
+        console.log("个人信息是否完整:"+[[${if_info_compelet}]]);
+        console.log("是否能看报告了:"+[[${report_status}]]);
+        console.log("霍兰德测试状态:"+[[${JI_status}]]);
+        console.log("九型测试状态:"+[[${PT_status}]]);
+        console.log("不能看报告的原因:"+[[${reason}]]);
+
+        $("#stuName_dis").html([[${stuName}]]);
+        //parallax
+        var $window = $(window);
+        $('section[data-type="background"]').each(function(){
+            var $bgobj = $(this); // assigning the object
+
+            $(window).scroll(function() {
+                if (current_page=="index"){
+                    var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+                    var coords = '100%'+ yPos + 'px';
+                    $bgobj.css({ backgroundPosition: coords });
+                }
+            });
+        });
+        //dynamic navbar
+        $(window).scroll(function(){
+            if (current_page=="index"){
+                var scroll = $(window).scrollTop();
+                var need_color=document.getElementById('need_color');
+                if (scroll<700) {
+                    $(".navbar").css("background-color","rgba(0,0,0,0.25)")
+
+                }else if (scroll > 700||scroll==700) {
+                    $(".navbar").css("background-color","#212121");
+                }
+            }
+        });
+
+
+        if ([[${stuName}]]==null){
+            $('#session_status').children().html("登录");
+        }else {
+            //display logout
+            $('#session_status').children().html("注销");
+            $('#session_status').css("display","none");
+            $('#logout-btn').css("display","inherit");
+        }
+
+        app.run();
+
+        //click bread to return
+        $("#breadcrumbs-JI-to-start-test").click(function () {
+            $("#personel-test-btn").trigger("click")
+        });
+        $("#breadcrumbs-PT-to-start-test").click(function () {
+            $("#personel-test-btn").trigger("click")
+        });
+
+        $("#min1").keyup(function () {
+            if(isNaN($(this).val())){
+                easy_notify("只能输入数字",5000)
+                // alert("只能输入数字");
+                $(this).val("");
+            }
+        });
+        $("#max1").keyup(function () {
+            if(isNaN($(this).val())){
+                easy_notify("只能输入数字",5000)
+                // alert("只能输入数字");
+                $(this).val("");
+            }
+        });
+        $("#min2").keyup(function () {
+            if(isNaN($(this).val())){
+                easy_notify("只能输入数字",5000)
+                // alert("只能输入数字");
+                $(this).val("");
+            }
+        });
+        $("#max2").keyup(function () {
+            if(isNaN($(this).val())){
+                easy_notify("只能输入数字",5000)
+                // alert("只能输入数字");
+                $(this).val("");
+            }
+        });
+        $(".sort_num").keyup(function () {
+            if (isNaN($(this).val())&&$(this).val().length!=0){
+                easy_notify("只能输入1-6的数字",5000)
+                // alert("只能输入1-6的数字");
+                $(this).val("")
+            }else if(($(this).val()>6||$(this).val()<1)&&$(this).val().length!=0) {
+                easy_notify("只能输入1-6的数字!!!",5000)
+                // alert("只能输入1-6的数字!!!");
+                $(this).val("")
+            }
+
+            for (i=1;i<7;i++){
+                sort_num_sele="#sort_num"+i;
+                if ($(this).attr("id")!="sort_num"+i){
+                    if ($(sort_num_sele).val()==$(this).val()){
+                        $(sort_num_sele).val("")
+                    }
+                }
+            }
+        });
+
+        $(".sort_only").keyup(function () {
+            if (isNaN($(this).val())&&$(this).val().length!=0){
+                easy_notify("只能输入1-6的数字!!!",5000)
+                // alert("只能输入1-6的数字");
+                $(this).val("")
+            }else if(($(this).val()>6||$(this).val()<1)&&$(this).val().length!=0) {
+                easy_notify("只能输入1-6的数字!!!",5000)
+                // alert("只能输入1-6的数字!!!");
+                $(this).val("")
+            }
+
+            for (i=1;i<7;i++){
+                sort_num_sele="#sort_num2"+i;
+                if ($(this).attr("id")!="sort_num2"+i){
+                    if ($(sort_num_sele).val()==$(this).val()){
+                        $(sort_num_sele).val("")
+                    }
+                }
+            }
+        });
+
+
+
+
+        $(".yes_no_select_div").click(function () {
+            JI_progress=JI_progress+0.015625;
+            JI_Count = $("#JI_count").html();
+            JI_Count++;
+            $("#JI_count").html(JI_Count);
+            JI_progress_bar.animate(JI_progress);
+            $(this).find("input").prop("checked",true);
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().show()
+        });
+        $(".yes_no_label").click(function () {
+            JI_progress=JI_progress+0.015625;
+            JI_Count = $("#JI_count").html();
+            JI_Count++;
+            $("#JI_count").html(JI_Count);
+            JI_progress_bar.animate(JI_progress);
+            $(this).prev().prop("checked",true);
+            $(this).parent().parent().parent().hide();
+            $(this).parent().parent().parent().next().show()
+            return false;
+        });
+        $(".need_hide_li").click(function () {
+            PT_progress=PT_progress+0.0277;
+            pcount = $('#P_types_count').html();
+            pcount++;
+            $('#P_types_count').html(pcount);
+            PT_progress_bar.animate(PT_progress);
+            $(this).find("input").prop("checked",true);
+            $(this).parent().hide();
+            $(this).parent().next().show()
+        });
+        $(".si_click_and_to_next").click(function(){
+            $(this).prev().prop("checked",true);
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().show();
+        });
+        $(".sub_choose632in4").click(function () {
+            if($('input[name=school632in4]:checked').length>2||$('input[name=major632in4]:checked').length>2){
+                alert("只能选两科")
+                return false;
+            }
+        });
+
+
+        $("#MSSLM_submit").click(function(){
+            var MSSLM_answer="";
+            for (i=0;i<20;i++){
+                var radioname='MSSLM_'+(i+1);
+                var MSSLM_next=$('input[name='+radioname+']:checked').val();
+                MSSLM_answer=MSSLM_answer+MSSLM_next;
+            }
+
+            $.ajax(
+                {
+                    url:"/MSSLM_answer",
+                    data:{
+                        "MSSLM_answer":MSSLM_answer,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            $("#MSSLM_card_id").css("cursor","not-allowed");
+                            $("#MSSLM_card_id").removeAttr("href");
+                            $("#MSSLM_tittle").removeAttr("style");
+                            $("#MSSLM_is_finished").removeAttr("style");
+                            $("#MSSLM_is_finished").html("作答完毕");
+                            $("#show_msslm_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("成功提交",5000)
+                            // alert("成功提交");
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+        $("#MSSMHS_submit").click(function(){
+            var mssmhs_answer="";
+            for (i=0;i<60;i++){
+                var radioname='MSSMHS_'+(i+1);
+                var next_ele=$('input[name='+radioname+']:checked').val();
+                mssmhs_answer=mssmhs_answer+next_ele;
+            }
+
+            $.ajax(
+                {
+                    url:"/calculateMssmhs",
+                    data:{
+                        "mssmhs_answer":mssmhs_answer,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            $("#mssmhs_card_id").css("cursor","not-allowed");
+                            $("#mssmhs_card_id").removeAttr("href");
+                            $("#mssmhs_tittle").removeAttr("style");
+                            $("#mssmhs_is_finished").removeAttr("style");
+                            $("#mssmhs_is_finished").html("作答完毕");
+                            $("#show_mssmhs_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("成功提交",5000)
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+        $("#MSEA_submit").click(function(){
+            var msea_answer="";
+            for (i=0;i<37;i++){
+                var radioname='MSEA_'+(i+1);
+                var next_ele=$('input[name='+radioname+']:checked').val();
+                msea_answer=msea_answer+next_ele;
+            }
+
+            $.ajax(
+                {
+                    url:"/calculateMsea",
+                    data:{
+                        "msea_answer":msea_answer,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            $("#msea_card_id").css("cursor","not-allowed");
+                            $("#msea_card_id").removeAttr("href");
+                            $("#msea_tittle").removeAttr("style");
+                            $("#msea_is_finished").removeAttr("style");
+                            $("#msea_is_finished").html("作答完毕");
+                            $("#show_msea_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("成功提交",5000)
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+        $("#TMS_submit").click(function(){
+            var tms_answer="";
+            for (i=0;i<27;i++){
+                var radioname='TMS_'+(i+1);
+                var next_ele=$('input[name='+radioname+']:checked').val();
+                tms_answer=tms_answer+next_ele;
+            }
+
+            $.ajax(
+                {
+                    url:"/calculateTms",
+                    data:{
+                        "tms_answer":tms_answer,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            $("#tms_card_id").css("cursor","not-allowed");
+                            $("#tms_card_id").removeAttr("href");
+                            $("#tms_tittle").removeAttr("style");
+                            $("#tms_is_finished").removeAttr("style");
+                            $("#tms_is_finished").html("作答完毕");
+                            $("#show_tms_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("成功提交",5000)
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+        $("#hs_submit").click(function(){
+            var hs_answer="";
+            for (i=0;i<90;i++){
+                var radioname='hs_'+(i+1);
+                var next_ele=$('input[name='+radioname+']:checked').val();
+                hs_answer=hs_answer+next_ele;
+            }
+
+            $.ajax(
+                {
+                    url:"/calculateHs",
+                    data:{
+                        "hs_answer":hs_answer,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            $("#hs_card_id").css("cursor","not-allowed");
+                            $("#hs_card_id").removeAttr("href");
+                            $("#hs_tittle").removeAttr("style");
+                            $("#hs_is_finished").removeAttr("style");
+                            $("#hs_is_finished").html("作答完毕");
+                            $("#show_hs_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("将交由专业的老师分析您的结果",5000)
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+        $("#16fp_submit").click(function(){
+            var pf_answer="";
+            for (i=0;i<187;i++){
+                var radioname='16pf_'+(i+1);
+                var next_ele=$('input[name='+radioname+']:checked').val();
+                pf_answer=pf_answer+next_ele;
+            }
+
+            $.ajax(
+                {
+                    url:"/calculatePf",
+                    data:{
+                        "pf_answer":pf_answer,
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            $("#pf_card_id").css("cursor","not-allowed");
+                            $("#pf_card_id").removeAttr("href");
+                            $("#pf_tittle").removeAttr("style");
+                            $("#pf_is_finished").removeAttr("style");
+                            $("#pf_is_finished").html("作答完毕");
+                            $("#show_pf_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("将交由专业的老师分析您的结果",5000)
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+        $("#add_to_ten_submit").click(function(){
+            $.ajax(
+                {
+                    url:"/calculateCct",
+                    data:{
+                        "cct_answer":$("#add_to_ten").val(),
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function(ret){
+                        if (ret=="ok"){
+                            // 555000
+                            $("#cct_card_id").css("cursor","not-allowed");
+                            $("#cct_card_id").removeAttr("href");
+                            $("#cct_tittle").removeAttr("style");
+                            $("#cct_is_finished").removeAttr("style");
+                            $("#cct_is_finished").html("作答完毕");
+                            $("#show_cct_modal").show();
+                            window.location.href='#start-test-more';
+                            easy_notify("成功提交",5000)
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                }
+            )
+        });
+
+        $(".need_hide_answer_label").click(function () {
+            PT_progress=PT_progress+0.0277;
+            pcount = $('#P_types_count').html();
+            pcount++;
+            $('#P_types_count').html(pcount);
+            PT_progress_bar.animate(PT_progress);
+            $(this).prev().prop("checked",true);
+            $(this).parent().parent().hide();
+            $(this).parent().parent().next().show();
+            return false;
+        });
+
+        // asd
+        $("#divli361").click(function () {
+            $(this).find("input").prop("checked",true);
+            $("#check_submit_div").slideDown();
+        });
+        $("#divli362").click(function () {
+            $(this).find("input").prop("checked",true);
+            $("#check_submit_div").slideDown();
+        });
+        $("#radio361").click(function () {
+            $(this).prev().prop("checked",true);
+            $("#check_submit_div").slideDown();
+            return false;
+        });
+        $("#radio362").click(function () {
+            $(this).prev().prop("checked",true);
+            $("#check_submit_div").slideDown();
+            return false;
+        });
+
+        $("#check_submit_div").click(function () {
+            for (i=0;i<36;i++){
+                var radioname='radio'+(i+1);
+                var e_next=$("input[name="+radioname+"]:checked").val();
+                PT_answer=PT_answer+e_next;
+            }
+            console.log(PT_answer);
+            $.ajax({
+                url:"/calculatePTypes",
+                data:{"enneagram_answer":PT_answer},
+                type:"post",
+                dataType:"text",
+                success:function (ret) {
+                    if (ret=="ok"){
+                        hi_PT_status='做答完毕';
+                        if (hi_PT_status=='做答完毕'&&hi_JI_status=='做答完毕'&&hi_release==1){
+                            hi_report_status=1;
+                        }
+                        $("#Pt-Interest-id").css("cursor","not-allowed");
+                        $("#Pt-Interest-id").removeAttr("href");
+                        $("#pt_tittle").removeAttr("style");
+                        $("#pt_is_finished1").html('(作答完毕)');
+                        $("#pt_is_finished2").removeAttr("style");
+                        $("#pt_is_finished2").html("作答完毕");
+                        $("#show_reason").html($("#show_reason").html().replace('未进行性格分析测试&nbsp;&nbsp','').replace(';',''));
+                        window.location.href='#start-test';
+                        easy_notify("成功提交",5000)
+                    }
+                    if (ret=='cannotChangeAnswer'){
+                        window.location.href='./AlreadyDonePT';
+                    }t
+                },
+                error: function () {
+                    easy_notify("网络异常，保存性格测试结果失败",5000)
+                }
+            });
+        });
+        $("#si_submit").click(function(){
+            var SI_answer="";
+            var sortresult="";
+            for (var i=1;i<7;i++){
+                sortnum="#sort_num2"+i;
+                sortresult = sortresult+$(sortnum).val()+':'
+            }
+            if($(sortnum).val()==""){
+                easy_notify("请将学科排序填写完整",5000)
+                // alert("请将学科排序填写完整")
+            }else{
+                for (i=0;i<54;i++){
+                    var radioname='si_'+(i+1);
+                    var si_next=$('input[name='+radioname+']:checked').val();
+                    SI_answer=SI_answer+si_next;
+                }
+                $.ajax({
+                    url:"/calculateSITest",
+                    data:{
+                        "SI_answer":SI_answer,
+                        "SI_sort":sortresult,
+                        "SI_my_answer":SI_answer+"----"+sortresult
+                    },
+                    type:"post",
+                    dataType:"text",
+                    success:function (ret) {
+                        if (ret=="ok"){
+                            $("#si_card_id").css("cursor","not-allowed");
+                            $("#si_card_id").removeAttr("href");
+                            $("#si_tittle").removeAttr("style");
+                            $("#si_is_finished1").html('(作答完毕)');
+                            $("#si_is_finished2").removeAttr("style");
+                            $("#si_is_finished2").html("作答完毕");
+
+
+                            $("#start-si-test").removeAttr("href");
+                            $("#start-si-test").attr("class","btn btn-secondary text-white");
+                            $("#start-si-test").css("cursor","not-allowed");
+                            $("#start-si-test").html("作答完毕");
+                            $("#show_si_modal").show();
+                            // alert("成功提交");
+                            window.location.href='#start-test';
+                            easy_notify("成功提交",5000)
+                            $.ajax({
+                                url:"/get_si_time",
+                                type:"get",
+                                success:function (ret_inner) {
+                                    tmp_date = new Date(ret_inner).toLocaleString()
+                                    $("#si_update").html(ret_inner!=null?tmp_date.substring(0,tmp_date.length-3):"-");
+                                }
+                            })
+                        }
+                        if (ret=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDonePT';
+                        }
+                    },
+                    error: function () {
+                        alert("网络异常")
+                    }
+                });
+            }
+        });
+        $("#JSubmit").click(function () {
+            var holland_answer = '';
+            var sortresult='';
+            var ifsort=1;
+            for (var i=1;i<7;i++){
+                sortnum="#sort_num"+i;
+                sortresult = sortresult+$(sortnum).val()+':'
+                if ($(sortnum).val()==""){
+                    ifsort=0;
+                }
+            }
+            if (ifsort==0){
+                easy_notify("请将排序结果填写完整",5000)
+                // alert("请将排序结果填写完整")
+            }else {
+                for (var i=0;i<63;i++){
+                    var radioname2='hj'+(i+1);
+                    var h_next=$("input[name="+radioname2+"]:checked").val();
+                    holland_answer=holland_answer + h_next;
+                }
+                console.log("___________________________________")
+                console.log(holland_answer);
+                console.log(sortresult);
+                $.ajax({
+                    url:"/calculateJobInterest",
+                    data:
+                        {
+                            holland_answer:holland_answer,
+                            sortresult:sortresult,
+                            my_answer:holland_answer+"----"+sortresult
+                        },
+                    type:"post",
+                    dataType:"text",
+                    success:function (data) {
+                        //不小心写了这些很蠢的代码可能是刷夜赶进度已经熬夜熬傻了。。。
+                        if (data=='success'){
+                            hi_JI_status='做答完毕';
+                            if (hi_PT_status=='做答完毕'&&hi_JI_status=='做答完毕'&&hi_release==1){
+                                hi_report_status=1;
+                            }
+                            // alert("asd")
+                            $("#Job-Interest-id").css("cursor","not-allowed");
+                            $("#Job-Interest-id").removeAttr("href");
+                            $("#ji_tittle").removeAttr("style");
+                            $("#hol_is_finished1").html('(作答完毕)');
+                            $("#hol_is_finished2").removeAttr("style");
+                            $("#hol_is_finished2").html("作答完毕");
+                            $("#show_reason").html($("#show_reason").html().replace('未进行职业兴趣测试&nbsp;&nbsp','').replace(';',''));
+                            window.location.href='#start-test';
+                            easy_notify("成功提交",5000)
+                            // alert("成功提交");
+                        }
+                        if (data=='cannotChangeAnswer'){
+                            window.location.href='./AlreadyDoneJobInterests';
+                        }
+                    }
+                });
+            }
+
+        });
+
+
+        $("#exampleModal").on('hidden.bs.modal', function (e) {
+            dest_page="";
+            window.location.href='#index';
+        });
+
+        $('#login-btn').click(
+            function () {
+                console.log(dest_page);
+                var data={
+                    "login_username":$("#loginuser").val(),
+                    "login_password":$("#loginpassword").val(),
+                    "next_dest":dest_page
+                };
+                $.ajax({
+                    url:"/User/findUser",
+                    data:data,
+                    type:"post",
+                    success:function (data) {
+                        if (data=='success'){
+                            window.location.href=  '/'+"";
+                        }else if (data=='user_err'){
+                            $("#loginuser").popover('show');
+                        }else if (data=='pwd_err'){
+                            $("#loginpassword").popover('show');
+                        }
+                    }
+                })
+            }
+        );
+        //log out
+        $('#logout-btn').click(function () {
+            $.ajax(
+                {
+                    url:"/User/logout",
+                    type:"post",
+                    success:function (data) {
+                        if (data=='success'){
+                            //    window.location.href=   './'+"";
+                            window.location.href=   '/'+"";
+                        }
+                    }
+                })
+        })
+
+        if ([[${info}]]!=null){
+            alert([[${info}]])
+        }
+
+
+        $('#logout-btn').click(function () {
+            $.ajax(
+                {
+                    url:"User/logout",
+                    type:"post",
+                    success:function (data) {
+                        if (data=='success'){
+                            window.location.href=   '/'+"";
+                        }
+                    }
+                })
+        })
+
+        // initSeletList();
+        // initPages();
+        // initMajors();
+    });
+
+    function initMajors(){
+        var majors=[[${guideSubjectList}]];
+        var majorname=new Array();
+        for(var i=0;i<majors.length;i++){
+            majorname.push(subDictionary[majors[i].substr(0,6)]);
+        }
+        for (var j=0;j<i;j++){
+            var major_table_id = j+1;
+            var app1 = '<tr><td>'+major_table_id+'</td><td>'+majors[j].substr(0,6)+'</td><td>'+majorname[j]+'</td></tr>'
+            $('#major_table').append(app1)
+
+        }
+    };
+
+
+    function initPages(){
+        $.ajax({
+            url:"./findStuId/"+[[${stuId}]],
+            type: "get",
+            success: function (data) {
+                $('#stuNameTitle').text(data.stuName)
+                $('#stuTel').val(data.stuTel)
+                $('#stuName').val(data.stuName)
+                $('#stuEmail').val(data.stuEmail)
+                $('#stuQq').val(data.stuQq)
+                $('#stuSex').val(data.stuSex)
+
+                $('#province').val(data.stuProvinceCode.substr(0,2))
+                $('#city').val(data.stuCityCode.substr(0,4))
+                $('#district').val(data.stuDistrictCode)
+                initSelect("province",data.stuProvinceCode.substr(0,2))
+                initSelect("city",data.stuCityCode.substr(0,4))
+                $('#province').val(data.stuProvinceCode.substr(0,2))
+                $('#city').val(data.stuCityCode.substr(0,4))
+                initSelect("city",data.stuCityCode.substr(0,4))
+                $('#district').val(data.stuDistrictCode)
+                initSelect("city",data.stuCityCode.substr(0,4))
+
+                $('#stuHighschoolCode').val(data.stuHighschoolCode==null?0:data.stuHighschoolCode)
+                $('#stuYear').val(data.stuYear)
+                $('#stuHighschoolClass').val(data.stuHighschoolClass)
+                if(data.stuSubjectCode==0){
+                    $('#stuSubjectCode').removeAttr("disabled")
+                    $('#stuSubjectCodeNewCe').removeAttr("disabled")
+                }
+                $('#stuSubjectCode').val(data.stuSubjectCode)
+                $('#stuSubjectCodeNewCe').val(data.stuSubjectCode)
+                // if(is_new_ce=="1"){
+                //     $('#stuSubjectCodeNewCe').val(data.stuSubjectCode)
+                // }else {
+                //     $('#stuSubjectCode').val(data.stuSubjectCode)
+                // }
+                $('#stuRace').val(data.stuRace)
+
+                $('#stuLanguageCode').val(data.stuLanguageCode)
+                $('#stuHeight').val(data.stuHeight)
+                $('#stuPoint').val(data.stuPoint)
+                $('#stuEyesight').val(data.stuEyesight)
+                $('#stuColourWeakness').val(data.stuColourWeakness)
+                if(data.stuSubjectCode=='1'){
+                    $("#stuPoint4Label").html("政")
+                    $("#stuPoint5Label").html("史")
+                    $("#stuPoint6Label").html("地")
+                }else if(data.stuSubjectCode=='5'){
+                    $("#stuPoint4Label").html("物")
+                    $("#stuPoint5Label").html("化")
+                    $("#stuPoint6Label").html("生")
+                }else {
+                    $("#stuPoint4Label").html("请选科类")
+                    $("#stuPoint5Label").html("请选科类")
+                    $("#stuPoint6Label").html("请选科类")
+                }
+
+                if(data.stuPointDetail!="" && data.stuPointDetail!=null){
+                    $('#stuPoint1').val(data.stuPointDetail.split(",")[0])
+                    $('#stuPoint2').val(data.stuPointDetail.split(",")[1])
+                    $('#stuPoint3').val(data.stuPointDetail.split(",")[2])
+                    $('#stuPoint4').val(data.stuPointDetail.split(",")[3])
+                    $('#stuPoint5').val(data.stuPointDetail.split(",")[4])
+                    $('#stuPoint6').val(data.stuPointDetail.split(",")[5])
+                }
+                if(data.stuPointDetailNewexam!="" && data.stuPointDetailNewexam!=null){
+                    $('#stuPoint1NewCe').val(data.stuPointDetailNewexam.split(",")[0])
+                    $('#stuPoint2NewCe').val(data.stuPointDetailNewexam.split(",")[1])
+                    $('#stuPoint3NewCe').val(data.stuPointDetailNewexam.split(",")[2])
+                    $('#stuPoint4NewCe').val(data.stuPointDetailNewexam.split(",")[3])
+                    $('#stuPoint5NewCe').val(data.stuPointDetailNewexam.split(",")[4])
+                    $('#stuPoint6NewCe').val(data.stuPointDetailNewexam.split(",")[5])
+                    $('#stuPoint7NewCe').val(data.stuPointDetailNewexam.split(",")[6])
+                    $('#stuPoint8NewCe').val(data.stuPointDetailNewexam.split(",")[7])
+                    $('#stuPoint9NewCe').val(data.stuPointDetailNewexam.split(",")[8])
+
+                }
+
+                if(data.stuGoodSubject==null||data.stuGoodSubject.split(",").length==1){
+                    if(data.stuSubjectCode=="1"){
+                        var str = "<li class=\"ui-state-default\">语文</li>"
+                            +"<li class=\"ui-state-default\">数学</li>"
+                            +"<li class=\"ui-state-default\">外语</li>"
+                            +"<li class=\"ui-state-default\">历史</li>"
+                            +"<li class=\"ui-state-default\">政治</li>"
+                            +"<li class=\"ui-state-default\">地理</li>"
+                        $('#subjectSortable').html(str)
+                    }else if(data.stuSubjectCode=="5"){
+                        var str = "<li class=\"ui-state-default\">语文</li>"
+                            +"<li class=\"ui-state-default\">数学</li>"
+                            +"<li class=\"ui-state-default\">外语</li>"
+                            +"<li class=\"ui-state-default\">物理</li>"
+                            +"<li class=\"ui-state-default\">化学</li>"
+                            +"<li class=\"ui-state-default\">生物</li>"
+                        $('#subjectSortable').html(str)
+                    }else{
+                        $('#subjectSortable').html("<li class=\"ui-state-default\">请选择科类</li>")
+                    }
+
+                }else {
+                    var stuGoodSubjectHtml = ""
+                    for (var i=0;i<data.stuGoodSubject.split(",").length;i++){
+                        stuGoodSubjectHtml+="<li class=\"ui-state-default\">"+data.stuGoodSubject.split(",")[i]+"</span></li>"
+                    }
+                    $('#subjectSortable').html(stuGoodSubjectHtml)
+
+                }
+
+                var stuGoodSubjectHtmlNewCe = ""
+                for (var i=0;i<data.stuGoodSubjectNewexam.split(",").length;i++){
+                    stuGoodSubjectHtmlNewCe+="<li class=\"ui-state-default\">"+data.stuGoodSubjectNewexam.split(",")[i]+"</span></li>"
+                }
+                $('#subjectSortableShowForNewCe').html(stuGoodSubjectHtmlNewCe)
+
+                if(data.stuIntentSubject==null||data.stuIntentSubject.split(",").length==1){
+                }else {
+                    if(data.stuIntentSubject.split(",")[0]==0){
+                        $('#sub1_0').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[0]==1){
+                        $('#sub1_1').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[0]==2){
+                        $('#sub1_2').trigger("click")
+                    }
+                    if(data.stuIntentSubject.split(",")[1]==0){
+                        $('#sub2_0').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[1]==1){
+                        $('#sub2_1').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[1]==2){
+                        $('#sub2_2').trigger("click")
+                    }
+                    if(data.stuIntentSubject.split(",")[2]==0){
+                        $('#sub3_0').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[2]==1){
+                        $('#sub3_1').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[2]==2){
+                        $('#sub3_2').trigger("click")
+                    }
+                    if(data.stuIntentSubject.split(",")[3]==0){
+                        $('#sub4_0').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[3]==1){
+                        $('#sub4_1').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[3]==2){
+                        $('#sub4_2').trigger("click")
+                    }
+                    if(data.stuIntentSubject.split(",")[4]==0){
+                        $('#sub5_0').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[4]==1){
+                        $('#sub5_1').trigger("click")
+                    }else if(data.stuIntentSubject.split(",")[4]==2){
+                        $('#sub5_2').trigger("click")
+                    }
+                    $('#field_6').val(data.stuIntentSubject.split(",")[5]);
+                    $( ".check" ).button();
+                }
+
+                $('#pre_college').val(data.stuIntentCollege);
+                $('#pre_city').val(data.stuIntentCity);
+
+                if(data.stuAfterGraduation==null||data.stuAfterGraduation.split(",").length==1){
+                    $('#graduate_1').prop("checked",false);
+                    $('#graduate_2').prop("checked",false);
+                    $('#graduate_3').prop("checked",false);
+                    $( ".check" ).button();
+                }else {
+                    data.stuAfterGraduation.split(",")[0]==0 ? (null) : $('#graduate_1_label').trigger("click");
+                    data.stuAfterGraduation.split(",")[1]==0 ? (null) : $('#graduate_2_label').trigger("click");
+                    data.stuAfterGraduation.split(",")[2]==0 ? (null) : $('#graduate_3_label').trigger("click");
+                    $( ".check" ).button();
+                }
+
+                if(data.stuSpecialType==null||data.stuSpecialType.split(",").length==1){
+                    $('#special_1').prop("checked",false);
+                    $('#special_2').prop("checked",false);
+                    $( ".check" ).button();
+                }else {
+                    data.stuSpecialType.split(",")[0]==0 ? (null) : $('#special_1_label').trigger("click");
+                    data.stuSpecialType.split(",")[1]==0 ? (null) : $('#special_2_label').trigger("click");
+                    $( ".check" ).button();
+                }
+                $('#other_info').val(data.stuOtherInfo);
+
+                $("#self_info_update_date").html(data.stuInfoUpdateTime!=null?new Date(data.stuInfoUpdateTime).toLocaleString():"-")
+
+            },
+            error: function () {
+                // easy_notify("请检查网络连接",5000);
+            }
+        })
+    }
+
+
+    $(function () { $("[data-toggle='tooltip']").tooltip(); });
+    $(function() {
+        $( ".check" ).button();
+        $( ".format" ).buttonset();
+    });
+
+    $('.point_input').change(function (e, previous) {
+        $('#stuPoint').val(parseFloat($('#stuPoint1').val()==''?0:parseFloat($('#stuPoint1').val()))
+            +parseFloat($('#stuPoint2').val()==''?0:parseFloat($('#stuPoint2').val()))
+            +parseFloat($('#stuPoint3').val()==''?0:parseFloat($('#stuPoint3').val()))
+            +parseFloat($('#stuPoint4').val()==''?0:parseFloat($('#stuPoint4').val()))
+            +parseFloat($('#stuPoint5').val()==''?0:parseFloat($('#stuPoint5').val()))
+            +parseFloat($('#stuPoint6').val()==''?0:parseFloat($('#stuPoint6').val()))
+        )
+    });
+
+
+    $(function() {
+        $( "#subjectSortable" ).sortable();
+        $( "#subjectSortable" ).disableSelection();
+        $( "#subjectSortableShowForNewCe" ).sortable();
+        $( "#subjectSortableShowForNewCe" ).disableSelection();
+
+    });
+    /*]]>*/
+</script>
+</body>
+</html>

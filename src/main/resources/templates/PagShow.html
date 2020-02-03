@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="../css/pagination.css"/>
+</head>
+<body>
+
+<div id="demo"></div>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/pagination.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $('#demo').pagination({
+        dataSource: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+    callback: function(data, pagination) {
+        // template method of yourself
+        var html = template(data);
+        dataContainer.html(html);
+    }
+    })
+    /*]]>*/
+</script>
+</body>
+</html>

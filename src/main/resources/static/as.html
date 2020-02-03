@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="css/overwrited.css"/>
+<style type="text/css">
+    
+    
+    .indicator{
+        display: none;
+    }
+</style>
+
+<div class="row">
+    <div class="col s12">
+        <div class="tabs">
+            
+
+                <li style="list-style: none;" class="tab col s3"><a href="#test1">Test 1</a></li>
+            
+
+            
+                <li style="list-style: none;" class="tab col s3"><a href="#test2">Test 2</a></li>
+            
+
+            
+                <li style="list-style: none;" class="tab col s3"><a href="#test3">Test 3</a></li>
+            
+
+            
+                <li style="list-style: none;" class="tab col s3"><a href="#test4">Test 4</a></li>
+            
+
+        </div>
+    </div>
+
+
+
+
+    <div id="test1" class="col s12">Test 1</div>
+    <div id="test2" class="col s12">Test 2</div>
+    <div id="test3" class="col s12">Test 3</div>
+    <div id="test4" class="col s12">Test 4</div>
+
+
+
+
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/inherit.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.tabs').tabs();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<title th:fragment="tittle">励学国际学校</title>
+
+<div th:fragment="indexpage">
+    <!--modal login-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="loginModalDiv" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content_login">
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"  style="padding-top: 36px;padding-bottom: 30px">
+                                <p class="text-center text-white noselect" style="font-size: 30px">Welcome</p>
+                            </div>
+                            <div class="col-md-4">
+                                <!--<img src="img/show/closed_normal_04.png"  class="float-md-right"/>-->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span id="times_close" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-left: 36px;padding-right: 36px">
+                            <!--<label for="recipient-name" class="col-form-label">Recipient:</label>-->
+                            <input type="text" class="form-control login_input" id="loginuser" placeholder="手机" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="手机号错误"/>
+                        </div>
+                        <div class="form-group" style="padding-left: 36px;padding-right: 36px;margin-bottom: 7px">
+                            <!--<label for="message-text" class="col-form-label">Message:</label>-->
+                            <!--<textarea class="form-control" id="message-text"></textarea>-->
+                            <input type="password" class="form-control login_input" id="loginpassword" aria-describedby="password_help" placeholder="密码" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="密码错误"/>
+                            <small id="password_help" class="form-text noselect" style="color: #bababa">默认的账号和密码是您的手机号,忘记请联我们&nbsp;&nbsp;<a id="mod_pwd_before_login" style="color: white;cursor: pointer;text-decoration: underline">修改密码？</a></small>
+                        </div>
+                        <!--<div class="row" style="margin: 0;padding: 0 32px 0 32px">-->
+                        <!--<div class="col-xl-6">-->
+                        <!--<img id="remember_password" src="img/show/icon_unchecked.png" /><span class="login_modal_opt">记住密码</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xl-6">-->
+                        <!--<a href="#" id="forget_pwd" class="float-md-right login_modal_opt" style="margin-top: 1px"><u>忘记密码</u></a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                    </form>
+                    <div class="row" style="margin-top: 30px;margin-bottom: 30px;padding: 0 36px 0 36px">
+                        <div class="col-md-12">
+                            <button type="button" class="btn" id="login-btn" style="width: 100%">登录</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--nav bar-->
+
+    <nav id="need_color" class="navbar navbar-scroll navbar-expand-sm fixed-top bg-fade navbar-dark py-0">
+        <a class="navbar-brand text-white pl-5">
+            <img src="/img/institution/lixue/logo.png" alt="励学国际学校" class="noselect" style="height: 90%;width: 90%;" />
+        </a>
+        <button id="collapse_btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+            <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+                <a id="a-index">
+                    <li id="index" class="nav-item active">
+                        <span id="nav-a-1" class="nav-link noselect">首页</span>
+                    </li>
+                </a>
+                <a id="a-user-info">
+                    <li id="user-info-btn" class="nav-item active" style="cursor: pointer">
+                        <span class="nav-link noselect">个人信息</span>
+                    </li>
+                </a>
+                <a id="a-start-test">
+                    <li id="personel-test-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="start-personel-test-btn" class="nav-link noselect">规划测评</span>
+                    </li>
+                </a>
+                <a id="a-start-test-more">
+                    <li id="personel-test-btn-more" class="nav-item active" style="cursor: pointer">
+                        <span id="start-personel-test-btn-more" class="nav-link noselect">心理测评</span>
+                    </li>
+                </a>
+                <a id="threein6">
+                    <li id="a-my-threeinsix-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="a-my-threeinsix-btn-span" class="nav-link noselect">6选3</span>
+                    </li>
+                </a>
+                <a id="a-my-intense"  data-toggle="dropdown">
+                    <li id="my-intene-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="start-my-intene-btn" class="nav-link noselect">我的报考</span>
+                    </li>
+                </a>
+                <div class="dropdown-menu" style="background-color: rgba(0,0,0,0.5)">
+                    <a id="my_sch_btn" class="dropdown-item text-white noselect">我的学校</a>
+                    <a id="my_mjr_btn" class="dropdown-item text-white noselect">我的专业</a>
+                </div>
+                <a>
+                    <li id="session_status" class="nav-item active" style="cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                        <span class="nav-link noselect session_status_panel">登录</span>
+                    </li>
+                </a>
+                <a>
+                    <li id="logout-btn" class="nav-item active" style="cursor: pointer;display: none">
+                        <span class="nav-link noselect session_status_panel">注销</span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+    <!--End of nav bar-->
+
+    <!--parallax-->
+    <section id="parallax-banner-section" class="module parallax parallax-1" data-type="background" data-speed="3">
+        <div class="parallax-container" id="parallax-banner-container">
+            <div class="container" style="padding: 0 10% 0 10%">
+                <div class="row align-items-center">
+
+                    <div id="big-icon-1" class="big_icon col align-self-start">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_10.png" />
+                        </div>
+                    </div>
+
+                    <div id="big-icon-2" class="big_icon col align-self-center">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_12.png" />
+                        </div>
+                    </div>
+
+                    <div id="big-icon-3" class="big_icon col align-self-end">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_08.png"  />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center" style="margin-top: 20%">
+                    <div class="col align-self-start">
+                        <img class="mx-auto noselect d-block" src="/img/show/icon_15.png" style="height: 64%;width: 64%" />
+                    </div>
+                </div>
+
+                <div class="row align-items-center" style="margin-top: 7%">
+                    <div class="col align-self-start">
+                        <img class="mx-auto noselect d-block" id="next-pointer" src="/img/show/icon_19.png" style="height: 4%;width: 4%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End of parallax-->
+
+
+    <!--<div id="img1">-->
+        <!--<div class="container-fluid" style="background: url('img/institution/lixue/lixue-ad.jpg');background-size: cover;min-height: 20rem">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div id="img1">
+
+        <div class="container" style="margin-top: 120px;margin-bottom: 60px">
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col text-center">
+                    <h1 class="noselect"  style="color: #3e3e3e">励学国际学校</h1>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 70px;margin-bottom: 120px">
+            <div class="row">
+
+                <div class="col" style="padding-left: 0!important;;padding-right: 0!important;">
+                    <p class="noselect" style="font-size: 19px;line-height: 50px;letter-spacing: 1px;color: #3e3e3e">励学国际学校(L.E.E INTERNATIONAL)是一家专注于中小学个性化辅导的教育连锁机构，集团总部设在<span style="font-size: 32px">北京</span>，目前已在70多个城市开设了100多所个性化学习中心。</p>
+                    <p class="noselect" style="font-size: 19px;line-height: 50px;letter-spacing: 1px;color: #3e3e3e">
+                        机构端指导教师电话：15504974678
+                        &nbsp;&nbsp;&nbsp;&nbsp;指导教师电话：18640209427<br/>
+                        机构端指导教师电话：15041761080
+                        &nbsp;&nbsp;&nbsp;&nbsp;盘锦指导老师电话：13372810091
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="img/institution/lixue/teacher1.jpg" alt="First slide" />
+
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/institution/lixue/teacher2.jpg" alt="Second slide" />
+
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/institution/lixue/teacher3.jpg" alt="Third slide" />
+
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/institution/lixue/teacher4.jpg" alt="Fourth slide" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5 style="color: #0D47A1">赵明明</h5>
+                                    <p style="color: #0D47A1">语文教师。从事教育行业八年，在励学国际从事语文教学，拓宽孩子视野，提升孩子自信心，备受孩子和家长信任，用心做教育。</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/institution/lixue/teacher5.jpg" alt="Fifth slide" />
+
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background: url('img/institution/lixue/teacher-right.jpg');background-size: cover;min-height: 20rem">
+                </div>
+
+
+            </div>
+        </div>
+        <!--teacher intro-->
+
+        <!--end of teacher intro-->
+    </div>
+
+
+    <section class="services" id="img2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper first-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/institution/lixue/heart-icon.png" />
+                                </div>
+                                <h2>小初高文化课</h2>
+                            </div>
+                            <div class="back">
+                                <p style="font-size: 1.5rem">小学、初中、高中个性化一对一全科辅导，祝您通往学术之殿堂。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper second-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/institution/lixue/home-icon.png" />
+                                </div>
+                                <h2>托福雅思</h2>
+                            </div>
+                            <div class="back">
+                                <p style="font-size: 1.5rem">雅思、托福、出国留学、在线外教课程。圆海外名校梦想。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper third-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/institution/lixue/revision-icon.png" />
+                                </div>
+                                <h2>艺考 军考</h2>
+                            </div>
+                            <div class="back">
+                                <p style="font-size: 1.5rem">提供艺考生、军体生文化课辅导，以及最新政策解读。铸就不平凡之路。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                        <div class="flipper fourth-service">
+                            <div class="front">
+                                <div class="icon">
+                                    <img src="img/institution/lixue/chat-icon.png" />
+                                </div>
+                                <h2>游学</h2>
+                            </div>
+                            <div class="back">
+                                <p style="font-size: 1.5rem">一对一专家咨询，为您提供最全面的国际游学、国内游学一手资讯。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="img3">
+
+    </div>
+
+    <!--<div id="img3" style="background: url('img/institution/lixue/img3.jpg');background-size: cover;min-height: 20rem">-->
+
+    <!--</div>-->
+    <!--End of current pic-->
+</div>
+<div th:fragment="card_adv">
+    <!--<img class="card-img-top" src="../img/three_in_six/timg.jpg" alt="Card image cap"/>-->
+    <div class="card-body" style="text-align: center">
+        <h3 class="card-title text-white">励学教育大数据引擎</h3>
+        <h3 class="card-title text-white">为您提供"6选3"工具</h3>
+    </div>
+    <div class="card-footer">
+        <!--<button id="three_in_six_enter_button3" type="button" class="btn btn-dark btn-lg btn-block">进入->功能名字3</button>-->
+    </div>
+
+</div>
+<div th:fragment="footer">
+    <section class="module parallax-footer parallax-2" style="padding-bottom: 0">
+        <div class="parallax-container" style="margin: 0 0 0 0">
+            <div id="footer-ad-1" class="container-fluid">
+                <div class="row" style="padding: 50px 0">
+                    <div class="col-12 text-center text-white">
+                        <p style="font-size: 28px" class="noselect">指 导 流 程 及 承 诺</p>
+                    </div>
+                </div>
+            </div>
+            <!--asd-->
+            <!--<div class="row" style="margin-left: 32.8%">-->
+            <div id="footer-ad-2" class="container-fluid">
+                <div class="row align-items-sm-center" style="margin: 0 10%">
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_56.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">学生指导<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_58.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">性格测试<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_61.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">专业选择<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_63.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">学业激励<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_66.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">大数据库<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_68.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">志愿填报<br/></p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-ad-3" class="container-fluid">
+                <div class="row" style="margin: 0 10%">
+                    <div class="col" style="padding: 40px 0">
+                        <div>
+
+                            <p class="text-white noselect" style="font-size: medium;line-height: 30px;margin: 0;letter-spacing:3px">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;励学国际学校(L.E.E INTERNATIONAL)是一家专注于中小学个性化辅导的教育连锁机构，集团总部设在北京，目前已在70多个城市开设了100多所个性化学习中心，秉承个性化教育理念，因材施教，激发学生求知欲，高效快乐学习，全面提高成绩！
+                            </p>
+
+                            <p class="text-white noselect" style="font-size: medium;line-height: 30px;margin: 0;letter-spacing:3px">
+                                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提分热线：0417-2988880
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer-ad-4" class="container-fluid" style="background-color: rgba(0,0,0,0.5);">
+                <div class="text-white" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="row" style="padding-left: 4.2%">
+                        <div class="col-md-12 noselect" style="font-size: 13px">
+                            <i>凡作事，将成功之时，其困难最甚。行百里者半九十，有志当世之务者，不可不戒，不可不勉。 —— 梁启超</i>
+                            <!--<i>据不可信研究表明，90%的毕业了都赚不过卖手抓饼的，别报志愿了，没有用的。——刘纤尘</i>-->
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px">
+                        <div class="col-md-6" style="color: rgba(255,255,255,0.7);padding-left: 5.2%">辽ICP备16007101号-1    Copyrigh©2015-2018  All Rights Reserved.</div>
+                        <div class="col-md-6 right" style="font-size: 14px">本软件已经申请国家专利并获得软件著作权，盗版必究</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="Shortcut Icon" href="img/icon.png" type="image/x-icon" />
+    <title>测评报告</title>
+    <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.min.css" />
+    <style>
+        #start_page{
+            background-image: url("images/pic_011.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+        }
+        #majorlist{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-wrap: wrap;
+            height: 18rem;
+            align-items: center;
+            align-content: center;
+        }
+        .major-btn{
+            color: #e37b7c;
+            font-size: 0.6rem;
+            margin: 0.5rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            background-color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            width: 7rem;
+        }
+
+        .report-title{
+            padding-top: 15%;
+            padding-left: 6%;
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing:11px;
+            color: #ffffff;
+        }
+
+        #parts1{
+            margin-top: 7%;
+            color: #A0AAB4;
+            font-size: 16px;
+            margin-left: 6%;
+        }
+        #parts2{
+            color: #A0AAB4;
+            font-size: 16px;
+            margin-left: 6%;
+        }
+        .intele-intro{
+            font-weight: lighter;
+            font-size: 18px;
+            margin-top: 48px;
+        }
+        .Jobint-intro{
+            font-weight: lighter;
+            font-size: 18px;
+            margin-top: 38px;
+        }
+
+        .marg-li{
+            margin-left: 15px;
+            margin-right: 15px;
+            padding-right: 0;
+        }
+
+        .Pt-info{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+        }
+
+        .cd-popup-trigger{
+            cursor: pointer;
+        }
+        .short-pt-card{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-wrap: wrap;
+            height: 10rem;
+            width: 9rem;
+            border-style: none;
+            /*border: 1px solid white;*/
+            /*cursor: pointer;*/
+        }
+
+        .intele-type-title{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+        }
+
+        .intele-type-intro{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+
+        .long-pt-card{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-wrap: wrap;
+            height: 10rem;
+            width: 18rem;
+            border-style: none;
+            /*cursor: pointer;*/
+        }
+
+        .high-pt-card{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-wrap: wrap;
+            height: 20rem;
+            width: 9rem;
+            /*cursor: pointer;*/
+        }
+
+        .pt-title{
+            color: #ffffff;
+            padding-left: 1rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .high-pt-title{
+            color: #ffffff;
+            padding-left: 1rem;
+            margin-top: 7.5rem;
+            height: 2.5rem;
+        }
+
+        .short-pt-title-img-inline{
+            margin-top: 1rem;
+        }
+        .short-pt-title-img{
+            float: right;
+            margin-left: 2.7rem;
+        }
+
+        .long-pt-title-img{
+            float: right;
+            margin-left: 11.7rem;
+        }
+
+        .high-pt-title-img{
+            float: right;
+            margin-left: 2.7rem;
+            height: 2.5rem;
+        }
+
+        .intele-intro-card-group{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: center;
+        }
+        .hol-intro-card-group{
+            display: -moz-flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-content: center;
+            width: 45rem;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Panel (Banner) -->
+        <section class="panel banner right">
+            <div class="content color0 span-3-75" style="overflow: hidden">
+                <strong style="font-size: 30px;font-weight: bold;color: white;">一、性格分析</strong>
+                <div style="margin-top: 3%;margin-bottom: 3%;width:14%;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #ffffff"></div>
+                <p style="font-size: 16px">性格测试近年来备受各大国际企业推崇，只有在了解自己性格的基础上，选择合适的职业，以适合自己的方式学习和工作，才能发挥最大的效能，本测试量表将性格高度概括并量化，在高还原度的同时可以提供更加简明直观的测试结果，经过测试，您的性格的各维度得分参照下图。</p>
+                <div style="margin-top: 32px;font-size: 23px">
+                    <p>测试结果展示</p>
+                </div>
+                <div>
+                    <div id="enn_chart" style="height: 14.5rem;margin-top: -2.5rem"></div>
+                </div>
+            </div>
+            <div class="image filtered span-1-75" data-position="25% 25%">
+                <!--<img src="images/pic_011.jpg" alt="" />-->
+                <div id="start_page">
+                    <h2 class="report-title">综合测试结果</h2>
+                    <div style="padding-top: 7%;margin-left: 6%;width:25%;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #a0aab4"></div>
+                    <div id="parts1">职业规划测试结果</div>
+                    <div id="parts2">性格分析测试结果</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel (Spotlight) -->
+        <section class="panel spotlight large left" id="first" style="width: 56rem;background-image: url('images/0402-01bg_11.jpg');overflow: hidden">
+            <div>
+                <div style="font-size: 23px;margin-left: 25px;margin-top: 82px">九大类型介绍</div>
+                <div class="Pt-info" style="width: 54rem;margin-top: 2rem;margin-left: 1rem">
+                    <div class="Pt-info" style="width: 45rem;flex-wrap: wrap">
+
+                        <div id="cd-popup-trigger1" class="container cd-popup-trigger" style="background-image: linear-gradient(#9b9bba , #a695b8);opacity: 0.9;height: 10rem;width: 9rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">完美型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief1" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cd-popup-trigger2" class="container cd-popup-trigger" style="background-image: linear-gradient(#507e9e , #5d799c);opacity: 0.9;height: 10rem;width: 9rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">助人型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief2" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="cd-popup-trigger3" class="container cd-popup-trigger" style="background-image: linear-gradient(#9b9bba , #a695b8);opacity: 0.9;height: 10rem;width: 9rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">成就型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief3" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="cd-popup-trigger4" class="container cd-popup-trigger" style="background-image: linear-gradient(#507e9e , #5d799c);opacity: 0.9;height: 10rem;width: 18rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">情绪型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief4" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div id="cd-popup-trigger5" class="long-pt-card cd-popup-trigger" style="background-image: linear-gradient(#84aac8 , #9d9fc5);opacity: 0.9;border-style: none">-->
+                        <div id="cd-popup-trigger5" class="container cd-popup-trigger" style="background-image: linear-gradient(#84aac8 , #9d9fc5);opacity: 0.9;height: 10rem;width: 18rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">智慧型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief5" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem;text-align: center">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="cd-popup-trigger6" class="container cd-popup-trigger" style="background-image: linear-gradient(#507e9e , #5d799c);opacity: 0.9;height: 10rem;width: 9rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">忠诚型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief6" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="cd-popup-trigger7" class="container cd-popup-trigger" style="background-image: linear-gradient(#9c96b9 , #a98fb7);opacity: 0.9;height: 10rem;width: 9rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">活跃型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief7" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cd-popup-trigger8" class="container cd-popup-trigger" style="background-image: linear-gradient(#a795b8 , #b491b7);opacity: 0.9;height: 10rem;width: 9rem;border-style: none">
+                            <div class="row">
+
+                                <div class="col-md-9" style="display: inline-block;">
+                                    <p class="pt-title">领袖型</p>
+                                </div>
+                                <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                    <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-top: 0.6rem">
+                                <div class="col">
+                                    <div id="PT_brief8" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="cd-popup-trigger9" class="container cd-popup-trigger" style="background-image: linear-gradient(#84aac8 , #9d9fc5);opacity: 0.9;height: 20rem;width: 9rem;border-style: none">
+                        <div class="row" style="margin-top:6rem">
+
+                            <div class="col-md-9" style="display: inline-block;">
+                                <p class="pt-title">和平型</p>
+                            </div>
+                            <div class="col-md-3" style="display: inline-block;float: right;margin-right: 0.5rem">
+                                <img class="img-fluid short-pt-title-img-inline" src="images/0402-01-icon_20.png" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div id="PT_brief9" style="color: white;font-size: 16px;padding-left: 1rem;padding-right: 1rem">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="panel spotlight large left" style="background-image: url('images/0402-02bg_04.jpg');overflow: hidden">
+            <div style="font-size: 30px;font-weight: bold;margin-left: 3rem;margin-top: 48px;width: 15rem;color: white">
+                二、八大智能
+                <div style="margin-top: 7%;margin-bottom: 3%;width:31%;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #ffffff"></div>
+                <div class="intele-intro">
+                    八大智能理论即多元智能理论在全球获得了极大的成功，根据该理论，人类的智能是多元化而非单一的，主要是由八项智能组成，包括语言智能、数学逻辑智能、空间智能、身体运动智能、音乐智能、人际智能、自我认知智能、自然认知智能，每个人都拥有不同的智能优势组合。经过测试，您的各维度得分如下。
+                </div>
+            </div>
+            <div style="padding-left: 6rem ;padding-top: 8.4rem;width: 26.5rem">
+                <img src="images/0402_bg2.png" alt=""  />
+            </div>
+            <div class="intele-intro-card-group" style="width: 40rem;">
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        语言表达
+                        <span style="padding-right: 0.75rem"><span id="point1" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指有效的运用口头语言或文字表达自己的思想并理解他人的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        数学逻辑
+                        <span style="padding-right: 0.75rem"><span id="point2" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指有效地计算、测量、推理、归纳、分类，并进行复杂数学运算的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        空间立体
+                        <span style="padding-right: 0.75rem"><span id="point3" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指准确感知视觉空间及周围一切事物的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        身体运动
+                        <span style="padding-right: 0.75rem"><span id="point4" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指善于运用整个身体来表达思想和情感的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        音乐韵律
+                        <span style="padding-right: 0.75rem"><span id="point5" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指人能够敏锐地感知音调、旋律、节奏、音色等的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        人际关系
+                        <span style="padding-right: 0.75rem"><span id="point6" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指能很好地理解别人和与人交往的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        自我认知
+                        <span style="padding-right: 0.75rem"><span id="point7" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        是指自我认识和善于自知之明并据此做出适当行为的能力
+                    </div>
+                </div>
+                <div style="width: 9rem;margin: 0.4rem 0.3rem 0.5rem 0.3rem">
+                    <div class="intele-type-title" style="color: white;font-weight: bold;text-align: center;font-size: 1rem;height: 2.5rem;background: rgba(43,110,173,0.5);text-indent: .25rem">
+                        自然认知
+                        <span style="padding-right: 0.75rem"><span id="point8" style="font-size: 2rem">5</span>分</span>
+                    </div>
+                    <div class="intele-type-intro" style="height: 5.5rem;background: rgba(138,192,204,0.5);font-size: 0.75rem;padding-left:0.6rem;padding-right: 0.6rem;padding-bottom: 0.25rem ">
+                        指善于观察自然界中的各种事物，对物体进行辩论和分类的能力
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel color4-alt">
+            <div class="intro color4" style="padding-top: 47px;font-size: 18px;overflow: hidden">
+                <strong style="font-size: 30px;font-weight: bold;color: white;">三、职业兴趣</strong>
+                <div style="margin-top: 7%;margin-bottom: 3%;width:31%;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #ffffff"></div>
+                <div class="Jobint-intro" style="color: white">
+                    我们在参考了Ennegram、Holland、Howard-Gardner等多种职业测试理论的基础上，自主研发的性格职业测试量表、成功服务于上万师生。该量表科学翔实，视角广，纬度多，拥有国家专利，并且可以提供相关著作参考。是一套拥有独立IP且真正行之有效的职业性格测试法。
+                </div>
+            </div>
+            <div class="span-3-05" style="background-image: url('images/0402-03bg_04.jpg')">
+                <div id="JIcon" style="margin-top: 3.5rem;height: 3rem;background-color: rgba(63,61,103,0.4);padding-top: 0.75rem;font-weight: bold;text-indent: 2rem;color: white;"></div>
+                <div id="hol_chart" style="height: 20rem;margin-top: 2.5rem"></div>
+            </div>
+            <div class="hol-intro-card-group" style="overflow: hidden">
+                <div id="hol1" style="cursor: pointer;width: 14.999rem;height: 50%;background: linear-gradient(-129deg, #f0b8da , #caabdf);">
+                    <center style="margin-top: 3rem;font-size: 1.5rem;color: #ffffff;">
+                        土木工程师
+                    </center>
+                    <div style="margin-top: 2.5rem;font-size: 1.25rem;color: white;margin-left: 1rem">现实型 R</div>
+                    <div style="font-size: 0.8rem;margin-left: 0.5rem;margin-top: 1rem;color: white">具有顺从、坦率、谦虚、自然、坚毅、实际、有礼、害羞、节俭的特征</div>
+                </div>
+                <div id="hol2" style="cursor: pointer;width: 14.999rem;height: 50%;background: linear-gradient(-129deg, #ca9bfe , #cc9ccd);">
+                    <center style="margin-top: 3rem;font-size: 1.5rem;color: #ffffff;">
+                        数学专家
+                    </center>
+                    <div style="margin-top: 2.5rem;font-size: 1.25rem;color: white;margin-left: 1rem">研究型 I</div>
+                    <div style="font-size: 0.8rem;margin-left: 0.5rem;margin-top: 1rem;color: white">具有分析、谨慎、批评、好奇、独立、聪明、内向、调理、谦逊、精确...</div>
+                </div>
+                <div id="hol3" style="cursor: pointer;width: 14.999rem;height: 50%;background: linear-gradient(-129deg, #ff9a00 , #fe67fd);">
+                    <center style="margin-top: 3rem;font-size: 1.5rem;color: #ffffff;">
+                        企业家
+                    </center>
+                    <div style="margin-top: 2.5rem;font-size: 1.25rem;color: white;margin-left: 1rem">管理型 E</div>
+                    <div style="font-size: 0.8rem;margin-left: 0.5rem;margin-top: 1rem;color: white">具有冒险、野心、独断、冲动、乐观、自信、追求享受、精力充沛...</div>
+                </div>
+                <div id="hol4" style="cursor: pointer;width: 14.999rem;height: 50%;background: linear-gradient(-129deg, #cbaadc , #77d3e5);">
+                    <center style="margin-top: 3rem;font-size: 1.5rem;color: #ffffff;">
+                        艺术家
+                    </center>
+                    <div style="margin-top: 2.5rem;font-size: 1.25rem;color: white;margin-left: 1rem">艺术型 A</div>
+                    <div style="font-size: 0.8rem;margin-left: 0.5rem;margin-top: 1rem;color: white">具有复杂、想象、冲动、独立、直觉、无秩序、情绪化、理想化、不顺从...</div>
+                </div>
+                <div id="hol5" style="cursor: pointer;width: 14.999rem;height: 50%;background: linear-gradient(-129deg, #fe9acb , #fe9998);">
+                    <center style="margin-top: 3rem;font-size: 1.5rem;color: #ffffff;">
+                        教师
+                    </center>
+                    <div style="margin-top: 2.5rem;font-size: 1.25rem;color: white;margin-left: 1rem">社会型 S</div>
+                    <div style="font-size: 0.8rem;margin-left: 0.5rem;margin-top: 1rem;color: white">具有合作、友善、慷慨、助人、仁慈、负责、圆滑、善社交、善解人意...</div>
+                </div>
+                <div id="hol6" style="cursor: pointer;width: 14.999rem;height: 50%;background: linear-gradient(-129deg, #cd66ca , #cd6659);">
+                    <center style="margin-top: 3rem;font-size: 1.5rem;color: #ffffff;">
+                        会计
+                    </center>
+                    <div style="margin-top: 2.5rem;font-size: 1.25rem;color: white;margin-left: 1rem">常规型 C</div>
+                    <div style="font-size: 0.8rem;margin-left: 0.5rem;margin-top: 1rem;color: white">具有顺从、谨慎、保守、自控、服从、规律、坚毅、实际稳重、有效率...</div>
+                </div>
+            </div>
+        </section>
+        <section class="panel spotlight large left" style="width: 66.2rem;background-image: url('images/0402-04bg_04.jpg');background-size: cover">
+            <div style="font-size: 30px;margin-left: 48px;margin-right: 48px;margin-top: 48px;color: whitesmoke;overflow: hidden">
+                四、专业推荐
+                <div style="margin-top: 2.7%;margin-bottom: 5%;width:11.2%;border-bottom-style: solid;border-bottom-width: 2px;border-bottom-color: #ffffff"></div>
+                <div id="recmd_text" style="font-size: 18px;color: white;">
+                    <span id="sub_rec"></span>
+                    <br/>融合了您的性格分析结果，八大智能结果、职业规划结果，同时根据您的个人基本情况及相关意向，我们推荐如下专业作为您报考的重点考虑方向。
+                </div>
+                <div style="text-align: center">
+                    <div id="majorlist" class="actions">
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!--<div class="content span-7">-->
+            <!--<h2 class="PT-intro-title">PT-intro-title</h2>-->
+            <!--<p>Mauris et ligula arcu. Proin dapibus convallis accumsan. Lorem maximus hendrerit orci, sit amet elementum massa hendrerit sed. Donec et ullamcorper ligula. Suspendisse amet potenti. Ut pretium libero eleifend euismod sed tristique. Quisque dictum magna risus, id ultricies justo sagittis vitae. Sed id odio tempor, porttitor elit amet, gravida hendrerit fringilla lorem ipsum dolor.</p>-->
+            <!--</div>-->
+            <!--<div class="image filtered tinted" data-position="top left">-->
+            <!--<img src="images/pic02.jpg" alt="" />-->
+            <!--</div>-->
+        </section>
+    </div>
+</div>
+
+<!--<script src="../js/jquery-3.3.1.min.js"></script>-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/PT_info.js"></script>
+<script src="js/echarts.js"></script>
+<script src="js/subject.js"></script>
+<script src="js/tooltipster.bundle.min.js"></script>
+<script src="data/hol_result_data.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    window.alert = function(txt)
+    {
+        var winSize = function(){
+            var xScroll, yScroll, windowWidth, windowHeight, pageWidth, pageHeight;
+            // innerHeight获取的是可视窗口的高度，IE不支持此属性
+            if (window.innerHeight && window.scrollMaxY) {
+                xScroll = document.body.scrollWidth;
+                yScroll = window.innerHeight + window.scrollMaxY;
+            } else if (document.body.scrollHeight > document.body.offsetHeight) { // all but Explorer Mac
+                xScroll = document.body.scrollWidth;
+                yScroll = document.body.scrollHeight;
+            } else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari
+                xScroll = document.body.offsetWidth;
+                yScroll = document.body.offsetHeight;
+            }
+
+            if (self.innerHeight) {    // all except Explorer
+                windowWidth = self.innerWidth;
+                windowHeight = self.innerHeight;
+            } else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+                windowWidth = document.documentElement.clientWidth;
+                windowHeight = document.documentElement.clientHeight;
+            } else if (document.body) { // other Explorers
+                windowWidth = document.body.clientWidth;
+                windowHeight = document.body.clientHeight;
+            }
+
+            // for small pages with total height less then height of the viewport
+            if (yScroll < windowHeight) {
+                pageHeight = windowHeight;
+            } else {
+                pageHeight = yScroll;
+            }
+
+            // for small pages with total width less then width of the viewport
+            if (xScroll < windowWidth) {
+                pageWidth = windowWidth;
+            } else {
+                pageWidth = xScroll;
+            }
+
+            return{
+                'pageWidth':pageWidth,
+                'pageHeight':pageHeight,
+                'windowWidth':windowWidth,
+                'windowHeight':windowHeight
+            }
+        }();
+
+        var shield = document.createElement("DIV");
+        shield.id = "shield";
+        shield.style.position = "absolute";
+        shield.style.left = "0px";
+        shield.style.top = "0px";
+        shield.style.width =  winSize.pageWidth+"px";
+        shield.style.height = document.body.scrollHeight+"px";
+        // shield.style.background = "rgba(51,51,51,0.6)";
+        shield.style.textAlign = "center";
+        shield.style.zIndex = "10000";
+        // shield.style.filter = "alpha(opacity=0)";
+        var alertFram = document.createElement("DIV");
+        alertFram.id="alertFram";
+        // alertFram.style.borderStyle="solid";
+        // alertFram.style.borderWidth='1px';
+        // alertFram.style.borderColor='rgba(121,151,196,0.9)';
+        // alertFram.style.borderRadius=20+"px";
+        alertFram.style.position = "fixed";
+        alertFram.style.left = "15%";
+        alertFram.style.top = (winSize.windowHeight / 2 - 200)+"px";
+        alertFram.style.width =  "70%";
+        alertFram.style.height = "480px";
+        // alertFram.style.background = "#ccc";
+        // alertFram.style.textAlign = "center";
+        // alertFram.style.lineHeight = "150px";
+        alertFram.style.zIndex = "10001";
+        strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+        // strHtml += " <li style=\"background:rgba(121,151,196,0.9);text-align:left;padding-left:10px;font-size:14px;height:25px;line-height:25px;border-bottom:1px solid rgba(121,151,196,0.9);\">[系统提示]</li>\n";
+        strHtml += " <li style=\"background:rgba(80,126,158,0.9);font-size:14px;height:400px;\">"+txt+"</li>\n";
+        strHtml += " <li style=\"background:rgba(80,126,158,0.9);text-align:center;font-weight:bold;height:28px;line-height:28px; border-top:1px solid rgba(80,126,158,0.9);\"><input style=\"background:rgba(80,126,158,0.9);color:rgba(80,126,158,0.9);font-size:14px;height:27px;line-height:27px;\" type=\"button\" value=\"关   闭\" onclick=\"doOk()\" /></li>\n";
+        strHtml += " <li style=\"background:rgba(80,126,158,0.9);font-weight:bold;height:28px;line-height:28px; border-top:1px solid rgba(80,126,158,0.9);\"></li>\n";
+        strHtml += "</ul>\n";
+        alertFram.innerHTML = strHtml;
+        document.body.appendChild(alertFram);
+        document.body.appendChild(shield);
+        var c = 0;
+        this.doAlpha = function(){
+            if (c++ > 20){clearInterval(ad);return 0;}
+            shield.style.filter = "alpha(opacity="+c+");";
+        }
+        var ad = setInterval("doAlpha()",5);
+        this.doOk = function(){
+            alertFram.style.display = "none";
+            shield.style.display = "none";
+        }
+        alertFram.focus();
+        document.body.onselectstart = function(){return false;};
+    };
+
+    var str1='<br/>';
+    var str2='<br/>';
+    var str3='<br/>';
+    var str4='<br/>';
+    var str5='<br/>';
+    var str6='<br/>';
+    var str7='<br/>';
+    var str8='<br/>';
+    var str9='<br/>';
+
+    for (i=3;i<pt[0].length;i++){
+        str1 = str1+pt[0][i]+'<br/>';
+    }
+    for (i=3;i<pt[1].length;i++){
+        str2 = str2+pt[1][i]+'<br/>';
+    }
+    for (i=3;i<pt[2].length;i++){
+        str3 = str3+pt[2][i]+'<br/>';
+    }
+    for (i=3;i<pt[3].length;i++){
+        str4 = str4+pt[3][i]+'<br/>';
+    }
+    for (i=3;i<pt[4].length;i++){
+        str5 = str5+pt[4][i]+'<br/>';
+    }
+    for (i=3;i<pt[5].length;i++){
+        str6 = str6+pt[5][i]+'<br/>';
+    }
+    for (i=3;i<pt[6].length;i++){
+        str7 = str7+pt[6][i]+'<br/>';
+    }
+    for (i=3;i<pt[7].length;i++){
+        str8 = str8+pt[7][i]+'<br/>';
+    }
+    for (i=3;i<pt[8].length;i++){
+        str9 = str9+pt[8][i]+'<br/>';
+    }
+
+    $(document).ready(
+        function(){
+            if([[${stuName}]]=="六选三测试用户"){
+                $("#sub_rec").html('根据您的推荐结果，平台推荐的六选三结果为：<span style="border-style: solid;border-width: 1px;border-color: white;border-radius: 0.5rem;background-color: whitesmoke;color: #2979FF;margin-left: 12px">&nbsp;&nbsp;物理&nbsp;&nbsp;</span><span style="border-style: solid;border-width: 1px;border-color: white;border-radius: 0.5rem;background-color: whitesmoke;color: #2979FF;margin-left: 12px">&nbsp;&nbsp;化学&nbsp;&nbsp;</span><span id="rand_sub_rec" style="border-style: solid;border-width: 1px;border-color: white;border-radius: 0.5rem;background-color: whitesmoke;color: #2979FF;margin-left: 12px">政治</span>')
+            }
+
+            for (brief_no=1;brief_no<10;brief_no++){
+                var briefid='#PT_brief'+brief_no;
+                // $(briefid).html("<center>"+pt[brief_no-1][1]+"</center>"+"<div style='padding-top: 8px'>"+pt[brief_no-1][2]+"</div>");
+                // $(briefid).html("<center>"+pt[brief_no-1][1]+"</center>");
+                $(briefid).html(pt[brief_no-1][1]);
+            }
+
+
+
+            $("#cd-popup-trigger1").click(function () {
+                alert(str1);
+            });
+            $("#cd-popup-trigger2").click(function () {
+                alert(str2);
+            });
+            $("#cd-popup-trigger3").click(function () {
+                alert(str3);
+            });
+            $("#cd-popup-trigger4").click(function () {
+                alert(str4);
+            });
+            $("#cd-popup-trigger5").click(function () {
+                alert(str5);
+            });
+            $("#cd-popup-trigger6").click(function () {
+                alert(str6);
+            });
+            $("#cd-popup-trigger7").click(function () {
+                alert(str7);
+            });
+            $("#cd-popup-trigger8").click(function () {
+                alert(str8);
+            });
+            $("#cd-popup-trigger9").click(function () {
+                alert(str9);
+            });
+
+            $("#hol1").click(function () {
+                alert("<div style='font-size: 1rem;padding:6rem 10rem;'>具有顺从、坦率、谦虚、自然、坚毅、实际、有礼、害羞、稳健、节俭的特征，表现为:<br/>" +
+                    "1、喜爱实用性的职业或情境，避免社会性的职业或情境<br/>" +
+                    "2、用具体实际的能力解决工作及其他方面的问题，较缺乏人际关系方面的能力。<br/>" +
+                    "3、重视具体的事物，如金钱，权力、地位等。<br/></div>")
+            })
+            $("#hol2").click(function () {
+                alert("<div style='font-size: 1rem;padding:6rem 10rem;'>具有分析、谨慎、批评、好奇、独立、聪明、内向、条理、谦逊、精确、理发、保守的特征，表现为:<br/>" +
+                    "1、喜爱研究性的职业或情境，避免企业性的职业或情境<br/>" +
+                    "2、用研究的能力解决工作及其他方面的问题，即自觉、好学、自信，重视科学，但缺乏领导方面的才能。<br/></div>")
+            })
+            $("#hol3").click(function () {
+                alert("<div style='font-size: 1rem;padding:6rem 10rem;'>具有冒险、野心、独断、冲动、乐观、自信、追求享受、精力充沛、善于社交、获取注意、知名度等特征，表现为:<br/>" +
+                    "1、喜欢企业性质的的职业或环境，避免研究性质的职业或情境，会以企业方面的能力解决工作或其他方面的问题能力<br/>" +
+                    "2、有冲动、自信、善社交、知名度高、有领导与语言能力，缺乏科学能力，但重视政治与经济上的成就。<br/></div>")
+            })
+            $("#hol4").click(function () {
+                alert("<div style='font-size: 1rem;padding:6rem 10rem;'>具有复杂、想象、冲动、独立、直觉、无秩序、情绪化、理想化、不顺从、有创意、富有表情、不重实际的特征，表现为:<br/>" +
+                    "1、喜爱艺术性的职业或情境，避免传统性的职业或情境<br/>" +
+                    "2、富有表达能力和直觉、独立、具创意、不顺从（包括表演、写作、语言），并重视审美的领域<br/></div>")
+            })
+            $("#hol5").click(function () {
+                alert("<div style='font-size: 1rem;padding:6rem 10rem;'>具有合作、友善、慷慨、助人、仁慈、负责、圆滑、善社交、善解人意、说服他人、理想主义等特征，表现为:<br/>" +
+                    "1、喜爱社会型的职业或情境，避免实用性的职业或情境，并以社交方面的能力解决工作及其他方面的问题，但缺乏机械能力与科学能力<br/>" +
+                    "2、喜欢帮助别人、了解别人，有教导别人的能力，且重视社会与伦理的活动与问题。<br/></div>")
+            })
+            $("#hol6").click(function () {
+                alert("<div style='font-size: 1rem;padding:6rem 10rem;'>具有顺从、谨慎、保守、自控、服从、规律、坚毅、实际稳重、有效率、但缺乏想象力等特征，表现为:<br/>" +
+                    "1、喜欢传统性质的的职业或环境，避免艺术性质的职业或情境，会以传统的能力解决工作或其他方面的问题<br/>" +
+                    "2、喜欢顺从、规律、有文书与数字能力，并重视商业与经济上的成就。<br/></div>")
+            })
+
+
+            //Prepare JI chart data
+            var dest = [[${result}]];
+            var dest4chart = new Array(6)
+            for (var i=0;i<6;i++){
+                dest4chart[i] = Math.floor(dest[i]);
+            }
+            // alert("dest"+dest)
+            // alert("dest4chart"+dest4chart)
+            var tmp1;
+            var tmp2;
+            // var result=new Array(3);
+            var con = '';
+            // alert(dest);
+            var types=new Array("C 常规型","R 现实型","I 研究型","E 管理型","S社会型","A 艺术型");
+            var types4chart=new Array("C 常规型","R 现实型","I 研究型","E 管理型","S社会型","A 艺术型");
+            // alert(types);
+            for(var i=0;i<5;i++){
+                for (var j=0+i;j<5;j++){
+                    if (dest[j+1]>dest[i]){
+                        tmp1 = dest[i];
+                        dest[i] = dest[j+1];
+                        dest[j+1] = tmp1;
+                        tmp2 = types[i];
+                        types[i] = types[j+1];
+                        types[j+1] = tmp2;
+                    }
+                }
+            };
+            // alert(dest);
+            // alert(types);
+            for (var e=0;e<3;e++){
+                // result[e] = types[e];
+                con = con+types[e].charAt(0);
+            };
+            //Prepare JI chart data End
+
+            // $('#card-1').attr("src","../img/display-"+types[0].charAt(0)+".jpg")
+            // $('#card-2').attr("src","../img/display-"+types[1].charAt(0)+".jpg")
+            // $('#card-3').attr("src","../img/display-"+types[2].charAt(0)+".jpg")
+
+            // $('#text-1').html(types[0]+holType[types[0].charAt(0)][1])
+            // $('#text-2').html(types[1]+holType[types[1].charAt(0)][1])
+            // $('#text-3').html(types[2]+holType[types[2].charAt(0)][1])
+            var con_key=types[0].charAt(0)+types[1].charAt(0)+types[2].charAt(0)
+            var newcon = "根据测试结果，您的职业性格为"+con_key+"型"
+            $('#JIcon').html(newcon);
+            // $('#conclu-text').html("<h5>"+con_key+"</h5>"+"<br/>"+holData[con_key][0])
+
+
+
+            // wirte major table
+            var majors=[[${majors}]];
+            var str = '';
+
+            var mid="";
+            if (!(majors.length==1&&majors[0]=="")){
+
+                for(var i=0;i<majors.length;i++){
+                    var m_title = subDictionary[majors[i].substr(0,6)][0]
+                    console.log(m_title)
+                    if (m_title.length>5){
+                        m_html = m_title.substr(0,5) + "...";
+                    }else {
+                        m_html = m_title
+                    }
+
+
+                    // str = str+'<div class="major-btn" title="'+m_title+'" >'+m_html+'</div>'
+                    str = str+'<div class="major-btn tooltip" title="'+m_title+'">'+m_html+'</div>'
+                }
+                console.log(str)
+                $("#majorlist").html(str)
+            }else{
+                $("#recmd_text").html("每位学子的前程都值得无比认真的对待，我们的指导教师正在结合您的所有信息为您挑选值得您奋斗终身的领域，相信定不会辜负您的期待、请您积极与指导老师沟通并耐心等待。")
+            }
+            $('.tooltip').tooltipster();
+
+            // for (var j=0;j<i;j++){
+            //     var major_table_id = j+1;
+            //     var app1 = '<tr><td>'+major_table_id+'</td><td>'+majors[j]+'</td><td>'+majorname[j]+'</td></tr>'
+            //     $('#major_table').append(app1)
+            // }
+
+
+            // wirte major table End
+            var intele = [[${intele}]];
+
+            if (intele==null){
+                intele=[0,0,0,0,0,0,0,0]
+            }
+
+            $("#point1").html(intele[0])
+            $("#point2").html(intele[1])
+            $("#point3").html(intele[2])
+            $("#point4").html(intele[3])
+            $("#point5").html(intele[4])
+            $("#point6").html(intele[5])
+            $("#point7").html(intele[6])
+            $("#point8").html(intele[7])
+
+
+            // var dom = document.getElementById("eight-container");
+            // var myChart = echarts.init(dom);
+            // var app = {};
+            // option = null;
+            // option = {
+            //     tooltip: {},
+            //     radar: {
+            //         // shape: 'circle',
+            //         name: {
+            //             textStyle: {
+            //                 color: '#fff',
+            //                 backgroundColor: '#999',
+            //                 borderRadius: 3,
+            //                 padding: [3, 5]
+            //             }
+            //         },
+            //         indicator: [
+            //             { name: '语言智能', max: 100},
+            //             { name: '数学智能', max: 100},
+            //             { name: '空间智能', max: 100},
+            //             { name: '身体运动智能', max: 100},
+            //             { name: '音乐智能', max: 100},
+            //             { name: '人际智能', max: 100},
+            //             { name: '自我认知智能', max: 100},
+            //             { name: '自然认知智能 ', max: 100}
+            //         ]
+            //     },
+            //     series: [{
+            //         name: '预算 vs',
+            //         type: 'radar',
+            //         // areaStyle: {normal: {}},
+            //         data : [
+            //
+            //             {
+            //                 value : intele,
+            //                 name : '八大智能',
+            //                 areaStyle: {
+            //                     normal: {
+            //                         opacity: 0.9,
+            //                         color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+            //                             {
+            //                                 // color: '#4f54e5',
+            //                                 color: '#21ada7',
+            //                                 offset: 0
+            //                             },
+            //                             {
+            //                                 // color: '#c352ff',
+            //                                 color: '#0108dc',
+            //                                 offset: 1
+            //                             }
+            //                         ])
+            //                     }
+            //                 }
+            //             }
+            //         ],
+            //         itemStyle : {
+            //             normal : {
+            //                 lineStyle:{
+            //                     color:'#ffffff',
+            //                     width:0
+            //                 }
+            //             }
+            //         }
+            //     }]
+            // };;
+            // if (option && typeof option === "object") {
+            //     myChart.setOption(option, true);
+            // }
+
+            var dom = document.getElementById("hol_chart");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                // title: {
+                //     text: '霍兰德测试结果'
+                // },
+                tooltip: {},
+                // legend: {
+                //     data: ['各型得分']
+                // },
+                radar: {
+                    // shape: 'circle',
+                    name: {
+                        textStyle: {
+                            color: '#fff',
+                            // backgroundColor: '#999',
+                            backgroundColor: '#9696c3',
+                            borderRadius: 9,
+                            padding: [3, 5]
+                        }
+                    },
+                    indicator: [
+                        { name: types4chart[0], max: 10},
+                        { name: types4chart[1], max: 10},
+                        { name: types4chart[2], max: 10},
+                        { name: types4chart[3], max: 10},
+                        { name: types4chart[4], max: 10},
+                        { name: types4chart[5], max: 10}
+                    ]
+                },
+                series: [{
+                    name: '各型得分 vs ',
+                    type: 'radar',
+                    data : [
+                        {
+                            value : dest4chart,
+                            name : '各型得分',
+                            areaStyle: {
+                                normal: {
+                                    opacity: 0.9,
+                                    color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                        {
+                                            // color: '#4f54e5',
+                                            color: '#ff7f7f',
+                                            offset: 0
+                                        },
+                                        {
+                                            // color: '#c352ff',
+                                            color: '#e44242',
+                                            offset: 1
+                                        }
+                                    ])
+                                }
+                            }
+                        }
+                    ],
+                    itemStyle : {
+                        normal : {
+                            lineStyle:{
+                                color:'#ffffff',
+                                width:0
+                            }
+                        }
+                    },
+                }]
+            };;
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+
+            var dom = document.getElementById("enn_chart");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            var dataAxis = ["完美","助人","成就","情绪","智慧","忠诚","活跃","领袖","和平"];
+// var dataAxis = ["1","2","3","4","5","6","7","8","9"];
+            var data = [[${PTresult}]]
+            // console.log(data)
+            var yMax = 8;
+            var dataShadow = [];
+
+            for (var i = 0; i < data.length; i++) {
+                dataShadow.push(yMax);
+            }
+
+            option = {
+                // title: {
+                //     text: '特性示例：渐变色 阴影 点击缩放',
+                //     subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+                // },
+                xAxis: {
+                    data: dataAxis,
+                    axisLabel: {
+                        inside: true,
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    z: 10
+                },
+                yAxis: {
+                    axisLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLabel: {
+                        textStyle: {
+                            color: '#999'
+                        }
+                    }
+                },
+                // tooltip: {},
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                // dataZoom: [
+                //     {
+                //         type: 'inside'
+                //     }
+                // ],
+                series: [
+                    // { // For shadow
+                    //     type: 'bar',
+                    //     itemStyle: {
+                    //         normal: {color: 'rgba(0,0,0,0.05)'}
+                    //     },
+                    //     barGap:'-100%',
+                    //     barCategoryGap:'40%',
+                    //     data: dataShadow,
+                    //     animation: false
+                    // },
+                    {
+                        type: 'bar',
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        {offset: 0, color: '#6afcfd'},
+                                        {offset: 0.5, color: '#34b6f0'},
+                                        {offset: 1, color: '#9283e0'}
+                                    ]
+                                )
+                            },
+                            emphasis: {
+                                color: new echarts.graphic.LinearGradient(
+                                    0, 0, 0, 1,
+                                    [
+                                        {offset: 0, color: '#2378f7'},
+                                        {offset: 0.7, color: '#2378f7'},
+                                        {offset: 1, color: '#83bff6'}
+                                    ]
+                                )
+                            }
+                        },
+                        data: data
+                    }
+                ]
+            };;
+
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            };
+
+
+
+        });
+    /*]]>*/
+</script>
+</body>
+</html>

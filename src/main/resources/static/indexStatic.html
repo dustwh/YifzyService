@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/overwrited.css">
+    <!--<style type="text/css">-->
+        <!--#yuanjiao{-->
+        <!--font-family: Arial;-->
+        <!--border: 2px solid #ffffff;-->
+        <!--border-radius: 20px;-->
+        <!--/*padding: 3px 3px;*/-->
+        <!--/*width: 50px;*/-->
+        <!--width: 90px;-->
+        <!--height: 34px;-->
+        <!--margin-top: 14px;-->
+        <!--padding-top: 3px;-->
+        <!--text-align: center;-->
+    <!--}</style>-->
+</head>
+<body>
+<!--nav bar-->
+<div>
+    <ul id="dropdown0" class="dropdown-content">
+        <li>
+            <a href="#!">one</a>
+        </li>
+        <li>
+            <a href="#!">two</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="#!">three</a>
+        </li>
+    </ul>
+    <!--<nav class="blue-grey darken-4" style="border-bottom-style: solid;border-bottom-color: #D32F2F">-->
+    <nav class="white" style="border-bottom-style: solid;border-bottom-color: #D32F2F">
+        <div class="nav-wrapper" style="margin-left: 9%;margin-right: 9%">
+            <img src="img/ico.png" style="height: 64px;width: 64px">
+            <a href="#!" class="brand-logo black-text">一帆志愿</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="" class="black-text">首页</a>
+                </li>
+
+                <li>
+                    <a href="#" class="black-text">机构信息</a>
+                </li>
+                <li>
+                    <a href="StartPersonelTest" class="black-text">性格测试<span class="new badge">2</span></a>
+                </li>
+                <li>
+                    <a href="#" class="black-text">学业计划</a>
+                </li>
+                <!-- Dropdown Trigger -->
+                <li>
+                    <a class="dropdown-trigger" href="#!" data-target="dropdown0" class="black-text"><font color="#000000">我的志愿
+                        <i class="material-icons right">arrow_drop_down</i></font>
+                    </a>
+                </li>
+                <li style="border-color: #D32F2F;border-style: solid;border-radius: 20px;height: 36px; top: 15px;position: relative;top: 14px;">
+                    <a href="#" style="position: relative;bottom: 16px;" class="black-text">王小明</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--nav bar end-->
+<div class="row" style="margin-top: 6%;margin-bottom: 6%">
+    <div class="col l3"></div>
+    <div class="col l6 s50">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">学生登陆 (Alpha-Version)</span>
+                <div>
+                    用户：<input id="loginuser" type="text"/><br/>
+                    密码：<input id="loginpassword" type="password"/><br/>
+                    <!--<input type="submit" value="登录系统"/>-->
+                    <!--<button id="btn-submit">common登录系统</button>-->
+                    <!--<input type="reset" value="common重新填写"/>-->
+                </div>
+            </div>
+            <div class="card-action">
+                <!--<a href="#">登    陆</a>-->
+                <!--<a href="#">尚未实装</a>-->
+                <button class="btn-large" id="btn-submit" style="margin-right: 8%">登   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 录</button>
+                <button class="btn-large" id="btn-resest">尚未实装</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--footer-->
+<footer class="page-footer grey darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l1 s12">
+                <h5 class="white-text"></h5>
+                <p class="grey-text text-lighten-4">一帆志愿</p>
+            </div>
+            <div class="col l9 s12">
+                <!--<h5 class="white-text">Settings</h5>-->
+                <ul>
+                    <li><a class="white-text" href="#!">辽宁省内各市 激活卡代理及一对一指导站，火热招商中       联系我们：400-8888-666</a></li>
+                    <!--<li><a class="white-text" href="#!">Link 2</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 3</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 4</a></li>-->
+                </ul>
+                <p></p>
+            </div>
+            <div class="col l2 s12">
+                <!--<h5 class="white-text">Connect</h5>-->
+                <img class="responsive-img" style="height: 50%;width: 50%; margin-left:62%" src="img/QR.png" />
+                <!--<ul>-->
+                    <!--<li><a class="white-text" href="#!">Link 1</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 2</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 3</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 4</a></li>-->
+                <!--</ul>-->
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Copyrigh©2015-2016 一帆志愿 All Rights Reserved. 辽ICP备1了6007101号-1
+            <a class="grey-text text-lighten-4 right" href="#!">使用说明</a>
+        </div>
+    </div>
+</footer>
+<!--footer end-->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/inherit.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown-trigger').dropdown();
+    });
+</script>
+</body>
+</html>

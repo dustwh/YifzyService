@@ -1,0 +1,2114 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PersonelTest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/overwrited.css"/>
+    <link rel="stylesheet" type="text/css" href="css/ex-hoverable.css"/>
+    <!--<link th:href="@{/static/css/style.css}" rel="stylesheet" />-->
+</head>
+<body>
+<!---->
+
+
+<ul id="dropdown0" class="dropdown-content">
+    <li>
+        <a href="#!">one</a>
+    </li>
+    <li>
+        <a href="#!">two</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+        <a href="#!">three</a>
+    </li>
+</ul>
+<nav class="white" style="border-bottom-style: solid;border-bottom-color: #f58b76;height: 60px">
+    <div class="nav-wrapper" style="margin-left: 9%;margin-right: 9%">
+        <!--<img class="responsive-img" src="img/test.png" style="height: 64px;width: 64px;margin-left: 60px"/>-->
+        <img class="responsive-img" src="img/logo_03.png" style="margin-left: 40px"/>
+        <!--<a href="#!" class="brand-logo black-text">一帆志愿</a>-->
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a href="" class="black-text">首页</a>
+            </li>
+
+            <li>
+                <a href="#" class="black-text">机构信息</a>
+            </li>
+            <li style="border-color: #f58b76;border-bottom-style: solid;position: relative;bottom: 15px">
+                <a href="StartPersonelTest" class="black-text" style="position:relative;top: 15px;">性格测试<span class="new badge">2</span></a>
+            </li>
+            <li>
+                <a href="#" class="black-text">学业计划</a>
+            </li>
+            <!-- Dropdown Trigger -->
+            <li>
+                <a class="dropdown-trigger black-text" href="#!" data-target="dropdown0"><font color="#000000">我的志愿
+                    <i class="material-icons right">arrow_drop_down</i></font>
+                </a>
+            </li>
+            <li style="border-color: #f58b76;border-style: solid;border-radius: 20px;height: 36px; top: 15px;position: relative;top: 14px;">
+                <a href="#" style="position: relative;bottom: 16px;" class="black-text" th:text="${stuName}">王小明</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="row">
+    <div class="col s3" style="background-color: #fcfcfc">
+        <!--1-->
+    </div>
+
+    <div class="col s44">
+        <!--2-->
+        <div class="row">
+            <div class="col s15">
+                <!--1.1-->
+            </div>
+
+            <div class="col s35">
+                <div class="white-text" style="background:url(img/pic_bg_11.png);height: 76px;width: 920px;padding-top: 15px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;共36道题，在每道题选择你认为最恰当或最接近描述自己的性格的句子A或B，请全部作答，最后得分最高的三项可能成为你的基本性格<br/>&nbsp;&nbsp;&nbsp;&nbsp;形态。
+                </div>
+
+
+                <div id="Enneagram">
+                    <form>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio1' id='radio11'/>
+                                <label class="answer_label" for='radio11'>A 服务他人、因应他人的需求，对我而言是重要的</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio1' id='radio12'/>
+                                <label class="answer_label" for='radio12'>B 寻求看待事物和做事的各种方法，对我而言是重要的</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio2' id='radio21'/>
+                                <label class="answer_label" for='radio21'>A 面对困扰时，我会陷在里面</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio2' id='radio22'/>
+                                <label class="answer_label" for='radio22'>B 面对困扰时，我会想办法放轻松</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio3' id='radio31'/>
+                                <label class="answer_label" for='radio31'>A 我向来认为自己是个平静的、随和的人</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio3' id='radio32'/>
+                                <label class="answer_label" for='radio32'>B 我向来认为自己是个严肃的、自律的人</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio4' id='radio41'/>
+                                <label class="answer_label" for='radio41'>A 我喜欢社交生活且喜欢结识各样的朋友</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio4' id='radio42'/>
+                                <label class="answer_label" for='radio42'>B 我对社交生活不感兴趣，而且怕与人交往</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio5' id='radio51'/>
+                                <label class="answer_label" for='radio51'>A 做决定对我而言通常很困难</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio5' id='radio52'/>
+                                <label class="answer_label" for='radio52'>B 做决定对我而言很少有困难</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio6' id='radio61'/>
+                                <label class="answer_label" for='radio61'>A 我向来是愿意支持他人，为他人付出，喜欢有人为伴的</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio6' id='radio62'/>
+                                <label class="answer_label" for='radio62'>B 我向来是严肃的、克制的、喜欢讨论问题</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio7' id='radio71'/>
+                                <label class="answer_label" for='radio71'>A 面对全新的经验时，我通常会自问这是否精彩、有用</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio7' id='radio72'/>
+                                <label class="answer_label" for='radio72'>B 面对全新的经验时，我通常会自问这是否好玩、有趣</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio8' id='radio81'/>
+                                <label class="answer_label" for='radio81'>A 我主要的长处之一是主导各种情况的能力</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio8' id='radio82'/>
+                                <label class="answer_label" for='radio82'>B 我主要的长处之一是描述内在状态的能力</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio9' id='radio91'/>
+                                <label class="answer_label" for='radio91'>A 大体而言，我太开放、天真</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio9' id='radio92'/>
+                                <label class="answer_label" for='radio92'>B 大体而言，我太机警、谨慎</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio10' id='radio101'/>
+                                <label class="answer_label" for='radio101'>A 我认为做事的方法有很多种的</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio10' id='radio102'/>
+                                <label class="answer_label" for='radio102'>B 我认为做事的方法只有一种</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio11' id='radio111'/>
+                                <label class="answer_label" for='radio111'>A 我的主要长处之一是利用资源及实现计划</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio11' id='radio112'/>
+                                <label class="answer_label" for='radio112'>B 我的主要长处之一是提出新点子，使人们为之兴奋</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio12' id='radio121'/>
+                                <label class="answer_label" for='radio121'>A 我的健康及幸福因我强烈的助人欲而受害</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio12' id='radio122'/>
+                                <label class="answer_label" for='radio122'>B 我的人际关系因我强烈的自我而受害</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio13' id='radio131'/>
+                                <label class="answer_label" for='radio131'>A我向来有不易睡眠的困扰</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio13' id='radio132'/>
+                                <label class="answer_label" for='radio132'>B 我向来能轻易入睡</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio14' id='radio141'/>
+                                <label class="answer_label" for='radio141'>A 我一向做事欠缺信心而犹豫不决</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio14' id='radio142'/>
+                                <label class="answer_label" for='radio142'>B 我一向做事充满信心当机立断</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio15' id='radio151'/>
+                                <label class="answer_label" for='radio151'>A 人们信赖我，因为我有自信且能够为他们着想</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio15' id='radio152'/>
+                                <label class="answer_label" for='radio152'>B 人们信赖我，因为我很公正且会做正确的事</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio16' id='radio161'/>
+                                <label class="answer_label" for='radio161'>A 我通常专注于自己的情感，且喜欢让它一直持续下去</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio16' id='radio162'/>
+                                <label class="answer_label" for='radio162'>B 我通常会淡化自己的情感，不会太注意它</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio17' id='radio171'/>
+                                <label class="answer_label" for='radio171'>A 我或许一直都太被动、不够投入</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio17' id='radio172'/>
+                                <label class="answer_label" for='radio172'>B 我或许一直都有太强的支配欲和操作欲</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio18' id='radio181'/>
+                                <label class="answer_label" for='radio181'>A 大体而言，我是有条理且审慎的</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio18' id='radio182'/>
+                                <label class="answer_label" for='radio182'>B 大体而言，我是好刺激且愿意冒险的</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio19' id='radio191'/>
+                                <label class="answer_label" for='radio191'>A 我倾向帮助别人而发现他们正在犯错</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio19' id='radio192'/>
+                                <label class="answer_label" for='radio192'>B 我倾向和他人保持一定的距离</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio20' id='radio201'/>
+                                <label class="answer_label" for='radio201'>A 我已提供许多人关怀与教养</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio20' id='radio202'/>
+                                <label class="answer_label" for='radio202'>B 我已提供许多人方向与诱因</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio21' id='radio211'/>
+                                <label class="answer_label" for='radio211'>A 我很以自己的毅力及常识为傲</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio21' id='radio212'/>
+                                <label class="answer_label" for='radio212'>B 我很以自己的创新、创造力为傲</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio22' id='radio221'/>
+                                <label class="answer_label" for='radio221'>A 大体而言，我是个外向的、擅社交的人</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio22' id='radio222'/>
+                                <label class="answer_label" for='radio222'>B 大体而言，我是个认真的、自律的人</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio23' id='radio231'/>
+                                <label class="answer_label" for='radio231'>A
+                                    虽然对方没有提出要求，只要我觉得他们有所需要，我便毫不犹豫及主动地帮助他们</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio23' id='radio232'/>
+                                <label class="answer_label" for='radio232'>B 若对方没有提出要求，我不会主主动地帮助他们</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio24' id='radio241'/>
+                                <label class="answer_label" for='radio241'>A 通常能引起剧烈情绪震荡的情况都会吸引我</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio24' id='radio242'/>
+                                <label class="answer_label" for='radio242'>B 通常令我觉得平静、舒适的情况都会吸引我</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio25' id='radio251'/>
+                                <label class="answer_label" for='radio251'>A 由于想象力及好奇心，我的想法一向很有冒险性</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio25' id='radio252'/>
+                                <label class="answer_label" for='radio252'>B 我的想法一向很实际，只尝试着推动事物</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio26' id='radio261'/>
+                                <label class="answer_label" for='radio261'>A 驾驭及支配别人对我而言是较重要的</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio26' id='radio262'/>
+                                <label class="answer_label" for='radio262'>B 受到别人的重视及认同对我而言是较重要的</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio27' id='radio271'/>
+                                <label class="answer_label" for='radio271'>A 面临麻烦时，我有能力将之解决</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio27' id='radio272'/>
+                                <label class="answer_label" for='radio272'>B 面临麻烦时，我会以自己喜欢的东西慰劳自己</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio28' id='radio281'/>
+                                <label class="answer_label" for='radio281'>A 整体而言，我一直是凭直觉的、个人主义的</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio28' id='radio282'/>
+                                <label class="answer_label" for='radio282'>B 整体而言，我一直是非常有组织力的、负责任的</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio29' id='radio291'/>
+                                <label class="answer_label" for='radio291'>A 我因过于侵扰及干扰别人而产生人际关系的困扰</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio29' id='radio292'/>
+                                <label class="answer_label" for='radio292'>B 我因过于逃避及沉默而产生人际关系的困扰</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio30' id='radio301'/>
+                                <label class="answer_label" for='radio301'>A 我向来自信且喜欢与人比较</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio30' id='radio302'/>
+                                <label class="answer_label" for='radio302'>B 我向来谦卑且喜欢以较慢的步伐行事</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio31' id='radio311'/>
+                                <label class="answer_label" for='radio311'>A 我喜欢生活在自己的小世界里</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio31' id='radio312'/>
+                                <label class="answer_label" for='radio312'>B 我喜欢让整个世界知道我的存在</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio32' id='radio321'/>
+                                <label class="answer_label" for='radio321'>A 我常受紧张、不安全感及疑虑的困扰</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio32' id='radio322'/>
+                                <label class="answer_label" for='radio322'>B 我常受愤怒、理想主义及缺乏耐心的困扰</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio33' id='radio331'/>
+                                <label class="answer_label" for='radio331'>A 我向来以自己在别人生活中所扮演的重要角色为傲</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio33' id='radio332'/>
+                                <label class="answer_label" for='radio332'>B 我向来以自己的风趣及对新事物的开放态度为傲</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio34' id='radio341'/>
+                                <label class="answer_label" for='radio341'>A 我比较乐观且易于从挫折中恢复</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio34' id='radio342'/>
+                                <label class="answer_label" for='radio342'>B 我常处于情绪化且多愁善感</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio35' id='radio351'/>
+                                <label class="answer_label" for='radio351'>A 在许多状况下，我喜欢让自己就领导地位</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio35' id='radio352'/>
+                                <label class="answer_label" for='radio352'>B 早许多状况下，我宁可让他人就领导地位</label>
+                            </div>
+                        </div>
+                        <div class="divul">
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='0' name='radio36' id='radio361'/>
+                                <label class="answer_label" for='radio361'>A 我一向是专注且具有高度热衷</label>
+                            </div>
+                            <div class="divli">
+                                <input class="questionselect" type='radio' value='1' name='radio36' id='radio362'/>
+                                <label class="answer_label" for='radio362'>B 我一向是很自发的，喜好玩乐的</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="col s3">
+        <!--3-->
+    </div>
+</div>
+
+
+
+<!---->
+<div class="exam_zone">
+    <!--九型人格-->
+    <!--<div id="Enneagram">-->
+    <!--<form>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio1' id='radio11'/>-->
+    <!--<label class="answer_label" for='radio11'>A 服务他人、因应他人的需求，对我而言是重要的</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio1'  id='radio12'/>-->
+    <!--<label class="answer_label" for='radio12'>B 寻求看待事物和做事的各种方法，对我而言是重要的</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio2' id='radio21'/>-->
+    <!--<label class="answer_label" for='radio21'>A 面对困扰时，我会陷在里面</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio2'  id='radio22'/>-->
+    <!--<label class="answer_label" for='radio22'>B 面对困扰时，我会想办法放轻松</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio3' id='radio31'/>-->
+    <!--<label class="answer_label" for='radio31'>A 我向来认为自己是个平静的、随和的人</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio3'  id='radio32'/>-->
+    <!--<label class="answer_label" for='radio32'>B 我向来认为自己是个严肃的、自律的人</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio4' id='radio41'/>-->
+    <!--<label class="answer_label" for='radio41'>A 我喜欢社交生活且喜欢结识各样的朋友</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio4'  id='radio42'/>-->
+    <!--<label class="answer_label" for='radio42'>B 我对社交生活不感兴趣，而且怕与人交往</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio5' id='radio51'/>-->
+    <!--<label class="answer_label" for='radio51'>A 做决定对我而言通常很困难</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio5'  id='radio52'/>-->
+    <!--<label class="answer_label" for='radio52'>B 做决定对我而言很少有困难</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio6' id='radio61'/>-->
+    <!--<label class="answer_label" for='radio61'>A 我向来是愿意支持他人，为他人付出，喜欢有人为伴的</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio6'  id='radio62'/>-->
+    <!--<label class="answer_label" for='radio62'>B 我向来是严肃的、克制的、喜欢讨论问题</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio7' id='radio71'/>-->
+    <!--<label class="answer_label" for='radio71'>A 面对全新的经验时，我通常会自问这是否精彩、有用</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio7'  id='radio72'/>-->
+    <!--<label class="answer_label" for='radio72'>B 面对全新的经验时，我通常会自问这是否好玩、有趣</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio8' id='radio81'/>-->
+    <!--<label class="answer_label" for='radio81'>A 我主要的长处之一是主导各种情况的能力</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio8'  id='radio82'/>-->
+    <!--<label class="answer_label" for='radio82'>B 我主要的长处之一是描述内在状态的能力</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio9' id='radio91'/>-->
+    <!--<label class="answer_label" for='radio91'>A 大体而言，我太开放、天真</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio9'  id='radio92'/>-->
+    <!--<label class="answer_label" for='radio92'>B 大体而言，我太机警、谨慎</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio10' id='radio101'/>-->
+    <!--<label class="answer_label" for='radio101'>A 我认为做事的方法有很多种的</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio10'  id='radio102'/>-->
+    <!--<label class="answer_label" for='radio102'>B 我认为做事的方法只有一种</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio11' id='radio111'/>-->
+    <!--<label class="answer_label" for='radio111'>A 我的主要长处之一是利用资源及实现计划</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio11'  id='radio112'/>-->
+    <!--<label class="answer_label" for='radio112'>B 我的主要长处之一是提出新点子，使人们为之兴奋</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio12' id='radio121'/>-->
+    <!--<label class="answer_label" for='radio121'>A 我的健康及幸福因我强烈的助人欲而受害</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio12'  id='radio122'/>-->
+    <!--<label class="answer_label" for='radio122'>B 我的人际关系因我强烈的自我而受害</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio13' id='radio131'/>-->
+    <!--<label class="answer_label" for='radio131'>A我向来有不易睡眠的困扰</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio13'  id='radio132'/>-->
+    <!--<label class="answer_label" for='radio132'>B 我向来能轻易入睡</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio14' id='radio141'/>-->
+    <!--<label class="answer_label" for='radio141'>A 我一向做事欠缺信心而犹豫不决</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio14'  id='radio142'/>-->
+    <!--<label class="answer_label" for='radio142'>B 我一向做事充满信心当机立断</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio15' id='radio151'/>-->
+    <!--<label class="answer_label" for='radio151'>A 人们信赖我，因为我有自信且能够为他们着想</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio15'  id='radio152'/>-->
+    <!--<label class="answer_label" for='radio152'>B 人们信赖我，因为我很公正且会做正确的事</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio16' id='radio161'/>-->
+    <!--<label class="answer_label" for='radio161'>A 我通常专注于自己的情感，且喜欢让它一直持续下去</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio16'  id='radio162'/>-->
+    <!--<label class="answer_label" for='radio162'>B 我通常会淡化自己的情感，不会太注意它</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio17' id='radio171'/>-->
+    <!--<label class="answer_label" for='radio171'>A 我或许一直都太被动、不够投入</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio17'  id='radio172'/>-->
+    <!--<label class="answer_label" for='radio172'>B 我或许一直都有太强的支配欲和操作欲</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio18' id='radio181'/>-->
+    <!--<label class="answer_label" for='radio181'>A 大体而言，我是有条理且审慎的</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio18'  id='radio182'/>-->
+    <!--<label class="answer_label" for='radio182'>B 大体而言，我是好刺激且愿意冒险的</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio19' id='radio191'/>-->
+    <!--<label class="answer_label" for='radio191'>A 我倾向帮助别人而发现他们正在犯错</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio19'  id='radio192'/>-->
+    <!--<label class="answer_label" for='radio192'>B 我倾向和他人保持一定的距离</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio20' id='radio201'/>-->
+    <!--<label class="answer_label" for='radio201'>A 我已提供许多人关怀与教养</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio20'  id='radio202'/>-->
+    <!--<label class="answer_label" for='radio202'>B 我已提供许多人方向与诱因</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio21' id='radio211'/>-->
+    <!--<label class="answer_label" for='radio211'>A 我很以自己的毅力及常识为傲</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio21'  id='radio212'/>-->
+    <!--<label class="answer_label" for='radio212'>B 我很以自己的创新、创造力为傲</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio22' id='radio221'/>-->
+    <!--<label class="answer_label" for='radio221'>A 大体而言，我是个外向的、擅社交的人</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio22'  id='radio222'/>-->
+    <!--<label class="answer_label" for='radio222'>B 大体而言，我是个认真的、自律的人</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio23' id='radio231'/>-->
+    <!--<label class="answer_label" for='radio231'>A 虽然对方没有提出要求，只要我觉得他们有所需要，我便毫不犹豫及主动地帮助他们</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio23'  id='radio232'/>-->
+    <!--<label class="answer_label" for='radio232'>B 若对方没有提出要求，我不会主主动地帮助他们</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio24' id='radio241'/>-->
+    <!--<label class="answer_label" for='radio241'>A 通常能引起剧烈情绪震荡的情况都会吸引我</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio24'  id='radio242'/>-->
+    <!--<label class="answer_label" for='radio242'>B 通常令我觉得平静、舒适的情况都会吸引我</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio25' id='radio251'/>-->
+    <!--<label class="answer_label" for='radio251'>A 由于想象力及好奇心，我的想法一向很有冒险性</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio25'  id='radio252'/>-->
+    <!--<label class="answer_label" for='radio252'>B 我的想法一向很实际，只尝试着推动事物</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio26' id='radio261'/>-->
+    <!--<label class="answer_label" for='radio261'>A 驾驭及支配别人对我而言是较重要的</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio26'  id='radio262'/>-->
+    <!--<label class="answer_label" for='radio262'>B 受到别人的重视及认同对我而言是较重要的</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio27' id='radio271'/>-->
+    <!--<label class="answer_label" for='radio271'>A 面临麻烦时，我有能力将之解决</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio27'  id='radio272'/>-->
+    <!--<label class="answer_label" for='radio272'>B 面临麻烦时，我会以自己喜欢的东西慰劳自己</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio28' id='radio281'/>-->
+    <!--<label class="answer_label" for='radio281'>A 整体而言，我一直是凭直觉的、个人主义的</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio28'  id='radio282'/>-->
+    <!--<label class="answer_label" for='radio282'>B 整体而言，我一直是非常有组织力的、负责任的</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio29' id='radio291'/>-->
+    <!--<label class="answer_label" for='radio291'>A 我因过于侵扰及干扰别人而产生人际关系的困扰</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio29'  id='radio292'/>-->
+    <!--<label class="answer_label" for='radio292'>B 我因过于逃避及沉默而产生人际关系的困扰</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio30' id='radio301'/>-->
+    <!--<label class="answer_label" for='radio301'>A 我向来自信且喜欢与人比较</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio30'  id='radio302'/>-->
+    <!--<label class="answer_label" for='radio302'>B 我向来谦卑且喜欢以较慢的步伐行事</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio31' id='radio311'/>-->
+    <!--<label class="answer_label" for='radio311'>A 我喜欢生活在自己的小世界里</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio31'  id='radio312'/>-->
+    <!--<label class="answer_label" for='radio312'>B 我喜欢让整个世界知道我的存在</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio32' id='radio321'/>-->
+    <!--<label class="answer_label" for='radio321'>A 我常受紧张、不安全感及疑虑的困扰</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio32'  id='radio322'/>-->
+    <!--<label class="answer_label" for='radio322'>B 我常受愤怒、理想主义及缺乏耐心的困扰</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio33' id='radio331'/>-->
+    <!--<label class="answer_label" for='radio331'>A 我向来以自己在别人生活中所扮演的重要角色为傲</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio33'  id='radio332'/>-->
+    <!--<label class="answer_label" for='radio332'>B 我向来以自己的风趣及对新事物的开放态度为傲</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio34' id='radio341'/>-->
+    <!--<label class="answer_label" for='radio341'>A 我比较乐观且易于从挫折中恢复</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio34'  id='radio342'/>-->
+    <!--<label class="answer_label" for='radio342'>B 我常处于情绪化且多愁善感</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio35' id='radio351'/>-->
+    <!--<label class="answer_label" for='radio351'>A 在许多状况下，我喜欢让自己就领导地位</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio35'  id='radio352'/>-->
+    <!--<label class="answer_label" for='radio352'>B 早许多状况下，我宁可让他人就领导地位</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="divul">-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='0' name='radio36' id='radio361'/>-->
+    <!--<label class="answer_label" for='radio361'>A 我一向是专注且具有高度热衷</label>-->
+    <!--</div>-->
+    <!--<div class="divli">-->
+    <!--<input class="questionselect" type='radio' value='1' name='radio36'  id='radio362'/>-->
+    <!--<label class="answer_label" for='radio362'>B 我一向是很自发的，喜好玩乐的</label>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--霍兰德-->
+    <div id="Hollander">
+        8
+        _________________________________________________
+        <form>
+            <div class="divul">
+                <div>
+                    1.	我喜欢把一件事情做完后，再做另一件事
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj1' id='h11'/>
+                    <label class="answer_label" for='h11'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj1'  id='h12'/>
+                    <label class="answer_label" for='h12'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    2.	在工作中，我不愿受他人干涉，更喜欢独自思考和筹划。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj2' id='h21'/>
+                    <label class="answer_label" for='h21'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj2'  id='h22'/>
+                    <label class="answer_label" for='h22'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    3.	在集体讨论中，我往往保持沉默。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj3' id='h31'/>
+                    <label class="answer_label" for='h31'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj3'  id='h32'/>
+                    <label class="answer_label" for='h32'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    4.	我喜欢做戏剧、音乐、歌舞、新闻采访等方面的工作。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj4' id='h41'/>
+                    <label class="answer_label" for='h41'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj4'  id='h42'/>
+                    <label class="answer_label" for='h42'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    5.	每次写信我都一挥而就，不再重复。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj5' id='h51'/>
+                    <label class="answer_label" for='h51'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj5'  id='h52'/>
+                    <label class="answer_label" for='h52'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    6.	我经常不停地思考某一问题，直到想出正确的答案。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj6' id='h61'/>
+                    <label class="answer_label" for='h61'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj6'  id='h62'/>
+                    <label class="answer_label" for='h62'>否</label>
+                </div>
+            </div>
+
+            <div class="divul">
+                <div>
+                    7.	对别人借我的和我借别人的东西，我都能记得很清楚。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj7' id='h71'/>
+                    <label class="answer_label" for='h71'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj7'  id='h72'/>
+                    <label class="answer_label" for='h72'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    8.	我喜欢抽象思维的工作，不喜欢动手的工作。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj8' id='h81'/>
+                    <label class="answer_label" for='h81'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj8'  id='h82'/>
+                    <label class="answer_label" for='h82'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    9.	我喜欢成为人们注意的焦点。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj9' id='h91'/>
+                    <label class="answer_label" for='h91'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj9'  id='h92'/>
+                    <label class="answer_label" for='h92'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    10.	我比较爱秀，如好看的自拍照或事自己取得的好成就。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj10' id='h101'/>
+                    <label class="answer_label" for='h101'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj10'  id='h102'/>
+                    <label class="answer_label" for='h102'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    11.	有机会的话，我愿意尝试探险行的活动。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj11' id='h111'/>
+                    <label class="answer_label" for='h111'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj11'  id='h112'/>
+                    <label class="answer_label" for='h112'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    12.	当我一个人时，能够自得其乐。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj12' id='h121'/>
+                    <label class="answer_label" for='h121'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj12'  id='h122'/>
+                    <label class="answer_label" for='h122'>否</label>
+                </div>
+            </div>
+
+
+
+            <div class="divul">
+                <div>
+                    13.	我喜欢在做事情前，对此事情做出细致的安排。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj13' id='h131'/>
+                    <label class="answer_label" for='h131'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj13'  id='h132'/>
+                    <label class="answer_label" for='h132'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    14.	我不喜欢装配或修理玩具、家电等。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj14' id='h141'/>
+                    <label class="answer_label" for='h141'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj14'  id='h142'/>
+                    <label class="answer_label" for='h142'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    15.	我喜欢参加各种各样的聚会。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj15' id='h151'/>
+                    <label class="answer_label" for='h151'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj15'  id='h152'/>
+                    <label class="answer_label" for='h152'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    16.	我愿意从事虽然工资少、但是比较稳定的职业。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj16' id='h161'/>
+                    <label class="answer_label" for='h161'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj16'  id='h162'/>
+                    <label class="answer_label" for='h162'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    17.	音乐能使我陶醉。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj17' id='h171'/>
+                    <label class="answer_label" for='h171'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj17'  id='h172'/>
+                    <label class="answer_label" for='h172'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    18.	我通常说做就做，很少思前想后。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj18' id='h181'/>
+                    <label class="answer_label" for='h181'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj18'  id='h182'/>
+                    <label class="answer_label" for='h182'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    19.	在生活或学习中，我经常询问家长、老师或朋友的意见。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj19' id='h191'/>
+                    <label class="answer_label" for='h191'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj19'  id='h192'/>
+                    <label class="answer_label" for='h192'>否</label>
+                </div>
+            </div>
+
+
+
+
+            <div class="divul">
+                <div>
+                    20.	我喜欢智力类的游戏。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj20' id='h201'/>
+                    <label class="answer_label" for='h201'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj20'  id='h202'/>
+                    <label class="answer_label" for='h202'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    21.	我很难做那种需要持续集中注意力的工作。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj21' id='h211'/>
+                    <label class="answer_label" for='h211'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj21'  id='h212'/>
+                    <label class="answer_label" for='h212'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    22.	亲自动手制作一些东西，让我感觉很有乐趣。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj22' id='h221'/>
+                    <label class="answer_label" for='h221'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj22'  id='h222'/>
+                    <label class="answer_label" for='h222'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    23.	我的动手能力很差。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj23' id='h231'/>
+                    <label class="answer_label" for='h231'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj23'  id='h232'/>
+                    <label class="answer_label" for='h232'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    24.	和不熟悉的人交谈，我也能很快打开局面，找到适宜的话题。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj24' id='h241'/>
+                    <label class="answer_label" for='h241'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj24'  id='h242'/>
+                    <label class="answer_label" for='h242'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    25.	和别人意见不同时，我比较容易被别人说服。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj25' id='h251'/>
+                    <label class="answer_label" for='h251'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj25'  id='h252'/>
+                    <label class="answer_label" for='h252'>否</label>
+                </div>
+            </div>
+
+
+
+
+            <div class="divul">
+                <div>
+                    26.	我很容易结识新朋友。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj26' id='h261'/>
+                    <label class="answer_label" for='h261'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj26'  id='h262'/>
+                    <label class="answer_label" for='h262'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    27.	对于引起网络骂战的各种热门问题，我通常持中庸的态度。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj27' id='h271'/>
+                    <label class="answer_label" for='h271'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj27'  id='h272'/>
+                    <label class="answer_label" for='h272'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    28.	当我开始做一件事情后，即使碰到再多的困难，我也要执著地干下去。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj28' id='h281'/>
+                    <label class="answer_label" for='h281'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj28'  id='h282'/>
+                    <label class="answer_label" for='h282'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    29.	我是一个沉静而不易动感情的人。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj29' id='h291'/>
+                    <label class="answer_label" for='h291'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj29'  id='h292'/>
+                    <label class="answer_label" for='h292'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    30.	当我学习时，我喜欢环境清静避免干扰。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj30' id='h301'/>
+                    <label class="answer_label" for='h301'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj30'  id='h302'/>
+                    <label class="answer_label" for='h302'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    31.	我的理想是当一名科学家。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj31' id='h311'/>
+                    <label class="answer_label" for='h311'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj31'  id='h312'/>
+                    <label class="answer_label" for='h312'>否</label>
+                </div>
+            </div>
+
+
+
+            <div class="divul">
+                <div>
+                    32.	与言情小说相比，我更喜欢推理小说。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj32' id='h321'/>
+                    <label class="answer_label" for='h321'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj32'  id='h322'/>
+                    <label class="answer_label" for='h322'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    33.	有些人太霸道，有时明明知道他们是对的，也要和他们对着干。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj33' id='h331'/>
+                    <label class="answer_label" for='h331'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj33'  id='h332'/>
+                    <label class="answer_label" for='h332'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    34.	我常常幻想自己未来的生活或其他人物与场景。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj34' id='h341'/>
+                    <label class="answer_label" for='h341'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj34'  id='h342'/>
+                    <label class="answer_label" for='h342'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    35.	我很乐意主动地向别人提出自己的建议。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj35' id='h351'/>
+                    <label class="answer_label" for='h351'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj35'  id='h352'/>
+                    <label class="answer_label" for='h352'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    36.	我喜欢使用使用家里的工具箱，如扳手之类的。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj36' id='h361'/>
+                    <label class="answer_label" for='h361'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj36'  id='h362'/>
+                    <label class="answer_label" for='h362'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    37.	当看到别人处于痛苦中时，我很希望自己能解除他的痛苦。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj37' id='h371'/>
+                    <label class="answer_label" for='h371'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj37'  id='h372'/>
+                    <label class="answer_label" for='h372'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    38.	我通常更喜欢参加有赌注的比赛或游戏。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj38' id='h381'/>
+                    <label class="answer_label" for='h381'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj38'  id='h382'/>
+                    <label class="answer_label" for='h382'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    39.	在生活和学习中，我喜欢按部就班地完成要做的工作。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj39' id='h391'/>
+                    <label class="answer_label" for='h391'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj39'  id='h392'/>
+                    <label class="answer_label" for='h392'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    40.	我希望能经常换不同的工作来做。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj40' id='h401'/>
+                    <label class="answer_label" for='h401'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj40'  id='h402'/>
+                    <label class="answer_label" for='h402'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    41.	与人有约时，我总是提前做好准备，预留充分的时间。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj41' id='h411'/>
+                    <label class="answer_label" for='h411'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj41'  id='h412'/>
+                    <label class="answer_label" for='h412'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    42.	我喜欢阅读自然科学方面的书籍和杂志。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj42' id='h421'/>
+                    <label class="answer_label" for='h421'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj42'  id='h422'/>
+                    <label class="answer_label" for='h422'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    43.	如果掌握一门技术并能以此为生，我会感到非常满意。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj43' id='h431'/>
+                    <label class="answer_label" for='h431'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj43'  id='h432'/>
+                    <label class="answer_label" for='h432'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    44.	我渴望有一天能驾驶汽车或飞机。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj44' id='h441'/>
+                    <label class="answer_label" for='h441'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj44'  id='h442'/>
+                    <label class="answer_label" for='h442'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    45.	听别人谈“钱包、手机被盗”一类的事，很难引起我的同情。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj45' id='h451'/>
+                    <label class="answer_label" for='h451'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj45'  id='h452'/>
+                    <label class="answer_label" for='h452'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    46.	如果待遇相同，我宁愿当商品推销员，而不愿当图书管理员。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj46' id='h461'/>
+                    <label class="answer_label" for='h461'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj46'  id='h462'/>
+                    <label class="answer_label" for='h462'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    47.	我讨厌跟各类机械打交道。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj47' id='h471'/>
+                    <label class="answer_label" for='h471'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj47'  id='h472'/>
+                    <label class="answer_label" for='h472'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    48.	我小时候经常把玩具拆开，把里面看个究竟。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj48' id='h481'/>
+                    <label class="answer_label" for='h481'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='1' name='hj48'  id='h482'/>
+                    <label class="answer_label" for='h482'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    49.	当接受新任务后，我喜欢以自己的独特方法去完成它。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj49' id='h491'/>
+                    <label class="answer_label" for='h491'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj49'  id='h492'/>
+                    <label class="answer_label" for='h492'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    50.	我常常参加文艺方面的活动，并会受到好评。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj50' id='h501'/>
+                    <label class="answer_label" for='h501'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj50'  id='h502'/>
+                    <label class="answer_label" for='h502'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    51.	我把生活和学习，安排得整整齐齐、井井有条。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj51' id='h511'/>
+                    <label class="answer_label" for='h511'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj51'  id='h512'/>
+                    <label class="answer_label" for='h512'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    52.	我喜欢当培训师。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj52' id='h521'/>
+                    <label class="answer_label" for='h521'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj52'  id='h522'/>
+                    <label class="answer_label" for='h522'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    53.	和一群人在一起的时候，我时常不知道说什么好，感到不太自在。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj53' id='h531'/>
+                    <label class="answer_label" for='h531'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj53'  id='h532'/>
+                    <label class="answer_label" for='h532'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    54.	看情感影片时，我常禁不住眼圈红润。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='5' name='hj54' id='h541'/>
+                    <label class="answer_label" for='h541'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj54'  id='h542'/>
+                    <label class="answer_label" for='h542'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    55.	跟其它学科比，我不喜欢学数学。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj55' id='h551'/>
+                    <label class="answer_label" for='h551'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj55'  id='h552'/>
+                    <label class="answer_label" for='h552'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    56.	在实验室里独自做实验会令我寂寞难耐。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj56' id='h561'/>
+                    <label class="answer_label" for='h561'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj56'  id='h562'/>
+                    <label class="answer_label" for='h562'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    57.	对于急躁、爱发脾气的人，我仍能以礼相待。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='0' name='hj57' id='h571'/>
+                    <label class="answer_label" for='h571'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj57'  id='h572'/>
+                    <label class="answer_label" for='h572'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    58.	在学习中遇到难解答的问题，我常常放弃，等待老师的讲解或直接看标准答案。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj58' id='h581'/>
+                    <label class="answer_label" for='h581'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='2' name='hj58'  id='h582'/>
+                    <label class="answer_label" for='h582'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    59.	身边的老师、同学，都评价我很踏实、乐于助人。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='4' name='hj59' id='h591'/>
+                    <label class="answer_label" for='h591'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj59'  id='h592'/>
+                    <label class="answer_label" for='h592'>否</label>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="divul">
+                <div>
+                    60.	我喜欢在学生会或班级里，处理一些人员沟通或协调方面的事情。
+
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='3' name='hj60' id='h601'/>
+                    <label class="answer_label" for='h601'>是</label>
+                </div>
+                <div class="divli">
+                    <input class="questionselect" type='radio' value='6' name='hj60'  id='h602'/>
+                    <label class="answer_label" for='h602'>否</label>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <button id="9submit">9 型 提 交</button>
+    <button id="hsubmit">霍兰德提交</button>
+</div>
+
+<!--footer-->
+<footer class="page-footer grey darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l1 s12">
+                <h5 class="white-text"></h5>
+                <p class="grey-text text-lighten-4">一帆志愿</p>
+
+
+            </div>
+            <div class="col l9 s12">
+                <!--<h5 class="white-text">Settings</h5>-->
+                <ul>
+                    <li><a class="white-text" href="#!">辽宁省内各市 激活卡代理及一对一指导站，火热招商中       联系我们：400-8888-666</a></li>
+                    <!--<li><a class="white-text" href="#!">Link 2</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 3</a></li>-->
+                    <!--<li><a class="white-text" href="#!">Link 4</a></li>-->
+                </ul>
+                <p></p>
+            </div>
+            <div class="col l2 s12">
+                <!--<h5 class="white-text">Connect</h5>-->
+                <img class="responsive-img" style="height: 50%;width: 50%; margin-left:62%" src="img/QR.png" />
+                <!--<ul>-->
+                <!--<li><a class="white-text" href="#!">Link 1</a></li>-->
+                <!--<li><a class="white-text" href="#!">Link 2</a></li>-->
+                <!--<li><a class="white-text" href="#!">Link 3</a></li>-->
+                <!--<li><a class="white-text" href="#!">Link 4</a></li>-->
+                <!--</ul>-->
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Copyrigh©2015-2018 一帆志愿 All Rights Reserved. 辽ICP备1了6007101号-1
+            <a class="grey-text text-lighten-4 right" href="#!">使用说明</a>
+        </div>
+    </div>
+</footer>
+<!--footer end-->
+<!--<script th:src="@{/static/js/jquery-3.3.1.min.js}"></script>-->
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/inherit.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.dropdown-trigger').dropdown();
+        // alert("document ready");
+        $("#9submit").click(
+            function(){
+                var enneagram_answer = '';
+                var e_not_answer=new Array();
+                for (var i=0;i<36;i++){
+                    var radioname1='radio'+(i+1);
+                    var e_next=$("input[name="+radioname1+"]:checked").val();
+                    if (e_next==""||e_next==null){
+                        e_not_answer.push(i+1);
+                    }
+                    enneagram_answer=enneagram_answer + e_next;
+                }
+                if (e_not_answer.length!=0){
+                    alert("快滚去把"+e_not_answer+"这"+e_not_answer.length+"道题给我答了");
+                }else {
+                    $.ajax({
+                        url:"calculateEnneagram",
+                        data:{"enneagram_answer":enneagram_answer},
+                        type:"post",
+                        dataType:"json",
+                        success:function (data) {
+                            if (data=='success'){
+                                window.location.href='/personel-test';
+                            }
+                            if (data=='cannotChangeAnswer'){
+                                window.location.href='/AlreadyDoneEnn';
+                            }
+                        }
+                    });
+                }
+            }
+        );
+        $("#hsubmit").click(
+            function(){
+                var holland_answer = '';
+                var h_not_answer=new Array();
+                for (var i=0;i<60;i++){
+                    var radioname2='hj'+(i+1);
+                    var h_next=$("input[name="+radioname2+"]:checked").val();
+                    if (h_next==""||h_next==null){
+                        h_not_answer.push(i+1);
+                    }
+                    holland_answer=holland_answer + h_next;
+                }
+                if (h_not_answer.length!=0){
+                    alert("快滚去把"+h_not_answer+"这"+h_not_answer.length+"道题给我答了");
+                }else {
+                    $.ajax({
+                        url:"calculateHolland",
+                        data:{"holland_answer":holland_answer},
+                        type:"post",
+                        dataType:"json",
+                        success:function (data) {
+                            if (data=='success'){
+                                window.location.href='/personel-test';
+                            }
+                            if (data=='cannotChangeAnswer'){
+                                window.location.href='/AlreadyDoneHol';
+                            }
+                        }
+                    });
+                }
+            }
+        );
+    });
+</script>
+</body>
+</html>

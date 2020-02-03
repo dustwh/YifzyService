@@ -1,0 +1,354 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<title th:fragment="tittle">龙程教育</title>
+
+<div th:fragment="indexpage">
+    <!--modal login-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div id="loginModalDiv" class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content_login">
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"  style="padding-top: 36px;padding-bottom: 30px">
+                                <p class="text-center text-white noselect" style="font-size: 30px">Welcome</p>
+                            </div>
+                            <div class="col-md-4">
+                                <!--<img src="img/show/closed_normal_04.png"  class="float-md-right"/>-->
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span id="times_close" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group" style="padding-left: 36px;padding-right: 36px">
+                            <!--<label for="recipient-name" class="col-form-label">Recipient:</label>-->
+                            <input type="text" class="form-control login_input" id="loginuser" placeholder="手机" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="手机号错误"/>
+                        </div>
+                        <div class="form-group" style="padding-left: 36px;padding-right: 36px;margin-bottom: 7px">
+                            <!--<label for="message-text" class="col-form-label">Message:</label>-->
+                            <!--<textarea class="form-control" id="message-text"></textarea>-->
+                            <input type="password" class="form-control login_input" id="loginpassword" aria-describedby="password_help" placeholder="密码" data-container="body" data-toggle="popover" data-trigger="focus" data-placement="right" data-content="密码错误"/>
+                            <small id="password_help" class="form-text noselect" style="color: #bababa">默认的账号和密码是您的手机号,忘记请联我们&nbsp;&nbsp;<a id="mod_pwd_before_login" style="color: white;cursor: pointer;text-decoration: underline">修改密码？</a></small>
+                        </div>
+                        <!--<div class="row" style="margin: 0;padding: 0 32px 0 32px">-->
+                        <!--<div class="col-xl-6">-->
+                        <!--<img id="remember_password" src="img/show/icon_unchecked.png" /><span class="login_modal_opt">记住密码</span>-->
+                        <!--</div>-->
+                        <!--<div class="col-xl-6">-->
+                        <!--<a href="#" id="forget_pwd" class="float-md-right login_modal_opt" style="margin-top: 1px"><u>忘记密码</u></a>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                    </form>
+                    <div class="row" style="margin-top: 30px;margin-bottom: 30px;padding: 0 36px 0 36px">
+                        <div class="col-md-12">
+                            <button type="button" class="btn" id="login-btn" style="width: 100%">登录</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--nav bar-->
+    <nav id="need_color" class="navbar navbar-scroll navbar-expand-sm fixed-top bg-fade navbar-dark py-0">
+        <a class="navbar-brand text-white pl-5">
+            龙程教育
+        </a>
+        <button id="collapse_btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+            <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+                <a id="a-index">
+                    <li id="index" class="nav-item active">
+                        <span id="nav-a-1" class="nav-link noselect">首页</span>
+                    </li>
+                </a>
+                <a id="a-user-info">
+                    <li id="user-info-btn" class="nav-item active" style="cursor: pointer">
+                        <span class="nav-link noselect">个人信息</span>
+                    </li>
+                </a>
+                <a id="a-start-test">
+                    <li id="personel-test-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="start-personel-test-btn" class="nav-link noselect">规划测评</span>
+                    </li>
+                </a>
+                <a id="a-start-test-more">
+                    <li id="personel-test-btn-more" class="nav-item active" style="cursor: pointer">
+                        <span id="start-personel-test-btn-more" class="nav-link noselect">心理测评</span>
+                    </li>
+                </a>
+                <a id="threein6">
+                    <li id="a-my-threeinsix-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="a-my-threeinsix-btn-span" class="nav-link noselect">6选3</span>
+                    </li>
+                </a>
+                <a id="a-my-intense"  data-toggle="dropdown">
+                    <li id="my-intene-btn" class="nav-item active" style="cursor: pointer">
+                        <span id="start-my-intene-btn" class="nav-link noselect">我的报考</span>
+                    </li>
+                </a>
+                <div class="dropdown-menu" style="background-color: rgba(0,0,0,0.5)">
+                    <a id="my_sch_btn" class="dropdown-item text-white noselect">我的学校</a>
+                    <a id="my_mjr_btn" class="dropdown-item text-white noselect">我的专业</a>
+                </div>
+                <a>
+                    <li id="session_status" class="nav-item active" style="cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                        <span class="nav-link noselect session_status_panel">登录</span>
+                    </li>
+                </a>
+                <a>
+                    <li id="logout-btn" class="nav-item active" style="cursor: pointer;display: none">
+                        <span class="nav-link noselect session_status_panel">注销</span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+    <!--End of nav bar-->
+
+    <!--parallax-->
+    <section id="parallax-banner-section" class="module parallax parallax-1" data-type="background" data-speed="3">
+        <div class="parallax-container" id="parallax-banner-container">
+            <div class="container" style="padding: 0 10% 0 10%">
+                <div class="row align-items-center">
+
+                    <div id="big-icon-1" class="big_icon col align-self-start">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_10.png" />
+                        </div>
+                    </div>
+
+                    <div id="big-icon-2" class="big_icon col align-self-center">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_12.png" />
+                        </div>
+                    </div>
+
+                    <div id="big-icon-3" class="big_icon col align-self-end">
+                        <div>
+                            <img class="mx-auto noselect d-block banner-img" src="/img/index-banner/01pic_08.png"  />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center" style="margin-top: 20%">
+                    <div class="col align-self-start">
+                        <img class="mx-auto noselect d-block" src="/img/show/icon_15.png" style="height: 64%;width: 64%" />
+                    </div>
+                </div>
+
+                <div class="row align-items-center" style="margin-top: 7%">
+                    <div class="col align-self-start">
+                        <img class="mx-auto noselect d-block" id="next-pointer" src="/img/show/icon_19.png" style="height: 4%;width: 4%" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End of parallax-->
+
+    <!--current pic-->
+    <!--<div id="img1">-->
+    <!--<img src="img/show/ruicheng.png" class="img-fluid" />-->
+    <!--</div>-->
+    <!--<div id="img1">-->
+    <!--asdasdasd-->
+    <!--</div>-->
+    <div id="img1">
+        <div class="container" style="margin-top: 120px;margin-bottom: 30px">
+            <div class="row">
+                <div class="col">
+
+                </div>
+                <div class="col text-center">
+                    <h1 class="noselect"  style="color: #3e3e3e">龙程教育</h1>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top: 70px;margin-bottom: 80px">
+            <div class="row">
+
+                <div class="col" style="padding-left: 0!important;;padding-right: 0!important;">
+                    <p class="noselect" style="font-size: 19px;line-height: 50px;letter-spacing: 1px;color: #3e3e3e">龙程教育集团，是辽宁省一家以多元化业务为主体的教育培训学校，集团始终以努力促进中国教育事业的发展作为企业发展的愿景，致力于做“最认真、最负责、最贴心的教育品牌”。目前公司已在辽宁省营口市、辽阳市、葫芦岛市、抚顺市建立近十所直营分校，现已成为辽宁省发展最快最专业的民办教育公司之一</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="institution_info" style="margin-left: 11.8%;margin-right: 11.8%">-->
+
+    <!--<div class="row">-->
+    <!--<div class="col">-->
+    <!--锐成教育-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row"></div>-->
+
+    <!--</div>-->
+    <div id="img2">
+        <!--<img src="/img/ruicheng/teacher.png" class="img-fluid" />-->
+        <div class="jinchuangteacher" style="padding: 50px;">
+            <h1 style="padding-left: 5rem;padding-right: 5rem;">教师团队</h1>
+        </div>
+        <div class="jinchuangteacher">
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 14.8rem;min-height: 27rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/longcheng/teacher1.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">陈晨老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">联合创始人</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                            龙程教育联合创始人，辽宁省个性化教育协会理事、高考报考金牌指导老师，多年从事高考志愿填报指导工作，对我国的大学分布、专业设置、报考政策等有相当深入的研究，以资深的经验，深受学员和家长的喜爱。</p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 27rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/longcheng/teacher2.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">姚辉老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted" style=" letter-spacing: 0.5rem">创始人</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                             
+                            龙程教育创始人，中国个性化研究院研究员、高考报考金牌指导老师，多年从事学生高考升学规划和志愿填报指导工作，对我国的大学、专业、政策等有相当深入的研究。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 27rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/longcheng/teacher3.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">于安水老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">联合创始人</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                              
+                            龙程教育联合创始人，辽宁省个性化教育协会理事、高考报考金牌指导老师，集团教学主管，严谨的教学态度、准确的报考指导是他的必胜法宝。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 27rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/longcheng/teacher4.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">高正达老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">抚顺区校长</h6>
+                        <p class="card-text" style="font-size: 0.8rem">  
+                            龙程教育资深区域负责人，辽宁省个性化教育协会理事、高考报考金牌指导老师，抚顺校区校长，帮助众多考生实现了“低分上名校”的梦想，也让更多考生幸福地被理想大学及专业录取。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px">
+                <div class="card jinchuangteacherscard" style="width: 15rem;min-height: 27rem;border-style: solid;border-width: 2px;border-color: rgba(40, 137, 195, 0.2)">
+                    <div class="card-body" style="padding-top: 0">
+                        <!--<h5 class="card-title">Card title</h5>-->
+                        <img class="card-title img-cluid rounded-circle" src="img/institution/longcheng/teacher5.jpg" style="width: 100%;" />
+                        <h4 class="card-subtitle mb-2" style="color: #0D47A1">张成龙老师</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">葫芦岛校区校长</h6>
+                        <p class="card-text" style="font-size: 0.8rem">
+                              
+                            龙程教育资深区域负责人，辽宁省个性化教育协会理事、高考报考金牌指导老师，葫芦岛校区校长，能够比较精准的预测院校投档分数线，擅长学生整个高中阶段的升学规划以及从职业生涯规划的角度指导高考志愿填报，经验丰富。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="img3">
+        <img src="/img/show/course.jpg" class="img-fluid" />
+    </div>
+    <!--End of current pic-->
+</div>
+<div th:fragment="card_adv">
+    <!--<img class="card-img-top" src="../img/three_in_six/timg.jpg" alt="Card image cap"/>-->
+    <div class="card-body" style="text-align: center">
+        <h3 class="card-title text-white">龙程教育大数据引擎</h3>
+        <h3 class="card-title text-white">为您提供"6选3"工具</h3>
+    </div>
+    <div class="card-footer">
+        <!--<button id="three_in_six_enter_button3" type="button" class="btn btn-dark btn-lg btn-block">进入->功能名字3</button>-->
+    </div>
+
+</div>
+<div th:fragment="footer">
+    <section class="module parallax-footer parallax-2" style="padding-bottom: 0">
+        <div class="parallax-container" style="margin: 0 0 0 0">
+            <div id="footer-ad-1" class="container-fluid">
+                <div class="row" style="padding: 50px 0">
+                    <div class="col-12 text-center text-white">
+                        <p style="font-size: 28px" class="noselect">指 导 流 程 及 承 诺</p>
+                    </div>
+                </div>
+            </div>
+            <!--asd-->
+            <!--<div class="row" style="margin-left: 32.8%">-->
+            <div id="footer-ad-2" class="container-fluid">
+                <div class="row align-items-sm-center" style="margin: 0 10%">
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_56.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">学生指导<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_58.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">性格测试<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_61.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">专业选择<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_63.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">学业激励<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_66.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">大数据库<br/></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <img class="mx-auto noselect d-block" src="/img/footer/icon_04_68.png"  /><p class="text-center text-white footer-icon-text noselect" style="font-size: medium;margin: 5px 0">志愿填报<br/></p>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-ad-3" class="container-fluid">
+                <div class="row" style="margin: 0 10%">
+                    <div class="col" style="padding: 40px 0">
+                        <div>
+                            <p class="text-white noselect" style="font-size: medium;line-height: 30px;margin: 0;letter-spacing:3px">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一帆志愿大数据智能填报平台于2010年诞生在东北大学孵化中心，研发团队由多名东北大学博士、硕士组成，经过四年数据整理研发，形成了一套基于职业测评，状态激励，高考填考的全流程服务体系，一站式解决了高中生“报”与“考”的问题。同时经过多年成熟运营，已经为辽宁省上万名考生提供了精准服务，广泛获得考生及家长的一致好评。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer-ad-4" class="container-fluid" style="background-color: rgba(0,0,0,0.5);">
+                <div class="text-white" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="row" style="padding-left: 4.2%">
+                        <div class="col-md-12 noselect" style="font-size: 13px">
+                            <i>凡作事，将成功之时，其困难最甚。行百里者半九十，有志当世之务者，不可不戒，不可不勉。 —— 梁启超</i>
+                            <!--<i>据不可信研究表明，90%的毕业了都赚不过卖手抓饼的，别报志愿了，没有用的。——刘纤尘</i>-->
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px">
+                        <div class="col-md-6" style="color: rgba(255,255,255,0.7);padding-left: 5.2%">辽ICP备16007101号-1    Copyrigh©2015-2018  All Rights Reserved.</div>
+                        <div class="col-md-6 right" style="font-size: 14px">本软件已经申请国家专利并获得软件著作权，盗版必究</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</html>

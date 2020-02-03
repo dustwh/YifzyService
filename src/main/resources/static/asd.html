@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.min.css" />
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/tooltipster.bundle.min.js"></script>
+
+
+</head>
+<body>
+<span class="tooltip" title="This is my span's tooltip message!">Some text</span>
+
+<span id="example" class="tooltip" title="My tooltip content">Example</span>
+<button id="e2">asd</button>
+<script>
+    $(document).ready(function() {
+
+        $('.tooltip').tooltipster(
+            {
+                animation: 'swing',
+                delay: 50,
+                // theme: 'tooltipster-punk',
+                // trigger: 'click'
+                position:"right"
+            }
+        );
+        $('#e2').click(function () {
+            $('#example').tooltipster('open');
+        })
+    });
+</script>
+</body>
+</html>

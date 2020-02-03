@@ -1,0 +1,55 @@
+/*重写单选框*/
+/*ul {*/
+    /*list-style: none;*/
+/*}*/
+/*li {*/
+    /*!*display: inline-block;*!*/
+    /*margin-right: 15px;*/
+/*}*/
+.divul {
+    list-style: none;
+    margin-top: 1.5%;
+    margin-left: 1%;
+    margin-bottom: 1.5%;
+}
+.divli {
+    /*display: inline-block;*/
+    margin-right: 15px;
+}
+.divlibool {
+    display: inline-block;
+    margin-right: 15px;
+}
+.hid-cir{
+    cursor: pointer;
+}
+/*.questionselect {*/
+    /*visibility:hidden;*/
+/*}*/
+/*label {*/
+    /*cursor: pointer;*/
+/*}*/
+/*///////////////////////////////*/
+.answer_label {
+    cursor: pointer;
+}
+input:checked + label {
+    color: #ea755f;
+}
+/*重写单选框结束*/
+/*font*/
+
+/*@font-face {*/
+    /*font-family: 'hzgb';*/
+    /*src:url('../fonts/hzgb.ttf') format('truetype'),*/
+    /*url('../fonts/hzgb.eot') format('embedded-opentype'),*/
+    /*url('../fonts/hzgb.svg') format('svg'),*/
+    /*url('../fonts/hzgb.woff') format('truetype');*/
+    /*font-weight: 100;*/
+    /*font-style: normal;*/
+/*}*/
+/*body{*/
+    /*font-family:"hzgb";*/
+/*}*/
+
+/*font end*/

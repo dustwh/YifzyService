@@ -1,0 +1,24 @@
+.repbtn{
+    background-color:#000000;filter:Alpha(Opacity=60);opacity:0.8;
+    transition: opacity 0.7s;
+    -moz-transition: opacity 0.7s; /* Firefox 4 */
+    -webkit-transition: opacity 0.7s; /* Safari 和 Chrome */
+    -o-transition: opacity 0.7s;
+}
+#back{
+    background-image: url("../img/rep-footer.png");
+    background-size: 66%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.repbtn:hover{
+    background-color:#000000;filter:Alpha(Opacity=60);opacity:0.5;
+}
+
+
+.start-test-card-intro-text{
+    font-size: 0.9rem;
+}
+.card-title{
+    margin-top: 5%;
+}

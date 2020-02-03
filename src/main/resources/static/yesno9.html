@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            font-family: "Gudea", Helvetica, sans-serif;
+            height: 100%;
+        }
+
+        body {
+            background-color: #111;
+        }
+
+        .switch {
+            position: relative;
+            margin: 100px auto;
+            width: 180px;
+            height: 40px;
+            border: 3px solid #45f;
+            color: #45f;
+            font-size: 25px;
+            border-radius: 10px;
+        }
+
+        .quality {
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            line-height: 40px;
+        }
+        .quality:first-child label {
+            border-radius: 5px 0 0 5px;
+        }
+        .quality:last-child label {
+            border-radius: 0 5px 5px 0;
+        }
+        .quality label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            font-style: italic;
+            text-align: center;
+            transition: transform 0.4s, color 0.4s, background-color 0.4s;
+        }
+        .quality input[type="radio"] {
+            appearance: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+        .quality input[type="radio"]:focus {
+            outline: 0;
+            outline-offset: 0;
+        }
+        .quality input[type="radio"]:checked ~ label {
+            background-color: #45f;
+            color: #111;
+        }
+        .quality input[type="radio"]:active ~ label {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+<body>
+<div class='switch'><div class='quality'>
+    <input checked id='q1' name='q' type='radio' value='q1'>
+    <label for='q1'>720p</label>
+</div><div class='quality'>
+    <input id='q2' name='q' type='radio' value='q2'>
+    <label for='q2'>1080p</label>
+</div>
+</div>
+
+</body>
+</html>

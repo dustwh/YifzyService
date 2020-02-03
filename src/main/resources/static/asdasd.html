@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+<nav class="navbar navbar-expand-sm fixed-top navbar-dark well" style="height: 58px;padding: 0 90px 0 110px">
+
+    <a class="navbar-brand" href="#">
+        <img src="img/show/logo_04.png" alt="锐成教育" style="height: 90%;width: 90%;" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+        <!--<ul class="navbar-nav">-->
+        <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="#">Link1</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#">Link2</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+            <li id="nav-li-1" class="nav-item active" style="padding-left: 15px;margin-right: 10px;width: 78px">
+                <a id="nav-a-1" class="nav-link">首页</a>
+            </li>
+            <li id="nav-li-4" class="nav-item active" style="cursor: pointer">
+                <a id="user-info-btn" class="nav-link">个人信息</a>
+                <!--<button id="" class="dropdown-item dropdown-item-menu" type="button"></button>-->
+            </li>
+            <li id="nav-li-2" class="nav-item active" style="margin-left: 25px;margin-right: 15px;cursor: pointer">
+                <a id="nav-a-2" class="nav-link" href="./eva/StartPersonelTest">性格测试</a>
+            </li>
+            <!--<li id="nav-li-3" class="nav-item active" style="margin-left: 15px;margin-right: 33px">-->
+            <!--<a id="nav-a-3" class="nav-link" href="#">学业计划</a>-->
+            <!--</li>-->
+            <li class="nav-item active dropdown-toggle" id="session_status" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px">登录/注册</a>
+                <!--<a class="nav-link text-center session_status_panel" id="session_status_alr1" style="padding-left: 20px;padding-right: 20px;display: none" th:text="${stuName}">登录/注册</a>-->
+            </li>
+
+            <li class="nav-item active" id="session_status_alr" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!--<a class="nav-link text-center session_status_panel" id="session_status" style="padding-left: 20px;padding-right: 20px;display: inherit">登录/注册</a>-->
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px" th:text="${stuName}">登录/注册</a>
+                <div class="dropdown-menu menu_drop" aria-labelledby="session_status_alr" style="left: 86%;right: 4%">
+
+                    <button id="logout-btn" class="dropdown-item dropdown-item-menu" type="button">注销</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+</body>
+</html>

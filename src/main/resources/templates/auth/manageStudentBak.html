@@ -1,0 +1,951 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>一帆志愿</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+    <!--<link href="css/common/bootstrap.min.css" rel="stylesheet"/>-->
+
+
+    <!--<link rel="stylesheet" href="css/common/font-awesome.min.css"/>-->
+    <link rel="stylesheet" href="css/utils/checkbutton.css"/>
+    <link rel="stylesheet" type="text/css" href="css/utils/bootoast.css"/>
+
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+
+
+    <link rel="Shortcut Icon" href="images/icon.png" type="image/x-icon"/>
+
+
+    <style>
+
+
+
+        body {
+            min-width:915px;
+            overflow: auto;
+            font-size: 1rem;
+        }
+
+
+
+
+
+        /*.active_nav{*/
+            /*border-width: 0 0 3px 0;*/
+            /*border-style: solid;*/
+            /*border-bottom-color: #d04546;*/
+            /*color: #d04546;*/
+            /*!*background-color: #2e6da4;*!*/
+        /*}*/
+        /*.nav_area:hover{*/
+            /*color: #d04546;*/
+        /*}*/
+        button{
+            color: #d04546;
+        }
+
+        .page-footer {
+            padding-top: 20px;
+            color: #fff;
+            background-color: #4a4a4a;
+        }
+
+        .page-footer .footer-copyright {
+            overflow: hidden;
+            min-height: 50px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 10px 0px;
+            color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(51, 51, 51, 0.08);
+        }
+
+        .table tbody tr td{
+            vertical-align: middle;
+        }
+        .overwrite_label{
+            padding-top: 7px;
+            vertical-align: middle;
+        }
+        #search_group .col-lg-1 {
+            width: 150px;
+        }
+        #search_group .col-lg-2 {
+            width: 200px;
+        }
+
+
+
+
+        /*这是一条可爱的分割线*这是一条可爱的分割线*这是一条可爱的分割线*这是一条可爱的分割线*这是一条可爱的分割线*这是一条可爱的分割线*这是一条可爱的分割线*/
+
+
+        /*header {*/
+            /*height:800px;*/
+            /*background: linear-gradient(rgba(0,0,0, 0.2), rgba(0,0,0, 0.2) )  ,  url('img/show/bg01_02.jpg') no-repeat center center fixed;*/
+            /*-webkit-background-size: cover;*/
+            /*-moz-background-size: cover;*/
+            /*-o-background-size: cover;*/
+            /*background-size: cover;*/
+        /*}*/
+
+
+        .well {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: rgba(0, 0, 0, 0.4);
+        }
+        .nav-item:hover{
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        a.nav-link{
+            margin-top: 9px;
+        }
+        /*.session_status_panel{*/
+        /*background-image: url("img/show/name_bg_04.png");*/
+        /*background-repeat: no-repeat;*/
+        /*background-size: 90% 60%;*/
+        /*background-position: 5px 3px;*/
+        /*}*/
+        #btn-submit:hover{
+            background-color: rgba(0,0,0,0.35);
+            color: white;
+        }
+        .modal-content{
+            background: transparent;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #c4c4c4;
+            color: #ffffff;
+        }
+        #recipient-name{
+            background: transparent;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c4c4c4;
+        }
+        #message-text{
+            background: transparent;
+            border-style: solid;
+            border-width: 2px;
+            border-color: #c4c4c4;
+        }
+        .login_modal_opt{
+            color: #ffffff;
+            font-size: 13px;
+        }
+        .menu_drop{
+            background-color: rgba(0,0,0,0.5);
+        }
+        .dropdown-item-menu{
+            color: white;
+        }
+        .big_icon{
+            padding: 15px 0 15px 0;
+            /*cursor: pointer;*/
+        }
+        .banner-img{
+            cursor: pointer;
+        }
+        .login_input{
+            background-color:rgba(0,0,0,0) !important;
+        }
+
+        /**/
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-sm fixed-top navbar-dark well" style="height: 58px;padding: 0 90px 0 110px">
+
+    <a class="navbar-brand" href="#">
+        <img src="img/show/logo_04.png" alt="锐成教育" style="height: 90%;width: 90%;" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1" style="height: 100%">
+        <!--<ul class="navbar-nav">-->
+        <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="#">Link1</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="#">Link2</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <ul class="navbar-nav ml-auto" style="height: 100%;cursor: pointer">
+            <li id="nav-li-1" class="nav-item active" style="padding-left: 15px;margin-right: 10px;width: 78px">
+                <a id="nav-a-1" class="nav-link">首页</a>
+            </li>
+            <li id="nav-li-2" class="nav-item active" style="margin-left: 25px;margin-right: 15px;cursor: pointer">
+                <a id="nav-a-2" class="nav-link" href="./eva/StartPersonelTest">性格测试</a>
+            </li>
+            <li id="nav-li-3" class="nav-item active" style="margin-left: 15px;margin-right: 33px">
+                <a id="nav-a-3" class="nav-link" href="#">学业计划</a>
+            </li>
+            <li class="nav-item active dropdown-toggle" id="session_status" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: inherit" data-toggle="modal" data-target="#exampleModal">
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px">登录/注册</a>
+                <!--<a class="nav-link text-center session_status_panel" id="session_status_alr1" style="padding-left: 20px;padding-right: 20px;display: none" th:text="${stuName}">登录/注册</a>-->
+            </li>
+
+            <li class="nav-item active" id="session_status_alr" style="margin-left: 18px;margin-right: 15px;cursor: pointer;display: none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!--<a class="nav-link text-center session_status_panel" id="session_status" style="padding-left: 20px;padding-right: 20px;display: inherit">登录/注册</a>-->
+                <a class="nav-link text-center session_status_panel" style="padding-left: 20px;padding-right: 20px" th:text="${stuName}">登录/注册</a>
+                <div class="dropdown-menu menu_drop" aria-labelledby="session_status_alr" style="left: 86%;right: 4%">
+                    <button id="user-info-btn" class="dropdown-item dropdown-item-menu" type="button">个人信息</button>
+                    <button id="logout-btn" class="dropdown-item dropdown-item-menu" type="button">注销</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div style="display: flex;min-height: 100vh;flex-direction: column;">
+    <!--<nav class="navbar navbar-default navbar-fixed-top" >-->
+        <!--<div class="container-fluid">-->
+            <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+            <!--<div class="navbar-header" style="height: 66px">-->
+                <!--<a class="navbar-brand" href="#"><img src="img/logo_03.png" style="padding-left: 90px;height: 45px;"/></a>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height: 66px">-->
+                <!--&lt;!&ndash;<ul class="nav navbar-nav" style="height: 70px">&ndash;&gt;-->
+                <!--&lt;!&ndash;<li class="active" style="height: 70px;padding-left: 30%"><a style="height: 70px" href="#">Link <span class="sr-only">(current)</span></a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li style="height: 70px"><a style="height: 70px" href="#">Link</a></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li class="dropdown" style="height: 70px">&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<a style="height: 70px" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<ul class="dropdown-menu">&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">Action</a></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">Another action</a></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">Something else here</a></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li role="separator" class="divider"></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">Separated link</a></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li role="separator" class="divider"></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">One more separated link</a></li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;</ul>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;<form class="navbar-form navbar-left">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input type="text" class="form-control" placeholder="Search"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<button type="submit" class="btn btn-default">Submit</button>&ndash;&gt;-->
+                <!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+                <!--<ul class="nav navbar-nav navbar-right">-->
+
+                    <!--<li style="height: 51px"><a style="height: 51px;font-size: 16px;margin-top: 15px;" href="#"><div class="nav_area" style="height: 37px;">首页</div></a></li>-->
+                    <!--<li style="height: 51px;border-bottom-color: #2e6da4;border: 100px"><a style="height: 55px;font-size: 16px;margin-top: 15px" href="#"><div class="nav_area active_nav" style="height: 37px;">性格测试</div></a></li>-->
+                    <!--<li style="height: 51px;padding-right: 200px"><a style="height: 51px;font-size: 16px;margin-top: 15px" href="#"><div class="nav_area" style="height: 37px;">学业计划</div></a></li>-->
+
+                    <!--<li><a href="./logout" style="height: 51px;font-size: 16px;margin-top: 15px"><span class="glyphicon glyphicon-log-in"></span> 注销</a></li>-->
+                <!--</ul>-->
+            <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+        <!--</div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+    <!--</nav>-->
+    <div><span id="tchr_id"></span></div>
+    <div style="margin-top: 80px"></div>
+    <h4 class="modal-title"><span id="editModalLabel">学生编号:</span><span id="stuNameTitle"></span><span id="stuId" hidden="hidden" th:text="${student.stuId}"></span></h4>
+
+    <div class="modal-body">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li class="active" id="tab1">
+                <a href="#basicInfo" role="tab" data-toggle="tab">
+                    基本信息
+                </a>
+            </li>
+            <li  id="tab2"><a href="#exmInfo" data-toggle="tab">报考信息</a></li>
+            <li id="tab3"><a href="#exmInclination" data-toggle="tab">报考倾向</a></li>
+            <!--<button type="button" class="btn btn-primary" id="save" style="float:right;width: ">保存</button>-->
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="basicInfo">
+                <div class="row" style="margin-top: 20px;">
+                    <div class="form-group col-md-1" id="stuNameLabelDiv">
+                        <label for="stuName" class="control-label overwrite_label">*姓名:</label>
+                    </div>
+                    <div class="form-group col-md-3" id="stuNameDiv">
+                        <input type="text" class="form-control" id="stuName"/>
+                    </div>
+                    <div class="form-group col-md-1" id="stuTelLabelDiv">
+                        <label for="stuTel" class="control-label overwrite_label">*电话:</label>
+                    </div>
+                    <div class="form-group col-md-3" id="stuTelDiv">
+                        <input type="text" class="form-control" id="stuTel"/>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuSex" class="control-label overwrite_label">性别:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" onchange="selectOnchang(this)" id="stuSex">
+                            <option value="0"></option>
+                            <option value="1">男</option>
+                            <option value="2">女</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-1">
+                        <label for="stuEmail" class="control-label overwrite_label">邮箱:</label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="stuEmail"/>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuQq" class="control-label overwrite_label">QQ:</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="stuQq"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-1">
+                        <label for="province" class="control-label overwrite_label">地址:</label>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <select class="form-control" id="province" onchange="changeSelect(this);">
+                            <option value="000000" style="color:#999;" disabled="disabled" >-请选择省-</option>
+                            <!--<option value="000000" style="color:#999;" disabled="disabled" >-请选择省-</option>-->
+                        </select>
+                    </div>
+                    <!--<div class="form-group col-md-1">-->
+                    <!--<label for="city" class="control-label overwrite_label">市:</label>-->
+                    <!--</div>-->
+                    <div class="form-group col-md-3">
+                        <select class="form-control" id="city" onchange="changeSelect(this);">
+                            <option value="000000" style="color:#999;" disabled="disabled" >-请选择市-</option>
+                        </select>
+                    </div>
+                    <!--<div class="form-group col-md-1">-->
+                    <!--<label for="district" class="control-label overwrite_label">区:</label>-->
+                    <!--</div>-->
+                    <div class="form-group col-md-3">
+                        <select class="form-control" id="district" onchange="changeDistrict(this)">
+                            <option value="000000" style="color:#999;" disabled="disabled" >-请选择区-</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-1">
+                        <label for="stuHighschoolCode" class="control-label overwrite_label">学校:</label>
+                    </div>
+                    <!--<div class="form-group col-md-4">-->
+                    <!--<input type="text" class="form-control" id="stuHighschoolName"/>-->
+                    <!--</div>-->
+                    <div class="form-group col-md-4">
+                        <select class="form-control" id="stuHighschoolCode">
+                            <!--<option value="0" style="color:#999;">-请选择学校-</option>-->
+                            <option value="0" style="color:#999;">未选定学校</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuYear" class="control-label overwrite_label">入学:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="text" class="form-control" id="stuYear" placeholder="年份"/>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuHighschoolClass" class="control-label overwrite_label">班级:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="text" class="form-control" id="stuHighschoolClass"/>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="exmInfo">
+                <div class="row" style="margin-top: 20px;">
+                    <div class="form-group col-md-1">
+                        <label for="stuSubjectCode" class="control-label overwrite_label">科类:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" onchange="subjectCodeSelectOnchang(this)" id="stuSubjectCode">
+                            <option value="0"></option>
+                            <option value="1">文史</option>
+                            <option value="5">理工</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuRace" class="control-label overwrite_label">民族:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" onchange="selectOnchang(this)" id="stuRace">
+                            <option value="0"></option>
+                            <option value="01">汉族</option>
+                            <option value="99">少数民族</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-1">
+                        <label for="stuLanguageCode" class="control-label overwrite_label">外语:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" onchange="selectOnchang(this)" id="stuLanguageCode">
+                            <option value="1">英语</option>
+                            <option value="2">日语</option>
+                            <option value="3">俄语</option>
+                            <option value="4">德语</option>
+                            <option value="5">法语</option>
+                            <option value="6">西班牙语</option>
+                            <option value="12">英语,俄语</option>
+                            <option value="13">英语,日语</option>
+                            <option value="14">英语,德语</option>
+                            <option value="15">英语,法语</option>
+                            <option value="16">英语,西班牙语</option>
+                            <option value="123">不限</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuHeight" class="control-label overwrite_label">身高:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="text" class="form-control" id="stuHeight" placeholder="cm"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-1">
+                        <label for="stuEyesight" class="control-label overwrite_label">视力:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" onchange="selectOnchang(this)" id="stuEyesight">
+                            <option value="9" style="color: #f5f5f5"></option>
+                            <option value="0">不近视</option>
+                            <option value="1">有近视</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="stuColourWeakness" class="control-label overwrite_label">色弱:</label>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select class="form-control" onchange="selectOnchang(this)" id="stuColourWeakness">
+                            <option value="9"></option>
+                            <option value="0">不色弱</option>
+                            <option value="1">有色弱</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-1">
+                        <label for="stuPoint" class="control-label overwrite_label">估分:</label>
+                    </div>
+                    <div class="form-group col-md-11">
+                        <span>语</span> <input type="text" class="form-control point_input" id="stuPoint1" style="width: 50px;display: inline;margin-left: 3px"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">＋</span>
+                        <span>数</span> <input type="text" class="form-control point_input" id="stuPoint2" style="width: 50px;display: inline;margin-left: 3px"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">＋</span>
+                        <span>英</span> <input type="text" class="form-control point_input" id="stuPoint3"  style="width: 50px;display: inline;margin-left: 3px"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">＋</span>
+                        <span id="stuPoint4Label">请选科类</span> <input type="text" class="form-control point_input" id="stuPoint4" style="width: 50px;display: inline;margin-left: 3px"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">＋</span>
+                        <span id="stuPoint5Label">请选科类</span> <input type="text" class="form-control point_input" id="stuPoint5" style="width: 50px;display: inline;margin-left: 3px"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">＋</span>
+                        <span id="stuPoint6Label">请选科类</span> <input type="text" class="form-control point_input" id="stuPoint6" style="width: 50px;display: inline;margin-left: 3px"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">＝</span>
+                        <input type="text" class="form-control" id="stuPoint"  placeholder=""  readonly="readonly" style="width: 50px;display: inline;margin-left: 3px" data-toggle="tooltip"  title="总分"/>
+                        <span style="font-weight: inherit;margin-left: 3px;">分</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="exmInclination">
+                <!--<div class="row" style="margin-top: 20px;">-->
+                <!--<div class="form-group col-md-2" style="width: 90px">-->
+                <!--<label class="control-label overwrite_label">优势学科:</label>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-10">-->
+                <!--<input type="checkbox" class="check" id="gdsub_1"><label for="gdsub_1" style="font-size: smaller;">语文</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_2"><label for="gdsub_2" style="font-size: smaller;">数学</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_3"><label for="gdsub_3" style="font-size: smaller;">英语</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_4"><label for="gdsub_4" style="font-size: smaller;">物理</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_5"><label for="gdsub_5" style="font-size: smaller;">化学</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_6"><label for="gdsub_6" style="font-size: smaller;">生物</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_7"><label for="gdsub_7" style="font-size: smaller;">政治</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_8"><label for="gdsub_8" style="font-size: smaller;">历史</label></input>-->
+                <!--<input type="checkbox" class="check" id="gdsub_9"><label for="gdsub_9" style="font-size: smaller;">地理</label></input>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                <!--<div class="form-group col-md-2" style="width: 90px">-->
+                <!--<label class="control-label overwrite_label">意向专业:</label>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-5">-->
+                <!--<input type="checkbox" class="check" id="field_1"><label for="field_1" style="font-size: smaller;">美术</label></input>-->
+                <!--<input type="checkbox" class="check" id="field_2"><label for="field_2" style="font-size: smaller;">医学</label></input>-->
+                <!--<input type="checkbox" class="check" id="field_3"><label for="field_3" style="font-size: smaller;">教育</label></input>-->
+                <!--<input type="checkbox" class="check" id="field_4"><label for="field_4" style="font-size: smaller;">警察</label></input>-->
+                <!--<input type="checkbox" class="check" id="field_5"><label for="field_5" style="font-size: smaller;">农业林业</label></input>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-4">-->
+                <!--<input type="text" class="form-control" id="field_6" placeholder="输入其他专业"/>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+
+                <!--<div class="form-group col-md-12" style="margin-left: 20px">-->
+                <!--<div class="row">-->
+                <!--<div class="form-group col-md-2" style="width: 90px">-->
+                <!--<label class="control-label overwrite_label">意向学校:</label>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-4">-->
+                <!--<input type="text" class="form-control" id="pre_college" placeholder="输入意向大学"/>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-2" style="width: 90px">-->
+                <!--<label class="control-label overwrite_label">意向城市:</label>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-4">-->
+                <!--<input type="text" class="form-control" id="pre_city" placeholder="输入意向城市"/>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                <!--<div class="form-group col-md-2" style="width: 90px">-->
+                <!--<label class="control-label overwrite_label">毕业意向:</label>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-4">-->
+                <!--<input type="checkbox" class="check" id="graduate_1"><label for="graduate_1" style="font-size: smaller;">就业</label></input>-->
+                <!--<input type="checkbox" class="check" id="graduate_2"><label for="graduate_2" style="font-size: smaller;">考研</label></input>-->
+                <!--<input type="checkbox" class="check" id="graduate_3"><label for="graduate_3" style="font-size: smaller;">出国</label></input>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-2" style="width: 90px">-->
+                <!--<label class="control-label overwrite_label">是否接受:</label>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-4">-->
+                <!--<input type="checkbox" class="check" id="special_1"><label for="special_1" style="font-size: smaller;">高收费</label></input>-->
+                <!--<input type="checkbox" class="check" id="special_2"><label for="special_2" style="font-size: smaller;">国防生</label></input>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-12">-->
+                <!--<label for="other_info" class="control-label overwrite_label">备注:</label>-->
+                <!--<textarea class="form-control" id="other_info"></textarea>-->
+                <!--</div>-->
+                <!--<div class="form-group col-md-12">-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="row">
+
+                    <div class="form-group col-md-12" style="margin-left: 20px">
+
+                        <label class="control-label overwrite_label" style="margin-top: 20px">1.请拖动以下学科从喜欢到不喜欢进行排序:</label>
+                        <br/>
+                        <div class="connectedSortable" id="subjectSortable">
+                            <div class="ui-state-default" style="margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle"><p class="subject-item" style="padding-top: 4px;">语文</p></div>
+                            <div class="ui-state-default" style="margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle"><p class="subject-item" style="padding-top: 4px;">数学</p></div>
+                            <div class="ui-state-default" style="margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle"><p class="subject-item" style="padding-top: 4px;">英语</p></div>
+                            <div class="ui-state-default" style="margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle"><p class="subject-item" style="padding-top: 4px;">物理</p></div>
+                            <div class="ui-state-default" style="margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle"><p class="subject-item" style="padding-top: 4px;">化学</p></div>
+                            <div class="ui-state-default" style="margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle"><p class="subject-item" style="padding-top: 4px;">生物</p></div>
+                        </div>
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_1"><label for="gdsub_1" style="font-size: smaller;margin-right: 10px">语文</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_2"><label for="gdsub_2" style="font-size: smaller;margin-right: 10px">数学</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_3"><label for="gdsub_3" style="font-size: smaller;margin-right: 10px">英语</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_4"><label for="gdsub_4" style="font-size: smaller;margin-right: 10px">物理</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_5"><label for="gdsub_5" style="font-size: smaller;margin-right: 10px">化学</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_6"><label for="gdsub_6" style="font-size: smaller;margin-right: 10px">生物</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_7"><label for="gdsub_7" style="font-size: smaller;margin-right: 10px">政治</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_8"><label for="gdsub_8" style="font-size: smaller;margin-right: 10px">历史</label></input>-->
+                        <!--<input type="checkbox" class="check ui-state-default" id="gdsub_9"><label for="gdsub_9" style="font-size: smaller;margin-right: 10px">地理</label></input>-->
+                        <br/>
+                        <br/>
+                        <label class="control-label overwrite_label">2.请选择您对如下专业的态度:</label>
+                        <br/>
+                        <span style="margin-right: 20px;margin-top: 5px">美术</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-left: 28px">
+                            <label class="btn btn-primary active" id="sub1_0" >
+                                <input type="radio" name="options" autocomplete="off" checked="checked" /> 无所谓
+                            </label>
+                            <label class="btn btn-primary" id="sub1_1">
+                                <input type="radio" name="options" autocomplete="off"/> 感兴趣
+                            </label>
+                            <label class="btn btn-primary" id="sub1_2">
+                                <input type="radio" name="options" autocomplete="off"/> 不感兴趣
+                            </label>
+                        </div>
+                        <br/>
+                        <span style="margin-top: 5px;margin-right: 20px;margin-top: 5px">医学</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-left: 28px">
+                            <label class="btn btn-primary active" id="sub2_0">
+                                <input type="radio" name="options" autocomplete="off" checked="checked"/> 无所谓
+                            </label>
+                            <label class="btn btn-primary" id="sub2_1">
+                                <input type="radio" name="options" autocomplete="off"/> 感兴趣
+                            </label>
+                            <label class="btn btn-primary" id="sub2_2">
+                                <input type="radio" name="options" autocomplete="off"/> 不感兴趣
+                            </label>
+                        </div>
+                        <br/>
+                        <span style="margin-top: 5px;margin-right: 20px;margin-top: 5px">教育</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-left: 28px">
+                            <label class="btn btn-primary active" id="sub3_0">
+                                <input type="radio" name="options" autocomplete="off" checked="checked"/> 无所谓
+                            </label>
+                            <label class="btn btn-primary" id="sub3_1">
+                                <input type="radio" name="options" autocomplete="off"/> 感兴趣
+                            </label>
+                            <label class="btn btn-primary" id="sub3_2">
+                                <input type="radio" name="options" autocomplete="off"/> 不感兴趣
+                            </label>
+                        </div>
+                        <br/>
+                        <span style="margin-top: 5px;margin-right: 20px;margin-top: 5px">警察</span>
+                        <div class="btn-group" data-toggle="buttons" style="margin-left: 28px">
+                            <label class="btn btn-primary active" id="sub4_0">
+                                <input type="radio" name="options" autocomplete="off" checked="checked"/> 无所谓
+                            </label>
+                            <label class="btn btn-primary" id="sub4_1">
+                                <input type="radio" name="options" autocomplete="off"/> 感兴趣
+                            </label>
+                            <label class="btn btn-primary" id="sub4_2">
+                                <input type="radio" name="options" autocomplete="off"/> 不感兴趣
+                            </label>
+                        </div>
+                        <br/>
+                        <span style="margin-top: 5px;margin-right: 20px;margin-top: 5px">农业林业</span>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary active" id="sub5_0">
+                                <input type="radio" name="options" autocomplete="off" checked="checked"/> 无所谓
+                            </label>
+                            <label class="btn btn-primary" id="sub5_1">
+                                <input type="radio" name="options" autocomplete="off"/> 感兴趣
+                            </label>
+                            <label class="btn btn-primary" id="sub5_2">
+                                <input type="radio" name="options" autocomplete="off"/> 不感兴趣
+                            </label>
+                        </div>
+                        <br/>
+                        <input type="text" class="form-control" id="field_6" placeholder="输入其他补充专业及态度" style="width: 90%;margin-top: 5px"/>
+                        <br/>
+                        <label class="control-label overwrite_label">3.请输入意向学校:</label>
+                        <br/>
+                        <input type="text" class="form-control" id="pre_college" placeholder="输入意向大学" style="width: 90%"/>
+                        <br/>
+                        <label class="control-label overwrite_label">4.请输入意向城市:</label>
+                        <br/>
+                        <input type="text" class="form-control" id="pre_city" placeholder="输入意向城市" style="width: 90%"/>
+                        <br/>
+                        <label class="control-label overwrite_label">5.请选择毕业意向:</label>
+                        <br/>
+                        <input type="checkbox" class="check" id="graduate_1"><label for="graduate_1" style="font-size: smaller;">就业</label></input>
+                        <input type="checkbox" class="check" id="graduate_2"><label for="graduate_2" style="font-size: smaller;">考研</label></input>
+                        <input type="checkbox" class="check" id="graduate_3"><label for="graduate_3" style="font-size: smaller;">出国</label></input>
+                        <br/>
+                        <label class="control-label overwrite_label">6.请选择接受的报考类型:</label>
+                        <br/>
+                        <input type="checkbox" class="check" id="special_1"><label for="special_1" style="font-size: smaller;">高收费</label></input>
+                        <input type="checkbox" class="check" id="special_2"><label for="special_2" style="font-size: smaller;">国防生</label></input>
+                        <br/>
+                        <label for="other_info" class="control-label overwrite_label">7.请输入其他补充信息:</label>
+                        <br/>
+                        <textarea class="form-control" id="other_info" style="width: 90%"></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="next_modal">下一页</button>
+        <button type="button" class="btn btn-primary" id="save" style="width: 100px">保存</button>
+    </div>
+    <!--<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>-->
+    <!--<script>window.$ || document.write("<script src='../static/js/jquery-1.11.0.min.js'><\/script>")</script>-->
+    <script src="js/common/jquery-3.3.1.min.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/jquery-ui.js"></script>
+
+    <script type="text/javascript" src="js/views/manageStudent.js" th:inline="javascript"></script>
+    <script type="text/javascript" src="js/utils/district.js"></script>
+    <script type="text/javascript" src="data/highschool.js"></script>
+    <script type="text/javascript" src="js/utils/bootoast.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        $(document).ready(function($){
+
+            initSeletList();
+            initPages()
+        });
+        function initPages(){
+            initTabs()
+            // $('#editModalLabel').text("修改学生：")
+            // $('#stuId').text([[student.stuId]])
+            // $('#stuTel').val(this.name.split("_")[1])
+            $.ajax({
+                url:"./findStuId/"+[[${student.stuId}]],
+                type: "get",
+                success: function (data) {
+                    $('#stuNameTitle').text(data.stuName)
+                    $('#stuTel').val(data.stuTel)
+                    $('#stuName').val(data.stuName)
+                    $('#stuEmail').val(data.stuEmail)
+                    $('#stuQq').val(data.stuQq)
+                    $('#stuSex').val(data.stuSex)
+
+
+                    $('#province').val(data.stuProvinceCode.substr(0,2))
+                    $('#city').val(data.stuCityCode.substr(0,4))
+                    $('#district').val(data.stuDistrictCode)
+                    initSelect("province",data.stuProvinceCode.substr(0,2))
+                    initSelect("city",data.stuCityCode.substr(0,4))
+                    $('#stuHighschoolCode').val(data.stuHighschoolCode)
+                    // $('#stuHighschoolName').val(data.stuHighschoolName)
+                    $('#stuYear').val(data.stuYear)
+                    $('#stuHighschoolClass').val(data.stuHighschoolClass)
+                    $('#stuRace').val(data.stuRace)
+                    $('#stuSubjectCode').val(data.stuSubjectCode)
+                    $('#stuLanguageCode').val(data.stuLanguageCode)
+                    $('#stuHeight').val(data.stuHeight)
+                    $('#stuPoint').val(data.stuPoint)
+                    // $('#stuPointPolicyAddpoint').val(data.stuPointPolicyAddpoint)
+                    $('#stuEyesight').val(data.stuEyesight)
+                    $('#stuColourWeakness').val(data.stuColourWeakness)
+                    if(data.stuSubjectCode=='1'){
+                        $("#stuPoint4Label").html("政")
+                        $("#stuPoint5Label").html("史")
+                        $("#stuPoint6Label").html("地")
+                    }else if(data.stuSubjectCode=='5'){
+                        $("#stuPoint4Label").html("物")
+                        $("#stuPoint5Label").html("化")
+                        $("#stuPoint6Label").html("生")
+                    }else {
+                        $("#stuPoint4Label").html("请选科类")
+                        $("#stuPoint5Label").html("请选科类")
+                        $("#stuPoint6Label").html("请选科类")
+                    }
+
+
+                    if(data.stuPointDetail!="" && data.stuPointDetail!=null){
+                        $('#stuPoint1').val(data.stuPointDetail.split(",")[0])
+                        $('#stuPoint2').val(data.stuPointDetail.split(",")[1])
+                        $('#stuPoint3').val(data.stuPointDetail.split(",")[2])
+                        $('#stuPoint4').val(data.stuPointDetail.split(",")[3])
+                        $('#stuPoint5').val(data.stuPointDetail.split(",")[4])
+                        $('#stuPoint6').val(data.stuPointDetail.split(",")[5])
+
+                    }
+
+
+                    if(data.stuGoodSubject==null||data.stuGoodSubject.split(",").length==1){
+                        // $('#gdsub_1').prop("checked",false);
+                        // $('#gdsub_2').prop("checked",false);
+                        // $('#gdsub_3').prop("checked",false);
+                        // $('#gdsub_4').prop("checked",false);
+                        // $('#gdsub_5').prop("checked",false);
+                        // $('#gdsub_6').prop("checked",false);
+                        // $('#gdsub_7').prop("checked",false);
+                        // $('#gdsub_8').prop("checked",false);
+                        // $('#gdsub_9').prop("checked",false);
+                        // $( ".check" ).button();
+                        if(data.stuSubjectCode=="1"){
+                            var str = "<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">语文</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">数学</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">英语</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">政治</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">历史</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">地理</p></div>"
+                            $('#subjectSortable').html(str)
+                        }else if(data.stuSubjectCode=="5"){
+                            var str = "<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">语文</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">数学</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">英语</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">物理</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">化学</p></div>"
+                                +"<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">生物</p></div>"
+                            $('#subjectSortable').html(str)
+                        }else{
+                            $('#subjectSortable').html("<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 130px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">请选择科类</p></div>")
+                        }
+
+                    }else {
+                        // data.stuGoodSubject.split(",")[0]==0 ? $('#gdsub_1').prop("checked",false) : $('#gdsub_1').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[1]==0 ? $('#gdsub_2').prop("checked",false) : $('#gdsub_2').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[2]==0 ? $('#gdsub_3').prop("checked",false) : $('#gdsub_3').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[3]==0 ? $('#gdsub_4').prop("checked",false) : $('#gdsub_4').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[4]==0 ? $('#gdsub_5').prop("checked",false) : $('#gdsub_5').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[5]==0 ? $('#gdsub_6').prop("checked",false) : $('#gdsub_6').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[6]==0 ? $('#gdsub_7').prop("checked",false) : $('#gdsub_7').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[7]==0 ? $('#gdsub_8').prop("checked",false) : $('#gdsub_8').prop("checked",true);
+                        // data.stuGoodSubject.split(",")[8]==0 ? $('#gdsub_9').prop("checked",false) : $('#gdsub_9').prop("checked",true);
+                        // $( ".check" ).button();
+                        var stuGoodSubjectHtml = ""
+                        for (var i=0;i<data.stuGoodSubject.split(",").length;i++){
+                            stuGoodSubjectHtml+="<div class=\"ui-state-default\" style=\"margin-right: 10px;width: 50px;display: inline;float: left;color: #8c8e8a;cursor: pointer;height: 30px;text-align: center;vertical-align: middle\"><p class=\"subject-item\" style=\"padding-top: 4px;\">"+data.stuGoodSubject.split(",")[i]+"</p></div>"
+                        }
+                        $('#subjectSortable').html(stuGoodSubjectHtml)
+                    }
+
+                    if(data.stuIntentSubject==null||data.stuIntentSubject.split(",").length==1){
+                        // $('#field_1').prop("checked",false);
+                        // $('#field_2').prop("checked",false);
+                        // $('#field_3').prop("checked",false);
+                        // $('#field_4').prop("checked",false);
+                        // $('#field_5').prop("checked",false);
+                        // $('#field_6').val("");
+                        // $( ".check" ).button();
+                    }else {
+                        if(data.stuIntentSubject.split(",")[0]==0){
+                            $('#sub1_0').attr("class","btn btn-primary active")
+                            $('#sub1_1').attr("class","btn btn-primary")
+                            $('#sub1_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[0]==1){
+                            $('#sub1_0').attr("class","btn btn-primary")
+                            $('#sub1_1').attr("class","btn btn-primary active")
+                            $('#sub1_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[0]==2){
+                            $('#sub1_0').attr("class","btn btn-primary")
+                            $('#sub1_1').attr("class","btn btn-primary")
+                            $('#sub1_2').attr("class","btn btn-primary active")
+                        }
+                        if(data.stuIntentSubject.split(",")[1]==0){
+                            $('#sub2_0').attr("class","btn btn-primary active")
+                            $('#sub2_1').attr("class","btn btn-primary")
+                            $('#sub2_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[1]==1){
+                            $('#sub2_0').attr("class","btn btn-primary")
+                            $('#sub2_1').attr("class","btn btn-primary active")
+                            $('#sub2_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[1]==2){
+                            $('#sub2_0').attr("class","btn btn-primary")
+                            $('#sub2_1').attr("class","btn btn-primary")
+                            $('#sub2_2').attr("class","btn btn-primary active")
+                        }
+                        if(data.stuIntentSubject.split(",")[2]==0){
+                            $('#sub3_0').attr("class","btn btn-primary active")
+                            $('#sub3_1').attr("class","btn btn-primary")
+                            $('#sub3_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[2]==1){
+                            $('#sub3_0').attr("class","btn btn-primary")
+                            $('#sub3_1').attr("class","btn btn-primary active")
+                            $('#sub3_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[2]==2){
+                            $('#sub3_0').attr("class","btn btn-primary")
+                            $('#sub3_1').attr("class","btn btn-primary")
+                            $('#sub3_2').attr("class","btn btn-primary active")
+                        }
+                        if(data.stuIntentSubject.split(",")[3]==0){
+                            $('#sub4_0').attr("class","btn btn-primary active")
+                            $('#sub4_1').attr("class","btn btn-primary")
+                            $('#sub4_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[3]==1){
+                            $('#sub4_0').attr("class","btn btn-primary")
+                            $('#sub4_1').attr("class","btn btn-primary active")
+                            $('#sub4_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[3]==2){
+                            $('#sub4_0').attr("class","btn btn-primary")
+                            $('#sub4_1').attr("class","btn btn-primary")
+                            $('#sub4_2').attr("class","btn btn-primary active")
+                        }
+                        if(data.stuIntentSubject.split(",")[4]==0){
+                            $('#sub5_0').attr("class","btn btn-primary active")
+                            $('#sub5_1').attr("class","btn btn-primary")
+                            $('#sub5_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[4]==1){
+                            $('#sub5_0').attr("class","btn btn-primary")
+                            $('#sub5_1').attr("class","btn btn-primary active")
+                            $('#sub5_2').attr("class","btn btn-primary")
+                        }else if(data.stuIntentSubject.split(",")[4]==2){
+                            $('#sub5_0').attr("class","btn btn-primary")
+                            $('#sub5_1').attr("class","btn btn-primary")
+                            $('#sub5_2').attr("class","btn btn-primary active")
+                        }
+
+                        // data.stuIntentSubject.split(",")[0]==0 ? $('#field_1').prop("checked",false) : $('#field_1').prop("checked",true);
+                        // data.stuIntentSubject.split(",")[1]==0 ? $('#field_2').prop("checked",false) : $('#field_2').prop("checked",true);
+                        // data.stuIntentSubject.split(",")[2]==0 ? $('#field_3').prop("checked",false) : $('#field_3').prop("checked",true);
+                        // data.stuIntentSubject.split(",")[3]==0 ? $('#field_4').prop("checked",false) : $('#field_4').prop("checked",true);
+                        // data.stuIntentSubject.split(",")[4]==0 ? $('#field_5').prop("checked",false) : $('#field_5').prop("checked",true);
+                        $('#field_6').val(data.stuIntentSubject.split(",")[5]);
+                        $( ".check" ).button();
+                    }
+
+                    $('#pre_college').val(data.stuIntentCollege);
+                    $('#pre_city').val(data.stuIntentCity);
+
+                    if(data.stuAfterGraduation==null||data.stuAfterGraduation.split(",").length==1){
+                        $('#graduate_1').prop("checked",false);
+                        $('#graduate_2').prop("checked",false);
+                        $('#graduate_3').prop("checked",false);
+                        $( ".check" ).button();
+                    }else {
+                        data.stuAfterGraduation.split(",")[0]==0 ? $('#graduate_1').prop("checked",false) : $('#graduate_1').prop("checked",true);
+                        data.stuAfterGraduation.split(",")[1]==0 ? $('#graduate_2').prop("checked",false) : $('#graduate_2').prop("checked",true);
+                        data.stuAfterGraduation.split(",")[2]==0 ? $('#graduate_3').prop("checked",false) : $('#graduate_3').prop("checked",true);
+                        $( ".check" ).button();
+                    }
+
+                    if(data.stuSpecialType==null||data.stuSpecialType.split(",").length==1){
+                        $('#special_1').prop("checked",false);
+                        $('#special_2').prop("checked",false);
+                        $( ".check" ).button();
+                    }else {
+                        data.stuSpecialType.split(",")[0]==0 ? $('#special_1').prop("checked",false) : $('#special_1').prop("checked",true);
+                        data.stuSpecialType.split(",")[1]==0 ? $('#special_2').prop("checked",false) : $('#special_2').prop("checked",true);
+                        $( ".check" ).button();
+                    }
+                    $('#other_info').val(data.stuOtherInfo);
+
+                },
+                error: function () {
+                    alert("查询失败")
+                },
+            })
+        }
+        $(function () { $("[data-toggle='tooltip']").tooltip(); });
+        $(function() {
+            $( ".check" ).button();
+            $( ".format" ).buttonset();
+        });
+        $('.point_input').change(function (e, previous) {
+            $('#stuPoint').val(parseFloat($('#stuPoint1').val()==''?0:parseFloat($('#stuPoint1').val()))
+                +parseFloat($('#stuPoint2').val()==''?0:parseFloat($('#stuPoint2').val()))
+                +parseFloat($('#stuPoint3').val()==''?0:parseFloat($('#stuPoint3').val()))
+                +parseFloat($('#stuPoint4').val()==''?0:parseFloat($('#stuPoint4').val()))
+                +parseFloat($('#stuPoint5').val()==''?0:parseFloat($('#stuPoint5').val()))
+                +parseFloat($('#stuPoint6').val()==''?0:parseFloat($('#stuPoint6').val()))
+            )
+        })
+        $(function() {
+            $( "#subjectSortable" ).sortable();
+            $( "#subjectSortable" ).disableSelection();
+        });
+        /*]]>*/
+    </script>
+
+</div>
+<footer class="page-footer grey darken-4" style="text-align: center">
+    <div class="container" style="text-align: center">
+        <div class="row">
+            <div><span class="white-text" style="font-weight: 400">一帆志愿</span> <span style="margin-left: 50px">辽宁省内各市 激活卡代理及一对一指导站，火热招商中</span>       <span style="margin-left: 50px">联系我们：400-8888-666</span></div>
+            <p></p>
+        </div>
+    </div>
+    <div class="footer-copyright" style="text-align: center">
+        <div class="container" style="margin: auto">
+            Copyrigh©2015-2018 一帆志愿 All Rights Reserved. 辽ICP备16007101号-1 |
+            <a class="grey-text text-lighten-4 right" href="#!">使用说明</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
