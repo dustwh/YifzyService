@@ -56,6 +56,21 @@ public class WeChatController {
 //    private EnnQuestionRepository ennQuestionRepository;
 
     @ResponseBody
+    @RequestMapping("/wxSaveInitInfo")
+    public String wxSaveInitInfo(String tel,String name,String tmpplace,String isnewce){
+        System.out.println(tel);
+        System.out.println(name);
+        System.out.println(tmpplace);
+        System.out.println(isnewce);
+        Student student = studentRepository.findStudentByStuTel(tel);
+        student.setStuName(name);
+        student.setTmpPlace(tmpplace);
+        student.setStuIsNewexam(isnewce);
+        studentRepository.save(student);
+        return "success";
+    }
+
+    @ResponseBody
     @RequestMapping("/t")
     public String t(HttpServletRequest request,HttpSession session) {
         Cookie[] cookies = request.getCookies();
@@ -93,7 +108,7 @@ public class WeChatController {
             // 偏移量
             byte[] ivByte = Base64.decode(iv);
             try {
-                // 如果密钥不足16位，那么就补足.  这个if 中的内容很重要
+                // 如果密钥不足16位，那么就补足.
                 int base = 16;
                 if (keyByte.length % base != 0) {
                     int groups = keyByte.length / base + (keyByte.length % base != 0 ? 1 : 0);
@@ -123,17 +138,24 @@ public class WeChatController {
                         Integer stuId = studentLoginBean.getStuId();
                         Student student=studentRepository.findOne(stuId);
                         if (Integer.parseInt(student.getStuSex())==0||(student.getStuHighschoolCode()!=null&&Integer.parseInt(student.getStuHighschoolCode())==0)||student.getStuHighschoolCode()==null||student.getStuYear()==null||student.getStuHighschoolClass()==null||Integer.parseInt(student.getStuSubjectCode())==0||Integer.parseInt(student.getStuRace())==0||student.getStuHeight()==null||Integer.parseInt(student.getStuEyesight())==9||Integer.parseInt(student.getStuColourWeakness())==9||student.getStuPoint()==null){
-                            //有未完善的信息
+                            //有未完善的信息的情况
                             jsonObject.put("if_info_compelet","0");
+                            System.out.println("info not complete");
+                            session.setAttribute("stuId",stuId);
+                            String sessionId = session.getId();
+                            jsonObject.put("yifzySessionId",sessionId);
+                            jsonObject.put("mark",student.getStuPoint());
+                            jsonObject.put("grade",2020-Integer.parseInt(student.getStuYear()));
+                            jsonObject.put("subject",student.getStuSubjectCode());
                         }else {
-                            //都完善了
+                            //信息完善的情况
                             jsonObject.put("if_info_compelet","1");
+                            System.out.println("info complete");
                         }
-                        session.setAttribute("stuId",stuId);
-                        String sessionId = session.getId();
-                        jsonObject.put("yifzySessionId",sessionId);
+
                     }else{
                         //无用户
+                        jsonObject.put("if_info_compelet","-1");
                         System.out.println("3");
                     }
                     return jsonObject;

@@ -1341,23 +1341,6 @@ public class EvaController {
     }
 
     @ResponseBody
-    @RequestMapping("/wxSaveInitInfo")
-    public String wxSaveInitInfo(String tel,String name,String tmpplace,String isnewce){
-        System.out.println(tel);
-        System.out.println(name);
-        System.out.println(tmpplace);
-        System.out.println(isnewce);
-        Student student = studentRepository.findStudentByStuTel(tel);
-        student.setStuName(name);
-        student.setTmpPlace(tmpplace);
-        student.setStuIsNewexam(isnewce);
-        studentRepository.save(student);
-        return "success";
-    }
-
-
-
-    @ResponseBody
     @RequestMapping("/wxfakelogin")
     public String wxfakelogin(String tel){
         System.out.println(tel);
