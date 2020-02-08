@@ -57,16 +57,22 @@ public class WeChatController {
 
     @ResponseBody
     @RequestMapping("/wxSaveInitInfo")
-    public String wxSaveInitInfo(String tel,String name,String tmpplace,String isnewce){
-        System.out.println(tel);
-        System.out.println(name);
-        System.out.println(tmpplace);
-        System.out.println(isnewce);
-        Student student = studentRepository.findStudentByStuTel(tel);
-        student.setStuName(name);
-        student.setTmpPlace(tmpplace);
-        student.setStuIsNewexam(isnewce);
-        studentRepository.save(student);
+    public String wxSaveInitInfo(String telInfo, String markInfo, String yearInfo, String subjectcode, String provinceInfo, String cityInfo, String districtInfo, String schoolInfo){
+
+//        Student student = studentRepository.findStudentByStuTel(tel);
+//        student.setStuName(name);
+//        student.setTmpPlace(tmpplace);
+//        student.setStuIsNewexam(isnewce);
+//        studentRepository.save(student);
+        System.out.println(telInfo);
+        System.out.println(markInfo);
+        System.out.println(yearInfo);
+        System.out.println(subjectcode);
+        System.out.println(provinceInfo);
+        System.out.println(cityInfo);
+        System.out.println(districtInfo);
+        System.out.println(schoolInfo);
+
         return "success";
     }
 
@@ -132,18 +138,18 @@ public class WeChatController {
                     System.out.println(stu_phone);
                     StudentLoginBean studentLoginBean = studentLoginRepository.findByStuTel(stu_phone);
                     System.out.println("1");
+                    String sessionId = session.getId();
                     if (studentLoginBean!=null){
                         //有用户
                         System.out.println("2");
                         Integer stuId = studentLoginBean.getStuId();
+                        session.setAttribute("stuId",stuId);
+                        jsonObject.put("yifzySessionId",sessionId);
                         Student student=studentRepository.findOne(stuId);
                         if (Integer.parseInt(student.getStuSex())==0||(student.getStuHighschoolCode()!=null&&Integer.parseInt(student.getStuHighschoolCode())==0)||student.getStuHighschoolCode()==null||student.getStuYear()==null||student.getStuHighschoolClass()==null||Integer.parseInt(student.getStuSubjectCode())==0||Integer.parseInt(student.getStuRace())==0||student.getStuHeight()==null||Integer.parseInt(student.getStuEyesight())==9||Integer.parseInt(student.getStuColourWeakness())==9||student.getStuPoint()==null){
                             //有未完善的信息的情况
                             jsonObject.put("if_info_compelet","0");
                             System.out.println("info not complete");
-                            session.setAttribute("stuId",stuId);
-                            String sessionId = session.getId();
-                            jsonObject.put("yifzySessionId",sessionId);
                             jsonObject.put("mark",student.getStuPoint());
                             jsonObject.put("grade",2020-Integer.parseInt(student.getStuYear()));
                             jsonObject.put("subject",student.getStuSubjectCode());
@@ -152,10 +158,9 @@ public class WeChatController {
                             jsonObject.put("if_info_compelet","1");
                             System.out.println("info complete");
                         }
-
                     }else{
                         //无用户
-                        jsonObject.put("if_info_compelet","-1");
+                        //创建学生,然后比照信息不完善
                         System.out.println("3");
                     }
                     return jsonObject;
