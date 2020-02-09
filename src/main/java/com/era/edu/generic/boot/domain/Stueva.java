@@ -49,6 +49,7 @@ public class Stueva  implements Serializable{
     private Date cctTime;
     private Date hsTime;
     private Date pfTime;
+    private Date guideSubjectUpdateTime;
 
     public Stueva() {
     }
@@ -111,6 +112,80 @@ public class Stueva  implements Serializable{
         this.hsAnswer=hsAnswer;
         this.isPf = isPf;
         this.pfAnswer = pfAnswer;
+    }
+    public Stueva(Integer stuId) {
+        this.stuId = stuId;
+        this.isEnn = '0';
+        this.isHol = '0';
+        this.ennResult = "000000000";
+        this.holResult = "0,0,0,0,0,0";
+        this.isRealised = '0';
+        this.guideSubjectList = "";
+        this.inteleResult = "0,0,0,0,0,0,0,0";
+
+        this.isSi='0';
+        this.isMsslm='0';
+        this.isMssmhs='0';
+        this.isMsea='0';
+        this.isTms='0';
+        this.isCct='0';
+        this.isHs='0';
+        this.isPf='0';
+
+    }
+    public Stueva(Integer stuId, char isEnn, char isHol, String ennResult, String holResult,char isRealised,String guideSubjectList,String inteleResult) {
+        this.stuId = stuId;
+        this.isEnn = isEnn;
+        this.isHol = isHol;
+        this.ennResult = ennResult;
+        this.holResult = holResult;
+        this.isRealised = isRealised;
+        this.guideSubjectList = guideSubjectList;
+        this.inteleResult = inteleResult;
+    }
+
+    public Stueva(Integer evaId,Integer stuId, char isEnn, char isHol, String ennResult, String holResult,char isRealised,String guideSubjectList,String inteleResult) {
+        this.evaId = evaId;
+        this.stuId = stuId;
+        this.isEnn = isEnn;
+        this.isHol = isHol;
+        this.ennResult = ennResult;
+        this.holResult = holResult;
+        this.isRealised = isRealised;
+        this.guideSubjectList = guideSubjectList;
+        this.inteleResult = inteleResult;
+    }
+    public Stueva(Integer stuId, char isEnn, char isHol, String ennResult, String holResult,char isRealised,String guideSubjectList,String inteleResult,String myEnnAnswer,String myInteleAnswer,char isSi,String mySiAnswer,String siResult) {
+        this.stuId = stuId;
+        this.isEnn = isEnn;
+        this.isHol = isHol;
+        this.ennResult = ennResult;
+        this.holResult = holResult;
+        this.isRealised = isRealised;
+        this.guideSubjectList = guideSubjectList;
+        this.inteleResult = inteleResult;
+        this.myEnnAnswer=myEnnAnswer;
+        this.myInteleAnswer=myInteleAnswer;
+        this.isSi=isSi;
+        this.mySiAnswer=mySiAnswer;
+        this.siResult=siResult;
+    }
+
+    public Stueva(Integer evaId,Integer stuId, char isEnn, char isHol, String ennResult, String holResult,char isRealised,String guideSubjectList,String inteleResult,String myEnnAnswer,String myInteleAnswer,char isSi,String mySiAnswer,String siResult) {
+        this.evaId = evaId;
+        this.stuId = stuId;
+        this.isEnn = isEnn;
+        this.isHol = isHol;
+        this.ennResult = ennResult;
+        this.holResult = holResult;
+        this.isRealised = isRealised;
+        this.guideSubjectList = guideSubjectList;
+        this.inteleResult = inteleResult;
+        this.myEnnAnswer=myEnnAnswer;
+        this.myInteleAnswer=myInteleAnswer;
+        this.isSi=isSi;
+        this.mySiAnswer=mySiAnswer;
+        this.siResult=siResult;
     }
 
     public Integer getEvaId() {

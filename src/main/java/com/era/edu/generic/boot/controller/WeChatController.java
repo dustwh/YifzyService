@@ -42,8 +42,8 @@ import java.security.Security;
 public class WeChatController {
     @Autowired
     private StudentLoginRepository studentLoginRepository;
-//    @Autowired
-//    private StuevaRepository stuevaRepository;
+    @Autowired
+    private StuevaRepository stuevaRepository;
     @Autowired
     private StudentRepository studentRepository;
 //    @Autowired
@@ -57,23 +57,51 @@ public class WeChatController {
 
     @ResponseBody
     @RequestMapping("/wxSaveInitInfo")
-    public String wxSaveInitInfo(String telInfo, String markInfo, String yearInfo, String subjectcode, String provinceInfo, String cityInfo, String districtInfo, String schoolInfo){
+    public String wxSaveInitInfo(HttpServletRequest request,HttpSession session,String telInfo, String markInfo, String yearInfo, String subjectcode, String provinceInfo, String cityInfo, String districtInfo, String schoolInfo){
 
 //        Student student = studentRepository.findStudentByStuTel(tel);
 //        student.setStuName(name);
 //        student.setTmpPlace(tmpplace);
 //        student.setStuIsNewexam(isnewce);
 //        studentRepository.save(student);
-        System.out.println(telInfo);
-        System.out.println(markInfo);
-        System.out.println(yearInfo);
-        System.out.println(subjectcode);
-        System.out.println(provinceInfo);
-        System.out.println(cityInfo);
-        System.out.println(districtInfo);
-        System.out.println(schoolInfo);
 
-        return "success";
+//        System.out.println(telInfo);
+//        System.out.println(markInfo);
+//        System.out.println(yearInfo);
+//        System.out.println(subjectcode);
+//        System.out.println(provinceInfo);
+//        System.out.println(cityInfo);
+//        System.out.println(districtInfo);
+//        System.out.println(schoolInfo);
+
+        Integer stuId = null;
+        Cookie[] cookies = request.getCookies();
+        if (Objects.isNull(cookies)){
+            return "nullCookie";
+        }
+        for (Cookie cookie:cookies){
+            if (cookie.getName().equals("JSESSIONID")){
+                System.out.println("JSessionId："+cookie.getValue());
+                stuId = (int) session.getAttribute("stuId");
+                if (stuId==null){
+                    return "overdue";
+                }else {
+                    Student stu = studentRepository.findOne(stuId);
+                    stu.setStuTel(telInfo);
+                    stu.setStuPassword(telInfo);
+                    stu.setStuPoint(markInfo);
+                    stu.setStuYear(yearInfo);
+                    stu.setStuSubjectCode(subjectcode);
+                    stu.setStuProvinceCode(provinceInfo);
+                    stu.setStuCityCode(cityInfo);
+                    stu.setStuDistrictCode(districtInfo);
+                    stu.setStuHighschoolCode(schoolInfo);
+                    studentRepository.save(stu);
+                    return "saveSuccess";
+                }
+            }
+        }
+        return "wrongCookie";
     }
 
     @ResponseBody
@@ -139,20 +167,20 @@ public class WeChatController {
                     StudentLoginBean studentLoginBean = studentLoginRepository.findByStuTel(stu_phone);
                     System.out.println("1");
                     String sessionId = session.getId();
+                    jsonObject.put("yifzySessionId",sessionId);
                     if (studentLoginBean!=null){
                         //有用户
                         System.out.println("2");
                         Integer stuId = studentLoginBean.getStuId();
                         session.setAttribute("stuId",stuId);
-                        jsonObject.put("yifzySessionId",sessionId);
                         Student student=studentRepository.findOne(stuId);
-                        if (Integer.parseInt(student.getStuSex())==0||(student.getStuHighschoolCode()!=null&&Integer.parseInt(student.getStuHighschoolCode())==0)||student.getStuHighschoolCode()==null||student.getStuYear()==null||student.getStuHighschoolClass()==null||Integer.parseInt(student.getStuSubjectCode())==0||Integer.parseInt(student.getStuRace())==0||student.getStuHeight()==null||Integer.parseInt(student.getStuEyesight())==9||Integer.parseInt(student.getStuColourWeakness())==9||student.getStuPoint()==null){
+                        if (student.getStuProvinceCode()==null||student.getStuCityCode()==null||student.getStuDistrictCode()==null||(student.getStuHighschoolCode()!=null&&Integer.parseInt(student.getStuHighschoolCode())==0)||student.getStuHighschoolCode()==null||student.getStuYear()==null||(student.getStuYear()=="2017"&&Integer.parseInt(student.getStuSubjectCode())==0)||student.getStuPoint()==null){
                             //有未完善的信息的情况
                             jsonObject.put("if_info_compelet","0");
                             System.out.println("info not complete");
-                            jsonObject.put("mark",student.getStuPoint());
-                            jsonObject.put("grade",2020-Integer.parseInt(student.getStuYear()));
-                            jsonObject.put("subject",student.getStuSubjectCode());
+//                            jsonObject.put("mark",student.getStuPoint());
+//                            jsonObject.put("grade",2020-Integer.parseInt(student.getStuYear()));
+//                            jsonObject.put("subject",student.getStuSubjectCode());
                         }else {
                             //信息完善的情况
                             jsonObject.put("if_info_compelet","1");
@@ -161,6 +189,14 @@ public class WeChatController {
                     }else{
                         //无用户
                         //创建学生,然后比照信息不完善
+                        Student stu = new Student();
+                        stu.setStuTchrId("281");//281 is the id of system teacher
+                        stu.setStuTel(stu_phone);
+                        stu.setStuPassword(stu_phone);
+                        studentRepository.save(stu);
+                        Integer stuId = studentRepository.findStudentByStuTel(stu_phone).getStuId();
+                        session.setAttribute("stuId",stuId);
+                        stuevaRepository.save(new Stueva(stuId));
                         System.out.println("3");
                     }
                     return jsonObject;
