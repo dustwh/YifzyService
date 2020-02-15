@@ -36,7 +36,7 @@ import java.security.AlgorithmParameters;
 import java.security.Security;
 
 
-//分包分层不合理，时间充裕时优化
+
 @Controller
 @RequestMapping("/weapp")
 public class WeChatController {
@@ -52,8 +52,8 @@ public class WeChatController {
 //    private SubInterestRepository subInterestRepository;
 //    @Autowired
 //    private HolQuestionRepository holQuestionRepository;
-//    @Autowired
-//    private EnnQuestionRepository ennQuestionRepository;
+    @Autowired
+    private EnnQuestionRepository ennQuestionRepository;
 
     @ResponseBody
     @RequestMapping("/wxSaveInitInfo")
@@ -121,6 +121,18 @@ public class WeChatController {
         return "cookies信息错误";
     }
 
+    @ResponseBody
+    @RequestMapping("/testSession")
+    public String testSession(HttpSession session){
+        return session.getAttribute("stuId").toString();
+    }
+
+    @ResponseBody
+    @RequestMapping("/getNextEnn")
+    public String getNextEnn(String towhich){
+        int siId=Integer.parseInt(towhich);
+        return ennQuestionRepository.findOne(siId).getTextA()+"&"+ennQuestionRepository.findOne(siId).getTextB();
+    }
 
     @ResponseBody
     @RequestMapping("/getPhoneNumber")
