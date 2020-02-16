@@ -817,14 +817,14 @@ public class EvaController {
     }
 
 //    pro need delete
-    @ResponseBody
-    @RequestMapping("/wxget_is_si")
-    public String wxget_is_si(String tel){
-        int stuId = studentRepository.findStudentByStuTel(tel).getStuId();
-        Stueva stueva = stuevaRepository.findByStuId(stuId);
-        System.out.println(stueva.getIsSi());
-        return String.valueOf(stueva.getIsSi());
-    }
+//    @ResponseBody
+//    @RequestMapping("/wxget_is_si")
+//    public String wxget_is_si(String tel){
+//        int stuId = studentRepository.findStudentByStuTel(tel).getStuId();
+//        Stueva stueva = stuevaRepository.findByStuId(stuId);
+//        System.out.println(stueva.getIsSi());
+//        return String.valueOf(stueva.getIsSi());
+//    }
 
     @ResponseBody
     @RequestMapping("/get_si_result")
