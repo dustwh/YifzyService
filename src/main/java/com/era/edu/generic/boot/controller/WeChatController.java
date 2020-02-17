@@ -128,6 +128,37 @@ public class WeChatController {
     }
 
     @ResponseBody
+    @RequestMapping("/HomePageInfoGet")
+    public Object getHomePageInfo(HttpSession session){
+        JSONObject jsonObject = new JSONObject();
+        int stuId = (int) session.getAttribute("stuId");
+        Student student=studentRepository.findOne(stuId);
+        String name = student.getStuName();
+        String point = student.getStuPoint();
+        String schoolCode = student.getStuHighschoolCode();
+        String year = student.getStuYear();
+        String subject = "新高考";
+        String isnewCE="1";
+        if ("2017".equals(year)){
+            isnewCE="0";
+            subject=student.getStuSubjectCode().equals("1")?"文科":"理科";
+        }
+//        System.out.println(name);
+//        System.out.println(point);
+//        System.out.println(school);
+//        System.out.println(year);
+//        System.out.println(isnewCE);
+//        System.out.println(subject);
+        jsonObject.put("name",name);
+        jsonObject.put("point",point);
+        jsonObject.put("school",schoolCode);
+//        jsonObject.put("year",year);
+//        jsonObject.put("isnewCE",isnewCE);
+        jsonObject.put("subject",subject);
+        return jsonObject;
+    }
+
+    @ResponseBody
     @RequestMapping("/getNextEnn")
     public String getNextEnn(String towhich){
         int siId=Integer.parseInt(towhich);
