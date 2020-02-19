@@ -54,6 +54,11 @@ public class WeChatController {
 //    private HolQuestionRepository holQuestionRepository;
     @Autowired
     private EnnQuestionRepository ennQuestionRepository;
+    @Autowired
+    private TbFinFsyxRepository tbFinFsyxRepository;
+    @Autowired
+    private TbDaxueRepository tbDaxueRepository;
+
 
     @ResponseBody
     @RequestMapping("/wxSaveInitInfo")
@@ -137,24 +142,73 @@ public class WeChatController {
         String point = student.getStuPoint();
         String schoolCode = student.getStuHighschoolCode();
         String year = student.getStuYear();
+        String subjectCode=student.getStuSubjectCode();
         String subject = "新高考";
         String isnewCE="1";
+        ArrayList<TbFinFsyx> recSchoolOptimistic=null;
+        ArrayList<TbFinFsyx> recSchoolNormal=null;
+        ArrayList<TbFinFsyx> recSchoolPessimistic=null;
         if ("2017".equals(year)){
             isnewCE="0";
-            subject=student.getStuSubjectCode().equals("1")?"文科":"理科";
+            subject=subjectCode.equals("1")?"文科":"理科";
+            recSchoolOptimistic = tbFinFsyxRepository.getRecSchoolOldCE(Integer.parseInt(point)+10,Integer.parseInt(point),subjectCode);
+            System.out.println(Integer.parseInt(point)+10);
+            System.out.println(Integer.parseInt(point));
+            System.out.println(subjectCode);
+            recSchoolNormal = tbFinFsyxRepository.getRecSchoolOldCE(Integer.parseInt(point),Integer.parseInt(point)-10,subjectCode);
+            recSchoolPessimistic = tbFinFsyxRepository.getRecSchoolOldCEASC(Integer.parseInt(point)-10,Integer.parseInt(point)-20,subjectCode);
+        }else{
+            recSchoolOptimistic = tbFinFsyxRepository.getRecSchool(Integer.parseInt(point)+10,Integer.parseInt(point));
+            recSchoolNormal = tbFinFsyxRepository.getRecSchool(Integer.parseInt(point),Integer.parseInt(point)-10);
+            recSchoolPessimistic = tbFinFsyxRepository.getRecSchoolASC(Integer.parseInt(point)-10,Integer.parseInt(point)-20);
         }
-//        System.out.println(name);
-//        System.out.println(point);
-//        System.out.println(school);
-//        System.out.println(year);
-//        System.out.println(isnewCE);
-//        System.out.println(subject);
+        Iterator<TbFinFsyx> recSchoolOptimisticIter = recSchoolOptimistic.iterator();
+        Iterator<TbFinFsyx> recSchoolNormalIter = recSchoolNormal.iterator();
+        Iterator<TbFinFsyx> recSchoolPessimisticIter = recSchoolPessimistic.iterator();
+
+        ArrayList<String> recSchoolNameOptimisticList = new ArrayList<String>();
+        ArrayList<String> recSchoolNameNormalList = new ArrayList<String>();
+        ArrayList<String> recSchoolNamePessimisticList = new ArrayList<String>();
+
+        while (recSchoolOptimisticIter.hasNext()){
+            TbFinFsyx tbFinFsyxOptimistic = recSchoolOptimisticIter.next();
+            String schoolCodeTmp = tbFinFsyxOptimistic.getFfsxYxdm();
+            String pointTmp = tbFinFsyxOptimistic.getFfsxZdfs01();
+            String schoolNameTmp = tbDaxueRepository.getNameById(schoolCodeTmp);
+            System.out.println(schoolNameTmp);
+            System.out.println(schoolCodeTmp);
+            System.out.println(pointTmp);
+            recSchoolNameOptimisticList.add(schoolNameTmp);
+        }
+        while (recSchoolNormalIter.hasNext()){
+            TbFinFsyx tbFinFsyxSchoolNormal = recSchoolNormalIter.next();
+            String schoolCodeTmp = tbFinFsyxSchoolNormal.getFfsxYxdm();
+            String pointTmp = tbFinFsyxSchoolNormal.getFfsxZdfs01();
+            String schoolNameTmp = tbDaxueRepository.getNameById(schoolCodeTmp);
+            System.out.println(schoolNameTmp);
+            System.out.println(schoolCodeTmp);
+            System.out.println(pointTmp);
+            recSchoolNameNormalList.add(schoolNameTmp);
+        }
+        while (recSchoolPessimisticIter.hasNext()){
+            TbFinFsyx tbFinFsyxSchoolPessimistic = recSchoolPessimisticIter.next();
+            String schoolCodeTmp = tbFinFsyxSchoolPessimistic.getFfsxYxdm();
+            String pointTmp = tbFinFsyxSchoolPessimistic.getFfsxZdfs01();
+            String schoolNameTmp = tbDaxueRepository.getNameById(schoolCodeTmp);
+            System.out.println(schoolNameTmp);
+            System.out.println(schoolCodeTmp);
+            System.out.println(pointTmp);
+            recSchoolNamePessimisticList.add(schoolNameTmp);
+        }
+
         jsonObject.put("name",name);
         jsonObject.put("point",point);
         jsonObject.put("school",schoolCode);
-//        jsonObject.put("year",year);
-//        jsonObject.put("isnewCE",isnewCE);
         jsonObject.put("subject",subject);
+        jsonObject.put("subject",subject);
+        jsonObject.put("recSchoolOptimistic",recSchoolNameOptimisticList);
+        jsonObject.put("recSchoolNormal",recSchoolNameNormalList);
+        jsonObject.put("recSchoolPessimistic",recSchoolNamePessimisticList);
         return jsonObject;
     }
 
