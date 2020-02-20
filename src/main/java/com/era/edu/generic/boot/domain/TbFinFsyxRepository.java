@@ -19,5 +19,4 @@ public interface TbFinFsyxRepository extends CrudRepository<TbFinFsyx,String> {
     @Query(value="select distinct(ffsx_yxdm),ffsx_zdfs01 from tb_fin_fsyx where ffsx_zdfs01<=? and ffsx_zdfs01>? and ffsx_nf01=2018 order by ffsx_zdfs01 ASC limit 0,5;",nativeQuery = true)
     ArrayList<TbFinFsyx> getRecSchoolASC(Integer pointMax,Integer pointMin);
 
-
 }
