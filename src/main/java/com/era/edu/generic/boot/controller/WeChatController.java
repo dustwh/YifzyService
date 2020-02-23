@@ -55,10 +55,29 @@ public class WeChatController {
     @Autowired
     private EnnQuestionRepository ennQuestionRepository;
     @Autowired
+    private SubInterestRepository subInterestRepository;
+    @Autowired
+    private HolQuestionRepository holQuestionRepository;
+    @Autowired
     private TbFinFsyxRepository tbFinFsyxRepository;
     @Autowired
     private TbDaxueRepository tbDaxueRepository;
 
+
+    @ResponseBody
+    @RequestMapping("/getNextSi")
+    public String getNextSi(String towhich){
+        int siId=Integer.parseInt(towhich);
+        return subInterestRepository.findOne(siId).getText();
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/getNextHol")
+    public String getNextHol(String towhich){
+        int siId=Integer.parseInt(towhich);
+        return holQuestionRepository.findOne(siId).getText()+"&"+holQuestionRepository.findOne(siId).getMark1()+"&"+holQuestionRepository.findOne(siId).getMark1();
+    }
 
     @ResponseBody
     @RequestMapping("/wxSaveInitInfo")

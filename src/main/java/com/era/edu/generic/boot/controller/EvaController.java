@@ -1391,25 +1391,6 @@ public class EvaController {
 //        }
 //    }
 
-    @ResponseBody
-    @RequestMapping("/getNextSi")
-    public String getNextSi(String towhich){
-        int siId=Integer.parseInt(towhich);
-        return subInterestRepository.findOne(siId).getText();
-    }
 
-    @ResponseBody
-    @RequestMapping("/getNextEnn")
-    public String getNextEnn(String towhich){
-        int siId=Integer.parseInt(towhich);
-        return ennQuestionRepository.findOne(siId).getTextA()+"&"+ennQuestionRepository.findOne(siId).getTextB();
-    }
-
-    @ResponseBody
-    @RequestMapping("/getNextHol")
-    public String getNextHol(String towhich){
-        int siId=Integer.parseInt(towhich);
-        return holQuestionRepository.findOne(siId).getText()+"&"+holQuestionRepository.findOne(siId).getMark1()+"&"+holQuestionRepository.findOne(siId).getMark1();
-    }
 
 }
