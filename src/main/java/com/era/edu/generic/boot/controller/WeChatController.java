@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 //import org.springframework.web.client.RestTemplate;
 //
+import javax.persistence.Id;
 import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
@@ -77,6 +78,30 @@ public class WeChatController {
     public String getNextHol(String towhich){
         int siId=Integer.parseInt(towhich);
         return holQuestionRepository.findOne(siId).getText()+"&"+holQuestionRepository.findOne(siId).getMark1()+"&"+holQuestionRepository.findOne(siId).getMark1();
+    }
+
+    @ResponseBody
+    @RequestMapping("/infoInitGetInfo")
+    public Object infoInitGetInfo(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        JSONObject jsonObject = new JSONObject();
+//        need null exception dealing
+        Student student=studentRepository.findOne(stuId);
+        String point = student.getStuPoint();
+        String year = student.getStuYear();
+        String subjectCode = student.getStuSubjectCode();
+        String provinceCode = student.getStuProvinceCode();
+        String cityCode = student.getStuCityCode();
+        String districtCode = student.getStuDistrictCode();
+        String stuHighschoolCode = student.getStuHighschoolCode();
+        jsonObject.put("point",point);
+        jsonObject.put("year",year);
+        jsonObject.put("subjectCode",subjectCode);
+        jsonObject.put("provinceCode",provinceCode);
+        jsonObject.put("cityCode",cityCode);
+        jsonObject.put("districtCode",districtCode);
+        jsonObject.put("stuHighschoolCode",stuHighschoolCode);
+        return jsonObject;
     }
 
     @ResponseBody
