@@ -64,6 +64,12 @@ public class WeChatController {
     @Autowired
     private TbDaxueRepository tbDaxueRepository;
 
+    @ResponseBody
+    @RequestMapping("/getNextEnn")
+    public String getNextEnn(String towhich){
+        int siId=Integer.parseInt(towhich);
+        return ennQuestionRepository.findOne(siId).getTextA()+"&"+ennQuestionRepository.findOne(siId).getTextB();
+    }
 
     @ResponseBody
     @RequestMapping("/getNextSi")
@@ -79,6 +85,50 @@ public class WeChatController {
         int siId=Integer.parseInt(towhich);
         return holQuestionRepository.findOne(siId).getText()+"&"+holQuestionRepository.findOne(siId).getMark1()+"&"+holQuestionRepository.findOne(siId).getMark1();
     }
+
+    @ResponseBody
+    @RequestMapping("/getWxEnnResult")
+    public String getWxEnnResult(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        String ennResultOrigin = stueva.getEnnResult();
+        String ennResRet="";
+        for (int i = 0;i<8;i++){
+            ennResRet=ennResRet+ennResultOrigin.charAt(i)+",";
+        }
+        ennResRet=ennResRet+ennResultOrigin.charAt(8);
+        return ennResRet;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getWxHolRes")
+    public String getWxHolRes(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        String holResult = stueva.getHolResult();
+        return holResult;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/getItlRes")
+    public String getItlRes(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        String inteleResult = stueva.getInteleResult();
+        return inteleResult;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getWxMajorRecList")
+    public String getWxMajorRecList(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        String majors = stueva.getGuideSubjectList();
+        return majors;
+    }
+
+
 
     @ResponseBody
     @RequestMapping("/infoInitGetInfo")
@@ -249,18 +299,11 @@ public class WeChatController {
         jsonObject.put("point",point);
         jsonObject.put("school",schoolCode);
         jsonObject.put("subject",subject);
-        jsonObject.put("subject",subject);
+        jsonObject.put("subjectCode",subjectCode);
         jsonObject.put("recSchoolOptimistic",recSchoolNameOptimisticList);
         jsonObject.put("recSchoolNormal",recSchoolNameNormalList);
         jsonObject.put("recSchoolPessimistic",recSchoolNamePessimisticList);
         return jsonObject;
-    }
-
-    @ResponseBody
-    @RequestMapping("/getNextEnn")
-    public String getNextEnn(String towhich){
-        int siId=Integer.parseInt(towhich);
-        return ennQuestionRepository.findOne(siId).getTextA()+"&"+ennQuestionRepository.findOne(siId).getTextB();
     }
 
     @ResponseBody
