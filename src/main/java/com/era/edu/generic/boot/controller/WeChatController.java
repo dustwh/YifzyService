@@ -297,7 +297,7 @@ public class WeChatController {
 
         jsonObject.put("name",name);
         jsonObject.put("point",point);
-        jsonObject.put("school",schoolCode);
+        jsonObject.put("schoolCode",schoolCode);
         jsonObject.put("subject",subject);
         jsonObject.put("subjectCode",subjectCode);
         jsonObject.put("recSchoolOptimistic",recSchoolNameOptimisticList);
