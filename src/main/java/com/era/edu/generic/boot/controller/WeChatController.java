@@ -307,6 +307,40 @@ public class WeChatController {
     }
 
     @ResponseBody
+    @RequestMapping("/minePageInfoOnload")
+    public Object minePageInfoOnLoad(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Student student=studentRepository.findOne(stuId);
+        String name = student.getStuName();
+        String year = student.getStuYear();
+        String newCELabel="新高考";
+        String sub1="物理";
+        String sub2="化学";
+        String sub3="生物";
+        int sub1mark=20;
+        int sub2mark=30;
+        int sub3mark=40;
+        if ("2017".equals(year)){
+            newCELabel="非新高考";
+        }else {
+            System.out.println("新高考");
+            sub1="选一";
+            sub2="选二";
+            sub3="选三";
+        }
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name",name);
+        jsonObject.put("newCELabel",newCELabel);
+        jsonObject.put("sub1",sub1);
+        jsonObject.put("sub2",sub2);
+        jsonObject.put("sub3",sub3);
+        jsonObject.put("sub1mark",sub1mark);
+        jsonObject.put("sub2mark",sub2mark);
+        jsonObject.put("sub3mark",sub3mark);
+        return jsonObject;
+    }
+
+    @ResponseBody
     @RequestMapping("/getPhoneNumber")
     public String wxOauth(String encryptedData, String iv, String codes, HttpServletRequest request, HttpSession session) throws Exception{
         Object res = getPhoneNumber(encryptedData,codes,iv,request,session);
