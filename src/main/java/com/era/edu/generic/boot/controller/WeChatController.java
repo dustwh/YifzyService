@@ -309,34 +309,101 @@ public class WeChatController {
     @ResponseBody
     @RequestMapping("/minePageInfoOnload")
     public Object minePageInfoOnLoad(HttpSession session){
+        JSONObject jsonObject = new JSONObject();
         int stuId = (int) session.getAttribute("stuId");
         Student student=studentRepository.findOne(stuId);
         String name = student.getStuName();
         String year = student.getStuYear();
-        String newCELabel="新高考";
-        String sub1="物理";
-        String sub2="化学";
-        String sub3="生物";
-        int sub1mark=20;
-        int sub2mark=30;
-        int sub3mark=40;
+        String chineseMark="0";
+        String mathMark="0";
+        String flMark="0";
+        String newCELabel="";
+        String sub1="待选";
+        String sub2="待选";
+        String sub3="待选";
+        String sub1mark="0";
+        String sub2mark="0";
+        String sub3mark="0";
+        int isChooseComplete;
+        String noChooseReason="未进行分科分数设定，请点击右下角编辑";
+        String total = student.getStuPoint();
+        String subject15 = student.getStuSubjectCode();
         if ("2017".equals(year)){
             newCELabel="非新高考";
-        }else {
+            if (subject15.equals("1")){
+                isChooseComplete=1;
+                System.out.println("文理代码"+subject15);
+                sub1="政治";
+                sub2="历史";
+                sub3="地理";
+            }else if (subject15.equals("5")){
+                isChooseComplete=1;
+                System.out.println("文理代码"+subject15);
+                sub1="物理";
+                sub2="化学";
+                sub3="生物";
+            }else {
+                isChooseComplete=-1;
+                noChooseReason="请选择文理";
+            }
+            String pointDetailStr = student.getStuPointDetail();
+            String[] pointDetailArr = pointDetailStr.split(",");
+            chineseMark=pointDetailArr[0];
+            mathMark=pointDetailArr[1];
+            flMark=pointDetailArr[2];
+            sub1mark=pointDetailArr[3];
+            sub2mark=pointDetailArr[4];
+            sub3mark=pointDetailArr[5];
+        }else{
+            newCELabel="新高考";
             System.out.println("新高考");
-            sub1="选一";
-            sub2="选二";
-            sub3="选三";
+            String newCeSubChooseStr=student.getStuSelectedSubjectNewexam();
+            String studentPointDetailString=student.getStuPointDetailNewexam();
+            String[] newCeChooseList = newCeSubChooseStr.split(",");
+            String[] newCeChooseMarks = studentPointDetailString.split(",");
+            String[] subList={"物理","化学","生物","政治","历史","地理"};
+            ArrayList<String> chooseResult = new ArrayList<String>();
+            ArrayList<String> chooseMark  =  new ArrayList<String>();
+            int chooseSubcount=0;
+            chineseMark=newCeChooseMarks[0];
+            mathMark=newCeChooseMarks[1];
+            flMark=newCeChooseMarks[2];
+            for (int i = 0;i<6;i++){
+                if (newCeChooseList[i].equals("1")){
+                    chooseSubcount++;
+                    chooseResult.add(subList[i]);
+                    chooseMark.add(newCeChooseMarks[i+3]);
+                }
+            }
+            if (chooseSubcount==3){
+                isChooseComplete=1;
+                sub1=chooseResult.get(0);
+                sub1mark = chooseMark.get(0);
+                sub2=chooseResult.get(1);
+                sub2mark = chooseMark.get(1);
+                sub3=chooseResult.get(2);
+                sub3mark = chooseMark.get(2);
+            }else {
+                isChooseComplete=-2;
+                noChooseReason="请进行选科";
+            }
         }
-        JSONObject jsonObject = new JSONObject();
         jsonObject.put("name",name);
+        jsonObject.put("year",year);
+        jsonObject.put("subjectCode",subject15);
         jsonObject.put("newCELabel",newCELabel);
+        jsonObject.put("isChooseComplete",isChooseComplete);
+        jsonObject.put("noChooseReason",noChooseReason);
+        jsonObject.put("chineseMark",chineseMark);
+        jsonObject.put("mathMark",mathMark);
+        jsonObject.put("flMark",flMark);
         jsonObject.put("sub1",sub1);
-        jsonObject.put("sub2",sub2);
-        jsonObject.put("sub3",sub3);
         jsonObject.put("sub1mark",sub1mark);
+        jsonObject.put("sub2",sub2);
         jsonObject.put("sub2mark",sub2mark);
+        jsonObject.put("sub3",sub3);
         jsonObject.put("sub3mark",sub3mark);
+        jsonObject.put("total",total);
         return jsonObject;
     }
 
