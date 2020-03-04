@@ -65,6 +65,31 @@ public class WeChatController {
     private TbDaxueRepository tbDaxueRepository;
 
     @ResponseBody
+    @RequestMapping("/isDoneWXQuiz")
+    public String isDoneWXQuiz(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        int isEnn = Integer.parseInt(String.valueOf(stueva.getIsEnn()));
+        int isHol = Integer.parseInt(String.valueOf(stueva.getIsHol()));
+        int isSi = Integer.parseInt(String.valueOf(stueva.getIsSi()));
+        if (isEnn+isHol+isSi==3){
+            return "ok";
+        }else{
+            return "no";
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/wxSaveNewCEChoose")
+    public String wxSaveNewCEChoose(HttpSession session,String subResult){
+        int stuId = (int) session.getAttribute("stuId");
+        Student student=studentRepository.findOne(stuId);
+        student.setStuSelectedSubjectNewexam(subResult);
+        studentRepository.save(student);
+        return "ok";
+    }
+
+    @ResponseBody
     @RequestMapping("/getNextEnn")
     public String getNextEnn(String towhich){
         int siId=Integer.parseInt(towhich);
@@ -296,6 +321,7 @@ public class WeChatController {
         }
 
         jsonObject.put("name",name);
+        jsonObject.put("year",year);
         jsonObject.put("point",point);
         jsonObject.put("schoolCode",schoolCode);
         jsonObject.put("subject",subject);
@@ -405,6 +431,49 @@ public class WeChatController {
         jsonObject.put("sub3mark",sub3mark);
         jsonObject.put("total",total);
         return jsonObject;
+    }
+
+    @ResponseBody
+    @RequestMapping("/savePoint")
+    public String savePoint(HttpSession session, String year, String chineseMark, String mathMark, String flMark, String sub1mark, String sub2mark, String sub3mark){
+        int stuId = (int) session.getAttribute("stuId");
+        Student student=studentRepository.findOne(stuId);
+        System.out.println(year);
+        System.out.println(chineseMark);
+        System.out.println(mathMark);
+        System.out.println(flMark);
+        System.out.println(sub1mark);
+        System.out.println(sub2mark);
+        System.out.println(sub3mark);
+        student.setStuPoint(Integer.parseInt(chineseMark)+Integer.parseInt(mathMark)+Integer.parseInt(flMark)+Integer.parseInt(sub1mark)+Integer.parseInt(sub2mark)+Integer.parseInt(sub3mark)+"");
+        if (Integer.parseInt(year)<=2017){
+            student.setStuPointDetail(chineseMark+","+mathMark+","+flMark+","+sub1mark+","+sub2mark+","+sub3mark);
+            studentRepository.save(student);
+        }else {
+            System.out.println("新高考");
+            String selected = student.getStuSelectedSubjectNewexam();
+            String pointDetailNewCE = chineseMark+","+mathMark+","+flMark;
+            String [] selectedArray=selected.split(",");
+            ArrayList<String> list = new ArrayList<String>();
+            list.add(sub1mark);
+            list.add(sub2mark);
+            list.add(sub3mark);
+            int j = 0;
+            for(int i = 0;i<6;i++){
+                if(selectedArray[i].equals("0")){
+                    System.out.println(selectedArray[i]);
+                    pointDetailNewCE=pointDetailNewCE+","+"0";
+                }else {
+                    System.out.println(selectedArray[i]);
+                    System.out.println(i);
+                    pointDetailNewCE=pointDetailNewCE+","+list.get(j);
+                    j++;
+                }
+            }
+            student.setStuPointDetailNewexam(pointDetailNewCE);
+            studentRepository.save(student);
+        }
+        return "ok";
     }
 
     @ResponseBody
