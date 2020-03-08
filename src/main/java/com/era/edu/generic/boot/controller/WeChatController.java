@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 //import org.springframework.web.client.RestTemplate;
 //
-import javax.persistence.Id;
 import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Cookie;
@@ -63,6 +62,10 @@ public class WeChatController {
     private TbFinFsyxRepository tbFinFsyxRepository;
     @Autowired
     private TbDaxueRepository tbDaxueRepository;
+    @Autowired
+    private MajorSimplifyRepository majorSimplifyRepository;
+    @Autowired
+    private MajorRegularRepository majorRegularRepository;
 
     @ResponseBody
     @RequestMapping("/isDoneWXQuiz")
@@ -88,6 +91,42 @@ public class WeChatController {
         studentRepository.save(student);
         return "ok";
     }
+
+    @ResponseBody
+    @RequestMapping("/getMajorRepo")
+    public ArrayList<String> getMajorRepo(String majorCode){
+        ArrayList<MajorSimplify> list = majorSimplifyRepository.findByFatherId(majorCode);
+        Iterator<MajorSimplify> iterator = list.iterator();
+        ArrayList<String> ret = new ArrayList<String>();
+        System.out.println(list.size());
+        System.out.println(list.toString());
+        while (iterator.hasNext()){
+            MajorSimplify majorSimplify = iterator.next();
+            ret.add(majorSimplify.getMsId()+"-"+majorSimplify.getMsName());
+        }
+        return ret;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getMajorInfo")
+    public Object getMajorInfo(String majorCode){
+        MajorRegular majorRegular = majorRegularRepository.findOne(majorCode);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("majrName",majorRegular.getMajrName());
+        jsonObject.put("majrSchedule",majorRegular.getMajrSchedule());
+        jsonObject.put("majrDegree",majorRegular.getMajrDegree());
+        jsonObject.put("majrIntroduce",majorRegular.getMajrIntroduce());
+        jsonObject.put("majrAim",majorRegular.getMajrAim());
+        jsonObject.put("majrRequire",majorRegular.getMajrRequire());
+        jsonObject.put("majrFamous",majorRegular.getMajrFamous());
+        jsonObject.put("majrClasses",majorRegular.getMajrClasses());
+        jsonObject.put("majrSubjectRequire",majorRegular.getMajrSubjectRequire());
+        jsonObject.put("majrKnowledgePower",majorRegular.getMajrKnowledgePower());
+        jsonObject.put("majrDirection",majorRegular.getMajrDirection());
+        jsonObject.put("majrOccupation",majorRegular.getMajrOccupation());
+        return jsonObject;
+    }
+
 
     @ResponseBody
     @RequestMapping("/getNextEnn")
@@ -228,28 +267,28 @@ public class WeChatController {
         return "wrongCookie";
     }
 
-    @ResponseBody
-    @RequestMapping("/t")
-    public String t(HttpServletRequest request,HttpSession session) {
-        Cookie[] cookies = request.getCookies();
-        if (Objects.isNull(cookies)){
-            return "cookies信息为null";
-        }
-        for (Cookie cookie:cookies){
-            if (cookie.getName().equals("JSESSIONID")){
-                System.out.println("JSessionId："+cookie.getValue());
-                int stuId = (int) session.getAttribute("stuId");
-                return session.getAttribute("stuId").toString();
-            }
-        }
-        return "cookies信息错误";
-    }
-
-    @ResponseBody
-    @RequestMapping("/testSession")
-    public String testSession(HttpSession session){
-        return session.getAttribute("stuId").toString();
-    }
+//    @ResponseBody
+//    @RequestMapping("/t")
+//    public String t(HttpServletRequest request,HttpSession session) {
+//        Cookie[] cookies = request.getCookies();
+//        if (Objects.isNull(cookies)){
+//            return "cookies信息为null";
+//        }
+//        for (Cookie cookie:cookies){
+//            if (cookie.getName().equals("JSESSIONID")){
+//                System.out.println("JSessionId："+cookie.getValue());
+//                int stuId = (int) session.getAttribute("stuId");
+//                return session.getAttribute("stuId").toString();
+//            }
+//        }
+//        return "cookies信息错误";
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping("/testSession")
+//    public String testSession(HttpSession session){
+//        return session.getAttribute("stuId").toString();
+//    }
 
     @ResponseBody
     @RequestMapping("/HomePageInfoGet")
@@ -474,6 +513,27 @@ public class WeChatController {
             studentRepository.save(student);
         }
         return "ok";
+    }
+
+    public String getGuideSubjectCodes(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        return stueva.getGuideSubjectList();
+    }
+
+    @ResponseBody
+    @RequestMapping("/getGuidSubjectNames")
+    public ArrayList<String> getGuidSubjectNames(HttpSession session){
+        String guideSubjectCodes = getGuideSubjectCodes(session);
+        String[] guideSubjectCodesArr = guideSubjectCodes.split(",");
+
+        String rets="";
+        ArrayList<String> ret = new ArrayList<String>();
+        for(String eachSub:guideSubjectCodesArr){
+            MajorSimplify majorSimplify=majorSimplifyRepository.findOne(eachSub);
+            ret.add(majorSimplify.getMsName());
+        }
+        return ret;
     }
 
     @ResponseBody

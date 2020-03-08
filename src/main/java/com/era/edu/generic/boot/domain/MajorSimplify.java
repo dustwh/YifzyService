@@ -47,4 +47,16 @@ public class MajorSimplify implements Serializable {
     public String getFatherId() {
         return fatherId;
     }
+
+    public void setMsId(String msId) {
+        this.msId = msId;
+    }
+
+    public void setMsName(String msName) {
+        this.msName = msName;
+    }
+
+    public void setFatherId(String fatherId) {
+        this.fatherId = fatherId;
+    }
 }
