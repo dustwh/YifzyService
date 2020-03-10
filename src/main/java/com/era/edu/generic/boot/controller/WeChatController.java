@@ -66,6 +66,57 @@ public class WeChatController {
     private MajorSimplifyRepository majorSimplifyRepository;
     @Autowired
     private MajorRegularRepository majorRegularRepository;
+    @Autowired
+    UnivercityRepository univercityRepository;
+    @Autowired
+    private WechatNewsRepository wechatNewsRepository;
+
+    @ResponseBody
+    @RequestMapping("/getCanSeeReport")
+    public String getCanSeeReport(HttpSession session){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        int isEnn = Integer.parseInt(String.valueOf(stueva.getIsEnn()));
+        int isHol = Integer.parseInt(String.valueOf(stueva.getIsHol()));
+        int isSi = Integer.parseInt(String.valueOf(stueva.getIsSi()));
+        if (isEnn==1&&isHol==1&&isSi==1){
+            return "yes";
+        }else{
+            return "no";
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("/getNews")
+    public Object getNews(String newsId){
+        JSONObject jsonObject=new JSONObject();
+        WechatNews wechatNews=wechatNewsRepository.findOne(Integer.parseInt(newsId));
+        jsonObject.put("tittle",wechatNews.getNewsTittle());
+        jsonObject.put("content",wechatNews.getNewsContent());
+        return jsonObject;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getRecSchoolInfo")
+    public Object getRecSchoolInfo(String schoolCode){
+        JSONObject jsonObject=new JSONObject();
+        Univercity univercity=univercityRepository.findByDxYxdm(schoolCode);
+        String univrctName=univercity.getUnivrctName();
+        String univrctTag=univercity.getUnivrctTag();
+        String univrctType=univercity.getUnivrctType();
+        String univrctLocation=univercity.getUnivrctLocation();
+        String univrctAffiliate=univercity.getUnivrctAffiliate();
+        String univrctLevel=univercity.getUnivrctLevel();
+        String univrctHomePage=univercity.getUnivrctHomePage();
+        jsonObject.put("univrctName",univrctName);
+        jsonObject.put("univrctTag",univrctTag);
+        jsonObject.put("univrctType",univrctType);
+        jsonObject.put("univrctLocation",univrctLocation);
+        jsonObject.put("univrctAffiliate",univrctAffiliate);
+        jsonObject.put("univrctLevel",univrctLevel);
+        jsonObject.put("univrctHomePage",univrctHomePage);
+        return jsonObject;
+    }
 
     @ResponseBody
     @RequestMapping("/isDoneWXQuiz")
@@ -327,9 +378,12 @@ public class WeChatController {
         ArrayList<String> recSchoolNameOptimisticList = new ArrayList<String>();
         ArrayList<String> recSchoolNameNormalList = new ArrayList<String>();
         ArrayList<String> recSchoolNamePessimisticList = new ArrayList<String>();
-
+        ArrayList<String> recCodesopts=new ArrayList<String>();
+        ArrayList<String> recCodesnors=new ArrayList<String>();
+        ArrayList<String> recCodespess=new ArrayList<String>();
         while (recSchoolOptimisticIter.hasNext()){
             TbFinFsyx tbFinFsyxOptimistic = recSchoolOptimisticIter.next();
+            recCodesopts.add(tbFinFsyxOptimistic.getFfsxYxdm());
             String schoolCodeTmp = tbFinFsyxOptimistic.getFfsxYxdm();
             String pointTmp = tbFinFsyxOptimistic.getFfsxZdfs01();
             String schoolNameTmp = tbDaxueRepository.getNameById(schoolCodeTmp);
@@ -340,6 +394,7 @@ public class WeChatController {
         }
         while (recSchoolNormalIter.hasNext()){
             TbFinFsyx tbFinFsyxSchoolNormal = recSchoolNormalIter.next();
+            recCodesnors.add(tbFinFsyxSchoolNormal.getFfsxYxdm());
             String schoolCodeTmp = tbFinFsyxSchoolNormal.getFfsxYxdm();
             String pointTmp = tbFinFsyxSchoolNormal.getFfsxZdfs01();
             String schoolNameTmp = tbDaxueRepository.getNameById(schoolCodeTmp);
@@ -350,6 +405,7 @@ public class WeChatController {
         }
         while (recSchoolPessimisticIter.hasNext()){
             TbFinFsyx tbFinFsyxSchoolPessimistic = recSchoolPessimisticIter.next();
+            recCodespess.add(tbFinFsyxSchoolPessimistic.getFfsxYxdm());
             String schoolCodeTmp = tbFinFsyxSchoolPessimistic.getFfsxYxdm();
             String pointTmp = tbFinFsyxSchoolPessimistic.getFfsxZdfs01();
             String schoolNameTmp = tbDaxueRepository.getNameById(schoolCodeTmp);
@@ -368,6 +424,9 @@ public class WeChatController {
         jsonObject.put("recSchoolOptimistic",recSchoolNameOptimisticList);
         jsonObject.put("recSchoolNormal",recSchoolNameNormalList);
         jsonObject.put("recSchoolPessimistic",recSchoolNamePessimisticList);
+        jsonObject.put("recCodesopts",recCodesopts);
+        jsonObject.put("recCodesnors",recCodesnors);
+        jsonObject.put("recCodespess",recCodespess);
         return jsonObject;
     }
 
