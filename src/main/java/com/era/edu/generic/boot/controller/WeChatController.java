@@ -671,6 +671,7 @@ public class WeChatController {
                         session.setAttribute("stuId",stuId);
                         stuevaRepository.save(new Stueva(stuId));
                         System.out.println("3");
+                        jsonObject.put("if_info_compelet","0");
                     }
                     return jsonObject;
                 }
@@ -754,6 +755,194 @@ public class WeChatController {
             }
         }
         return result;
+    }
+
+//    tmp dealing
+    @ResponseBody
+    @RequestMapping("/wxcalculatePTypes")
+    public String wxCalculateEnneagram(HttpSession session,String enneagram_answer){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+//        int stuId = studentRepository.findStudentByStuTel(tel).getStuId();
+//        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        System.out.println("WX-enneagram_answer--"+enneagram_answer);
+        stueva.setMyEnnAnswer(enneagram_answer);
+        stuevaRepository.save(stueva);
+        char isEnn = stueva.getIsEnn();
+        int [] result = new int[]{0,0,0,0,0,0,0,0,0};
+        int [][] table = {{1,4},
+                {3,6},
+                {8,0},
+                {2,4},
+                {5,7},
+                {1,0},
+                {2,6},
+                {7,3},
+                {8,5},
+                {2,0},
+                {7,6},
+                {1,3},
+                {4,8},
+                {5,2},
+                {7,0},
+                {3,4},
+                {8,1},
+                {5,6},
+                {0,4},
+                {1,7},
+                {5,3},
+                {6,0},
+                {1,2},
+                {3,8},
+                {4,5},
+                {7,2},
+                {8,6},
+                {3,0},
+                {1,5},
+                {2,8},
+                {4,7},
+                {5,0},
+                {1,6},
+                {2,3},
+                {7,8},
+                {4,6}};
+        for(int i = 0; i < enneagram_answer.length(); i++) {
+            int p = enneagram_answer.charAt(i)-48;
+            result[table[i][p]]++;
+        }
+        for (int i=0;i<9;i++){
+            result[i]=(int) (result[i]*0.75+4);
+            if (result[i]==10){
+                result[i]=9;
+            }
+        }
+        String e_result="";
+        for (int i = 0; i < 9; i++) {
+            e_result = e_result+result[i];
+        }
+        stueva.setIsEnn('1');
+        stueva.setEnnResult(e_result);
+        stuevaRepository.save(stueva);
+        return "ok";
+    }
+    @ResponseBody
+    @RequestMapping("/wxCalculateSITest")
+    public String wxCalculateSITest(HttpSession session,String SI_answer,String SI_sort){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+        String si_result_str = "";
+        System.out.println(SI_answer);
+        System.out.println(SI_sort);
+        float [] si_result = new float[]{0,0,0,0,0,0,0,0,0,0,0,0};
+        for(int i=0;i<54;i++){
+            si_result[i%6] = si_result[i%6]+SI_answer.charAt(i)-48;
+        }
+        for(int i=0;i<6;i++){
+            int mapp = SI_sort.charAt(i*2)-49;
+            float addon= (float) ((6.0-i)/10);
+            si_result[mapp]=si_result[mapp]+addon;
+        }
+        for (int i=0;i<12;i++){
+//            System.out.println(si_result[i]);
+            si_result_str = si_result_str+si_result[i]+",";
+        }
+        si_result_str = si_result_str.substring(0,si_result_str.length()-1);
+        System.out.println(si_result_str);
+        stueva.setIsSi('1');
+        stueva.setSiResult(si_result_str);
+        stuevaRepository.save(stueva);
+        return "ok";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/wxCalculateJobInterest")
+    public String wxCalculateJobInterest(HttpSession session,String holland_answer,String sortresult){
+        int stuId = (int) session.getAttribute("stuId");
+        Stueva stueva = stuevaRepository.findByStuId(stuId);
+
+        char isHol = stueva.getIsHol();
+        double [] result = new double[]{0.0,0.0,0.0,0.0,0.0,0.0};
+        for(int i = 0; i < 60; i++){
+            int p = holland_answer.charAt(i)-48;
+            if (p<6){
+                result[p]=result[p]+1.0;
+            }
+        }
+        for (int i=0;i<6;i++){
+            System.out.println(result[i]);
+        }
+        Map<Integer,Integer> map = new HashMap<Integer, Integer>();
+        map.put(1,1);
+        map.put(2,2);
+        map.put(3,5);
+        map.put(4,4);
+        map.put(5,3);
+        map.put(6,0);
+        //        thisthis
+        for (int i=0;i<6;i++){
+            int mapp = sortresult.charAt(i*2)-48;
+            System.out.println("mapp : "+mapp);
+            double addon=(6.0-i)/10;
+            System.out.println("addon: "+addon);
+            result[map.get(mapp)]=result[map.get(mapp)]+addon;
+        }
+
+        String he_result = holland_answer.substring(60,63);
+        Map<Integer, int[]> hol2intele = new HashMap<>();
+        double[] intele_double_array ={0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+        hol2intele.put(1, new int[]{1, 2, 3, 7});
+        hol2intele.put(2, new int[]{1, 4, 6, 7});
+        hol2intele.put(5, new int[]{0, 2, 4, 6});
+        hol2intele.put(4, new int[]{0, 3, 4, 5});
+        hol2intele.put(3, new int[]{0, 5, 6, 7});
+        hol2intele.put(0, new int[]{1, 2, 3, 5});
+        for (int i=0;i<6;i++){
+            intele_double_array[hol2intele.get(i)[0]]=intele_double_array[hol2intele.get(i)[0]]+result[i]*3;
+            intele_double_array[hol2intele.get(i)[1]]=intele_double_array[hol2intele.get(i)[1]]+result[i]*3;
+            intele_double_array[hol2intele.get(i)[2]]=intele_double_array[hol2intele.get(i)[2]]+result[i]*3;
+            intele_double_array[hol2intele.get(i)[3]]=intele_double_array[hol2intele.get(i)[3]]+result[i]*3;
+        }
+        if (he_result.charAt(0)=='0'){
+            intele_double_array[4] = intele_double_array[4]/2;
+        }else if (he_result.charAt(0)=='1'){
+            intele_double_array[4]=intele_double_array[4]/2+49.1;
+        }
+        if (he_result.charAt(1)=='0'){
+            intele_double_array[3] = intele_double_array[3]/2;
+        }else if (he_result.charAt(0)=='1'){
+            intele_double_array[3]=intele_double_array[3]/2+49.1;
+        }
+        if (he_result.charAt(2)=='0'){
+            intele_double_array[7] = intele_double_array[7]/2;
+        }else if (he_result.charAt(0)=='1'){
+            intele_double_array[7]=intele_double_array[7]/2+49.1;
+        }
+        //increase point提分
+        for (int i=0;i<8;i++){
+            intele_double_array[i] = intele_double_array[i]/3+66;
+        }
+        String h_result="";
+        for (int i = 0; i < 6; i++) {
+            h_result = h_result+result[i]+",";
+        }
+        String h_result_exclude_symbol = h_result.substring(0,h_result.length()-1);
+
+        String intele_result="";
+        for (int i = 0; i < 8; i++) {
+            intele_result = intele_result+(int)Math.ceil(intele_double_array[i])+",";
+        }
+        String intele_result_exclude_symbol = intele_result.substring(0,intele_result.length()-1);
+
+        System.out.println("------------------EXCLUDE---------------------------");
+        System.out.println(intele_result_exclude_symbol);
+        System.out.println("------------------EXCLUDE---------------------------");
+        stueva.setIsHol('1');
+        stueva.setHolResult(h_result_exclude_symbol);
+        System.out.println(h_result_exclude_symbol);
+        stueva.setInteleResult(intele_result_exclude_symbol);
+        stuevaRepository.save(stueva);
+        return "success";
     }
 
 }

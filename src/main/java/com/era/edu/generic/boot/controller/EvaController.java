@@ -511,71 +511,71 @@ public class EvaController {
         return "ok";
     }
 
-    @ResponseBody
-    @RequestMapping("/wxcalculatePTypes")
-    public String wxCalculateEnneagram(String tel,String enneagram_answer){
-        int stuId = studentRepository.findStudentByStuTel(tel).getStuId();
-        Stueva stueva = stuevaRepository.findByStuId(stuId);
-
-        stueva.setMyEnnAnswer(enneagram_answer);
-        stuevaRepository.save(stueva);
-        char isEnn = stueva.getIsEnn();
-        int [] result = new int[]{0,0,0,0,0,0,0,0,0};
-        int [][] table = {{1,4},
-                {3,6},
-                {8,0},
-                {2,4},
-                {5,7},
-                {1,0},
-                {2,6},
-                {7,3},
-                {8,5},
-                {2,0},
-                {7,6},
-                {1,3},
-                {4,8},
-                {5,2},
-                {7,0},
-                {3,4},
-                {8,1},
-                {5,6},
-                {0,4},
-                {1,7},
-                {5,3},
-                {6,0},
-                {1,2},
-                {3,8},
-                {4,5},
-                {7,2},
-                {8,6},
-                {3,0},
-                {1,5},
-                {2,8},
-                {4,7},
-                {5,0},
-                {1,6},
-                {2,3},
-                {7,8},
-                {4,6}};
-        for(int i = 0; i < enneagram_answer.length(); i++) {
-            int p = enneagram_answer.charAt(i)-48;
-            result[table[i][p]]++;
-        }
-        for (int i=0;i<9;i++){
-            result[i]=(int) (result[i]*0.75+4);
-            if (result[i]==10){
-                result[i]=9;
-            }
-        }
-        String e_result="";
-        for (int i = 0; i < 9; i++) {
-            e_result = e_result+result[i];
-        }
-        stueva.setIsEnn('1');
-        stueva.setEnnResult(e_result);
-        stuevaRepository.save(stueva);
-        return "ok";
-    }
+//    @ResponseBody
+//    @RequestMapping("/wxcalculatePTypes")
+//    public String wxCalculateEnneagram(String tel,String enneagram_answer){
+//        int stuId = studentRepository.findStudentByStuTel(tel).getStuId();
+//        Stueva stueva = stuevaRepository.findByStuId(stuId);
+//
+//        stueva.setMyEnnAnswer(enneagram_answer);
+//        stuevaRepository.save(stueva);
+//        char isEnn = stueva.getIsEnn();
+//        int [] result = new int[]{0,0,0,0,0,0,0,0,0};
+//        int [][] table = {{1,4},
+//                {3,6},
+//                {8,0},
+//                {2,4},
+//                {5,7},
+//                {1,0},
+//                {2,6},
+//                {7,3},
+//                {8,5},
+//                {2,0},
+//                {7,6},
+//                {1,3},
+//                {4,8},
+//                {5,2},
+//                {7,0},
+//                {3,4},
+//                {8,1},
+//                {5,6},
+//                {0,4},
+//                {1,7},
+//                {5,3},
+//                {6,0},
+//                {1,2},
+//                {3,8},
+//                {4,5},
+//                {7,2},
+//                {8,6},
+//                {3,0},
+//                {1,5},
+//                {2,8},
+//                {4,7},
+//                {5,0},
+//                {1,6},
+//                {2,3},
+//                {7,8},
+//                {4,6}};
+//        for(int i = 0; i < enneagram_answer.length(); i++) {
+//            int p = enneagram_answer.charAt(i)-48;
+//            result[table[i][p]]++;
+//        }
+//        for (int i=0;i<9;i++){
+//            result[i]=(int) (result[i]*0.75+4);
+//            if (result[i]==10){
+//                result[i]=9;
+//            }
+//        }
+//        String e_result="";
+//        for (int i = 0; i < 9; i++) {
+//            e_result = e_result+result[i];
+//        }
+//        stueva.setIsEnn('1');
+//        stueva.setEnnResult(e_result);
+//        stuevaRepository.save(stueva);
+//        return "ok";
+//    }
 
 //    @RequestMapping("/h")
 //    @ResponseBody
