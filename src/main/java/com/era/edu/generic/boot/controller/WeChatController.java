@@ -27,14 +27,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.AlgorithmParameters;
-import java.security.Security;
-
 
 
 @Controller
@@ -67,7 +59,7 @@ public class WeChatController {
     @Autowired
     private MajorRegularRepository majorRegularRepository;
     @Autowired
-    UnivercityRepository univercityRepository;
+    UnivRepository univercityRepository;
     @Autowired
     private WechatNewsRepository wechatNewsRepository;
 
@@ -100,7 +92,7 @@ public class WeChatController {
     @RequestMapping("/getRecSchoolInfo")
     public Object getRecSchoolInfo(String schoolCode){
         JSONObject jsonObject=new JSONObject();
-        Univercity univercity=univercityRepository.findByDxYxdm(schoolCode);
+        Univ univercity=univercityRepository.findByDxYxdm(schoolCode);
         String univrctName=univercity.getUnivrctName();
         String univrctTag=univercity.getUnivrctTag();
         String univrctType=univercity.getUnivrctType();
@@ -252,6 +244,7 @@ public class WeChatController {
         JSONObject jsonObject = new JSONObject();
 //        need null exception dealing
         Student student=studentRepository.findOne(stuId);
+        String name = student.getStuName();
         String point = student.getStuPoint();
         String year = student.getStuYear();
         String subjectCode = student.getStuSubjectCode();
@@ -259,6 +252,7 @@ public class WeChatController {
         String cityCode = student.getStuCityCode();
         String districtCode = student.getStuDistrictCode();
         String stuHighschoolCode = student.getStuHighschoolCode();
+        jsonObject.put("name",name);
         jsonObject.put("point",point);
         jsonObject.put("year",year);
         jsonObject.put("subjectCode",subjectCode);
@@ -269,9 +263,11 @@ public class WeChatController {
         return jsonObject;
     }
 
+
+
     @ResponseBody
-    @RequestMapping("/wxSaveInitInfo")
-    public String wxSaveInitInfo(HttpServletRequest request,HttpSession session,String telInfo, String markInfo, String yearInfo, String subjectcode, String provinceInfo, String cityInfo, String districtInfo, String schoolInfo){
+    @RequestMapping("/wxSaveInitInfoOld")
+    public String wxSaveInitInfoOld(HttpServletRequest request,HttpSession session,String telInfo, String markInfo, String yearInfo, String subjectcode, String provinceInfo, String cityInfo, String districtInfo, String schoolInfo){
 
 //        Student student = studentRepository.findStudentByStuTel(tel);
 //        student.setStuName(name);
@@ -316,6 +312,42 @@ public class WeChatController {
             }
         }
         return "wrongCookie";
+    }
+
+    @ResponseBody
+    @RequestMapping("/wxSaveInitInfo")
+    public String wxSaveInitInfo(HttpServletRequest request,HttpSession session,String stuName,String telInfo, String markInfo, String yearInfo, String subjectcode, String provinceInfo, String cityInfo, String districtInfo, String schoolInfo){
+
+//        Student student = studentRepository.findStudentByStuTel(tel);
+//        student.setStuName(name);
+//        student.setTmpPlace(tmpplace);
+//        student.setStuIsNewexam(isnewce);
+//        studentRepository.save(student);
+
+//        System.out.println(telInfo);
+//        System.out.println(markInfo);
+//        System.out.println(yearInfo);
+//        System.out.println(subjectcode);
+//        System.out.println(provinceInfo);
+//        System.out.println(cityInfo);
+//        System.out.println(districtInfo);
+//        System.out.println(schoolInfo);
+        int stuId = (int) session.getAttribute("stuId");
+        Student stu=studentRepository.findOne(stuId);
+        String openId= (String) session.getAttribute("openid");
+        stu.setStuName(stuName);
+        stu.setStuTel(telInfo);
+        stu.setStuPassword(telInfo);
+        stu.setStuPoint(markInfo);
+        stu.setStuYear(yearInfo);
+        stu.setStuSubjectCode(subjectcode);
+        stu.setStuProvinceCode(provinceInfo);
+        stu.setStuCityCode(cityInfo);
+        stu.setStuDistrictCode(districtInfo);
+        stu.setStuHighschoolCode(schoolInfo);
+        stu.setTmpPlace(openId);
+        studentRepository.save(stu);
+        return "saveSuccess";
     }
 
 //    @ResponseBody
@@ -584,102 +616,153 @@ public class WeChatController {
     @RequestMapping("/getGuidSubjectNames")
     public ArrayList<String> getGuidSubjectNames(HttpSession session){
         String guideSubjectCodes = getGuideSubjectCodes(session);
-        String[] guideSubjectCodesArr = guideSubjectCodes.split(",");
-
         String rets="";
-        ArrayList<String> ret = new ArrayList<String>();
-        for(String eachSub:guideSubjectCodesArr){
-            MajorSimplify majorSimplify=majorSimplifyRepository.findOne(eachSub);
-            ret.add(majorSimplify.getMsName());
+        if (!guideSubjectCodes.equals("")){
+            String[] guideSubjectCodesArr = guideSubjectCodes.split(",");
+            ArrayList<String> ret = new ArrayList<String>();
+            for(String eachSub:guideSubjectCodesArr){
+                MajorSimplify majorSimplify=majorSimplifyRepository.findOne(eachSub);
+                ret.add(majorSimplify.getMsName());
+            }
+            return ret;
+        }else{
+            return null;
         }
-        return ret;
     }
 
     @ResponseBody
-    @RequestMapping("/getPhoneNumber")
-    public String wxOauth(String encryptedData, String iv, String codes, HttpServletRequest request, HttpSession session) throws Exception{
-        Object res = getPhoneNumber(encryptedData,codes,iv,request,session);
+    @RequestMapping("/login")
+    public String wxOauth(String codes, HttpServletRequest request, HttpSession session) throws Exception{
+        Object res = getPhoneNumber(codes,request,session);
         return res.toString();
     }
 
-    public Object getPhoneNumber(String encryptedData, String code, String iv,HttpServletRequest request, HttpSession session) {
+    public Object getPhoneNumber(String code,HttpServletRequest request, HttpSession session) {
         //传入code后然后获取openid和session_key的，把他们封装到json里面
         JSONObject json = getSessionKeyOropenid(code);
-        String session_key = "";
-        if (json != null) {
-            session_key = json.getString("session_key");
-            // 被加密的数据
-            byte[] dataByte = Base64.decode(encryptedData);
-            // 加密秘钥
-            byte[] keyByte = Base64.decode(session_key);
-            // 偏移量
-            byte[] ivByte = Base64.decode(iv);
-            try {
-                // 如果密钥不足16位，那么就补足.
-                int base = 16;
-                if (keyByte.length % base != 0) {
-                    int groups = keyByte.length / base + (keyByte.length % base != 0 ? 1 : 0);
-                    byte[] temp = new byte[groups * base];
-                    Arrays.fill(temp, (byte) 0);
-                    System.arraycopy(keyByte, 0, temp, 0, keyByte.length);
-                    keyByte = temp;
-                }
-                // 初始化
-                Security.addProvider(new BouncyCastleProvider());
-                Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-                SecretKeySpec spec = new SecretKeySpec(keyByte, "AES");
-                AlgorithmParameters parameters = AlgorithmParameters.getInstance("AES");
-                parameters.init(new IvParameterSpec(ivByte));
-                cipher.init(Cipher.DECRYPT_MODE, spec, parameters);// 初始化
-                byte[] resultByte = cipher.doFinal(dataByte);
-                if (null != resultByte && resultByte.length > 0) {
-                    String result = new String(resultByte, "UTF-8");
-                    JSONObject jsonObject =JSONObject.parseObject(result);
-                    String stu_phone=jsonObject.get("phoneNumber").toString();
-                    System.out.println(stu_phone);
-                    StudentLoginBean studentLoginBean = studentLoginRepository.findByStuTel(stu_phone);
-                    System.out.println("1");
-                    String sessionId = session.getId();
-                    jsonObject.put("yifzySessionId",sessionId);
-                    if (studentLoginBean!=null){
-                        //有用户
-                        System.out.println("2");
-                        Integer stuId = studentLoginBean.getStuId();
-                        session.setAttribute("stuId",stuId);
-                        Student student=studentRepository.findOne(stuId);
-                        if (student.getStuProvinceCode()==null||student.getStuCityCode()==null||student.getStuDistrictCode()==null||(student.getStuHighschoolCode()!=null&&Integer.parseInt(student.getStuHighschoolCode())==0)||student.getStuHighschoolCode()==null||student.getStuYear()==null||(student.getStuYear()=="2017"&&Integer.parseInt(student.getStuSubjectCode())==0)||student.getStuPoint()==null){
-                            //有未完善的信息的情况
-                            jsonObject.put("if_info_compelet","0");
-                            System.out.println("info not complete");
-//                            jsonObject.put("mark",student.getStuPoint());
-//                            jsonObject.put("grade",2020-Integer.parseInt(student.getStuYear()));
-//                            jsonObject.put("subject",student.getStuSubjectCode());
-                        }else {
-                            //信息完善的情况
-                            jsonObject.put("if_info_compelet","1");
-                            System.out.println("info complete");
-                        }
-                    }else{
-                        //无用户
-                        //创建学生,然后比照信息不完善
-                        Student stu = new Student();
-                        stu.setStuTchrId("281");//281 is the id of system teacher
-                        stu.setStuTel(stu_phone);
-                        stu.setStuPassword(stu_phone);
-                        studentRepository.save(stu);
-                        Integer stuId = studentRepository.findStudentByStuTel(stu_phone).getStuId();
-                        session.setAttribute("stuId",stuId);
-                        stuevaRepository.save(new Stueva(stuId));
-                        System.out.println("3");
-                        jsonObject.put("if_info_compelet","0");
-                    }
-                    return jsonObject;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        String session_key = (String) json.get("session_key");
+        String openid = (String) json.get("openid");
+
+        System.out.println("session_key"+session_key);
+        System.out.println("openid"+openid);
+//        find student by openid
+        Student student = studentRepository.findStudentByTmpPlace(openid);
+        String sessionId = session.getId();
+
+
+        json.put("yifzySessionId",sessionId);
+        session.setAttribute("openid",openid);
+        if (student!=null){
+            String stu_phone = student.getStuTel();
+            StudentLoginBean studentLoginBean = studentLoginRepository.findByStuTel(stu_phone);
+            Integer stuId = studentLoginBean.getStuId();
+            session.setAttribute("stuId",stuId);
+            json.put("if_info_compelet","1");
+            json.put("stu_tel",stu_phone);
+            System.out.println("if_info_compelet"+"1");
+            System.out.println("stu_tel"+stu_phone);
+        }else{
+            json.put("if_info_compelet","0");
         }
-        return null;
+//        if (json != null) {
+//            session_key = json.getString("session_key");
+//            // 被加密的数据
+//            byte[] dataByte = Base64.decode(encryptedData);
+//            // 加密秘钥
+//            byte[] keyByte = Base64.decode(session_key);
+//            // 偏移量
+//            byte[] ivByte = Base64.decode(iv);
+//            try {
+//                // 如果密钥不足16位，那么就补足.
+//                int base = 16;
+//                if (keyByte.length % base != 0) {
+//                    int groups = keyByte.length / base + (keyByte.length % base != 0 ? 1 : 0);
+//                    byte[] temp = new byte[groups * base];
+//                    Arrays.fill(temp, (byte) 0);
+//                    System.arraycopy(keyByte, 0, temp, 0, keyByte.length);
+//                    keyByte = temp;
+//                }
+//                // 初始化
+//                Security.addProvider(new BouncyCastleProvider());
+//                Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+//                SecretKeySpec spec = new SecretKeySpec(keyByte, "AES");
+//                AlgorithmParameters parameters = AlgorithmParameters.getInstance("AES");
+//                parameters.init(new IvParameterSpec(ivByte));
+//                cipher.init(Cipher.DECRYPT_MODE, spec, parameters);// 初始化
+//                byte[] resultByte = cipher.doFinal(dataByte);
+//                if (null != resultByte && resultByte.length > 0) {
+//                    String result = new String(resultByte, "UTF-8");
+//                    JSONObject jsonObject =JSONObject.parseObject(result);
+//                    String stu_phone=jsonObject.get("phoneNumber").toString();
+//                    System.out.println(stu_phone);
+//                    StudentLoginBean studentLoginBean = studentLoginRepository.findByStuTel(stu_phone);
+//                    System.out.println("1");
+//                    String sessionId = session.getId();
+//                    jsonObject.put("yifzySessionId",sessionId);
+//                    if (studentLoginBean!=null){
+//                        //有用户
+//                        System.out.println("2");
+//                        Integer stuId = studentLoginBean.getStuId();
+//                        session.setAttribute("stuId",stuId);
+//                        Student student=studentRepository.findOne(stuId);
+//                        if (student.getStuProvinceCode()==null||student.getStuCityCode()==null||student.getStuDistrictCode()==null||(student.getStuHighschoolCode()!=null&&Integer.parseInt(student.getStuHighschoolCode())==0)||student.getStuHighschoolCode()==null||student.getStuYear()==null||(student.getStuYear()=="2017"&&Integer.parseInt(student.getStuSubjectCode())==0)||student.getStuPoint()==null){
+//                            //有未完善的信息的情况
+//                            jsonObject.put("if_info_compelet","0");
+//                            System.out.println("info not complete");
+////                            jsonObject.put("mark",student.getStuPoint());
+////                            jsonObject.put("grade",2020-Integer.parseInt(student.getStuYear()));
+////                            jsonObject.put("subject",student.getStuSubjectCode());
+//                        }else {
+//                            //信息完善的情况
+//                            jsonObject.put("if_info_compelet","1");
+//                            System.out.println("info complete");
+//                        }
+//                    }else{
+//                        //无用户
+//                        //创建学生,然后比照信息不完善
+//                        Student stu = new Student();
+//                        stu.setStuTchrId("281");//281 is the id of system teacher
+//                        stu.setStuTel(stu_phone);
+//                        stu.setStuPassword(stu_phone);
+//                        studentRepository.save(stu);
+//                        Integer stuId = studentRepository.findStudentByStuTel(stu_phone).getStuId();
+//                        session.setAttribute("stuId",stuId);
+//                        stuevaRepository.save(new Stueva(stuId));
+//                        System.out.println("3");
+//                        jsonObject.put("if_info_compelet","0");
+//                    }
+//                    return jsonObject;
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+        return json;
+    }
+    @ResponseBody
+    @RequestMapping("/fillPhone")
+    public String fillPhone(String tel,HttpSession session){
+        System.out.println(tel);
+        String openId= (String) session.getAttribute("openid");
+        Student student = studentRepository.findStudentByStuTel(tel);
+        if(student!=null){
+            System.out.println("有学生");
+
+            studentRepository.save(student);
+            session.setAttribute("stuId",student.getStuId());
+        }else {
+            System.out.println("创建学生");
+            Student stu = new Student();
+            stu.setStuTchrId("281");//281 is the id of system teacher
+            stu.setStuTel(tel);
+            stu.setStuPassword(tel);
+
+            studentRepository.save(stu);
+            Integer stuId = studentRepository.findStudentByStuTel(tel).getStuId();
+            session.setAttribute("stuId",stuId);
+            stuevaRepository.save(new Stueva(stuId));
+        }
+        return tel;
     }
 
     public static JSONObject getSessionKeyOropenid(String code) {

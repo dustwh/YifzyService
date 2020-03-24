@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="univercity")
-public class Univercity {
+public class Univ {
     private static final long serialVersionUID = 3L;
     @Id
 //    @Column(name = "univrct_code")
@@ -30,10 +30,10 @@ public class Univercity {
     private String univrctHomePage;
 
 
-    public Univercity() {
+    public Univ() {
     }
 
-    public Univercity(String univrctCode, String dxYxdm, String univrctName, String univrctTag, String univrctType, String univrctLocation, String univrctAffiliate, String univrctLevel, String univrctHomePage) {
+    public Univ(String univrctCode, String dxYxdm, String univrctName, String univrctTag, String univrctType, String univrctLocation, String univrctAffiliate, String univrctLevel, String univrctHomePage) {
         this.univrctCode = univrctCode;
         this.dxYxdm = dxYxdm;
         this.univrctName = univrctName;
@@ -45,7 +45,7 @@ public class Univercity {
         this.univrctHomePage = univrctHomePage;
     }
 
-    public Univercity(String dxYxdm, String univrctName, String univrctTag, String univrctType, String univrctLocation, String univrctAffiliate, String univrctLevel, String univrctHomePage) {
+    public Univ(String dxYxdm, String univrctName, String univrctTag, String univrctType, String univrctLocation, String univrctAffiliate, String univrctLevel, String univrctHomePage) {
         this.dxYxdm = dxYxdm;
         this.univrctName = univrctName;
         this.univrctTag = univrctTag;
